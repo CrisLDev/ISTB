@@ -1,0 +1,15 @@
+.editButton{
+    position: absolute;
+    top: 0;
+    right:0;
+    background-color: #fff;
+    border: 0;
+    padding: 1em;
+    outline: none!important;
+}
+
+.editButton:hover{
+    border-left: 1px solid rgba(0, 0, 0, 0.125);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    background-color: rgba(219, 217, 217, 0.125);
+}
