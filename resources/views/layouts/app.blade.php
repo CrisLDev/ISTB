@@ -27,7 +27,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
-                    <img class="w-25 mr-2" src="assets/logo.svg" alt="logo">
+                    <img class="w-25 mr-2" src="{{ asset('assets/logo.svg') }}" alt="logo">
                     <h3 class="mb-0">{{ config('app.name', 'Laravel') }}</h3>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -59,6 +59,10 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('profile.index') }}">
+                                        Perfil
+                                    </a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -68,7 +72,9 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
+
                                 </div>
+
                             </li>
                         @endguest
                     </ul>
@@ -76,9 +82,24 @@
             </div>
         </nav>
 
+        @if ( session('message') )
+            <div class="alert alert-success">{{ session('message') }}</div>
+        @endif
+
         <main class="py-4">
             @yield('content')
         </main>
+
+        <footer>
+            <nav class="navbar fixed-bottom navbar-light bg-light">
+                <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
+                    <img class="w-25 mr-2" src="{{ asset('assets/logo.svg') }}" alt="logo">
+                    <h3 class="mb-0">{{ config('app.name', 'Laravel') }}</h3>
+                </a>
+            </nav>
+        </footer>
+
     </div>
+    <script src="{{asset('js/scripts.js')}}"></script>
 </body>
 </html>

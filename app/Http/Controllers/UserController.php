@@ -6,9 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 
-use App\Models\Profile;
-
-class ProfileController extends Controller
+class UserController extends Controller
 {
 
     /**
@@ -29,13 +27,7 @@ class ProfileController extends Controller
     public function index()
     {
 
-        $id = auth()->user()->id;
-
-        $userInfo = User::where('id', $id)->first();
-
-        $profileInfo = Profile::where('user_id', $id)->first();
-
-        return view('profile.index', compact('userInfo', 'profileInfo'));
+        return redirect('/profile');
     }
 
     /**
@@ -45,7 +37,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        return view('profile.form');
+        return redirect('/profile');
     }
 
     /**
@@ -56,7 +48,7 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return redirect('/profile');
     }
 
     /**
@@ -67,7 +59,7 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        //
+        return redirect('/profile');
     }
 
     /**
@@ -78,7 +70,11 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        //
+        $id = auth()->user()->id;
+
+        $userInfo = User::where('id', $id)->first();
+
+        return view('user.edit', compact('userInfo'));
     }
 
     /**
@@ -102,5 +98,46 @@ class ProfileController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Display the logged user information.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function updateme(Requests $request)
+    {
+        $id = auth()->user()->id;
+
+        $data = User::where('id', $id)->first();
+
+        $data->name = $request->name;
+        $data->username = $request->username;
+        $data->email = $request->email;
+        if($request->password != $request->password_confirmation){
+            return redirect('/user/me')->with('userErrors', '¡Las contraseñas no son iguales!');
+        }
+        if($request->password){
+            $data->password = $password = bcrypt($request->password);
+        }
+
+        $data->save();
+
+        return back()->with('message', 'Información editada con éxito.');
+    }
+
+    /**
+     * Display the logged user information.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function me()
+    {
+        $id = auth()->user()->id;
+
+        $user = User::where('id', $id)->first();
+
+        return view('user.me', compact('user'));
     }
 }

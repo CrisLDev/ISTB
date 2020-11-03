@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ProfileController;
 
+use App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,4 +23,12 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile.index');
+Route::get( '/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name( 'profile.index' );
+
+Route::get( '/profile/update', [App\Http\Controllers\ProfileController::class, 'update'])->name( 'profile.update' );
+
+Route::get( '/user/me', [App\Http\Controllers\UserController::class, 'me'])->name( 'user.me' );
+
+Route::get( '/user/update', [App\Http\Controllers\UserController::class, 'update'])->name( 'user.update' );
+
+Route::put( '/user/updateme', [App\Http\Controllers\UserController::class, 'updateme'])->name( 'user.updateme' );

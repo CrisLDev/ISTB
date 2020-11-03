@@ -1,3 +1,7 @@
+:root {
+    --hoverEdited:rgba(219, 217, 217, 0.125);
+}
+
 .editButton{
     position: absolute;
     top: 0;
@@ -6,10 +10,20 @@
     border: 0;
     padding: 1em;
     outline: none!important;
+    color: rgb(97, 97, 97)!important;
 }
 
 .editButton:hover{
     border-left: 1px solid rgba(0, 0, 0, 0.125);
     border-bottom: 1px solid rgba(0, 0, 0, 0.125);
-    background-color: rgba(219, 217, 217, 0.125);
+    background-color: var(--hoverEdited);
+    text-decoration: none;
+}
+
+.hoverEdited:hover{
+    background-color: rgba(161, 161, 161, 0.125)!important;
+}
+
+.spinner-border{
+    display: none;
 }
