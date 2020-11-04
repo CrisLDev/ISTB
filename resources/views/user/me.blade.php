@@ -11,11 +11,11 @@
                         Edita tu información de ingreso
                     </h3>
                     @if ( session('userErrors') )
-                        <div class="alert alert-danger">{{ session('userErrors') }}</div>
+                        <div class="alert alert-danger">{{ session('userErrors')}}</div>
                     @endif
                 </div>
                 <div class="card-body">
-                    <form onsubmit="disable()" method="POST" enctype="multipart/form-data" action="{{route('user.updateme')}}">
+                    <form onsubmit="disable()" method="POST" enctype="multipart/form-data" action="{{route('user.update', $user->id)}}">
                         @method('PUT')
                         @csrf
                         <div class="row">

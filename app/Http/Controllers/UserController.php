@@ -86,7 +86,23 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $uid = $id;
+
+        $data = User::where('id', $uid)->first();
+
+        $data->name = $request->name;
+        $data->username = $request->username;
+        $data->email = $request->email;
+        if($request->password != $request->password_confirmation){
+            return redirect('/user/me')->with('userErrors', '¡Las contraseñas no son iguales!');
+        }
+        if($request->password){
+            $data->password = $password = bcrypt($request->password);
+        }
+
+        $data->save();
+
+        return back()->with('message', 'Información editada con éxito.');
     }
 
     /**
@@ -106,7 +122,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function updateme(Requests $request)
+    public function updateme(Requests $request, $id)
     {
         $id = auth()->user()->id;
 
