@@ -28,27 +28,32 @@
     <div id="app">
 
         <div class="d-flex" id="wrapper">
-
-            <!-- Sidebar -->
-            <div class="bg-light border-right" id="sidebar-wrapper">
-              <div class="sidebar-heading">Start Bootstrap </div>
-              <div class="list-group list-group-flush">
-                <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Shortcuts</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
-              </div>
-            </div>
-            <!-- /#sidebar-wrapper -->
+            @guest
+            @else
+                <!-- Sidebar -->
+                <div class="bg-light border-right" id="sidebar-wrapper">
+                    <div class="sidebar-heading">Start Bootstrap </div>
+                    <div class="list-group list-group-flush">
+                    <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+                    <a href="#" class="list-group-item list-group-item-action bg-light">Shortcuts</a>
+                    <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
+                    <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
+                    <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+                    <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
+                    </div>
+                </div>
+                <!-- /#sidebar-wrapper -->
+            @endguest
         
             <!-- Page Content -->
             <div id="page-content-wrapper">
         
               <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-                <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
-                <div class="container">
+                <div class="container d-flex justify-content-between">
+                    @guest
+                    @else
+                    <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+                    @endguest
                     <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                         <img class="w-25 mr-2" src="{{ asset('assets/logo.svg') }}" alt="logo">
                         <h3 class="mb-0">{{ config('app.name', 'Laravel') }}</h3>
@@ -58,13 +63,13 @@
                     </button>
     
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <!-- Left Side Of Navbar -->
-                        <ul class="navbar-nav mr-auto">
+                        <!-- Left Side Of Navbar 
+                        <ul class="navbar-nav">
     
-                        </ul>
+                        </ul>-->
     
                         <!-- Right Side Of Navbar -->
-                        <ul class="navbar-nav ml-auto">
+                        <ul class="navbar-nav">
                             <!-- Authentication Links -->
                             @guest
                                 <li class="nav-item">
@@ -141,8 +146,8 @@
         });
 
         $(document).ready(function(){
-            $(".mensajes").fadeTo(2000, 500).slideUp(500, function() {
-            $(".mensajes").slideUp(500);
+            $(".alert-success").fadeTo(2000, 500).slideUp(500, function() {
+            $(".alert-success").slideUp(500);
             });
         });
     </script>
