@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-xl-12 col-md-8 mb-3">
+        <div class="col-xl-12 mb-3">
             <div class="card">
                 <div class="card-header bg-white text-center m-3">
                     <a href="{{route('user.me')}}" class="editButton">

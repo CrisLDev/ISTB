@@ -27,34 +27,58 @@
 <body>
     <div id="app">
 
-        <div class="d-flex" id="wrapper">
-            @guest
-            @else
-                <!-- Sidebar -->
-                <div class="bg-light border-right" id="sidebar-wrapper">
-                    <div class="sidebar-heading">Start Bootstrap </div>
-                    <div class="list-group list-group-flush">
-                    <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-                    <a href="#" class="list-group-item list-group-item-action bg-light">Shortcuts</a>
-                    <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
-                    <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
-                    <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-                    <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
-                    </div>
+        <div class="wrapper">
+            <!-- Sidebar -->
+            <nav class="bg-light border-right" id="sidebar">
+                <div class="sidebar-header pb-0">
+                    <h3>Gestión <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-sliders" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"/>
+                      </svg></h3>
                 </div>
-                <!-- /#sidebar-wrapper -->
-            @endguest
         
+                <ul class="list-unstyled components pt-0">
+                    <p class="mb-0">Dummy Heading</p>
+                    <li class="ml-1">
+                        <a href="#">Usuarios</a>
+                    </li>
+                    <li>
+                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu">
+                            <li>
+                                <a href="#">Page 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Page 2</a>
+                            </li>
+                            <li>
+                                <a href="#">Page 3</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Portfolio</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+        
+            </nav>
             <!-- Page Content -->
-            <div id="page-content-wrapper">
+            <div id="content">
         
-              <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+                <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
                 <div class="container d-flex justify-content-between">
                     @guest
                     @else
-                    <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+                    <button type="button" id="sidebarCollapse" class="btn btn-light">
+                        <i class="fas fa-align-left"></i>
+                        <span><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                          </svg></span>
+                    </button>
                     @endguest
-                    <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
+                    <a class="navbar-brand d-flex align-items-center justify-content-center" href="{{ url('/') }}">
                         <img class="w-25 mr-2" src="{{ asset('assets/logo.svg') }}" alt="logo">
                         <h3 class="mb-0">{{ config('app.name', 'Laravel') }}</h3>
                     </a>
@@ -62,7 +86,7 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
     
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
                         <!-- Left Side Of Navbar 
                         <ul class="navbar-nav">
     
@@ -115,6 +139,10 @@
                     <div class="alert alert-success">{{ session('message') }}</div>
                 @endif
 
+                @if ( session('messageError') )
+                    <div class="alert alert-danger">{{ session('messageError') }}</div>
+                @endif
+
                 <main class="py-4">
                     @yield('content')
                 </main>
@@ -124,9 +152,14 @@
         
           </div>
           <!-- /#wrapper -->
+            </div>
+        </div>
+
+        
+              
 
         <footer>
-            <nav class="navbar fixed-bottom navbar-light bg-light">
+            <nav class="navbar fixed-bottom navbar-light bg-light border-top">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                     <img class="w-25 mr-2" src="{{ asset('assets/logo.svg') }}" alt="logo">
                     <h3 class="mb-0">{{ config('app.name', 'Laravel') }}</h3>
@@ -149,6 +182,21 @@
             $(".alert-success").fadeTo(2000, 500).slideUp(500, function() {
             $(".alert-success").slideUp(500);
             });
+        });
+
+        $(document).ready(function(){
+            $(".alert-danger").fadeTo(2000, 500).slideUp(500, function() {
+            $(".alert-danger").slideUp(500);
+            });
+        });
+
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar, #content').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+            console.log('holap')
         });
     </script>
 
