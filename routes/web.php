@@ -39,3 +39,5 @@ Route::put( '/user/updateme/{id}', [UserController::class, 'updateme'])->name( '
 // People Routes
 
 Route::get( '/people', [App\Http\Controllers\PeopleController::class, 'index'])->name( 'people.index' );
+
+Route::get( '/people/form/administration', [App\Http\Controllers\PeopleController::class, 'create'])->name( 'people.createAdmin' );

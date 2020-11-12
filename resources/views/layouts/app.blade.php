@@ -57,7 +57,7 @@
                             <a href="{{ route('people.index') }}">Todo</a>
                         </li>
                         <li>
-                            <a href="#">Home 2</a>
+                            <a href="{{ route('people.createAdmin') }}">Administración</a>
                         </li>
                         <li>
                             <a href="#">Home 3</a>

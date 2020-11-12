@@ -16,6 +16,7 @@ class People extends Migration
         Schema::create('people', function (Blueprint $table){
             $table->id();
             $table->string('fullname');
+            $table->string('type');
             $table->integer('user_id');
             $table->integer('telephoneNumber');
             $table->integer('dni');
