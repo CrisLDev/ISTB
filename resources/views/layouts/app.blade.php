@@ -39,7 +39,7 @@
                 <ul class="list-unstyled components pt-0">
                     <p class="mb-0">Dummy Heading</p>
                     <li class="ml-1">
-                        <a href="#">Usuarios</a>
+                        <a href="{{route('user.index')}}">Usuarios</a>
                     </li>
                     <li>
                         <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>

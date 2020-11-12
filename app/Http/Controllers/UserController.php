@@ -26,8 +26,8 @@ class UserController extends Controller
      */
     public function index()
     {
-
-        return redirect('/profile');
+        $users = User::get();
+        return view('user.all', compact('users'));
     }
 
     /**
