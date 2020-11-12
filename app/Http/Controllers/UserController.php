@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 
+use Creativeorange\Gravatar\Facades\Gravatar;
+
 class UserController extends Controller
 {
 

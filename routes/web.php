@@ -34,3 +34,8 @@ Route::get( '/user/me', [App\Http\Controllers\UserController::class, 'me'])->nam
 Route::put( '/user/{id}', [App\Http\Controllers\UserController::class, 'update'])->name( 'user.update' );
 
 Route::put( '/user/updateme/{id}', [UserController::class, 'updateme'])->name( 'user.updateme' );
+
+
+// People Routes
+
+Route::get( '/people', [App\Http\Controllers\PeopleController::class, 'index'])->name( 'people.index' );

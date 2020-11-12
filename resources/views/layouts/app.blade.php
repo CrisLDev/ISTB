@@ -28,42 +28,65 @@
     <div id="app">
 
         <div class="wrapper">
-            <!-- Sidebar -->
-            <nav class="bg-light border-right" id="sidebar">
-                <div class="sidebar-header pb-0">
-                    <h3>Gestión <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-sliders" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            @guest
+            @else
+            <!-- Sidebar  -->
+        <nav id="sidebar" class="bg-light text-dark">
+
+            <div class="sidebar-header pb-0 d-flex align-items-baseline">
+                <h3>Gestión</h3>
+                <h3 class="ml-1">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-sliders" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"/>
-                      </svg></h3>
-                </div>
-        
-                <ul class="list-unstyled components pt-0">
-                    <p class="mb-0">Dummy Heading</p>
-                    <li class="ml-1">
-                        <a href="{{route('user.index')}}">Usuarios</a>
-                    </li>
-                    <li>
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
-                        <ul class="collapse list-unstyled" id="pageSubmenu">
-                            <li>
-                                <a href="#">Page 1</a>
-                            </li>
-                            <li>
-                                <a href="#">Page 2</a>
-                            </li>
-                            <li>
-                                <a href="#">Page 3</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Portfolio</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                </ul>
-        
-            </nav>
+                      </svg>
+                </h3>
+                  <h3 class="mb-0 ml-auto" id="dismiss">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm9.5 8.5a.5.5 0 0 0 0-1H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5z"/>
+                      </svg>
+                </h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <p class="text-dark">Dummy Heading</p>
+                <li class="active">
+                    <a href="{{ route('user.index') }}">Usuarios</a>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Registrar</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="{{ route('people.index') }}">Todo</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="#">Page 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Portfolio</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </nav>
+            @endguest
             <!-- Page Content -->
             <div id="content">
         
@@ -168,6 +191,8 @@
         </footer>
 
     </div>
+
+    <div class="overlay"></div>
     <script src="{{asset('js/jquery.min.js')}}"></script>
     <script src="{{asset('js/scripts.js')}}"></script>
 
@@ -190,14 +215,17 @@
             });
         });
 
-        $(document).ready(function () {
+        $('#dismiss, .overlay').on('click', function () {
+                $('#sidebar').removeClass('active');
+                $('.overlay').removeClass('active');
+            });
+
             $('#sidebarCollapse').on('click', function () {
-                $('#sidebar, #content').toggleClass('active');
+                $('#sidebar').addClass('active');
+                $('.overlay').addClass('active');
                 $('.collapse.in').toggleClass('in');
                 $('a[aria-expanded=true]').attr('aria-expanded', 'false');
             });
-            console.log('holap')
-        });
     </script>
 
 </body>

@@ -32,29 +32,48 @@
     SIDEBAR STYLE
 ----------------------------------------------------- */
 
-.wrapper {
-    display: flex;
-    width: 100%;
-}
-
 #sidebar {
-    width: 200px;
+    width: 250px;
     position: fixed;
     top: 0;
-    left: 0;
+    left: -250px;
     height: 100vh;
     z-index: 999;
+    background: rgb(199, 199, 199);
     color: #fff;
     transition: all 0.3s;
+    overflow-y: scroll;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
 }
 
 #sidebar.active {
-    margin-left: -200px;
+    left: 0;
+}
+
+#dismiss {
+    cursor: pointer;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 998;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+.overlay.active {
+    display: block;
+    opacity: 1;
 }
 
 #sidebar .sidebar-header {
     padding: 20px;
-    color: rgba(0, 0, 0, 0.5);
 }
 
 #sidebar ul.components {
@@ -62,25 +81,16 @@
 }
 
 #sidebar ul p {
-    color: rgba(0, 0, 0, 0.5);
+    color: #fff;
     padding: 10px;
 }
 
 #sidebar ul li a {
-    color: rgba(0, 0, 0, 0.5);
     padding: 10px;
     font-size: 1.1em;
     display: block;
-}
-
-#sidebar ul li a:hover {
-    color: rgb(24, 24, 24);
     text-decoration: none;
-}
-
-#sidebar ul li.active>a,
-a[aria-expanded="true"] {
-    color: rgb(24, 24, 24);
+    color: rgba(0, 0, 0, 0.5);
 }
 
 a[data-toggle="collapse"] {
@@ -94,8 +104,8 @@ a[data-toggle="collapse"] {
     top: 50%;
     right: 20px;
     transform: translateY(-50%);
-}*/
-
+}
+*/
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
@@ -113,23 +123,13 @@ ul.CTAs a {
     margin-bottom: 5px;
 }
 
-a.download {
-    background: #fff;
-    color: rgba(0, 0, 0, 0.5);
-}
-
-a.article,
-a.article:hover {
-    background: #6d7fcc !important;
-    color: #fff !important;
-}
-
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
 
 #content {
-    width: calc(100% - 200px);
+    width: 100%;
+    padding: 20px;
     min-height: 100vh;
     transition: all 0.3s;
     position: absolute;
@@ -137,25 +137,23 @@ a.article:hover {
     right: 0;
 }
 
-#content.active {
-    width: 100%;
-}
-
-/* ---------------------------------------------------
-    MEDIAQUERIES
------------------------------------------------------ */
-
-@media (max-width: 768px) {
-    #sidebar {
-        margin-left: -200px;
-    }
-    #sidebar.active {
-        margin-left: 0;
-    }
-    #content {
-        width: 100%;
-    }
-    #content.active {
-        width: calc(100% - 200px);
-    }
-}
+/* Scrool Bar */
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
