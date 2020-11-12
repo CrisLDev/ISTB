@@ -72,11 +72,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $id = auth()->user()->id;
 
-        $userInfo = User::where('id', $id)->first();
+        $user = User::where('id', $id)->first();
 
-        return view('user.edit', compact('userInfo'));
+        return view('user.edit', compact('user'));
     }
 
     /**
@@ -93,6 +92,7 @@ class UserController extends Controller
         $data = User::where('id', $uid)->first();
 
         $data->name = $request->name;
+        $data->role = $request->role;
         $data->username = $request->username;
         $data->email = $request->email;
         if($request->password != $request->password_confirmation){
@@ -115,7 +115,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = User::findOrFail( $id )->delete();
+        return back()->with( 'message', 'Usuario Eliminado' );
     }
 
     /**
@@ -132,6 +133,7 @@ class UserController extends Controller
 
         $data->name = $request->name;
         $data->username = $request->username;
+        $data->role = $request->role;
         $data->email = $request->email;
         if($request->password != $request->password_confirmation){
             return redirect('/user/me')->with('userErrors', '¡Las contraseñas no son iguales!');

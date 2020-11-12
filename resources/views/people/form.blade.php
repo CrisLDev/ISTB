@@ -16,9 +16,17 @@
                 </div>
                 <div class="card-body">
                     @if(Request::is('people/form/administration'))
-                        <form onsubmit="disable()" method="POST" enctype="multipart/form-data" action="">
+                        <form onsubmit="disable()" method="POST" enctype="multipart/form-data" action="{{ route('people.storeAdmin') }}">
                     @endif
-                        @method('PUT')
+                    @if(Request::is('people/form/teacher'))
+                        <form onsubmit="disable()" method="POST" enctype="multipart/form-data" action="{{ route('people.storeTeacher') }}">
+                    @endif
+                    @if(Request::is('people/form/student'))
+                        <form onsubmit="disable()" method="POST" enctype="multipart/form-data" action="{{ route('people.storeStudent') }}">
+                    @endif
+                    @if(Request::is('people/form/administration/edit'))
+                        <form onsubmit="disable()" method="POST" enctype="multipart/form-data" action="{{ route('people.storeAdmin') }}">
+                    @endif
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
@@ -34,17 +42,6 @@
                                     class="form-control mb-2"
                                     />
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="inputState">State</label>
-                                    <select id="inputState" class="form-control">
-                                      <option selected>Choose...</option>
-                                      <option value="administration">Administración</option>
-                                      <option value="student">Estudiante</option>
-                                      <option value="teacher">Docente</option>
-                                    </select>
-                                  </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -90,7 +87,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Número de cédula:</label>
+                                    <label>Edad:</label>
                                     <input
                                     type="text"
                                     autocomplete="none"

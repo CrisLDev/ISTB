@@ -23,15 +23,23 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// Profile Routes
+
 Route::get( '/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name( 'profile.index' )->middleware('isAdmin');
 
 Route::get( '/profile/update', [App\Http\Controllers\ProfileController::class, 'update'])->name( 'profile.update' );
+
+// User Routes
 
 Route::get( '/users/', [App\Http\Controllers\UserController::class, 'index'])->name( 'user.index' );
 
 Route::get( '/user/me', [App\Http\Controllers\UserController::class, 'me'])->name( 'user.me' );
 
+Route::get( '/user/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name( 'user.edit' );
+
 Route::put( '/user/{id}', [App\Http\Controllers\UserController::class, 'update'])->name( 'user.update' );
+
+Route::delete( '/user/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name( 'user.delete' );
 
 Route::put( '/user/updateme/{id}', [UserController::class, 'updateme'])->name( 'user.updateme' );
 
@@ -41,3 +49,17 @@ Route::put( '/user/updateme/{id}', [UserController::class, 'updateme'])->name( '
 Route::get( '/people', [App\Http\Controllers\PeopleController::class, 'index'])->name( 'people.index' );
 
 Route::get( '/people/form/administration', [App\Http\Controllers\PeopleController::class, 'create'])->name( 'people.createAdmin' );
+
+Route::post( '/people/form/administration', [App\Http\Controllers\PeopleController::class, 'storeAdmin'])->name( 'people.storeAdmin' );
+
+Route::get( '/people/form/administration/edit/{id}', [App\Http\Controllers\PeopleController::class, 'editAdmin'])->name( 'people.editAdmin' );
+
+Route::put( '/people/form/administration/edit/{id}', [App\Http\Controllers\PeopleController::class, 'updateAdmin'])->name( 'people.updateAdmin' );
+
+Route::get( '/people/form/student', [App\Http\Controllers\PeopleController::class, 'create'])->name( 'people.createStudent' );
+
+Route::post( '/people/form/student', [App\Http\Controllers\PeopleController::class, 'storeStudent'])->name( 'people.storeStudent' );
+
+Route::get( '/people/form/teacher', [App\Http\Controllers\PeopleController::class, 'create'])->name( 'people.createTeacher' );
+
+Route::post( '/people/form/teacher', [App\Http\Controllers\PeopleController::class, 'storeTeacher'])->name( 'people.storeTeacher' );

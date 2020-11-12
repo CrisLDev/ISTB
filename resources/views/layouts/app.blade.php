@@ -60,7 +60,10 @@
                             <a href="{{ route('people.createAdmin') }}">Administración</a>
                         </li>
                         <li>
-                            <a href="#">Home 3</a>
+                            <a href="{{ route('people.createStudent') }}">Estudiantes</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('people.createTeacher') }}">Profesores</a>
                         </li>
                     </ul>
                 </li>

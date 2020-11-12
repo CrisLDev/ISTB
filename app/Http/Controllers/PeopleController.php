@@ -38,4 +38,84 @@ class PeopleController extends Controller
     {
         return view('people.form');
     }
+
+    /**
+    * Store a newly created resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @return \Illuminate\Http\Response
+    */
+
+    public function storeAdmin( Request $request ) {
+        $data = new People();
+        $data->fullname = $request->fullname;
+        $data->telephoneNumber = $request->telephoneNumber;
+        $data->user_id = auth()->user()->id;
+        $data->dni = $request->dni;
+        $data->type = 'administration';
+        $data->code = rand();
+        $data->address = $request->address;
+        $data->age = $request->age;
+        $data->email = $request->email;
+        $data->save();
+        return back()->with('message', 'Personal agregado con éxito.');
+    }
+
+    /**
+    * Store a newly created resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @return \Illuminate\Http\Response
+    */
+
+    public function storeStudent( Request $request ) {
+        $data = new People();
+        $data->fullname = $request->fullname;
+        $data->telephoneNumber = $request->telephoneNumber;
+        $data->user_id = auth()->user()->id;
+        $data->dni = $request->dni;
+        $data->type = 'student';
+        $data->code = rand();
+        $data->address = $request->address;
+        $data->age = $request->age;
+        $data->email = $request->email;
+        $data->save();
+        return back()->with('message', 'Estudiante agregado con éxito.');
+    }
+
+    /**
+    * Store a newly created resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @return \Illuminate\Http\Response
+    */
+
+    public function storeTeacher( Request $request ) {
+        $data = new People();
+        $data->fullname = $request->fullname;
+        $data->telephoneNumber = $request->telephoneNumber;
+        $data->user_id = auth()->user()->id;
+        $data->dni = $request->dni;
+        $data->type = 'teacher';
+        $data->code = rand();
+        $data->address = $request->address;
+        $data->age = $request->age;
+        $data->email = $request->email;
+        $data->save();
+        return back()->with('message', 'Docente agregado con éxito.');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editAdmin($id)
+    {
+
+        $admin = People::where('id', $id)->first();
+
+        return view('people.form', compact('admin'));
+    }
 }
