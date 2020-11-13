@@ -111,11 +111,77 @@ class PeopleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function editAdmin($id)
+    public function edit($id)
     {
 
-        $admin = People::where('id', $id)->first();
+        $people = People::where('id', $id)->first();
 
-        return view('people.form', compact('admin'));
+        return view('people.edit', compact('people'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updateTeacher(Request $request, $id)
+    {
+        $data = People::where('id', $id)->first();
+
+        $data->fullname = $request->fullname;
+        $data->telephoneNumber = $request->telephoneNumber;
+        $data->dni = $request->dni;
+        $data->code = rand();
+        $data->address = $request->address;
+        $data->age = $request->age;
+        $data->email = $request->email;
+        $data->save();
+        return back()->with('message', 'Profesor editado con éxito.');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updateAdmin(Request $request, $id)
+    {
+        $data = People::where('id', $id)->first();
+
+        $data->fullname = $request->fullname;
+        $data->telephoneNumber = $request->telephoneNumber;
+        $data->dni = $request->dni;
+        $data->code = rand();
+        $data->address = $request->address;
+        $data->age = $request->age;
+        $data->email = $request->email;
+        $data->save();
+        return back()->with('message', 'Personal editado con éxito.');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updateStudent(Request $request, $id)
+    {
+        $data = People::where('id', $id)->first();
+
+        $data->fullname = $request->fullname;
+        $data->telephoneNumber = $request->telephoneNumber;
+        $data->dni = $request->dni;
+        $data->code = rand();
+        $data->address = $request->address;
+        $data->age = $request->age;
+        $data->email = $request->email;
+        $data->save();
+        return back()->with('message', 'Estudiante editado con éxito.');
     }
 }

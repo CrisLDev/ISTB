@@ -6,7 +6,17 @@
 
 @foreach ($peoples as $people)
 
-<a class="btn btn-dark" href="{{route('people.edit', $people->id)}}">editar</a>
+@if($people->type == 'administration')
+<a class="btn btn-dark" href="{{route('people.editAdmin', $people->id)}}">editar</a>
+@endif
+
+@if($people->type == 'teacher')
+<a class="btn btn-dark" href="{{route('people.editTeacher', $people->id)}}">editar</a>
+@endif
+
+@if($people->type == 'student')
+<a class="btn btn-dark" href="{{route('people.editStudent', $people->id)}}">editar</a>
+@endif
 
 <form action="{{route('people.updateAdmin', $people->id)}}" method="POST" class="d-inline">
     @method('DELETE')

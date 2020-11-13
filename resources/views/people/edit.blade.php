@@ -15,15 +15,16 @@
                     @endif
                 </div>
                 <div class="card-body">
-                    @if(Request::is('people/form/administration'))
-                        <form onsubmit="disable()" method="POST" enctype="multipart/form-data" action="{{ route('people.storeAdmin') }}">
+                    @if(Request::is('people/form/administration/edit/'.$people->id))
+                        <form onsubmit="disable()" method="POST" enctype="multipart/form-data" action="{{ route('people.updateAdmin', $people->id) }}">
                     @endif
-                    @if(Request::is('people/form/teacher'))
-                        <form onsubmit="disable()" method="POST" enctype="multipart/form-data" action="{{ route('people.storeTeacher') }}">
+                    @if(Request::is('people/form/teacher/edit/'.$people->id))
+                        <form onsubmit="disable()" method="POST" enctype="multipart/form-data" action="{{ route('people.updateTeacher', $people->id) }}">
                     @endif
-                    @if(Request::is('people/form/student'))
-                        <form onsubmit="disable()" method="POST" enctype="multipart/form-data" action="{{ route('people.storeStudent') }}">
+                    @if(Request::is('people/form/student/edit/'.$people->id))
+                        <form onsubmit="disable()" method="POST" enctype="multipart/form-data" action="{{ route('people.updateStudent', $people->id) }}">
                     @endif
+                        @method('PUT')
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
@@ -37,6 +38,7 @@
                                     id="fullname"
                                     placeholder="Ingresa tu nombre completo"
                                     class="form-control mb-2"
+                                    value="{{$people->fullname}}"
                                     />
                                 </div>
                             </div>
@@ -51,6 +53,7 @@
                                     id="telephoneNumber"
                                     placeholder="Ingresa tu nombre completo"
                                     class="form-control mb-2"
+                                    value="{{$people->telephoneNumber}}"
                                     />
                                 </div>
                             </div>
@@ -65,6 +68,7 @@
                                     id="dni"
                                     placeholder="Ingresa tu nombre completo"
                                     class="form-control mb-2"
+                                    value="{{$people->dni}}"
                                     />
                                 </div>
                             </div>
@@ -79,6 +83,7 @@
                                     id="address"
                                     placeholder="Ingresa tu nombre completo"
                                     class="form-control mb-2"
+                                    value="{{$people->address}}"
                                     />
                                 </div>
                             </div>
@@ -93,6 +98,7 @@
                                     id="age"
                                     placeholder="Ingresa tu nombre completo"
                                     class="form-control mb-2"
+                                    value="{{$people->age}}"
                                     />
                                 </div>
                             </div>
@@ -107,6 +113,7 @@
                                     id="email"
                                     placeholder="Ingresa tu email"
                                     class="form-control mb-2"
+                                    value="{{$people->email}}"
                                     />
                                 </div>
                             </div>
