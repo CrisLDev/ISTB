@@ -184,4 +184,40 @@ class PeopleController extends Controller
         $data->save();
         return back()->with('message', 'Estudiante editado con éxito.');
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyAdmin($id)
+    {
+        $data = People::findOrFail( $id )->delete();
+        return back()->with( 'message', 'Personal Eliminado' );
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyTeacher($id)
+    {
+        $data = People::findOrFail( $id )->delete();
+        return back()->with( 'message', 'Profesor Eliminado' );
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyStudent($id)
+    {
+        $data = People::findOrFail( $id )->delete();
+        return back()->with( 'message', 'Estudiante Eliminado' );
+    }
 }

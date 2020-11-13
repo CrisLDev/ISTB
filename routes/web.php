@@ -56,6 +56,8 @@ Route::get( '/people/form/administration/edit/{id}', [App\Http\Controllers\Peopl
 
 Route::put( '/people/form/administration/edit/{id}', [App\Http\Controllers\PeopleController::class, 'updateAdmin'])->name( 'people.updateAdmin' );
 
+Route::delete( '/people/form/administration/delete/{id}', [App\Http\Controllers\PeopleController::class, 'destroyAdmin'])->name( 'people.deleteAdmin' );
+
 Route::get( '/people/form/student', [App\Http\Controllers\PeopleController::class, 'create'])->name( 'people.createStudent' );
 
 Route::post( '/people/form/student', [App\Http\Controllers\PeopleController::class, 'storeStudent'])->name( 'people.storeStudent' );
@@ -64,6 +66,8 @@ Route::get( '/people/form/student/edit/{id}', [App\Http\Controllers\PeopleContro
 
 Route::put( '/people/form/student/edit/{id}', [App\Http\Controllers\PeopleController::class, 'updateStudent'])->name( 'people.updateStudent' );
 
+Route::delete( '/people/form/student/delete/{id}', [App\Http\Controllers\PeopleController::class, 'destroyStudent'])->name( 'people.deleteStudent' );
+
 Route::get( '/people/form/teacher', [App\Http\Controllers\PeopleController::class, 'create'])->name( 'people.createTeacher' );
 
 Route::post( '/people/form/teacher', [App\Http\Controllers\PeopleController::class, 'storeTeacher'])->name( 'people.storeTeacher' );
@@ -71,3 +75,5 @@ Route::post( '/people/form/teacher', [App\Http\Controllers\PeopleController::cla
 Route::get( '/people/form/teacher/edit/{id}', [App\Http\Controllers\PeopleController::class, 'edit'])->name( 'people.editTeacher' );
 
 Route::put( '/people/form/teacher/edit/{id}', [App\Http\Controllers\PeopleController::class, 'updateAdmin'])->name( 'people.updateTeacher' );
+
+Route::delete( '/people/form/teacher/delete/{id}', [App\Http\Controllers\PeopleController::class, 'destroyTeacher'])->name( 'people.deleteTeacher' );
