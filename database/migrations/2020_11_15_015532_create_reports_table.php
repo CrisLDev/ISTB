@@ -15,10 +15,12 @@ class CreateReportsTable extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
+            $table->string('resume');
             $table->integer('user_id');
             $table->integer('course_id');
             $table->integer('student_id');
             $table->integer('teacher_id');
+            $table->integer('subject_id');
             $table->text('content');
             $table->timestamps();
         });

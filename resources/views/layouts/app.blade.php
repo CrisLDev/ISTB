@@ -48,7 +48,7 @@
             </div>
 
             <ul class="list-unstyled components">
-                <p class="text-dark">Dummy Heading</p>
+                <p class="text-dark">Todas las acciones</p>
                 <li class="active">
                     <a href="{{ route('user.index') }}">Usuarios</a>
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Registrar</a>
@@ -75,26 +75,6 @@
                             <a href="{{ route('grades.index') }}">Notas</a>
                         </li>
                     </ul>
-                </li>
-                <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
-                    <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li>
-                            <a href="#">Page 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 3</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Portfolio</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
                 </li>
             </ul>
         </nav>

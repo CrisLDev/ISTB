@@ -6,6 +6,8 @@ use App\Models\Subject;
 use App\Models\Course;
 use App\Models\Reports;
 use App\Models\Grades;
+use App\Models\Student;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 
 class OtherController extends Controller
@@ -27,7 +29,11 @@ class OtherController extends Controller
      */
     public function indexReports()
     {
-        return view('other.reports');
+        $teachers = Teacher::get();
+        $students = Student::get();
+        $courses = Course::get();
+        $subjects = Subject::get();
+        return view('other.reports', compact('teachers', 'students', 'courses', 'subjects'));
     }
 
     /**
