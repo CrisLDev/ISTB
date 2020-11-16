@@ -2,8 +2,8 @@
 
 @section('content')
 
-hola
+{{$student->fullname}}
 
-@endforeach
+{{$grades}}
 
 @endsection

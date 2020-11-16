@@ -203,9 +203,20 @@ class OtherController extends Controller
      */
     public function showStudent($id)
     {
-        $student = Student::where('id', $id);
+        $student = Student::where('id', $id)->first();
 
-        return view('student.view', compact('student'));
+        $grades = Grades::where('student_id', '=', $id)
+                        ->join('users', 'grades.user_id', '=', 'users.id')
+                        ->join('subjects', 'grades.subject_id', '=', 'subjects.id')
+                        ->join('courses', 'grades.course_id', '=', 'courses.id')
+                        ->join('teachers', 'grades.teacher_id', '=', 'teachers.id')
+                        ->get();
+
+        if(!$student){
+            return redirect('/other/students')->with('userErrors', '¡El estudiante no existe!');
+        }
+
+        return view('students.view', compact('student', 'grades'));
     }
 
     /**

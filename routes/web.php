@@ -89,6 +89,8 @@ Route::post( '/other/form/course', [App\Http\Controllers\OtherController::class,
 
 Route::get( '/other/students', [App\Http\Controllers\OtherController::class, 'indexStudents'])->name( 'students.indexStudents' );
 
+Route::get( '/other/students/{id}', [App\Http\Controllers\OtherController::class, 'showStudent'])->name( 'students.showStudent' );
+
 Route::get( '/other/administration', [App\Http\Controllers\OtherController::class, 'indexAdministration'])->name( 'administration.indexAdministration' );
 
 Route::get( '/other/teachers', [App\Http\Controllers\OtherController::class, 'indexTeachers'])->name( 'teachers.indexTeachers' );
