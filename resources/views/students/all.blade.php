@@ -4,6 +4,8 @@
 
 @foreach ($students as $student)
 
+<a class="btn btn-info" href="{{route('people.editStudent', $student->id)}}">editar</a>
+
 <a class="btn btn-dark" href="{{route('people.editStudent', $student->id)}}">editar</a>
 
 <form action="{{route('people.deleteStudent', $student->id)}}" method="POST" class="d-inline">

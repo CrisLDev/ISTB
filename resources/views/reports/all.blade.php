@@ -2,6 +2,11 @@
 
 @section('content')
 
+@if (count($reports) === 0)
+    <div>
+        no hayt prro
+    </div>
+@else
 @foreach ($reports as $report)
 
 <a class="btn btn-dark" href="{{route('reports.editReport', $report->id)}}">editar</a>
@@ -17,5 +22,6 @@
 {{$report->resume}}
 
 @endforeach
+@endif
 
 @endsection

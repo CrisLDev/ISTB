@@ -42,7 +42,7 @@ class OtherController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexGrades()
+    public function formGrades()
     {
         $teachers = Teacher::get();
         $students = Student::get();
@@ -91,9 +91,31 @@ class OtherController extends Controller
      */
     public function indexReports()
     {
-        $reports = Reports::get();
+        $reports = Reports::join('users', 'reports.user_id', '=', 'users.id')
+                            ->join('subjects', 'reports.subject_id', '=', 'subjects.id')
+                            ->join('courses', 'reports.course_id', '=', 'courses.id')
+                            ->join('teachers', 'reports.teacher_id', '=', 'teachers.id')
+                            ->join('students', 'reports.student_id', '=', 'students.id')
+                            ->get();
         return view('reports.all', compact('reports'));
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexGrades()
+    {
+        $grades = Grades::join('users', 'grades.user_id', '=', 'users.id')
+                        ->join('subjects', 'grades.subject_id', '=', 'subjects.id')
+                        ->join('courses', 'grades.course_id', '=', 'courses.id')
+                        ->join('teachers', 'grades.teacher_id', '=', 'teachers.id')
+                        ->join('students', 'grades.student_id', '=', 'students.id')
+                        ->get();
+        return view('grades.all', compact('grades'));
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -114,7 +136,7 @@ class OtherController extends Controller
     public function storeSubject(Request $request)
     {
         $data = new Subject();
-        $data->name = $request->name;
+        $data->subjectName = $request->subjectName;
         $data->save();
         return back()->with('message', 'Materia agregada con éxito.');
     }
@@ -128,7 +150,7 @@ class OtherController extends Controller
     public function storeCourse(Request $request)
     {
         $data = new Course();
-        $data->name = $request->name;
+        $data->courseName = $request->courseName;
         $data->save();
         return back()->with('message', 'Curso agregado con éxito.');
     }
@@ -176,12 +198,14 @@ class OtherController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Subject  $subject
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Subject $subject)
+    public function showStudent($id)
     {
-        //
+        $student = Student::where('id', $id);
+
+        return view('student.view', compact('student'));
     }
 
     /**
@@ -209,6 +233,22 @@ class OtherController extends Controller
         $subjects = Subject::get();
         $report = Reports::where('id', $id)->first();
         return view('reports.edit', compact('teachers', 'students', 'courses', 'subjects', 'report'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editGrade($id)
+    {
+        $teachers = Teacher::get();
+        $students = Student::get();
+        $courses = Course::get();
+        $subjects = Subject::get();
+        $grade = Grades::where('id', $id)->first();
+        return view('grades.edit', compact('teachers', 'students', 'courses', 'subjects', 'grade'));
     }
 
     /**
@@ -245,6 +285,27 @@ class OtherController extends Controller
     }
 
     /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Subject  $subject
+     * @return \Illuminate\Http\Response
+     */
+    public function updateGrade(Request $request, $id)
+    {
+        $data = Grades::where('id', $id)->first();
+
+        $data->course_id = $request->course_id;
+        $data->student_id = $request->student_id;
+        $data->teacher_id = $request->teacher_id;
+        $data->subject_id = $request->subject_id;
+        $data->grade = $request->grade;
+        $data->assistance = $request->assistance;
+        $data->save();
+        return back()->with('message', 'Nota editada con éxito.');
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Subject  $subject
@@ -261,9 +322,21 @@ class OtherController extends Controller
      * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function destroyReport(Subject $subject)
+    public function destroyReport($id)
     {
         $data = Reports::findOrFail( $id )->delete();
         return back()->with( 'message', 'Reporte Eliminado' );
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Subject  $subject
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyGrade($id)
+    {
+        $data = Grades::findOrFail( $id )->delete();
+        return back()->with( 'message', 'Nota Eliminada' );
     }
 }

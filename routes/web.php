@@ -81,19 +81,11 @@ Route::delete( '/people/form/teacher/delete/{id}', [App\Http\Controllers\PeopleC
 // Another Routes
 Route::get( '/other/form', [App\Http\Controllers\OtherController::class, 'index'])->name( 'other.index' );
 
-Route::get( '/other/report/form', [App\Http\Controllers\OtherController::class, 'formReports'])->name( 'reports.index' );
-
-Route::post( '/other/report/form', [App\Http\Controllers\OtherController::class, 'storeReport'])->name( 'other.storeReport' );
-
-Route::get( '/other/grades/form', [App\Http\Controllers\OtherController::class, 'indexGrades'])->name( 'grades.index' );
-
-Route::post( '/other/grades/form', [App\Http\Controllers\OtherController::class, 'storeGrade'])->name( 'other.storeGrade' );
-
 Route::post( '/other/form/subject', [App\Http\Controllers\OtherController::class, 'storeSubject'])->name( 'other.storeSubject' );
 
 Route::post( '/other/form/course', [App\Http\Controllers\OtherController::class, 'storeCourse'])->name( 'other.storeCourse' );
 
-// Specific Routes
+// Routes Students
 
 Route::get( '/other/students', [App\Http\Controllers\OtherController::class, 'indexStudents'])->name( 'students.indexStudents' );
 
@@ -103,6 +95,10 @@ Route::get( '/other/teachers', [App\Http\Controllers\OtherController::class, 'in
 
 // Routes Reports
 
+Route::get( '/other/report/form', [App\Http\Controllers\OtherController::class, 'formReports'])->name( 'reports.index' );
+
+Route::post( '/other/report/form', [App\Http\Controllers\OtherController::class, 'storeReport'])->name( 'other.storeReport' );
+
 Route::get( '/other/reports', [App\Http\Controllers\OtherController::class, 'indexReports'])->name( 'reports.indexReports' );
 
 Route::get( '/other/reports/edit/{id}', [App\Http\Controllers\OtherController::class, 'editReport'])->name( 'reports.editReport' );
@@ -110,3 +106,17 @@ Route::get( '/other/reports/edit/{id}', [App\Http\Controllers\OtherController::c
 Route::put( '/other/reports/update/{id}', [App\Http\Controllers\OtherController::class, 'updateReport'])->name( 'reports.updateReport' );
 
 Route::delete( '/other/reports/delete/{id}', [App\Http\Controllers\OtherController::class, 'destroyReport'])->name( 'reports.destroyReport' );
+
+// Routes Grades
+
+Route::get( '/other/grades/form', [App\Http\Controllers\OtherController::class, 'formGrades'])->name( 'grades.index' );
+
+Route::post( '/other/grades/form', [App\Http\Controllers\OtherController::class, 'storeGrade'])->name( 'other.storeGrade' );
+
+Route::get( '/other/grades', [App\Http\Controllers\OtherController::class, 'indexGrades'])->name( 'grades.indexGrades' );
+
+Route::get( '/other/grades/edit/{id}', [App\Http\Controllers\OtherController::class, 'editGrade'])->name( 'grades.editGrade' );
+
+Route::put( '/other/grades/update/{id}', [App\Http\Controllers\OtherController::class, 'updateGrade'])->name( 'grades.updateGrade' );
+
+Route::delete( '/other/grades/delete/{id}', [App\Http\Controllers\OtherController::class, 'destroyGrade'])->name( 'grades.destroyGrade' );

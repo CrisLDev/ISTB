@@ -16,7 +16,8 @@ class CreateAdministrationsTable extends Migration
         Schema::create('administrations', function (Blueprint $table) {
             $table->id();
             $table->string('fullname');
-            $table->integer('user_id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->integer('telephoneNumber');
             $table->integer('dni');
             $table->string('address');
@@ -24,6 +25,9 @@ class CreateAdministrationsTable extends Migration
             $table->string('email');
             $table->string('code')->rand();
             $table->timestamps();
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_unicode_ci';
         });
     }
 

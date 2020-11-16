@@ -7,10 +7,11 @@
         <div class="col-xl-12 mb-3">
             <div class="card">
                 <div class="card-header bg-white text-center m-3">
-                     <h3>Crear Nota</h3>
+                     <h3>Editar Nota</h3>
                 </div>
                 <div class="card-body">
-                    <form onsubmit="disable()" method="POST" enctype="multipart/form-data" action="{{ route('other.storeGrade') }}">
+                    <form onsubmit="disable()" method="POST" enctype="multipart/form-data" action="{{ route('grades.updateGrade', $grade->id) }}">
+                        @method('PUT')
                         @csrf
                             <div class="row">
                                 <div class="col-md-12">
@@ -21,7 +22,7 @@
                                             <option>No hay docentes</option>
                                         @endif
                                         @foreach ($teachers as $teacher)
-                                          <option value="{{$teacher->id}}">{{$teacher->fullname}}</option>
+                                          <option value="{{$teacher->id}}" {{ $teacher->id == $grade->teacher_id ? 'selected' : '' }}>{{$teacher->fullname}}</option>
                                         @endforeach
                                         </select>
                                     </div>
@@ -32,7 +33,7 @@
                                             <option>No hay docentes</option>
                                         @endif
                                         @foreach ($students as $student)
-                                          <option value="{{$student->id}}">{{$student->fullname}}</option>
+                                          <option value="{{$student->id}}" {{ $student->id == $grade->student_id ? 'selected' : '' }}>{{$student->fullname}}</option>
                                         @endforeach
                                         </select>
                                     </div>
@@ -43,7 +44,7 @@
                                             <option>No hay docentes</option>
                                         @endif
                                         @foreach ($courses as $course)
-                                          <option value="{{$course->id}}">{{$course->courseName}}</option>
+                                          <option value="{{$course->id}}" {{ $course->id == $grade->course_id ? 'selected' : '' }}>{{$course->name}}</option>
                                         @endforeach
                                         </select>
                                     </div>
@@ -54,17 +55,17 @@
                                             <option>No hay materias</option>
                                         @endif
                                         @foreach ($subjects as $subject)
-                                          <option value="{{$subject->id}}">{{$subject->subjectName}}</option>
+                                          <option value="{{$subject->id}}" {{ $subject->id == $grade->subject_id ? 'selected' : '' }}>{{$subject->name}}</option>
                                         @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="Grades">Nota</label>
-                                        <input type="text" class="form-control" id="Grades" name="grade">
+                                        <input type="text" class="form-control" id="Grades" name="grade" value="{{$grade->grade}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="Assistance">Asistencia</label>
-                                        <input type="text" class="form-control" id="Assistance" name="assistance">
+                                        <input type="text" class="form-control" id="Assistance" name="assistance" value="{{$grade->assistance}}">
                                     </div>
                                     <div class="form-group">
                                         <button class="btn btn-warning btn-block" id="button-prevent-multiple-submits" type="submit">

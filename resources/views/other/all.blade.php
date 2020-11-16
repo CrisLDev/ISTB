@@ -22,8 +22,8 @@
                                             type="text"
                                             autocomplete="none"
                                             spellcheck="false"
-                                            name="name"
-                                            id="name"
+                                            name="subjectName"
+                                            id="subjectName"
                                             placeholder="Ingresa nombre de la materia"
                                             class="form-control mb-2"
                                             />
@@ -48,8 +48,8 @@
                                             type="text"
                                             autocomplete="none"
                                             spellcheck="false"
-                                            name="name"
-                                            id="name"
+                                            name="courseName"
+                                            id="courseName"
                                             placeholder="Ingresa nombre del curso"
                                             class="form-control mb-2"
                                             />
