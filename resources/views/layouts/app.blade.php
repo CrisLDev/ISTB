@@ -90,7 +90,7 @@
                             <a href="{{ route('other.index') }}">Otros</a>
                         </li>
                         <li>
-                            <a href="{{ route('reports.index') }}">Reportes</a>
+                            <a href="{{ route('reports.indexReports') }}">Reportes</a>
                         </li>
                         <li>
                             <a href="{{ route('grades.index') }}">Notas</a>
