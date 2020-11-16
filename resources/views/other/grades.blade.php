@@ -10,21 +10,61 @@
                      <h3>Crear Nota</h3>
                 </div>
                 <div class="card-body">
-                    <form onsubmit="disable()" method="POST" enctype="multipart/form-data" action="{{ route('other.storeSubject') }}">
+                    <form onsubmit="disable()" method="POST" enctype="multipart/form-data" action="{{ route('other.storeGrade') }}">
                         @csrf
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Nombre de la materia:</label>
-                                        <input
-                                        type="text"
-                                        autocomplete="none"
-                                        spellcheck="false"
-                                        name="name"
-                                        id="name"
-                                        placeholder="Ingresa nombre de la materia"
-                                        class="form-control mb-2"
-                                        />
+                                        <label for="inputState">Docente</label>
+                                        <select id="inputState" class="form-control" name="teacher_id">
+                                        @if (count($teachers) === 0)
+                                            <option>No hay docentes</option>
+                                        @endif
+                                        @foreach ($teachers as $teacher)
+                                          <option value="{{$teacher->id}}">{{$teacher->fullname}}</option>
+                                        @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputState">Estudiante</label>
+                                        <select id="inputState" class="form-control" name="student_id">
+                                        @if (count($students) === 0)
+                                            <option>No hay docentes</option>
+                                        @endif
+                                        @foreach ($students as $student)
+                                          <option value="{{$student->id}}">{{$student->fullname}}</option>
+                                        @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputState">Cursos</label>
+                                        <select id="inputState" class="form-control" name="course_id">
+                                        @if (count($courses) === 0)
+                                            <option>No hay docentes</option>
+                                        @endif
+                                        @foreach ($courses as $course)
+                                          <option value="{{$course->id}}">{{$course->name}}</option>
+                                        @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputState">Materias</label>
+                                        <select id="inputState" class="form-control" name="subject_id">
+                                        @if (count($subjects) === 0)
+                                            <option>No hay materias</option>
+                                        @endif
+                                        @foreach ($subjects as $subject)
+                                          <option value="{{$subject->id}}">{{$subject->name}}</option>
+                                        @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Grades">Nota</label>
+                                        <input type="text" class="form-control" id="Grades" name="grade">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Assistance">Asistencia</label>
+                                        <input type="text" class="form-control" id="Assistance" name="assistance">
                                     </div>
                                     <div class="form-group">
                                         <button class="btn btn-warning btn-block" id="button-prevent-multiple-submits" type="submit">

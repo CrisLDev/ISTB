@@ -51,11 +51,8 @@
                 <p class="text-dark">Todas las acciones</p>
                 <li class="active">
                     <a href="{{ route('user.index') }}">Usuarios</a>
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Registrar</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="{{ route('people.index') }}">Todo</a>
-                        </li>
+                    <a href="#registerSubmenu" data-toggle="collapse" aria-expanded="false">Registrar</a>
+                    <ul class="collapse list-unstyled" id="registerSubmenu">
                         <li>
                             <a href="{{ route('people.createAdmin') }}">Administración</a>
                         </li>
@@ -64,6 +61,30 @@
                         </li>
                         <li>
                             <a href="{{ route('people.createTeacher') }}">Profesores</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('other.index') }}">Otros</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('reports.index') }}">Reportes</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('grades.index') }}">Notas</a>
+                        </li>
+                    </ul>
+                    <a href="#allSubmenu" data-toggle="collapse" aria-expanded="false">Ver</a>
+                    <ul class="collapse list-unstyled" id="allSubmenu">
+                        <li>
+                            <a href="{{ route('people.index') }}">Todo</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('administration.indexAdministration') }}">Administración</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('students.indexStudents') }}">Estudiantes</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('teachers.indexTeachers') }}">Profesores</a>
                         </li>
                         <li>
                             <a href="{{ route('other.index') }}">Otros</a>

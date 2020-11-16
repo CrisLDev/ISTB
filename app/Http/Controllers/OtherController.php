@@ -8,6 +8,7 @@ use App\Models\Reports;
 use App\Models\Grades;
 use App\Models\Student;
 use App\Models\Teacher;
+use App\Models\Administration;
 use Illuminate\Http\Request;
 
 class OtherController extends Controller
@@ -43,7 +44,44 @@ class OtherController extends Controller
      */
     public function indexGrades()
     {
-        return view('other.grades');
+        $teachers = Teacher::get();
+        $students = Student::get();
+        $courses = Course::get();
+        $subjects = Subject::get();
+        return view('other.grades', compact('teachers', 'students', 'courses', 'subjects'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexStudents()
+    {
+        $students = Student::get();
+        return view('students.all', compact('students'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexAdministration()
+    {
+        $administrations = Administration::get();
+        return view('administration.all', compact('administrations'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexTeachers()
+    {
+        $teachers = Teacher::get();
+        return view('teachers.all', compact('teachers'));
     }
 
     /**
@@ -82,6 +120,46 @@ class OtherController extends Controller
         $data->name = $request->name;
         $data->save();
         return back()->with('message', 'Curso agregado con éxito.');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeReport(Request $request)
+    {
+        $data = new Reports();
+        $data->resume = $request->resume;
+        $data->user_id = auth()->user()->id;
+        $data->course_id = $request->course_id;
+        $data->student_id = $request->student_id;
+        $data->teacher_id = $request->teacher_id;
+        $data->subject_id = $request->subject_id;
+        $data->content = $request->content;
+        $data->save();
+        return back()->with('message', 'Reporte agregado con éxito.');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeGrade(Request $request)
+    {
+        $data = new Grades();
+        $data->user_id = auth()->user()->id;
+        $data->course_id = $request->course_id;
+        $data->student_id = $request->student_id;
+        $data->teacher_id = $request->teacher_id;
+        $data->subject_id = $request->subject_id;
+        $data->grade = $request->grade;
+        $data->assistance = $request->assistance;
+        $data->save();
+        return back()->with('message', 'Nota agregado con éxito.');
     }
 
     /**

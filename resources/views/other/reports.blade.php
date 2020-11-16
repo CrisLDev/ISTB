@@ -10,7 +10,7 @@
                      <h3>Crear Reporte</h3>
                 </div>
                 <div class="card-body">
-                    <form onsubmit="disable()" method="POST" enctype="multipart/form-data" action="{{ route('other.storeSubject') }}">
+                    <form onsubmit="disable()" method="POST" enctype="multipart/form-data" action="{{ route('other.storeReport') }}">
                         @csrf
                             <div class="row">
                                 <div class="col-md-12">
@@ -28,7 +28,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="inputState">Docente</label>
-                                        <select id="inputState" class="form-control">
+                                        <select id="inputState" class="form-control" name="teacher_id">
                                         @if (count($teachers) === 0)
                                             <option>No hay docentes</option>
                                         @endif
@@ -39,7 +39,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="inputState">Estudiante</label>
-                                        <select id="inputState" class="form-control">
+                                        <select id="inputState" class="form-control" name="student_id">
                                         @if (count($students) === 0)
                                             <option>No hay docentes</option>
                                         @endif
@@ -50,7 +50,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="inputState">Cursos</label>
-                                        <select id="inputState" class="form-control">
+                                        <select id="inputState" class="form-control" name="course_id">
                                         @if (count($courses) === 0)
                                             <option>No hay docentes</option>
                                         @endif
@@ -61,7 +61,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="inputState">Materias</label>
-                                        <select id="inputState" class="form-control">
+                                        <select id="inputState" class="form-control" name="subject_id">
                                         @if (count($subjects) === 0)
                                             <option>No hay materias</option>
                                         @endif
@@ -72,7 +72,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="reportTextarea">Cotenido</label>
-                                        <textarea class="form-control" id="reportTextarea" rows="3"></textarea>
+                                        <textarea class="form-control" id="reportTextarea" rows="3" name="content"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <button class="btn btn-warning btn-block" id="button-prevent-multiple-submits" type="submit">
