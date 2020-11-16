@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\People;
+use App\Models\Student;
+use App\Models\Teacher;
+use App\Models\Administration;
 
 class PeopleController extends Controller
 {
@@ -25,8 +27,10 @@ class PeopleController extends Controller
      */
     public function index()
     {
-        $peoples = People::get();
-        return view('people.all', compact('peoples'));
+        $administrations = Administration::get();
+        $teachers = Teacher::get();
+        $students = Student::get();
+        return view('people.all', compact('administrations', 'teachers', 'students'));
     }
 
     /**
@@ -47,12 +51,11 @@ class PeopleController extends Controller
     */
 
     public function storeAdmin( Request $request ) {
-        $data = new People();
+        $data = new Administration();
         $data->fullname = $request->fullname;
         $data->telephoneNumber = $request->telephoneNumber;
         $data->user_id = auth()->user()->id;
         $data->dni = $request->dni;
-        $data->type = 'administration';
         $data->code = rand();
         $data->address = $request->address;
         $data->age = $request->age;
@@ -69,12 +72,11 @@ class PeopleController extends Controller
     */
 
     public function storeStudent( Request $request ) {
-        $data = new People();
+        $data = new Student();
         $data->fullname = $request->fullname;
         $data->telephoneNumber = $request->telephoneNumber;
         $data->user_id = auth()->user()->id;
         $data->dni = $request->dni;
-        $data->type = 'student';
         $data->code = rand();
         $data->address = $request->address;
         $data->age = $request->age;
@@ -91,12 +93,11 @@ class PeopleController extends Controller
     */
 
     public function storeTeacher( Request $request ) {
-        $data = new People();
+        $data = new Teacher();
         $data->fullname = $request->fullname;
         $data->telephoneNumber = $request->telephoneNumber;
         $data->user_id = auth()->user()->id;
         $data->dni = $request->dni;
-        $data->type = 'teacher';
         $data->code = rand();
         $data->address = $request->address;
         $data->age = $request->age;
@@ -111,10 +112,38 @@ class PeopleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editStudent($id)
     {
 
-        $people = People::where('id', $id)->first();
+        $people = Student::where('id', $id)->first();
+
+        return view('people.edit', compact('people'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editAdmin($id)
+    {
+
+        $people = Administration::where('id', $id)->first();
+
+        return view('people.edit', compact('people'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editTeacher($id)
+    {
+
+        $people = Teacher::where('id', $id)->first();
 
         return view('people.edit', compact('people'));
     }
@@ -128,7 +157,7 @@ class PeopleController extends Controller
      */
     public function updateTeacher(Request $request, $id)
     {
-        $data = People::where('id', $id)->first();
+        $data = Teacher::where('id', $id)->first();
 
         $data->fullname = $request->fullname;
         $data->telephoneNumber = $request->telephoneNumber;
@@ -150,7 +179,7 @@ class PeopleController extends Controller
      */
     public function updateAdmin(Request $request, $id)
     {
-        $data = People::where('id', $id)->first();
+        $data = Administration::where('id', $id)->first();
 
         $data->fullname = $request->fullname;
         $data->telephoneNumber = $request->telephoneNumber;
@@ -172,7 +201,7 @@ class PeopleController extends Controller
      */
     public function updateStudent(Request $request, $id)
     {
-        $data = People::where('id', $id)->first();
+        $data = Student::where('id', $id)->first();
 
         $data->fullname = $request->fullname;
         $data->telephoneNumber = $request->telephoneNumber;

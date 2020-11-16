@@ -65,6 +65,15 @@
                         <li>
                             <a href="{{ route('people.createTeacher') }}">Profesores</a>
                         </li>
+                        <li>
+                            <a href="{{ route('other.index') }}">Otros</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('reports.index') }}">Reportes</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('grades.index') }}">Notas</a>
+                        </li>
                     </ul>
                 </li>
                 <li>

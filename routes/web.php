@@ -52,7 +52,7 @@ Route::get( '/people/form/administration', [App\Http\Controllers\PeopleControlle
 
 Route::post( '/people/form/administration', [App\Http\Controllers\PeopleController::class, 'storeAdmin'])->name( 'people.storeAdmin' );
 
-Route::get( '/people/form/administration/edit/{id}', [App\Http\Controllers\PeopleController::class, 'edit'])->name( 'people.editAdmin' );
+Route::get( '/people/form/administration/edit/{id}', [App\Http\Controllers\PeopleController::class, 'editAdmin'])->name( 'people.editAdmin' );
 
 Route::put( '/people/form/administration/edit/{id}', [App\Http\Controllers\PeopleController::class, 'updateAdmin'])->name( 'people.updateAdmin' );
 
@@ -62,7 +62,7 @@ Route::get( '/people/form/student', [App\Http\Controllers\PeopleController::clas
 
 Route::post( '/people/form/student', [App\Http\Controllers\PeopleController::class, 'storeStudent'])->name( 'people.storeStudent' );
 
-Route::get( '/people/form/student/edit/{id}', [App\Http\Controllers\PeopleController::class, 'edit'])->name( 'people.editStudent' );
+Route::get( '/people/form/student/edit/{id}', [App\Http\Controllers\PeopleController::class, 'editStudent'])->name( 'people.editStudent' );
 
 Route::put( '/people/form/student/edit/{id}', [App\Http\Controllers\PeopleController::class, 'updateStudent'])->name( 'people.updateStudent' );
 
@@ -72,8 +72,19 @@ Route::get( '/people/form/teacher', [App\Http\Controllers\PeopleController::clas
 
 Route::post( '/people/form/teacher', [App\Http\Controllers\PeopleController::class, 'storeTeacher'])->name( 'people.storeTeacher' );
 
-Route::get( '/people/form/teacher/edit/{id}', [App\Http\Controllers\PeopleController::class, 'edit'])->name( 'people.editTeacher' );
+Route::get( '/people/form/teacher/edit/{id}', [App\Http\Controllers\PeopleController::class, 'editTeacher'])->name( 'people.editTeacher' );
 
-Route::put( '/people/form/teacher/edit/{id}', [App\Http\Controllers\PeopleController::class, 'updateAdmin'])->name( 'people.updateTeacher' );
+Route::put( '/people/form/teacher/edit/{id}', [App\Http\Controllers\PeopleController::class, 'updateTeacher'])->name( 'people.updateTeacher' );
 
 Route::delete( '/people/form/teacher/delete/{id}', [App\Http\Controllers\PeopleController::class, 'destroyTeacher'])->name( 'people.deleteTeacher' );
+
+// Another Routes
+Route::get( '/other/form', [App\Http\Controllers\OtherController::class, 'index'])->name( 'other.index' );
+
+Route::get( '/other/resport/form', [App\Http\Controllers\OtherController::class, 'indexReports'])->name( 'reports.index' );
+
+Route::get( '/other/grades/form', [App\Http\Controllers\OtherController::class, 'indexGrades'])->name( 'grades.index' );
+
+Route::post( '/other/form/subject', [App\Http\Controllers\OtherController::class, 'storeSubject'])->name( 'other.storeSubject' );
+
+Route::post( '/other/form/course', [App\Http\Controllers\OtherController::class, 'storeCourse'])->name( 'other.storeCourse' );
