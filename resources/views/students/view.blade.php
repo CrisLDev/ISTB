@@ -27,11 +27,11 @@
                     </div>
                     <div class="mt-5">
                         @foreach ($grade as $item)
-                            <div class="accordion" id="accordionExample">
+                            <div class="accordion" id="accordionGrades">
                                 <div class="card">
-                                <div class="card-header" id="headingOne">
+                                <div class="card-header" id="heading{{$item[0]['course_id']}}">
                                     <h2 class="mb-0">
-                                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse{{$item[0]['course_id']}}" aria-expanded="true" aria-controls="collapse{{$item[0]['course_id']}}">
                                         Notas @foreach ($item as $course)
                                         @if ($loop->first) {{$course->courseName}} @endif
                                         @endforeach
@@ -39,7 +39,7 @@
                                     </h2>
                                 </div>
                             
-                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div id="collapse{{$item[0]['course_id']}}" class="collapse show" aria-labelledby="heading{{$item[0]['course_id']}}" data-parent="#accordionGrades">
                                     <div class="card-body">
                                         @foreach ($item as $grade)
                                             <div>
