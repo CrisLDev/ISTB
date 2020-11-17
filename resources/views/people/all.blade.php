@@ -2,100 +2,142 @@
 
 @section('content')
 
-@if (count($administrations) !== 0)
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-xl-12 mb-5">
+            <div class="card">
+                <div class="card-header bg-white text-center mb-3 pt-4">
+                    <h3 class="card-title">
+                        Personal - Docentes - Estudiantes
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            @if (count($administrations) !== 0)
 
-@foreach ($administrations as $administration)
-<a class="btn btn-dark" href="{{route('people.editAdmin', $administration->id)}}">editar</a>
-<form action="{{route('people.deleteAdmin', $administration->id)}}" method="POST" class="d-inline">
-    @method('DELETE')
-    @csrf
-    <button class="btn btn-danger" type="submit">
-        Eliminar
-    </button>
-</form>
+                                @foreach ($administrations as $administration)
 
-{{$administration->fullname}}
+                                <div class="col-md-2 d-flex align-items-center">
+                                    <img src="{{Gravatar::get($administration->email)}}" alt="peopleGravatar">
+                                </div>
 
-{{$administration->email}}
+                                <div class="col-md-8 d-flex align-items-center justify-content-between">
+                                    <span>{{$administration->fullname}}</span>
 
-{{$administration->type}}
+                                    <span>{{$administration->email}}</span>
 
-{{$administration->code}}
+                                    <span>{{$administration->type}}</span>
 
-<img src="{{Gravatar::get($administration->email)}}" alt="peopleGravatar">
+                                    <span>{{$administration->code}}</span>
 
-@endforeach
+                                </div>
 
-@else
+                                <div class="col-md-2 d-flex align-items-center">
+                                    <a class="btn btn-dark mr-2" href="{{route('people.editAdmin', $administration->id)}}">editar</a>
+                                <form action="{{route('people.deleteAdmin', $administration->id)}}" method="POST" class="d-inline">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button class="btn btn-danger" type="submit">
+                                        Eliminar
+                                    </button>
+                                </form>
+                                </div>
 
-<div>
-    No hay puto
+                                @endforeach
+
+                                @else
+
+                                <div class="col-md-12">
+                                    <p>No hay registros de Personal</p>
+                                </div>
+
+                                @endif
+
+                                @if (count($teachers) !== 0)
+
+                                @foreach ($teachers as $teacher)
+                                <div class="col-md-2 d-flex align-items-center">
+                                    <img src="{{Gravatar::get($teacher->email)}}" alt="peopleGravatar">
+                                </div>
+
+                                <div class="col-md-8 d-flex align-items-center justify-content-between">
+                                    <span>{{$teacher->fullname}}</span>
+
+                                    <span>{{$teacher->email}}</span>
+
+                                    <span>{{$teacher->type}}</span>
+
+                                    <span>{{$teacher->code}}</span>
+
+                                </div>
+
+                                <div class="col-md-2 d-flex align-items-center">
+                                    <a class="btn btn-dark mr-2" href="{{route('people.editTeacher', $teacher->id)}}">editar</a>
+                                <form action="{{route('people.deleteTeacher', $teacher->id)}}" method="POST" class="d-inline">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button class="btn btn-danger" type="submit">
+                                        Eliminar
+                                    </button>
+                                </form>
+                                </div>
+
+                                @endforeach
+
+                                @else
+
+                                <div class="col-md-12">
+                                    <p>No hay registros de Docentes</p>
+                                </div>
+
+                                @endif
+
+                                @if (count($students) !== 0)
+
+                                @foreach ($students as $student)
+
+                                <div class="col-md-2 d-flex align-items-center">
+                                    <img src="{{Gravatar::get($student->email)}}" alt="peopleGravatar">
+                                </div>
+
+                                <div class="col-md-8 d-flex align-items-center justify-content-between">
+                                    <span>{{$student->fullname}}</span>
+
+                                    <span>{{$student->email}}</span>
+
+                                    <span>{{$student->type}}</span>
+
+                                    <span>{{$student->code}}</span>
+
+                                </div>
+
+                                <div class="col-md-2 d-flex align-items-center">
+                                    <a class="btn btn-dark mr-2" href="{{route('people.editStudent', $student->id)}}">editar</a>
+                                <form action="{{route('people.deleteStudent', $student->id)}}" method="POST" class="d-inline">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button class="btn btn-danger" type="submit">
+                                        Eliminar
+                                    </button>
+                                </form>
+                                </div>
+
+                                @endforeach
+
+                                @else
+
+                                <div class="col-md-12">
+                                    <p>No hay registros de Estudiantes</p>
+                                </div>
+
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-@endif
-
-@if (count($teachers) !== 0)
-
-@foreach ($teachers as $teacher)
-<a class="btn btn-dark" href="{{route('people.editTeacher', $teacher->id)}}">editar</a>
-<form action="{{route('people.deleteTeacher', $teacher->id)}}" method="POST" class="d-inline">
-    @method('DELETE')
-    @csrf
-    <button class="btn btn-danger" type="submit">
-        Eliminar
-    </button>
-</form>
-
-{{$teacher->fullname}}
-
-{{$teacher->email}}
-
-{{$teacher->type}}
-
-{{$teacher->code}}
-
-<img src="{{Gravatar::get($teacher->email)}}" alt="peopleGravatar">
-
-@endforeach
-
-@else
-
-<div>
-    No hay puto
-</div>
-
-@endif
-
-@if (count($students) !== 0)
-
-@foreach ($students as $student)
-<a class="btn btn-dark" href="{{route('people.editStudent', $student->id)}}">editar</a>
-<form action="{{route('people.deleteStudent', $student->id)}}" method="POST" class="d-inline">
-    @method('DELETE')
-    @csrf
-    <button class="btn btn-danger" type="submit">
-        Eliminar
-    </button>
-</form>
-
-{{$student->fullname}}
-
-{{$student->email}}
-
-{{$student->type}}
-
-{{$student->code}}
-
-<img src="{{Gravatar::get($student->email)}}" alt="peopleGravatar">
-
-@endforeach
-
-@else
-
-<div>
-    No hay puto
-</div>
-
-@endif
 
 @endsection
