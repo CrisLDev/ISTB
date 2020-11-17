@@ -20,7 +20,9 @@ class OtherController extends Controller
      */
     public function index()
     {
-        return view('other.form');
+        $subjects = Subject::get();
+        $courses = Course::get();
+        return view('other.index', compact('subjects', 'courses'));
     }
 
     /**
