@@ -213,6 +213,8 @@ class OtherController extends Controller
                         ->select('grades.*', 'users.name as userName', 'users.email as userEmail', 'subjects.subjectName as subjectName', 'grades.grade', 'grades.assistance', 'teachers.fullname as teacherFullname', 'courses.courseName')
                         ->get();
 
+        $grade->groupBy('courseName');
+
         if(!$student){
             return redirect('/other/students')->with('userErrors', '¡El estudiante no existe!');
         }
