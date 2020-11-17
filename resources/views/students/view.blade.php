@@ -83,11 +83,22 @@
                                     <div id="collapseR{{$item[0]['course_id']}}" class="collapse show" aria-labelledby="headingR{{$item[0]['course_id']}}" data-parent="#accordionGrades">
                                         <div class="card-body">
                                             @foreach ($item as $report)
-                                                <div class="container-fluid">
+                                                <div class="container-fluid border shadow pt-3 pb-3">
                                                     <div>{{$report->subjectName}}</div>
                                                     <p>{{$report->content}}</p>
                                                     <div>{{$report->teacherFullname}}</div>
                                                     <div>{{$report->created_at}}</div>
+                                                    <div>
+                                                        <a class="btn btn-dark" href="{{route('reports.editReport', $report->id)}}">editar</a>
+
+                                                        <form action="{{route('reports.destroyReport', $report->id)}}" method="POST" class="d-inline">
+                                                            @method('DELETE')
+                                                            @csrf
+                                                            <button class="btn btn-danger" type="submit">
+                                                                Eliminar
+                                                            </button>
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             @endforeach
                                         </div>
