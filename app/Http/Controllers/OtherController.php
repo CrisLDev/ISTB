@@ -214,11 +214,20 @@ class OtherController extends Controller
                         ->get()
                         ->groupBy('course_id');
 
+        $reports = Reports::where('student_id', '=', $id)
+                        ->join('users', 'reports.user_id', '=', 'users.id')
+                        ->join('subjects', 'reports.subject_id', '=', 'subjects.id')
+                        ->join('courses', 'reports.course_id', '=', 'courses.id')
+                        ->join('teachers', 'reports.teacher_id', '=', 'teachers.id')
+                        ->select('reports.*', 'users.name as userName', 'users.email as userEmail', 'subjects.subjectName as subjectName', 'teachers.fullname as teacherFullname', 'courses.courseName', 'reports.course_id', 'teachers.fullname as teacherFullname')
+                        ->get()
+                        ->groupBy('course_id');
+
         if(!$student){
             return redirect('/other/students')->with('userErrors', '¡El estudiante no existe!');
         };
 
-        return view('students.view', compact('student', 'grade'));
+        return view('students.view', compact('student', 'grade', 'reports'));
     }
 
     /**

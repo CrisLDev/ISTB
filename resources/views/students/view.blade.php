@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-xl-12 mb-3">
+        <div class="col-xl-12 mb-5">
             <div class="card">
                 <div class="card-header bg-white text-center m-3">
                     <h3 class="card-title">
@@ -28,13 +28,13 @@
                     <div class="mt-5">
                         @foreach ($grade as $item)
                             <div class="accordion" id="accordionGrades">
-                                <div class="card">
-                                <div class="card-header" id="heading{{$item[0]['course_id']}}">
+                                <div class="card mb-4">
+                                <div class="card-header bg-white" id="heading{{$item[0]['course_id']}}">
                                     <h2 class="mb-0">
-                                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse{{$item[0]['course_id']}}" aria-expanded="true" aria-controls="collapse{{$item[0]['course_id']}}">
-                                        Notas @foreach ($item as $course)
-                                        @if ($loop->first) {{$course->courseName}} @endif
-                                        @endforeach
+                                    <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse{{$item[0]['course_id']}}" aria-expanded="true" aria-controls="collapse{{$item[0]['course_id']}}">
+                                        <h3 class="mb-0">Notas @foreach ($item as $course)
+                                            @if ($loop->first) {{$course->courseName}} @endif
+                                            @endforeach</h3>
                                     </button>
                                     </h2>
                                 </div>
@@ -54,7 +54,7 @@
                                                   <tr>
                                                     <td>{{$grade->subjectName}}</td>
                                                     <td>{{$grade->grade}}</td>
-                                                    <td>{{$grade->assistance}}</td>
+                                                    <td>{{$grade->assistance}}%</td>
                                                   </tr>
                                                 @endforeach
                                                 </tbody>
@@ -65,6 +65,39 @@
                                 </div>
                             </div>
                         @endforeach
+                    </div>
+                    <div class="mt-5">
+                        @if (count($reports) !== 0)
+                            @foreach ($reports as $item)
+                                <div class="accordion" id="accordionGrades">
+                                    <div class="card mb-4">
+                                    <div class="card-header bg-white" id="headingR{{$item[0]['course_id']}}">
+                                        <h2 class="mb-0">
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseR{{$item[0]['course_id']}}" aria-expanded="true" aria-controls="collapseR{{$item[0]['course_id']}}">
+                                            <h3 class="mb-0">Reportes @foreach ($item as $course)
+                                                @if ($loop->first) {{$course->courseName}} @endif
+                                                @endforeach</h3>
+                                        </button>
+                                        </h2>
+                                    </div>
+                                    <div id="collapseR{{$item[0]['course_id']}}" class="collapse show" aria-labelledby="headingR{{$item[0]['course_id']}}" data-parent="#accordionGrades">
+                                        <div class="card-body">
+                                            @foreach ($item as $report)
+                                                <div class="container-fluid">
+                                                    <div>{{$report->subjectName}}</div>
+                                                    <p>{{$report->content}}</p>
+                                                    <div>{{$report->teacherFullname}}</div>
+                                                    <div>{{$report->created_at}}</div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @else
+                            <div>No hay reportes</div>
+                        @endif
                     </div>
                 </div>
             </div>
