@@ -79,7 +79,7 @@ Route::put( '/people/form/teacher/edit/{id}', [App\Http\Controllers\PeopleContro
 Route::delete( '/people/form/teacher/delete/{id}', [App\Http\Controllers\PeopleController::class, 'destroyTeacher'])->name( 'people.deleteTeacher' );
 
 // Another Routes
-Route::get( '/other/form', [App\Http\Controllers\OtherController::class, 'index'])->name( 'other.index' );
+Route::get( '/other/form', [App\Http\Controllers\OtherController::class, 'form'])->name( 'other.form' );
 
 Route::post( '/other/form/subject', [App\Http\Controllers\OtherController::class, 'storeSubject'])->name( 'other.storeSubject' );
 

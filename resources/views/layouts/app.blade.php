@@ -63,7 +63,7 @@
                             <a href="{{ route('people.createTeacher') }}">Profesores</a>
                         </li>
                         <li>
-                            <a href="{{ route('other.index') }}">Otros</a>
+                            <a href="{{ route('other.form') }}">Otros</a>
                         </li>
                         <li>
                             <a href="{{ route('reports.index') }}">Reportes</a>

@@ -20,7 +20,17 @@ class OtherController extends Controller
      */
     public function index()
     {
-        return view('other.all');
+        return view('other.form');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function form()
+    {
+        return view('other.form');
     }
 
     /**
