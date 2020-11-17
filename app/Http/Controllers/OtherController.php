@@ -210,14 +210,13 @@ class OtherController extends Controller
                         ->join('subjects', 'grades.subject_id', '=', 'subjects.id')
                         ->join('courses', 'grades.course_id', '=', 'courses.id')
                         ->join('teachers', 'grades.teacher_id', '=', 'teachers.id')
-                        ->select('grades.*', 'users.name as userName', 'users.email as userEmail', 'subjects.subjectName as subjectName', 'grades.grade', 'grades.assistance', 'teachers.fullname as teacherFullname', 'courses.courseName')
-                        ->get();
-
-        $grade->groupBy('courses.id');
+                        ->select('grades.*', 'users.name as userName', 'users.email as userEmail', 'subjects.subjectName as subjectName', 'grades.grade', 'grades.assistance', 'teachers.fullname as teacherFullname', 'courses.courseName', 'grades.course_id')
+                        ->get()
+                        ->groupBy('course_id');
 
         if(!$student){
             return redirect('/other/students')->with('userErrors', '¡El estudiante no existe!');
-        }
+        };
 
         return view('students.view', compact('student', 'grade'));
     }
