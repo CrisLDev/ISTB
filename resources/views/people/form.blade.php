@@ -6,9 +6,17 @@
     <div class="row justify-content-center">
         <div class="col-xl-12 col-md-8 mb-3">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header bg-white text-center mb-3 pt-4">
                     <h3 class="card-title">
-                        Edita tu información de ingreso
+                        @if(Request::is('people/form/administration'))
+                            Crear Personal
+                        @endif
+                        @if(Request::is('people/form/teacher'))
+                            Crear Docente
+                        @endif
+                        @if(Request::is('people/form/student'))
+                            Crear Estudiante
+                        @endif
                     </h3>
                     @if ( session('userErrors') )
                         <div class="alert alert-danger">{{ session('userErrors')}}</div>
@@ -96,7 +104,7 @@
                                     />
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Email:</label>
                                     <input
@@ -110,10 +118,11 @@
                                     />
                                 </div>
                             </div>
+                        </div>
                         <div class="form-group">
-                            <button class="btn btn-warning btn-block" id="button-prevent-multiple-submits" type="submit">
+                            <button class="btn btn-primary btn-block" id="button-prevent-multiple-submits" type="submit">
                                 <span class="spinner-border spinner-border-sm" id="spinner" role="status" aria-hidden="true"></span>    
-                                <span id="btex">Envair</span></button>
+                                <span id="btex">Crear</span></button>
                         </div>
                     </form>
                 </div>
