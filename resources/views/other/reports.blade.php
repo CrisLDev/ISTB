@@ -72,12 +72,12 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="reportTextarea">Cotenido</label>
-                                        <textarea class="form-control" id="reportTextarea" rows="3" name="content"></textarea>
+                                        <textarea class="form-control" id="reportTextarea" rows="3" name="content" placeholder="Ingresa el contenido"></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <button class="btn btn-warning btn-block" id="button-prevent-multiple-submits" type="submit">
+                                        <button class="btn btn-primary btn-block" id="button-prevent-multiple-submits" type="submit">
                                             <span class="spinner-border spinner-border-sm" id="spinner" role="status" aria-hidden="true"></span>    
-                                            <span id="btex">Envair</span></button>
+                                            <span id="btex">Crear</span></button>
                                     </div>
                                 </div>
                             </div>
