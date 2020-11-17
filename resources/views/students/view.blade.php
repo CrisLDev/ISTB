@@ -38,19 +38,28 @@
                                     </button>
                                     </h2>
                                 </div>
-                            
                                 <div id="collapse{{$item[0]['course_id']}}" class="collapse show" aria-labelledby="heading{{$item[0]['course_id']}}" data-parent="#accordionGrades">
                                     <div class="card-body">
-                                        @foreach ($item as $grade)
-                                            <div>
-                                                <p>Nombre de la materia</p>
-                                                <p>{{$grade->subjectName}}</p>
-                                                <p>Nota</p>
-                                                <p>{{$grade->grade}}</p>
-                                                <p>Asistencia</p>
-                                                <p>{{$grade->assistance}}</p>
-                                            </div>
-                                        @endforeach
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                  <tr>
+                                                    <th scope="col">Materia</th>
+                                                    <th scope="col">Nota</th>
+                                                    <th scope="col">Asistencia</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                @foreach ($item as $grade)
+                                                  <tr>
+                                                    <td>{{$grade->subjectName}}</td>
+                                                    <td>{{$grade->grade}}</td>
+                                                    <td>{{$grade->assistance}}</td>
+                                                  </tr>
+                                                @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                                 </div>
