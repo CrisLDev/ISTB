@@ -12,6 +12,8 @@
                     </h3>
                     <h3>{{$student->fullname}}</h3>
                 </div>
+
+                {{$grade}}
                 <div class="card-body">
                     <div class="accordion" id="accordionExample">
                         <div class="card">
