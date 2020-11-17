@@ -205,18 +205,19 @@ class OtherController extends Controller
     {
         $student = Student::where('id', $id)->first();
 
-        $grades = Grades::where('student_id', '=', $id)
+        $grade = Grades::where('student_id', '=', $id)
                         ->join('users', 'grades.user_id', '=', 'users.id')
                         ->join('subjects', 'grades.subject_id', '=', 'subjects.id')
                         ->join('courses', 'grades.course_id', '=', 'courses.id')
                         ->join('teachers', 'grades.teacher_id', '=', 'teachers.id')
+                        ->select('grades.*', 'users.name as userName', 'users.email as userEmail', 'subjects.subjectName as subjectName', 'grades.grade', 'grades.assistance', 'teachers.fullname as teacherFullname', 'courses.courseName')
                         ->get();
 
         if(!$student){
             return redirect('/other/students')->with('userErrors', '¡El estudiante no existe!');
         }
 
-        return view('students.view', compact('student', 'grades'));
+        return view('students.view', compact('student', 'grade'));
     }
 
     /**
