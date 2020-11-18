@@ -157,6 +157,13 @@ class OtherController extends Controller
     public function storeSubject(Request $request)
     {
         $data = new Subject();
+        $rules = [
+            'subjectName' => 'required|unique:subjects|max:20',
+        ];
+        $niceNames = [
+            'subjectName' => 'nombre de la materia'
+        ]; 
+        $this->validate($request, $rules, [], $niceNames);
         $data->subjectName = $request->subjectName;
         $data->save();
         return back()->with('message', 'Materia agregada con éxito.');
