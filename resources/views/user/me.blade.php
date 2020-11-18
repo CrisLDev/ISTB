@@ -35,7 +35,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group col-md-4">
+                                <div class="form-group">
                                     <label for="inputState">Rol</label>
                                     <select id="inputState" class="form-control" name="role">
                                       <option selected>Elige uno...</option>
@@ -59,7 +59,7 @@
                                     />
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Email:</label>
                                     <input

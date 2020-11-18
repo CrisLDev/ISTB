@@ -88,12 +88,11 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $uid = $id;
-
         $data = User::where('id', $uid)->first();
         $rules = [
             'name' => 'required|max:50',
             'role' => 'required|max:6',
-            'username' => 'required|unique:users|max:50',
+            'username' => 'required|max:50',
             'email' => 'required',
             'password' => 'max:20',
         ];
@@ -105,20 +104,25 @@ class UserController extends Controller
             'password' => 'campo contraseña',
         ]; 
         $this->validate($request, $rules, [], $niceNames);
-        $data->name = $request->name;
-        $data->role = $request->role;
-        $data->username = $request->username;
-        $data->email = $request->email;
-        if($request->password != $request->password_confirmation){
-            return redirect('/user/me')->with('userErrors', '¡Las contraseñas no son iguales!');
-        }
-        if($request->password){
-            $data->password = $password = bcrypt($request->password);
+        if($uid == $data->id){
+            $data->name = $request->name;
+            $data->role = $request->role;
+            $data->username = $request->username;
+            $data->email = $request->email;
+            if($request->password != $request->password_confirmation){
+                return redirect('/user/me')->with('userErrors', '¡Las contraseñas no son iguales!');
+            }
+            if($request->password){
+                $data->password = $password = bcrypt($request->password);
+            }
+
+            $data->save();
+
+            return back()->with('message', 'Información editada con éxito.');
         }
 
-        $data->save();
-
-        return back()->with('message', 'Información editada con éxito.');
+        return back()->with( 'messageError', 'El nombre ya ha sido tomado' );
+        
     }
 
     /**
