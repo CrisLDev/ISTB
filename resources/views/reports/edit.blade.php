@@ -57,7 +57,7 @@
                                             <option>No hay docentes</option>
                                         @endif
                                         @foreach ($courses as $course)
-                                          <option value="{{$course->id}}" {{ $course->id == $report->course_id ? 'selected' : '' }}>{{$course->name}}</option>
+                                          <option value="{{$course->id}}" {{ $course->id == $report->course_id ? 'selected' : '' }}>{{$course->courseName}}</option>
                                         @endforeach
                                         </select>
                                     </div>
@@ -68,7 +68,7 @@
                                             <option>No hay materias</option>
                                         @endif
                                         @foreach ($subjects as $subject)
-                                          <option value="{{$subject->id}}" {{ $subject->id == $report->subject_id ? 'selected' : '' }}>{{$subject->name}}</option>
+                                          <option value="{{$subject->id}}" {{ $subject->id == $report->subject_id ? 'selected' : '' }}>{{$subject->subjectName}}</option>
                                         @endforeach
                                         </select>
                                     </div>

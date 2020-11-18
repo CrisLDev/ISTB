@@ -108,6 +108,7 @@ class OtherController extends Controller
                             ->join('courses', 'reports.course_id', '=', 'courses.id')
                             ->join('teachers', 'reports.teacher_id', '=', 'teachers.id')
                             ->join('students', 'reports.student_id', '=', 'students.id')
+                            ->select('reports.*', 'reports.resume', 'reports.content', 'teachers.fullname as tFullname', 'students.fullname as sFullname', 'courses.courseName', 'subjects.subjectName')
                             ->get();
         return view('reports.all', compact('reports'));
     }
@@ -137,7 +138,7 @@ class OtherController extends Controller
      */
     public function create()
     {
-        //
+        return redirect('/profile');
     }
 
     /**
