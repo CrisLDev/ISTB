@@ -245,12 +245,27 @@ class OtherController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Subject  $subject
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Subject $subject)
+    public function editCourse($id)
     {
-        //
+        $course = Course::where('id', $id)->first();
+
+        return view('other.editCourse', compact('course'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editSubject($id)
+    {
+        $subject = Subject::where('id', $id)->first();
+
+        return view('other.editSubject', compact('subject'));
     }
 
     /**
@@ -292,9 +307,27 @@ class OtherController extends Controller
      * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateCourse(Request $request, $id)
     {
-        //
+        $data = Course::where('id', $id)->first();
+        $data->courseName = $request->courseName;
+        $data->save();
+        return back()->with('message', 'Curso actualizado con éxito.');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Subject  $subject
+     * @return \Illuminate\Http\Response
+     */
+    public function updateSubject(Request $request, $id)
+    {
+        $data = Subject::where('id', $id)->first();
+        $data->subjectName = $request->subjectName;
+        $data->save();
+        return back()->with('message', 'Materia actualizado con éxito.');
     }
 
     /**
@@ -345,9 +378,22 @@ class OtherController extends Controller
      * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subject $subject)
+    public function destroyCourse($id)
     {
-        //
+        $data = Course::findOrFail( $id )->delete();
+        return back()->with( 'message', 'Curso Eliminado' );
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Subject  $subject
+     * @return \Illuminate\Http\Response
+     */
+    public function destroySubject($id)
+    {
+        $data = Subject::findOrFail( $id )->delete();
+        return back()->with( 'message', 'Materia Eliminado' );
     }
 
     /**
@@ -361,6 +407,7 @@ class OtherController extends Controller
         $data = Reports::findOrFail( $id )->delete();
         return back()->with( 'message', 'Reporte Eliminado' );
     }
+    
 
     /**
      * Remove the specified resource from storage.

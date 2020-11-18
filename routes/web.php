@@ -87,17 +87,17 @@ Route::post( '/other/form/subject', [App\Http\Controllers\OtherController::class
 
 Route::post( '/other/form/course', [App\Http\Controllers\OtherController::class, 'storeCourse'])->name( 'other.storeCourse' );
 
-Route::get( '/other/form/course/edit/{id}', [App\Http\Controllers\PeopleController::class, 'editCourse'])->name( 'other.editCourse' );
+Route::get( '/other/form/course/edit/{id}', [App\Http\Controllers\OtherController::class, 'editCourse'])->name( 'other.editCourse' );
 
-Route::put( '/other/form/course/edit/{id}', [App\Http\Controllers\PeopleController::class, 'updateCourse'])->name( 'other.updateCourse' );
+Route::put( '/other/form/course/edit/{id}', [App\Http\Controllers\OtherController::class, 'updateCourse'])->name( 'other.updateCourse' );
 
-Route::delete( '/other/form/course/delete/{id}', [App\Http\Controllers\PeopleController::class, 'destroyCourse'])->name( 'other.deleteCourse' );
+Route::delete( '/other/form/course/delete/{id}', [App\Http\Controllers\OtherController::class, 'destroyCourse'])->name( 'other.deleteCourse' );
 
-Route::get( '/other/form/subject/edit/{id}', [App\Http\Controllers\PeopleController::class, 'editSubject'])->name( 'other.editSubject' );
+Route::get( '/other/form/subject/edit/{id}', [App\Http\Controllers\OtherController::class, 'editSubject'])->name( 'other.editSubject' );
 
-Route::put( '/other/form/subject/edit/{id}', [App\Http\Controllers\PeopleController::class, 'updateSubject'])->name( 'other.updateSubject' );
+Route::put( '/other/form/subject/edit/{id}', [App\Http\Controllers\OtherController::class, 'updateSubject'])->name( 'other.updateSubject' );
 
-Route::delete( '/other/form/subject/delete/{id}', [App\Http\Controllers\PeopleController::class, 'destroySubject'])->name( 'other.deleteSubject' );
+Route::delete( '/other/form/subject/delete/{id}', [App\Http\Controllers\OtherController::class, 'destroySubject'])->name( 'other.deleteSubject' );
 
 // Routes Students
 
