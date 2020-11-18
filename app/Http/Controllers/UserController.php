@@ -90,7 +90,21 @@ class UserController extends Controller
         $uid = $id;
 
         $data = User::where('id', $uid)->first();
-
+        $rules = [
+            'name' => 'required|max:50',
+            'role' => 'required|max:6',
+            'username' => 'required|unique:users|max:50',
+            'email' => 'required',
+            'password' => 'max:20',
+        ];
+        $niceNames = [
+            'name' => 'nombre',
+            'role' => 'usuario',
+            'username' => 'nombre de usuario',
+            'email' => 'email',
+            'password' => 'campo contraseña',
+        ]; 
+        $this->validate($request, $rules, [], $niceNames);
         $data->name = $request->name;
         $data->role = $request->role;
         $data->username = $request->username;
