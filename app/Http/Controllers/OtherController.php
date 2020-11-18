@@ -199,6 +199,25 @@ class OtherController extends Controller
     public function storeReport(Request $request)
     {
         $data = new Reports();
+        $rules = [
+            'resume' => 'required|unique:reports|max:100',
+            'user_id' => 'required',
+            'course_id' => 'required',
+            'student_id' => 'required',
+            'teacher_id' => 'required',
+            'subject_id' => 'required',
+            'content' => 'required',
+        ];
+        $niceNames = [
+            'resume' => 'resumen',
+            'user_id' => 'usuario',
+            'course_id' => 'curso',
+            'student_id' => 'estudiante',
+            'teacher_id' => 'docente',
+            'subject_id' => 'id de la materia',
+            'content' => 'contenido',
+        ]; 
+        $this->validate($request, $rules, [], $niceNames);
         $data->resume = $request->resume;
         $data->user_id = auth()->user()->id;
         $data->course_id = $request->course_id;
@@ -219,6 +238,25 @@ class OtherController extends Controller
     public function storeRecord(Request $request)
     {
         $data = new Record();
+        $rules = [
+            'resume' => 'required|unique:records|max:100',
+            'user_id' => 'required',
+            'course_id' => 'required',
+            'student_id' => 'required',
+            'teacher_id' => 'required',
+            'subject_id' => 'required',
+            'content' => 'required',
+        ];
+        $niceNames = [
+            'resume' => 'resumen',
+            'user_id' => 'usuario',
+            'course_id' => 'curso',
+            'student_id' => 'estudiante',
+            'teacher_id' => 'docente',
+            'subject_id' => 'id de la materia',
+            'content' => 'contenido',
+        ]; 
+        $this->validate($request, $rules, [], $niceNames);
         $data->user_id = auth()->user()->id;
         $data->course_id = $request->course_id;
         $data->student_id = $request->student_id;

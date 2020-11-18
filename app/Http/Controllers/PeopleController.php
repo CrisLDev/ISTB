@@ -52,6 +52,25 @@ class PeopleController extends Controller
 
     public function storeAdmin( Request $request ) {
         $data = new Administration();
+        $rules = [
+            'fullname' => 'required|max:60',
+            'telephoneNumber' => 'required|unique:administrations|max:10|numeric',
+            'user_id' => 'required',
+            'dni' => 'required|unique:administrations|max:15|numeric',
+            'address' => 'required|max:40',
+            'age' => 'required|max:2|numeric',
+            'email' => 'required|max:50',
+        ];
+        $niceNames = [
+            'fullname' => 'nombre completo',
+            'user_id' => 'usuario',
+            'telephoneNumber' => 'número de teléfono',
+            'dni' => 'número de cédula',
+            'address' => 'lugar de domicilio',
+            'age' => 'rango de edad',
+            'email' => 'email',
+        ]; 
+        $this->validate($request, $rules, [], $niceNames);
         $data->fullname = $request->fullname;
         $data->telephoneNumber = $request->telephoneNumber;
         $data->user_id = auth()->user()->id;
@@ -73,6 +92,25 @@ class PeopleController extends Controller
 
     public function storeStudent( Request $request ) {
         $data = new Student();
+        $rules = [
+            'fullname' => 'required|max:60',
+            'telephoneNumber' => 'required|unique:administrations|max:10|numeric',
+            'user_id' => 'required',
+            'dni' => 'required|unique:administrations|max:15|numeric',
+            'address' => 'required|max:40',
+            'age' => 'required|max:2|numeric',
+            'email' => 'required|max:50',
+        ];
+        $niceNames = [
+            'fullname' => 'nombre completo',
+            'user_id' => 'usuario',
+            'telephoneNumber' => 'número de teléfono',
+            'dni' => 'número de cédula',
+            'address' => 'lugar de domicilio',
+            'age' => 'rango de edad',
+            'email' => 'email',
+        ]; 
+        $this->validate($request, $rules, [], $niceNames);
         $data->fullname = $request->fullname;
         $data->telephoneNumber = $request->telephoneNumber;
         $data->user_id = auth()->user()->id;
@@ -94,6 +132,25 @@ class PeopleController extends Controller
 
     public function storeTeacher( Request $request ) {
         $data = new Teacher();
+        $rules = [
+            'fullname' => 'required|max:60',
+            'telephoneNumber' => 'required|unique:administrations|max:10|numeric',
+            'user_id' => 'required',
+            'dni' => 'required|unique:administrations|max:15|numeric',
+            'address' => 'required|max:40',
+            'age' => 'required|max:2|numeric',
+            'email' => 'required|max:50',
+        ];
+        $niceNames = [
+            'fullname' => 'nombre completo',
+            'user_id' => 'usuario',
+            'telephoneNumber' => 'número de teléfono',
+            'dni' => 'número de cédula',
+            'address' => 'lugar de domicilio',
+            'age' => 'rango de edad',
+            'email' => 'email',
+        ]; 
+        $this->validate($request, $rules, [], $niceNames);
         $data->fullname = $request->fullname;
         $data->telephoneNumber = $request->telephoneNumber;
         $data->user_id = auth()->user()->id;
@@ -158,7 +215,25 @@ class PeopleController extends Controller
     public function updateTeacher(Request $request, $id)
     {
         $data = Teacher::where('id', $id)->first();
-
+        $rules = [
+            'fullname' => 'required|max:60',
+            'telephoneNumber' => 'required|unique:administrations|max:10|numeric',
+            'user_id' => 'required',
+            'dni' => 'required|unique:administrations|max:15|numeric',
+            'address' => 'required|max:40',
+            'age' => 'required|max:2|numeric',
+            'email' => 'required|max:50',
+        ];
+        $niceNames = [
+            'fullname' => 'nombre completo',
+            'user_id' => 'usuario',
+            'telephoneNumber' => 'número de teléfono',
+            'dni' => 'número de cédula',
+            'address' => 'lugar de domicilio',
+            'age' => 'rango de edad',
+            'email' => 'email',
+        ]; 
+        $this->validate($request, $rules, [], $niceNames);
         $data->fullname = $request->fullname;
         $data->telephoneNumber = $request->telephoneNumber;
         $data->dni = $request->dni;
@@ -180,7 +255,25 @@ class PeopleController extends Controller
     public function updateAdmin(Request $request, $id)
     {
         $data = Administration::where('id', $id)->first();
-
+        $rules = [
+            'fullname' => 'required|max:60',
+            'telephoneNumber' => 'required|unique:administrations|max:10|numeric',
+            'user_id' => 'required',
+            'dni' => 'required|unique:administrations|max:15|numeric',
+            'address' => 'required|max:40',
+            'age' => 'required|max:2|numeric',
+            'email' => 'required|max:50',
+        ];
+        $niceNames = [
+            'fullname' => 'nombre completo',
+            'user_id' => 'usuario',
+            'telephoneNumber' => 'número de teléfono',
+            'dni' => 'número de cédula',
+            'address' => 'lugar de domicilio',
+            'age' => 'rango de edad',
+            'email' => 'email',
+        ]; 
+        $this->validate($request, $rules, [], $niceNames);
         $data->fullname = $request->fullname;
         $data->telephoneNumber = $request->telephoneNumber;
         $data->dni = $request->dni;
@@ -202,7 +295,25 @@ class PeopleController extends Controller
     public function updateStudent(Request $request, $id)
     {
         $data = Student::where('id', $id)->first();
-
+        $rules = [
+            'fullname' => 'required|max:60',
+            'telephoneNumber' => 'required|unique:administrations|max:10|numeric',
+            'user_id' => 'required',
+            'dni' => 'required|unique:administrations|max:15|numeric',
+            'address' => 'required|max:40',
+            'age' => 'required|max:2|numeric',
+            'email' => 'required|max:50',
+        ];
+        $niceNames = [
+            'fullname' => 'nombre completo',
+            'user_id' => 'usuario',
+            'telephoneNumber' => 'número de teléfono',
+            'dni' => 'número de cédula',
+            'address' => 'lugar de domicilio',
+            'age' => 'rango de edad',
+            'email' => 'email',
+        ]; 
+        $this->validate($request, $rules, [], $niceNames);
         $data->fullname = $request->fullname;
         $data->telephoneNumber = $request->telephoneNumber;
         $data->dni = $request->dni;
