@@ -124,6 +124,7 @@ class OtherController extends Controller
                         ->join('courses', 'grades.course_id', '=', 'courses.id')
                         ->join('teachers', 'grades.teacher_id', '=', 'teachers.id')
                         ->join('students', 'grades.student_id', '=', 'students.id')
+                        ->select('grades.*', 'grades.grade', 'grades.assistance', 'teachers.fullname as tFullname', 'students.fullname as sFullname', 'courses.courseName', 'subjects.subjectName')
                         ->get();
         return view('grades.all', compact('grades'));
     }
