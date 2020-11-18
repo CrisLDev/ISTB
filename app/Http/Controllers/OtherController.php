@@ -387,6 +387,12 @@ class OtherController extends Controller
     public function updateCourse(Request $request, $id)
     {
         $data = Course::where('id', $id)->first();
+        $rules = [
+            'courseName' => 'required|unique:courses|max:20',
+        ];
+        $niceNames = [
+            'courseName' => 'nombre del curso'
+        ];
         $data->courseName = $request->courseName;
         $data->save();
         return back()->with('message', 'Curso actualizado con éxito.');
@@ -402,6 +408,13 @@ class OtherController extends Controller
     public function updateSubject(Request $request, $id)
     {
         $data = Subject::where('id', $id)->first();
+        $rules = [
+            'subjectName' => 'required|unique:subjects|max:20',
+        ];
+        $niceNames = [
+            'subjectName' => 'nombre de la materia'
+        ]; 
+        $this->validate($request, $rules, [], $niceNames);
         $data->subjectName = $request->subjectName;
         $data->save();
         return back()->with('message', 'Materia actualizado con éxito.');
@@ -417,7 +430,25 @@ class OtherController extends Controller
     public function updateReport(Request $request, $id)
     {
         $data = Reports::where('id', $id)->first();
-
+        $rules = [
+            'resume' => 'required|unique:records|max:100',
+            'user_id' => 'required',
+            'course_id' => 'required',
+            'student_id' => 'required',
+            'teacher_id' => 'required',
+            'subject_id' => 'required',
+            'content' => 'required',
+        ];
+        $niceNames = [
+            'resume' => 'resumen',
+            'user_id' => 'usuario',
+            'course_id' => 'curso',
+            'student_id' => 'estudiante',
+            'teacher_id' => 'docente',
+            'subject_id' => 'id de la materia',
+            'content' => 'contenido',
+        ]; 
+        $this->validate($request, $rules, [], $niceNames);
         $data->resume = $request->resume;
         $data->course_id = $request->course_id;
         $data->student_id = $request->student_id;
@@ -438,7 +469,25 @@ class OtherController extends Controller
     public function updateRecord(Request $request, $id)
     {
         $data = Record::where('id', $id)->first();
-
+        $rules = [
+            'resume' => 'required|unique:records|max:100',
+            'user_id' => 'required',
+            'course_id' => 'required',
+            'student_id' => 'required',
+            'teacher_id' => 'required',
+            'subject_id' => 'required',
+            'content' => 'required',
+        ];
+        $niceNames = [
+            'resume' => 'resumen',
+            'user_id' => 'usuario',
+            'course_id' => 'curso',
+            'student_id' => 'estudiante',
+            'teacher_id' => 'docente',
+            'subject_id' => 'id de la materia',
+            'content' => 'contenido',
+        ]; 
+        $this->validate($request, $rules, [], $niceNames);
         $data->user_id = auth()->user()->id;
         $data->course_id = $request->course_id;
         $data->student_id = $request->student_id;
