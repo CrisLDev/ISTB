@@ -178,6 +178,13 @@ class OtherController extends Controller
     public function storeCourse(Request $request)
     {
         $data = new Course();
+        $rules = [
+            'courseName' => 'required|unique:courses|max:20',
+        ];
+        $niceNames = [
+            'courseName' => 'nombre del curso'
+        ]; 
+        $this->validate($request, $rules, [], $niceNames);
         $data->courseName = $request->courseName;
         $data->save();
         return back()->with('message', 'Curso agregado con éxito.');
