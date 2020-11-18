@@ -123,16 +123,16 @@ Route::put( '/other/reports/update/{id}', [App\Http\Controllers\OtherController:
 
 Route::delete( '/other/reports/delete/{id}', [App\Http\Controllers\OtherController::class, 'destroyReport'])->name( 'reports.destroyReport' );
 
-// Routes Grades
+// Routes Reports
 
-Route::get( '/other/grades/form', [App\Http\Controllers\OtherController::class, 'formGrades'])->name( 'grades.index' );
+Route::get( '/other/records/form', [App\Http\Controllers\OtherController::class, 'formRecord'])->name( 'records.indexRecords' );
 
-Route::post( '/other/grades/form', [App\Http\Controllers\OtherController::class, 'storeGrade'])->name( 'other.storeGrade' );
+Route::post( '/other/records/form', [App\Http\Controllers\OtherController::class, 'storeRecord'])->name( 'records.storeRecords' );
 
-Route::get( '/other/grades', [App\Http\Controllers\OtherController::class, 'indexGrades'])->name( 'grades.indexGrades' );
+Route::get( '/other/records', [App\Http\Controllers\OtherController::class, 'indexRecord'])->name( 'records.indexRecords' );
 
-Route::get( '/other/grades/edit/{id}', [App\Http\Controllers\OtherController::class, 'editGrade'])->name( 'grades.editGrade' );
+Route::get( '/other/records/edit/{id}', [App\Http\Controllers\OtherController::class, 'editRecord'])->name( 'records.editRecords' );
 
-Route::put( '/other/grades/update/{id}', [App\Http\Controllers\OtherController::class, 'updateGrade'])->name( 'grades.updateGrade' );
+Route::put( '/other/records/update/{id}', [App\Http\Controllers\OtherController::class, 'updateRecord'])->name( 'records.updateRecords' );
 
-Route::delete( '/other/grades/delete/{id}', [App\Http\Controllers\OtherController::class, 'destroyGrade'])->name( 'grades.destroyGrade' );
+Route::delete( '/other/records/delete/{id}', [App\Http\Controllers\OtherController::class, 'destroyRecord'])->name( 'records.destroyRecords' );

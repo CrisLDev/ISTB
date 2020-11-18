@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subject;
-use App\Models\Course;
+use App\Models\Record;
 use App\Models\Reports;
 use App\Models\Grades;
 use App\Models\Student;
@@ -54,7 +54,7 @@ class OtherController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function formGrades()
+    public function formRecord()
     {
         $teachers = Teacher::get();
         $students = Student::get();
@@ -118,7 +118,7 @@ class OtherController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexGrades()
+    public function indexRecord()
     {
         $grades = Grades::join('users', 'grades.user_id', '=', 'users.id')
                         ->join('subjects', 'grades.subject_id', '=', 'subjects.id')
@@ -195,18 +195,22 @@ class OtherController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storeGrade(Request $request)
+    public function storeRecord(Request $request)
     {
-        $data = new Grades();
+        $data = new Record();
         $data->user_id = auth()->user()->id;
         $data->course_id = $request->course_id;
         $data->student_id = $request->student_id;
-        $data->teacher_id = $request->teacher_id;
-        $data->subject_id = $request->subject_id;
-        $data->grade = $request->grade;
-        $data->assistance = $request->assistance;
+        $data->allergies = $request->allergies;
+        $data->treatments = $request->treatments;
+        $data->cardiovascular = $request->cardiovascular;
+        $data->lice = $request->lice;
+        $data->asthma = $request->asthma;
+        $data->malformation = $request->malformation;
+        $data->glasses = $request->glasses;
+        $data->observations = $request->observations;
         $data->save();
-        return back()->with('message', 'Nota agregado con éxito.');
+        return back()->with('message', 'Ficha médica agregada con éxito.');
     }
 
     /**
@@ -303,13 +307,13 @@ class OtherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function editGrade($id)
+    public function editRecord($id)
     {
         $teachers = Teacher::get();
         $students = Student::get();
         $courses = Course::get();
         $subjects = Subject::get();
-        $grade = Grades::where('id', $id)->first();
+        $grade = Record::where('id', $id)->first();
         if(!$grade){
             return redirect('/other/grades')->with('userErrors', '¡El curso no existe!');
         };
@@ -374,18 +378,23 @@ class OtherController extends Controller
      * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function updateGrade(Request $request, $id)
+    public function updateRecord(Request $request, $id)
     {
         $data = Grades::where('id', $id)->first();
 
+        $data->user_id = auth()->user()->id;
         $data->course_id = $request->course_id;
         $data->student_id = $request->student_id;
-        $data->teacher_id = $request->teacher_id;
-        $data->subject_id = $request->subject_id;
-        $data->grade = $request->grade;
-        $data->assistance = $request->assistance;
+        $data->allergies = $request->allergies;
+        $data->treatments = $request->treatments;
+        $data->cardiovascular = $request->cardiovascular;
+        $data->lice = $request->lice;
+        $data->asthma = $request->asthma;
+        $data->malformation = $request->malformation;
+        $data->glasses = $request->glasses;
+        $data->observations = $request->observations;
         $data->save();
-        return back()->with('message', 'Nota editada con éxito.');
+        return back()->with('message', 'Ficha médica editada con éxito.');
     }
 
     /**
@@ -431,9 +440,9 @@ class OtherController extends Controller
      * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function destroyGrade($id)
+    public function destroyRecord($id)
     {
-        $data = Grades::findOrFail( $id )->delete();
-        return back()->with( 'message', 'Nota Eliminada' );
+        $data = Record::findOrFail( $id )->delete();
+        return back()->with( 'message', 'Ficha médica Eliminada' );
     }
 }

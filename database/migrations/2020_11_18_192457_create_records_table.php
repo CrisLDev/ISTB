@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGradesTable extends Migration
+class CreateRecordsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateGradesTable extends Migration
      */
     public function up()
     {
-        Schema::create('grades', function (Blueprint $table) {
+        Schema::create('records', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
@@ -21,12 +21,14 @@ class CreateGradesTable extends Migration
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
             $table->unsignedBigInteger('student_id');
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
-            $table->unsignedBigInteger('teacher_id');
-            $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('cascade');
-            $table->unsignedBigInteger('subject_id');
-            $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
-            $table->double('grade');
-            $table->double('assistance');
+            $table->text('allergies');
+            $table->text('treatments');
+            $table->string('cardiovascular');
+            $table->string('lice');
+            $table->string('asthma');
+            $table->string('malformation');
+            $table->string('glasses');
+            $table->text('observations');
             $table->timestamps();
             $table->engine = 'InnoDB';
             $table->charset = 'utf8';
@@ -41,6 +43,6 @@ class CreateGradesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('grades');
+        Schema::dropIfExists('records');
     }
 }
