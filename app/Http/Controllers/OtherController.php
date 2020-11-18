@@ -253,6 +253,10 @@ class OtherController extends Controller
     {
         $course = Course::where('id', $id)->first();
 
+        if(!$course){
+            return redirect('/other/grades')->with('userErrors', '¡El curso no existe!');
+        };
+
         return view('other.editCourse', compact('course'));
     }
 
@@ -265,6 +269,10 @@ class OtherController extends Controller
     public function editSubject($id)
     {
         $subject = Subject::where('id', $id)->first();
+
+        if(!$subject){
+            return redirect('/other/all')->with('userErrors', '¡La materia no existe!');
+        };
 
         return view('other.editSubject', compact('subject'));
     }
@@ -282,6 +290,9 @@ class OtherController extends Controller
         $courses = Course::get();
         $subjects = Subject::get();
         $report = Reports::where('id', $id)->first();
+        if(!$report){
+            return redirect('/other/reports')->with('userErrors', '¡El reporte no existe!');
+        };
         return view('reports.edit', compact('teachers', 'students', 'courses', 'subjects', 'report'));
     }
 
@@ -298,6 +309,9 @@ class OtherController extends Controller
         $courses = Course::get();
         $subjects = Subject::get();
         $grade = Grades::where('id', $id)->first();
+        if(!$grade){
+            return redirect('/other/grades')->with('userErrors', '¡El curso no existe!');
+        };
         return view('grades.edit', compact('teachers', 'students', 'courses', 'subjects', 'grade'));
     }
 

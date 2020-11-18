@@ -81,7 +81,7 @@ Route::delete( '/people/form/teacher/delete/{id}', [App\Http\Controllers\PeopleC
 // Another Routes
 Route::get( '/other/form', [App\Http\Controllers\OtherController::class, 'form'])->name( 'other.form' );
 
-Route::get( '/other/index', [App\Http\Controllers\OtherController::class, 'index'])->name( 'other.index' );
+Route::get( '/other/all', [App\Http\Controllers\OtherController::class, 'index'])->name( 'other.index' );
 
 Route::post( '/other/form/subject', [App\Http\Controllers\OtherController::class, 'storeSubject'])->name( 'other.storeSubject' );
 
