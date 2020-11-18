@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header bg-white text-center pt-4">
                     <h3 class="card-title">
-                        Todas las notas
+                        Todos los reportes
                     </h3>
                     @if ( session('userErrors') )
                         <div class="alert alert-danger">{{ session('userErrors')}}</div>
@@ -17,7 +17,7 @@
                 <div class="card-body">
                             @if (count($reports) === 0)
                                 <div class="col-md-12">
-                                    no hayt prro
+                                    No existen reportes
                                 </div>
                             @else
                             @foreach ($reports as $report)
