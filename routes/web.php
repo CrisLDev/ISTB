@@ -125,7 +125,7 @@ Route::delete( '/other/reports/delete/{id}', [App\Http\Controllers\OtherControll
 
 // Routes Reports
 
-Route::get( '/other/records/form', [App\Http\Controllers\OtherController::class, 'formRecord'])->name( 'records.indexRecords' );
+Route::get( '/other/records/form', [App\Http\Controllers\OtherController::class, 'formRecord'])->name( 'records.index' );
 
 Route::post( '/other/records/form', [App\Http\Controllers\OtherController::class, 'storeRecord'])->name( 'records.storeRecords' );
 

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subject;
-use App\Models\Record;
+use App\Models\Course;
 use App\Models\Reports;
-use App\Models\Grades;
+use App\Models\Record;
 use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\Administration;
@@ -56,11 +56,9 @@ class OtherController extends Controller
      */
     public function formRecord()
     {
-        $teachers = Teacher::get();
         $students = Student::get();
         $courses = Course::get();
-        $subjects = Subject::get();
-        return view('other.grades', compact('teachers', 'students', 'courses', 'subjects'));
+        return view('other.records', compact('students', 'courses'));
     }
 
     /**
@@ -120,14 +118,12 @@ class OtherController extends Controller
      */
     public function indexRecord()
     {
-        $grades = Grades::join('users', 'grades.user_id', '=', 'users.id')
-                        ->join('subjects', 'grades.subject_id', '=', 'subjects.id')
-                        ->join('courses', 'grades.course_id', '=', 'courses.id')
-                        ->join('teachers', 'grades.teacher_id', '=', 'teachers.id')
-                        ->join('students', 'grades.student_id', '=', 'students.id')
-                        ->select('grades.*', 'grades.grade', 'grades.assistance', 'teachers.fullname as tFullname', 'students.fullname as sFullname', 'courses.courseName', 'subjects.subjectName')
+        $records = Record::join('users', 'records.user_id', '=', 'users.id')
+                        ->join('courses', 'records.course_id', '=', 'courses.id')
+                        ->join('students', 'records.student_id', '=', 'students.id')
+                        ->select('records.*', 'records.allergies', 'records.glasses', 'students.fullname as sFullname', 'courses.courseName', 'records.treatment', 'records.cardiovascular', 'records.lice', 'records.asthma', 'records.malformation', 'records.glasses', 'records.observations')
                         ->get();
-        return view('grades.all', compact('grades'));
+        return view('records.all', compact('records'));
     }
 
 
@@ -202,7 +198,7 @@ class OtherController extends Controller
         $data->course_id = $request->course_id;
         $data->student_id = $request->student_id;
         $data->allergies = $request->allergies;
-        $data->treatments = $request->treatments;
+        $data->treatment = $request->treatment;
         $data->cardiovascular = $request->cardiovascular;
         $data->lice = $request->lice;
         $data->asthma = $request->asthma;
@@ -309,15 +305,13 @@ class OtherController extends Controller
      */
     public function editRecord($id)
     {
-        $teachers = Teacher::get();
         $students = Student::get();
         $courses = Course::get();
-        $subjects = Subject::get();
-        $grade = Record::where('id', $id)->first();
-        if(!$grade){
+        $record = Record::where('id', $id)->first();
+        if(!$record){
             return redirect('/other/grades')->with('userErrors', '¡El curso no existe!');
         };
-        return view('grades.edit', compact('teachers', 'students', 'courses', 'subjects', 'grade'));
+        return view('records.edit', compact('students', 'courses', 'record'));
     }
 
     /**
@@ -380,13 +374,13 @@ class OtherController extends Controller
      */
     public function updateRecord(Request $request, $id)
     {
-        $data = Grades::where('id', $id)->first();
+        $data = Record::where('id', $id)->first();
 
         $data->user_id = auth()->user()->id;
         $data->course_id = $request->course_id;
         $data->student_id = $request->student_id;
         $data->allergies = $request->allergies;
-        $data->treatments = $request->treatments;
+        $data->treatment = $request->treatment;
         $data->cardiovascular = $request->cardiovascular;
         $data->lice = $request->lice;
         $data->asthma = $request->asthma;

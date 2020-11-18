@@ -69,7 +69,7 @@
                             <a href="{{ route('reports.index') }}">Reportes</a>
                         </li>
                         <li>
-                            <a href="{{ route('grades.index') }}">Notas</a>
+                            <a href="{{ route('records.index') }}">Fichas</a>
                         </li>
                     </ul>
                     <a href="#allSubmenu" data-toggle="collapse" aria-expanded="false">Ver</a>
@@ -93,7 +93,7 @@
                             <a href="{{ route('reports.indexReports') }}">Reportes</a>
                         </li>
                         <li>
-                            <a href="{{ route('grades.indexGrades') }}">Notas</a>
+                            <a href="{{ route('records.indexRecords') }}">Fichas</a>
                         </li>
                     </ul>
                 </li>

@@ -22,11 +22,11 @@ class CreateRecordsTable extends Migration
             $table->unsignedBigInteger('student_id');
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
             $table->text('allergies');
-            $table->text('treatments');
+            $table->text('treatment');
             $table->string('cardiovascular');
             $table->string('lice');
             $table->string('asthma');
-            $table->string('malformation');
+            $table->text('malformation');
             $table->string('glasses');
             $table->text('observations');
             $table->timestamps();
