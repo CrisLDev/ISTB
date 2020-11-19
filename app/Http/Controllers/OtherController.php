@@ -388,14 +388,18 @@ class OtherController extends Controller
     {
         $data = Course::where('id', $id)->first();
         $rules = [
-            'courseName' => 'required|unique:courses|max:20',
+            'courseName' => 'required|max:20',
         ];
         $niceNames = [
             'courseName' => 'nombre del curso'
         ];
-        $data->courseName = $request->courseName;
+        if($id == $data->id){
+            $data->courseName = $request->courseName;
         $data->save();
         return back()->with('message', 'Curso actualizado con éxito.');
+        }
+        return back()->with('userErrors', 'El curso ya existe.');
+        
     }
 
     /**
@@ -409,15 +413,20 @@ class OtherController extends Controller
     {
         $data = Subject::where('id', $id)->first();
         $rules = [
-            'subjectName' => 'required|unique:subjects|max:20',
+            'subjectName' => 'required|max:20',
         ];
         $niceNames = [
             'subjectName' => 'nombre de la materia'
         ]; 
         $this->validate($request, $rules, [], $niceNames);
-        $data->subjectName = $request->subjectName;
-        $data->save();
-        return back()->with('message', 'Materia actualizado con éxito.');
+        if($id == $data->id){
+            $data->subjectName = $request->subjectName;
+            $data->save();
+            return back()->with('message', 'Materia actualizado con éxito.');
+        }
+
+        return back()->with('userErrors', 'La materia ya existe.');
+        
     }
 
     /**
@@ -449,14 +458,19 @@ class OtherController extends Controller
             'content' => 'contenido',
         ]; 
         $this->validate($request, $rules, [], $niceNames);
-        $data->resume = $request->resume;
-        $data->course_id = $request->course_id;
-        $data->student_id = $request->student_id;
-        $data->teacher_id = $request->teacher_id;
-        $data->subject_id = $request->subject_id;
-        $data->content = $request->content;
-        $data->save();
-        return back()->with('message', 'Reporte editado con éxito.');
+        if($id == $data->id){
+            $data->resume = $request->resume;
+            $data->course_id = $request->course_id;
+            $data->student_id = $request->student_id;
+            $data->teacher_id = $request->teacher_id;
+            $data->subject_id = $request->subject_id;
+            $data->content = $request->content;
+            $data->save();
+            return back()->with('message', 'Reporte editado con éxito.');
+        }
+
+        return back()->with('userErrors', 'El reporte ya existe.');
+        
     }
 
     /**
@@ -488,19 +502,24 @@ class OtherController extends Controller
             'content' => 'contenido',
         ]; 
         $this->validate($request, $rules, [], $niceNames);
-        $data->user_id = auth()->user()->id;
-        $data->course_id = $request->course_id;
-        $data->student_id = $request->student_id;
-        $data->allergies = $request->allergies;
-        $data->treatment = $request->treatment;
-        $data->cardiovascular = $request->cardiovascular;
-        $data->lice = $request->lice;
-        $data->asthma = $request->asthma;
-        $data->malformation = $request->malformation;
-        $data->glasses = $request->glasses;
-        $data->observations = $request->observations;
-        $data->save();
-        return back()->with('message', 'Ficha médica editada con éxito.');
+        if($id == $data->id){
+            $data->user_id = auth()->user()->id;
+            $data->course_id = $request->course_id;
+            $data->student_id = $request->student_id;
+            $data->allergies = $request->allergies;
+            $data->treatment = $request->treatment;
+            $data->cardiovascular = $request->cardiovascular;
+            $data->lice = $request->lice;
+            $data->asthma = $request->asthma;
+            $data->malformation = $request->malformation;
+            $data->glasses = $request->glasses;
+            $data->observations = $request->observations;
+            $data->save();
+            return back()->with('message', 'Ficha médica editada con éxito.');
+        }
+
+        return back()->with('userErrors', 'Ficha médica ya existe.');
+        
     }
 
     /**

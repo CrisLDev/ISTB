@@ -188,6 +188,10 @@
                     <div class="alert alert-danger">{{ session('messageError') }}</div>
                 @endif
 
+                @if ( session('userErrors') )
+                        <div class="alert alert-danger">{{ session('userErrors')}}</div>
+                @endif
+
                 <main class="py-4">
                     @yield('content')
                 </main>

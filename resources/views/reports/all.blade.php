@@ -10,9 +10,6 @@
                     <h3 class="card-title">
                         Todos los reportes
                     </h3>
-                    @if ( session('userErrors') )
-                        <div class="alert alert-danger">{{ session('userErrors')}}</div>
-                    @endif
                 </div>
                 <div class="card-body">
                             @if (count($reports) === 0)

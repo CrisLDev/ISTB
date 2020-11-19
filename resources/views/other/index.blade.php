@@ -10,9 +10,6 @@
                     <h3 class="card-title">
                         Cursos - Materias
                     </h3>
-                    @if ( session('userErrors') )
-                        <div class="alert alert-danger">{{ session('userErrors')}}</div>
-                    @endif
                 </div>
                 <div class="card-body">
                     <div class="container">

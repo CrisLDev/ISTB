@@ -122,7 +122,7 @@ class ProfileController extends Controller
             'dni' => 'número de cédula',
             'address' => 'campo dirección',
         ]; 
-        if($uid !== $data->id){
+        if($uid == $data->id){
             $this->validate($request, $rules, [], $niceNames);
             $data->telephoneNumber = $request->telephoneNumber;
             $data->dni = $request->dni;

@@ -10,9 +10,6 @@
                     <h3 class="card-title mb-0">
                         Edita tu información de ingreso
                     </h3>
-                    @if ( session('userErrors') )
-                        <div class="alert alert-danger">{{ session('userErrors')}}</div>
-                    @endif
                 </div>
                 <div class="card-body">
                     <form onsubmit="disable()" method="POST" enctype="multipart/form-data" action="{{route('profile.update', $profile->id)}}">
@@ -66,9 +63,9 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <button class="btn btn-primary btn-block" id="button-prevent-multiple-submits" type="submit">
+                                    <button class="btn btn-warning btn-block" id="button-prevent-multiple-submits" type="submit">
                                         <span class="spinner-border spinner-border-sm" id="spinner" role="status" aria-hidden="true"></span>    
-                                        <span id="btex">Crear</span></button>
+                                        <span id="btex">Editar</span></button>
                                 </div>
                             </div>
                         </div>

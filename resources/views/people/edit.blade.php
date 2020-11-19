@@ -10,9 +10,6 @@
                     <h3 class="card-title">
                         Edita tu información de ingreso
                     </h3>
-                    @if ( session('userErrors') )
-                        <div class="alert alert-danger">{{ session('userErrors')}}</div>
-                    @endif
                 </div>
                 <div class="card-body">
                     @if(Request::is('people/form/administration/edit/'.$people->id))
