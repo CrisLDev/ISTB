@@ -16,13 +16,10 @@ class Profile extends Migration
         Schema::create('profiles', function (Blueprint $table){
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('telephoneNumber');
             $table->integer('dni');
-            $table->string('sector');
-            $table->string('salary');
-            $table->string('schedule');
-            $table->string('workingDay');
+            $table->string('address');
             $table->engine = 'InnoDB';
             $table->charset = 'utf8';
             $table->collation = 'utf8_unicode_ci';
