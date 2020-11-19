@@ -20,7 +20,7 @@ class isCoor
 
         $role = auth()->user()->role;
 
-        if ($role !== 'coor' || $role !== 'admin') {
+        if ($role == 'user') {
             return redirect('/home')->with('messageError', '¡No tienes permisos!');
         }
 
