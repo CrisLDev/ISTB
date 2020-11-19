@@ -122,7 +122,7 @@
                                     />
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Email:</label>
                                     <input
@@ -160,10 +160,12 @@
                                 </div>
                             </div>
                             @endif
-                        <div class="form-group">
-                            <button class="btn btn-warning btn-block" id="button-prevent-multiple-submits" type="submit">
-                                <span class="spinner-border spinner-border-sm" id="spinner" role="status" aria-hidden="true"></span>    
-                                <span id="btex">Envair</span></button>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <button class="btn btn-warning btn-block" id="button-prevent-multiple-submits" type="submit">
+                                    <span class="spinner-border spinner-border-sm" id="spinner" role="status" aria-hidden="true"></span>    
+                                    <span id="btex">Enviar</span></button>
+                            </div>
                         </div>
                     </form>
                 </div>

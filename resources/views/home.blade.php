@@ -14,7 +14,23 @@
                         </div>
                     @endif
 
-                    {{ __('¡Estas logeado BRO!') }}
+                    <p class="text-center">{{ __('¡Estas logeado BRO!') }}</p>
+
+                    @if(Auth::user()->role == 'user')
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form onsubmit="disable()" method="POST" enctype="multipart/form-data" action="{{route('people.consult')}}">
+                                        <h4>Ingresa un código para consultar</h4>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="codee" name="code" placeholder="Ingresa tu código">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
                 </div>
             </div>
         </div>
