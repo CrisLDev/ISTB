@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-xl-12 col-md-8 mb-3">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header pt-4 bg-white text-center">
                     <h3 class="card-title">
                         Cursos - Materias
                     </h3>

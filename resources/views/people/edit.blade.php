@@ -6,9 +6,17 @@
     <div class="row justify-content-center">
         <div class="col-xl-12 col-md-8 mb-3">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header mb-3 bg-white text-center pt-4">
                     <h3 class="card-title">
-                        Edita tu información de ingreso
+                        Editar @if(Request::is('people/form/administration/edit/'.$people->id))
+                        Personal
+                    @endif
+                    @if(Request::is('people/form/teacher/edit/'.$people->id))
+                        Docente
+                    @endif
+                    @if(Request::is('people/form/student/edit/'.$people->id))
+                        Estudiante
+                    @endif
                     </h3>
                 </div>
                 <div class="card-body">

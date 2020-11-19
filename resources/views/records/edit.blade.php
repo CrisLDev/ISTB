@@ -6,8 +6,8 @@
     <div class="row justify-content-center">
         <div class="col-xl-12 mb-3">
             <div class="card">
-                <div class="card-header bg-white text-center m-3">
-                     <h3>Editar Nota</h3>
+                <div class="card-header bg-white text-center mb-3 pt-4">
+                     <h3>Editar Ficha</h3>
                 </div>
                 <div class="card-body">
                     <form onsubmit="disable()" method="POST" enctype="multipart/form-data" action="{{ route('records.updateRecords', $record->id) }}">

@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-xl-12 col-md-8 mb-3">
             <div class="card">
-                <div class="card-header bg-white text-center pt-4">
+                <div class="card-header bg-white text-center mb-3 pt-4">
                     <h3 class="card-title">
                         Edita tu información de ingreso
                     </h3>
