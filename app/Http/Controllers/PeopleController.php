@@ -54,16 +54,14 @@ class PeopleController extends Controller
         $data = new Administration();
         $rules = [
             'fullname' => 'required|max:60',
-            'telephoneNumber' => 'required|unique:administrations|max:10|numeric',
-            'user_id' => 'required',
-            'dni' => 'required|unique:administrations|max:15|numeric',
+            'telephoneNumber' => 'required|unique:administrations|max:9999999999|numeric',
+            'dni' => 'required|unique:administrations|max:999999999999999|numeric',
             'address' => 'required|max:40',
-            'age' => 'required|max:2|numeric',
+            'age' => 'required|max:100|numeric',
             'email' => 'required|max:50',
         ];
         $niceNames = [
             'fullname' => 'nombre completo',
-            'user_id' => 'usuario',
             'telephoneNumber' => 'número de teléfono',
             'dni' => 'número de cédula',
             'address' => 'lugar de domicilio',
@@ -94,16 +92,14 @@ class PeopleController extends Controller
         $data = new Student();
         $rules = [
             'fullname' => 'required|max:60',
-            'telephoneNumber' => 'required|unique:administrations|max:10|numeric',
-            'user_id' => 'required',
-            'dni' => 'required|unique:administrations|max:15|numeric',
+            'telephoneNumber' => 'required|unique:administrations|max:9999999999|numeric',
+            'dni' => 'required|unique:administrations|max:999999999999999|numeric',
             'address' => 'required|max:40',
-            'age' => 'required|max:2|numeric',
+            'age' => 'required|max:100|numeric',
             'email' => 'required|max:50',
         ];
         $niceNames = [
             'fullname' => 'nombre completo',
-            'user_id' => 'usuario',
             'telephoneNumber' => 'número de teléfono',
             'dni' => 'número de cédula',
             'address' => 'lugar de domicilio',
@@ -134,16 +130,14 @@ class PeopleController extends Controller
         $data = new Teacher();
         $rules = [
             'fullname' => 'required|max:60',
-            'telephoneNumber' => 'required|unique:administrations|max:10|numeric',
-            'user_id' => 'required',
-            'dni' => 'required|unique:administrations|max:15|numeric',
+            'telephoneNumber' => 'required|unique:administrations|max:9999999999|numeric',
+            'dni' => 'required|unique:administrations|max:999999999999999|numeric',
             'address' => 'required|max:40',
-            'age' => 'required|max:2|numeric',
+            'age' => 'required|max:100|numeric',
             'email' => 'required|max:50',
         ];
         $niceNames = [
             'fullname' => 'nombre completo',
-            'user_id' => 'usuario',
             'telephoneNumber' => 'número de teléfono',
             'dni' => 'número de cédula',
             'address' => 'lugar de domicilio',
