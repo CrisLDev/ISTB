@@ -16,10 +16,10 @@
                         <div class="row">
                             @if (count($subjects) !== 0)
                                 @foreach ($subjects as $subject)
-                                    <div class="col-md-9">
+                                    <div class="col-md-9 col-7 mb-2">
                                         <p>{{$subject->subjectName}}</p>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 col-5 mb-2">
                                         <a class="btn btn-dark mr-2" href="{{route('other.editSubject', $subject->id)}}">editar</a>
                                         <form action="{{route('other.deleteSubject', $subject->id)}}" method="POST" class="d-inline">
                                             @method('DELETE')
@@ -38,10 +38,10 @@
 
                             @if (count($courses) !== 0)
                                 @foreach ($courses as $course)
-                                    <div class="col-md-9">
+                                    <div class="col-md-9 col-7 mb-2">
                                         <p>{{$course->courseName}}</p>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 col-5 mb-2">
                                         <a class="btn btn-dark mr-2" href="{{route('other.editCourse', $course->id)}}">editar</a>
                                         <form action="{{route('other.deleteCourse', $course->id)}}" method="POST" class="d-inline">
                                             @method('DELETE')
