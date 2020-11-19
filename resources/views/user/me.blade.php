@@ -38,6 +38,7 @@
                                       <option selected>Elige uno...</option>
                                       <option value="admin" {{ $user->role === 'admin' ? 'selected' : '' }}>Admin</option>
                                       <option value="user" {{ $user->role === 'user' ? 'selected' : '' }}>Usuario</option>
+                                      <option value="user" {{ $user->role === 'coor' ? 'selected' : '' }}>Coordinador</option>
                                     </select>
                                   </div>
                             </div>
