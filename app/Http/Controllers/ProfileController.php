@@ -57,6 +57,25 @@ class ProfileController extends Controller
     public function store(Request $request)
     {
         $data = new Profile();
+        $rules = [
+            'telephoneNumber' => 'required|unique:profiles|max:10',
+            'user_id' => 'required',
+            'dni' => 'required|unique:profiles|max:10',
+            'address' => 'required|max:50',
+            'teacher_id' => 'required',
+            'subject_id' => 'required',
+            'content' => 'required',
+        ];
+        $niceNames = [
+            'telephoneNumber' => 'número de teléfono',
+            'user_id' => 'usuario',
+            'dni' => 'número de cédula',
+            'address' => 'campo dirección',
+            'teacher_id' => 'docente',
+            'subject_id' => 'id de la materia',
+            'content' => 'contenido',
+        ]; 
+        $this->validate($request, $rules, [], $niceNames);
         $data->user_id = auth()->user()->id;
         $data->telephoneNumber = $request->telephoneNumber;
         $data->dni = $request->dni;
@@ -84,7 +103,8 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        return redirect('/');
+        $profile = Profile::where('id', $id)->first();
+        return view('profile.edit', compact('profile'));
     }
 
     /**
@@ -96,7 +116,32 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = Profile::where('id', $id)->first();
+        $rules = [
+            'telephoneNumber' => 'required|unique:profiles|max:10',
+            'user_id' => 'required',
+            'dni' => 'required|unique:profiles|max:10',
+            'address' => 'required|max:50',
+            'teacher_id' => 'required',
+            'subject_id' => 'required',
+            'content' => 'required',
+        ];
+        $niceNames = [
+            'telephoneNumber' => 'número de teléfono',
+            'user_id' => 'usuario',
+            'dni' => 'número de cédula',
+            'address' => 'campo dirección',
+            'teacher_id' => 'docente',
+            'subject_id' => 'id de la materia',
+            'content' => 'contenido',
+        ]; 
+        $this->validate($request, $rules, [], $niceNames);
+        $data->user_id = auth()->user()->id;
+        $data->telephoneNumber = $request->telephoneNumber;
+        $data->dni = $request->dni;
+        $data->address = $request->address;
+        $data->save();
+        return redirect('/profile')->with('message', 'Perfil editado correctamente.');
     }
 
     /**
