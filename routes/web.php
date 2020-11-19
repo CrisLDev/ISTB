@@ -25,7 +25,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // Profile Routes
 
-Route::get( '/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name( 'profile.index' )->middleware('isAdmin');
+Route::get( '/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name( 'profile.index' );
 
 Route::get( '/profile/edit/{id}', [App\Http\Controllers\ProfileController::class, 'edit'])->name( 'profile.edit' );
 
@@ -35,108 +35,108 @@ Route::post( '/profile/form', [App\Http\Controllers\ProfileController::class, 's
 
 // User Routes
 
-Route::get( '/users/', [App\Http\Controllers\UserController::class, 'index'])->name( 'user.index' );
+Route::get( '/users', [App\Http\Controllers\UserController::class, 'index'])->name( 'user.index' )->middleware('isAdmin');
 
 Route::get( '/user/me', [App\Http\Controllers\UserController::class, 'me'])->name( 'user.me' );
 
-Route::get( '/user/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name( 'user.edit' );
+Route::get( '/user/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name( 'user.edit' )->middleware('isAdmin');
 
-Route::put( '/user/{id}', [App\Http\Controllers\UserController::class, 'update'])->name( 'user.update' );
+Route::put( '/user/{id}', [App\Http\Controllers\UserController::class, 'update'])->name( 'user.update' )->middleware('isAdmin');
 
-Route::delete( '/user/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name( 'user.delete' );
+Route::delete( '/user/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name( 'user.delete' )->middleware('isAdmin');
 
 Route::put( '/user/updateme/{id}', [UserController::class, 'updateme'])->name( 'user.updateme' );
 
 
 // People Routes
 
-Route::get( '/people', [App\Http\Controllers\PeopleController::class, 'index'])->name( 'people.index' );
+Route::get( '/people', [App\Http\Controllers\PeopleController::class, 'index'])->name( 'people.index' )->middleware('isCoor');
 
-Route::get( '/people/form/administration', [App\Http\Controllers\PeopleController::class, 'create'])->name( 'people.createAdmin' );
+Route::get( '/people/form/administration', [App\Http\Controllers\PeopleController::class, 'create'])->name( 'people.createAdmin' )->middleware('isCoor');
 
-Route::post( '/people/form/administration', [App\Http\Controllers\PeopleController::class, 'storeAdmin'])->name( 'people.storeAdmin' );
+Route::post( '/people/form/administration', [App\Http\Controllers\PeopleController::class, 'storeAdmin'])->name( 'people.storeAdmin' )->middleware('isCoor');
 
-Route::get( '/people/form/administration/edit/{id}', [App\Http\Controllers\PeopleController::class, 'editAdmin'])->name( 'people.editAdmin' );
+Route::get( '/people/form/administration/edit/{id}', [App\Http\Controllers\PeopleController::class, 'editAdmin'])->name( 'people.editAdmin' )->middleware('isCoor');
 
-Route::put( '/people/form/administration/edit/{id}', [App\Http\Controllers\PeopleController::class, 'updateAdmin'])->name( 'people.updateAdmin' );
+Route::put( '/people/form/administration/edit/{id}', [App\Http\Controllers\PeopleController::class, 'updateAdmin'])->name( 'people.updateAdmin' )->middleware('isCoor');
 
-Route::delete( '/people/form/administration/delete/{id}', [App\Http\Controllers\PeopleController::class, 'destroyAdmin'])->name( 'people.deleteAdmin' );
+Route::delete( '/people/form/administration/delete/{id}', [App\Http\Controllers\PeopleController::class, 'destroyAdmin'])->name( 'people.deleteAdmin' )->middleware('isCoor');
 
-Route::get( '/people/form/student', [App\Http\Controllers\PeopleController::class, 'create'])->name( 'people.createStudent' );
+Route::get( '/people/form/student', [App\Http\Controllers\PeopleController::class, 'create'])->name( 'people.createStudent' )->middleware('isCoor');
 
-Route::post( '/people/form/student', [App\Http\Controllers\PeopleController::class, 'storeStudent'])->name( 'people.storeStudent' );
+Route::post( '/people/form/student', [App\Http\Controllers\PeopleController::class, 'storeStudent'])->name( 'people.storeStudent' )->middleware('isCoor');
 
-Route::get( '/people/form/student/edit/{id}', [App\Http\Controllers\PeopleController::class, 'editStudent'])->name( 'people.editStudent' );
+Route::get( '/people/form/student/edit/{id}', [App\Http\Controllers\PeopleController::class, 'editStudent'])->name( 'people.editStudent' )->middleware('isCoor');
 
-Route::put( '/people/form/student/edit/{id}', [App\Http\Controllers\PeopleController::class, 'updateStudent'])->name( 'people.updateStudent' );
+Route::put( '/people/form/student/edit/{id}', [App\Http\Controllers\PeopleController::class, 'updateStudent'])->name( 'people.updateStudent' )->middleware('isCoor');
 
-Route::delete( '/people/form/student/delete/{id}', [App\Http\Controllers\PeopleController::class, 'destroyStudent'])->name( 'people.deleteStudent' );
+Route::delete( '/people/form/student/delete/{id}', [App\Http\Controllers\PeopleController::class, 'destroyStudent'])->name( 'people.deleteStudent' )->middleware('isCoor');
 
-Route::get( '/people/form/teacher', [App\Http\Controllers\PeopleController::class, 'create'])->name( 'people.createTeacher' );
+Route::get( '/people/form/teacher', [App\Http\Controllers\PeopleController::class, 'create'])->name( 'people.createTeacher' )->middleware('isCoor');
 
-Route::post( '/people/form/teacher', [App\Http\Controllers\PeopleController::class, 'storeTeacher'])->name( 'people.storeTeacher' );
+Route::post( '/people/form/teacher', [App\Http\Controllers\PeopleController::class, 'storeTeacher'])->name( 'people.storeTeacher' )->middleware('isCoor');
 
-Route::get( '/people/form/teacher/edit/{id}', [App\Http\Controllers\PeopleController::class, 'editTeacher'])->name( 'people.editTeacher' );
+Route::get( '/people/form/teacher/edit/{id}', [App\Http\Controllers\PeopleController::class, 'editTeacher'])->name( 'people.editTeacher' )->middleware('isCoor');
 
-Route::put( '/people/form/teacher/edit/{id}', [App\Http\Controllers\PeopleController::class, 'updateTeacher'])->name( 'people.updateTeacher' );
+Route::put( '/people/form/teacher/edit/{id}', [App\Http\Controllers\PeopleController::class, 'updateTeacher'])->name( 'people.updateTeacher' )->middleware('isCoor');
 
-Route::delete( '/people/form/teacher/delete/{id}', [App\Http\Controllers\PeopleController::class, 'destroyTeacher'])->name( 'people.deleteTeacher' );
+Route::delete( '/people/form/teacher/delete/{id}', [App\Http\Controllers\PeopleController::class, 'destroyTeacher'])->name( 'people.deleteTeacher' )->middleware('isCoor');
 
 // Another Routes
-Route::get( '/other/form', [App\Http\Controllers\OtherController::class, 'form'])->name( 'other.form' );
+Route::get( '/other/form', [App\Http\Controllers\OtherController::class, 'form'])->name( 'other.form' )->middleware('isCoor');
 
-Route::get( '/other/all', [App\Http\Controllers\OtherController::class, 'index'])->name( 'other.index' );
+Route::get( '/other/all', [App\Http\Controllers\OtherController::class, 'index'])->name( 'other.index' )->middleware('isCoor');
 
-Route::post( '/other/form/subject', [App\Http\Controllers\OtherController::class, 'storeSubject'])->name( 'other.storeSubject' );
+Route::post( '/other/form/subject', [App\Http\Controllers\OtherController::class, 'storeSubject'])->name( 'other.storeSubject' )->middleware('isCoor');
 
-Route::post( '/other/form/course', [App\Http\Controllers\OtherController::class, 'storeCourse'])->name( 'other.storeCourse' );
+Route::post( '/other/form/course', [App\Http\Controllers\OtherController::class, 'storeCourse'])->name( 'other.storeCourse' )->middleware('isCoor');
 
-Route::get( '/other/form/course/edit/{id}', [App\Http\Controllers\OtherController::class, 'editCourse'])->name( 'other.editCourse' );
+Route::get( '/other/form/course/edit/{id}', [App\Http\Controllers\OtherController::class, 'editCourse'])->name( 'other.editCourse' )->middleware('isCoor');
 
-Route::put( '/other/form/course/edit/{id}', [App\Http\Controllers\OtherController::class, 'updateCourse'])->name( 'other.updateCourse' );
+Route::put( '/other/form/course/edit/{id}', [App\Http\Controllers\OtherController::class, 'updateCourse'])->name( 'other.updateCourse' )->middleware('isCoor');
 
-Route::delete( '/other/form/course/delete/{id}', [App\Http\Controllers\OtherController::class, 'destroyCourse'])->name( 'other.deleteCourse' );
+Route::delete( '/other/form/course/delete/{id}', [App\Http\Controllers\OtherController::class, 'destroyCourse'])->name( 'other.deleteCourse' )->middleware('isCoor');
 
-Route::get( '/other/form/subject/edit/{id}', [App\Http\Controllers\OtherController::class, 'editSubject'])->name( 'other.editSubject' );
+Route::get( '/other/form/subject/edit/{id}', [App\Http\Controllers\OtherController::class, 'editSubject'])->name( 'other.editSubject' )->middleware('isCoor');
 
-Route::put( '/other/form/subject/edit/{id}', [App\Http\Controllers\OtherController::class, 'updateSubject'])->name( 'other.updateSubject' );
+Route::put( '/other/form/subject/edit/{id}', [App\Http\Controllers\OtherController::class, 'updateSubject'])->name( 'other.updateSubject' )->middleware('isCoor');
 
-Route::delete( '/other/form/subject/delete/{id}', [App\Http\Controllers\OtherController::class, 'destroySubject'])->name( 'other.deleteSubject' );
+Route::delete( '/other/form/subject/delete/{id}', [App\Http\Controllers\OtherController::class, 'destroySubject'])->name( 'other.deleteSubject' )->middleware('isCoor');
 
 // Routes Students
 
-Route::get( '/other/students', [App\Http\Controllers\OtherController::class, 'indexStudents'])->name( 'students.indexStudents' );
+Route::get( '/other/students', [App\Http\Controllers\OtherController::class, 'indexStudents'])->name( 'students.indexStudents' )->middleware('isCoor');
 
-Route::get( '/other/students/{id}', [App\Http\Controllers\OtherController::class, 'showStudent'])->name( 'students.showStudent' );
+Route::get( '/other/students/{id}', [App\Http\Controllers\OtherController::class, 'showStudent'])->name( 'students.showStudent' )->middleware('isCoor');
 
-Route::get( '/other/administration', [App\Http\Controllers\OtherController::class, 'indexAdministration'])->name( 'administration.indexAdministration' );
+Route::get( '/other/administration', [App\Http\Controllers\OtherController::class, 'indexAdministration'])->name( 'administration.indexAdministration' )->middleware('isCoor');
 
-Route::get( '/other/teachers', [App\Http\Controllers\OtherController::class, 'indexTeachers'])->name( 'teachers.indexTeachers' );
-
-// Routes Reports
-
-Route::get( '/other/report/form', [App\Http\Controllers\OtherController::class, 'formReports'])->name( 'reports.index' );
-
-Route::post( '/other/report/form', [App\Http\Controllers\OtherController::class, 'storeReport'])->name( 'other.storeReport' );
-
-Route::get( '/other/reports', [App\Http\Controllers\OtherController::class, 'indexReports'])->name( 'reports.indexReports' );
-
-Route::get( '/other/reports/edit/{id}', [App\Http\Controllers\OtherController::class, 'editReport'])->name( 'reports.editReport' );
-
-Route::put( '/other/reports/update/{id}', [App\Http\Controllers\OtherController::class, 'updateReport'])->name( 'reports.updateReport' );
-
-Route::delete( '/other/reports/delete/{id}', [App\Http\Controllers\OtherController::class, 'destroyReport'])->name( 'reports.destroyReport' );
+Route::get( '/other/teachers', [App\Http\Controllers\OtherController::class, 'indexTeachers'])->name( 'teachers.indexTeachers' )->middleware('isCoor');
 
 // Routes Reports
 
-Route::get( '/other/records/form', [App\Http\Controllers\OtherController::class, 'formRecord'])->name( 'records.index' );
+Route::get( '/other/report/form', [App\Http\Controllers\OtherController::class, 'formReports'])->name( 'reports.index' )->middleware('isCoor');
 
-Route::post( '/other/records/form', [App\Http\Controllers\OtherController::class, 'storeRecord'])->name( 'records.storeRecords' );
+Route::post( '/other/report/form', [App\Http\Controllers\OtherController::class, 'storeReport'])->name( 'other.storeReport' )->middleware('isCoor');
 
-Route::get( '/other/records', [App\Http\Controllers\OtherController::class, 'indexRecord'])->name( 'records.indexRecords' );
+Route::get( '/other/reports', [App\Http\Controllers\OtherController::class, 'indexReports'])->name( 'reports.indexReports' )->middleware('isCoor');
 
-Route::get( '/other/records/edit/{id}', [App\Http\Controllers\OtherController::class, 'editRecord'])->name( 'records.editRecords' );
+Route::get( '/other/reports/edit/{id}', [App\Http\Controllers\OtherController::class, 'editReport'])->name( 'reports.editReport' )->middleware('isCoor');
 
-Route::put( '/other/records/update/{id}', [App\Http\Controllers\OtherController::class, 'updateRecord'])->name( 'records.updateRecords' );
+Route::put( '/other/reports/update/{id}', [App\Http\Controllers\OtherController::class, 'updateReport'])->name( 'reports.updateReport' )->middleware('isCoor');
 
-Route::delete( '/other/records/delete/{id}', [App\Http\Controllers\OtherController::class, 'destroyRecord'])->name( 'records.destroyRecords' );
+Route::delete( '/other/reports/delete/{id}', [App\Http\Controllers\OtherController::class, 'destroyReport'])->name( 'reports.destroyReport' )->middleware('isCoor');
+
+// Routes Reports
+
+Route::get( '/other/records/form', [App\Http\Controllers\OtherController::class, 'formRecord'])->name( 'records.index' )->middleware('isCoor');
+
+Route::post( '/other/records/form', [App\Http\Controllers\OtherController::class, 'storeRecord'])->name( 'records.storeRecords' )->middleware('isCoor');
+
+Route::get( '/other/records', [App\Http\Controllers\OtherController::class, 'indexRecord'])->name( 'records.indexRecords' )->middleware('isCoor');
+
+Route::get( '/other/records/edit/{id}', [App\Http\Controllers\OtherController::class, 'editRecord'])->name( 'records.editRecords' )->middleware('isCoor');
+
+Route::put( '/other/records/update/{id}', [App\Http\Controllers\OtherController::class, 'updateRecord'])->name( 'records.updateRecords' )->middleware('isCoor');
+
+Route::delete( '/other/records/delete/{id}', [App\Http\Controllers\OtherController::class, 'destroyRecord'])->name( 'records.destroyRecords' )->middleware('isCoor');
