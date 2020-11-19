@@ -42,44 +42,45 @@
                                 <div class="card-header bg-white" id="heading{{$item[0]['course_id']}}">
                                     <h2 class="mb-0">
                                     <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse{{$item[0]['course_id']}}" aria-expanded="true" aria-controls="collapse{{$item[0]['course_id']}}">
-                                        <h3 class="mb-0">Fichas @foreach ($item as $course)
-                                            @if ($loop->first) {{$course->courseName}} @endif
-                                            @endforeach</h3>
+                                        <h3 class="mb-0">Fichas {{$item->courseName}}
                                     </button>
                                     </h2>
                                 </div>
                                 <div id="collapse{{$item[0]['course_id']}}" class="collapse show" aria-labelledby="heading{{$item[0]['course_id']}}" data-parent="#accordionGrades">
                                     <div class="card-body">
                                         <div class="container">
-                                            @foreach ($item as $record)
                                                 <div class="container">
                                                     <p class="font-weight-bold">Curso:</p>
-                                                    <p>{{$record->courseName}}</p>
+                                                    <p>{{$item->courseName}}</p>
                                                     <p class="font-weight-bold">Alergias:</p>
-                                                    <p>{{$record->allergies}}</p>
+                                                    <p>{{$item->allergies}}</p>
                                                     <p class="font-weight-bold">Tratamientos:</p>
-                                                    <p>{{$record->treatment}}</p>
+                                                    <p>{{$item->treatment}}</p>
                                                     <p class="font-weight-bold">Enfermedad cardiovascular:</p>
-                                                    <p>{{$record->cardiovascular}}</p>
+                                                    <p>{{$item->cardiovascular}}</p>
                                                     <p class="font-weight-bold">Piojos:</p>
-                                                    <p>{{$record->lice}}</p>
+                                                    <p>{{$item->lice}}</p>
                                                     <p class="font-weight-bold">Asma:</p>
-                                                    <p>{{$record->asthma}}</p>
+                                                    <p>{{$item->asthma}}</p>
                                                     <p class="font-weight-bold">Malformaciones:</p>
-                                                    <p>{{$record->malformation}}</p>
+                                                    <p>{{$item->malformation}}</p>
                                                     <p class="font-weight-bold">Lentes:</p>
-                                                    <p>{{$record->glasses}}</p>
+                                                    <p>{{$item->glasses}}</p>
                                                     <p class="font-weight-bold">Observaciones:</p>
-                                                    <p>{{$record->observations}}</p>
+                                                    <p>{{$item->observations}}</p>
                                                 </div>
-                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
                                 </div>
                             </div>
                         @endforeach
+                        <div class="container pt-3 d-flex justify-content-center">
+                            {{$records->links()}}
+                        </div>
+
                         @endif
+                        
                     </div>
                     <div class="mt-5">
                         @if (count($reports) !== 0)
@@ -89,28 +90,25 @@
                                     <div class="card-header bg-white" id="headingR{{$item[0]['course_id']}}">
                                         <h2 class="mb-0">
                                         <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseR{{$item[0]['course_id']}}" aria-expanded="true" aria-controls="collapseR{{$item[0]['course_id']}}">
-                                            <h3 class="mb-0">Reportes @foreach ($item as $course)
-                                                @if ($loop->first) {{$course->courseName}} @endif
-                                                @endforeach</h3>
+                                            <h3 class="mb-0">Reportes
                                         </button>
                                         </h2>
                                     </div>
                                     <div id="collapseR{{$item[0]['course_id']}}" class="collapse show" aria-labelledby="headingR{{$item[0]['course_id']}}" data-parent="#accordionGrades">
                                         <div class="card-body">
-                                            @foreach ($item as $report)
                                                 <div class="container-fluid border shadow pt-3 pb-3">
                                                     <p class="font-weight-bold">Nombre de la materia:</p>
-                                                    <p>{{$report->subjectName}}</p>
+                                                    <p>{{$item->subjectName}}</p>
                                                     <p class="font-weight-bold">Contenido:</p>
-                                                    <p>{{$report->content}}</p>
+                                                    <p>{{$item->content}}</p>
                                                     <p class="font-weight-bold">Nombre del docente:</p>
-                                                    <p>{{$report->teacherFullname}}</p>
+                                                    <p>{{$item->teacherFullname}}</p>
                                                     <p class="font-weight-bold">Fecha de creación:</p>
-                                                    <p>{{$report->created_at}}</p>
+                                                    <p>{{$item->created_at}}</p>
                                                     <div>
-                                                        <a class="btn btn-dark" href="{{route('reports.editReport', $report->id)}}">editar</a>
+                                                        <a class="btn btn-dark" href="{{route('reports.editReport', $item->id)}}">editar</a>
 
-                                                        <form action="{{route('reports.destroyReport', $report->id)}}" method="POST" class="d-inline">
+                                                        <form action="{{route('reports.destroyReport', $item->id)}}" method="POST" class="d-inline">
                                                             @method('DELETE')
                                                             @csrf
                                                             <button class="btn btn-danger" type="submit">
@@ -119,7 +117,6 @@
                                                         </form>
                                                     </div>
                                                 </div>
-                                            @endforeach
                                         </div>
                                     </div>
                                     </div>
@@ -128,6 +125,9 @@
                         @else
                             <div class="font-weight-bold">No hay reportes</div>
                         @endif
+
+                        <div class="container pt-3 d-flex justify-content-center">
+                            {{$reports->links()}}
                     </div>
                 </div>
             </div>

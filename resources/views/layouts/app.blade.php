@@ -212,7 +212,7 @@
               
 
         <footer>
-            <nav class="navbar fixed-bottom navbar-light bg-light border-top" style="z-index: 1">
+            <nav class="navbar fixed-bottom navbar-light bg-light border-top" style="z-index: 3">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                     <img class="w-25 mr-2" src="{{ asset('assets/logo.svg') }}" alt="logo">
                     <h3 class="mb-0">{{ config('app.name', 'Laravel') }}</h3>
