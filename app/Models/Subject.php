@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Subject extends Model
 {
     use HasFactory;
+
+    public function scopeSubjectName($query, $subjectName){
+        if($subjectName){return
+            $query->where('subjectName', 'LIKE', "%$subjectName%");
+        }
+    }
+
 }

@@ -10,6 +10,20 @@
                     <h3 class="card-title">
                         Todos los registros de docentes
                     </h3>
+                    <form method="get">
+                        <div class="form-group">
+                            <input type="text" placeholder="Nombre" name="fullname" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Email" name="email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Codigo" name="code" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-secondary">Buscar</button>
+                        </div>
+                    </form>
                 </div>
                 <div class="card-body">
                     <div class="container">
@@ -17,11 +31,11 @@
                             @if (count($teachers) !== 0)
 
                                 @foreach ($teachers as $teacher)
-                                <div class="col-md-2 col-sm-2 d-flex align-items-center justify-content-center mb-2">
+                                <div class="col-md-2 col-sm-2 d-flex align-items-center justify-content-center mb-4">
                                     <img src="{{Gravatar::get($teacher->email)}}" alt="peopleGravatar">
                                 </div>
 
-                                <div class="col-md-8 col-sm-12">
+                                <div class="col-md-8 col-sm-12 mb-4">
                                     <p class="font-weight-bold">Nombre completo:</p>
                                     <p>{{$teacher->fullname}}</p>
 
@@ -33,7 +47,7 @@
 
                                 </div>
 
-                                <div class="col-md-2 col-sm-2 d-flex align-items-center">
+                                <div class="col-md-2 col-sm-2 d-flex align-items-center mb-4">
                                     <a class="btn btn-dark mr-2" href="{{route('people.editTeacher', $teacher->id)}}">editar</a>
                                 <form action="{{route('people.deleteTeacher', $teacher->id)}}" method="POST" class="d-inline">
                                     @method('DELETE')

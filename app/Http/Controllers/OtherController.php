@@ -29,10 +29,16 @@ class OtherController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $subjects = Subject::paginate(5);
-        $courses = Course::paginate(5);
+        $subjectName = $request->get('subjectName');
+        $courseName = $request->get('courseName');
+        $subjects = Subject::orderBy('id', 'desc')
+        ->subjectName($subjectName)
+        ->paginate(5);
+        $courses = Course::orderBy('id', 'desc')
+        ->courseName($courseName)
+        ->paginate(5);
         return view('other.index', compact('subjects', 'courses'));
     }
 
@@ -77,9 +83,16 @@ class OtherController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexStudents()
+    public function indexStudents(Request $request)
     {
-        $students = Student::paginate(10);
+        $fullname = $request->get('fullname');
+        $email = $request->get('email');
+        $code = $request->get('code');
+        $students = Student::orderBy('id', 'desc')
+        ->fullname($fullname)
+        ->email($email)
+        ->code($code)
+        ->paginate(10);
         return view('students.all', compact('students'));
     }
 
@@ -106,9 +119,16 @@ class OtherController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexTeachers()
+    public function indexTeachers(Request $request)
     {
-        $teachers = Teacher::paginate(10);
+        $fullname = $request->get('fullname');
+        $email = $request->get('email');
+        $code = $request->get('code');
+        $teachers = Teacher::orderBy('id', 'desc')
+        ->fullname($fullname)
+        ->email($email)
+        ->code($code)
+        ->paginate(10);
         return view('teachers.all', compact('teachers'));
     }
 

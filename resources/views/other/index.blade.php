@@ -10,6 +10,17 @@
                     <h3 class="card-title">
                         Cursos - Materias
                     </h3>
+                    <form method="get">
+                        <div class="form-group">
+                            <input type="text" placeholder="Nombre de la materia" name="subjectName" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Nombre del curso" name="courseName" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-secondary">Buscar</button>
+                        </div>
+                    </form>
                 </div>
                 <div class="card-body">
                     <div class="container">

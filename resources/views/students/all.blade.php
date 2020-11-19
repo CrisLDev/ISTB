@@ -10,6 +10,20 @@
                     <h3 class="card-title">
                         Todos los registros de estudiantes
                     </h3>
+                    <form method="get">
+                        <div class="form-group">
+                            <input type="text" placeholder="Nombre" name="fullname" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Email" name="email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Codigo" name="code" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-secondary">Buscar</button>
+                        </div>
+                    </form>
                 </div>
                 <div class="card-body">
                     <div class="container">
@@ -18,11 +32,11 @@
 
                                 @foreach ($students as $student)
 
-                                <div class="col-md-2 col-sm-2 d-flex align-items-center justify-content-center mb-2">
+                                <div class="col-md-2 col-sm-2 d-flex align-items-center justify-content-center mb-4">
                                     <img src="{{Gravatar::get($student->email)}}" alt="peopleGravatar">
                                 </div>
 
-                                <div class="col-md-7 col-sm-12">
+                                <div class="col-md-7 col-sm-12 mb-4">
                                     <p class="font-weight-bold">Nombre completo:</p>
                                     <p>{{$student->fullname}}</p>
 
@@ -34,7 +48,7 @@
 
                                 </div>
 
-                                <div class="col-md-3 col-sm-4 d-flex align-items-center">
+                                <div class="col-md-3 col-sm-4 d-flex align-items-center mb-4">
                                     <a class="btn btn-info mr-2" href="{{route('students.showStudent', $student->id)}}">ver</a>
                                     <a class="btn btn-dark mr-2" href="{{route('people.editStudent', $student->id)}}">editar</a>
                                 <form action="{{route('people.deleteStudent', $student->id)}}" method="POST" class="d-inline">

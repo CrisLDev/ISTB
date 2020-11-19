@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     use HasFactory;
+
+    public function scopeCourseName($query, $courseName){
+        if($courseName){return
+            $query->where('courseName', 'LIKE', "%$courseName%");
+        }
+    }
+
 }
