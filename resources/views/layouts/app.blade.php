@@ -107,7 +107,7 @@
                 <div class="container d-flex justify-content-between">
                     @guest
                     @else
-                    @can('isCoor')
+                    @if(Auth::user()->role == 'admin' || Auth::user()->role == 'coor')
                     <button type="button" id="sidebarCollapse" class="btn btn-light">
                         <i class="fas fa-align-left"></i>
                         <span><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
