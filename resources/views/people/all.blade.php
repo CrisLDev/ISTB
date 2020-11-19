@@ -18,22 +18,23 @@
 
                                 @foreach ($administrations as $administration)
 
-                                <div class="col-md-2 d-flex align-items-center">
+                                <div class="col-md-2 col-sm-2 d-flex align-items-center justify-content-center">
                                     <img src="{{Gravatar::get($administration->email)}}" alt="peopleGravatar">
                                 </div>
 
-                                <div class="col-md-8 d-flex align-items-center justify-content-between">
-                                    <span>{{$administration->fullname}}</span>
+                                <div class="col-md-8 col-sm-12">
+                                    <p class="font-weight-bold">Nombre completo:</p>
+                                    <p>{{$administration->fullname}}</p>
 
-                                    <span>{{$administration->email}}</span>
+                                    <p class="font-weight-bold">Email:</p>
+                                    <p>{{$administration->email}}</p>
 
-                                    <span>{{$administration->type}}</span>
-
-                                    <span>{{$administration->code}}</span>
+                                    <p class="font-weight-bold">Codigo:</p>
+                                    <p>{{$administration->code}}</p>
 
                                 </div>
 
-                                <div class="col-md-2 d-flex align-items-center">
+                                <div class="col-md-2 col-sm-2 d-flex align-items-center">
                                     <a class="btn btn-dark mr-2" href="{{route('people.editAdmin', $administration->id)}}">editar</a>
                                 <form action="{{route('people.deleteAdmin', $administration->id)}}" method="POST" class="d-inline">
                                     @method('DELETE')
@@ -57,18 +58,19 @@
                                 @if (count($teachers) !== 0)
 
                                 @foreach ($teachers as $teacher)
-                                <div class="col-md-2 d-flex align-items-center">
+                                <div class="col-md-2 d-flex align-items-center justify-content-center">
                                     <img src="{{Gravatar::get($teacher->email)}}" alt="peopleGravatar">
                                 </div>
 
-                                <div class="col-md-8 d-flex align-items-center justify-content-between">
-                                    <span>{{$teacher->fullname}}</span>
+                                <div class="col-md-8 col-sm-12">
+                                    <p class="font-weight-bold">Nombre completo:</p>
+                                    <p>{{$teacher->fullname}}</p>
 
-                                    <span>{{$teacher->email}}</span>
+                                    <p class="font-weight-bold">Email:</p>
+                                    <p>{{$teacher->email}}</p>
 
-                                    <span>{{$teacher->type}}</span>
-
-                                    <span>{{$teacher->code}}</span>
+                                    <p class="font-weight-bold">Codigo:</p>
+                                    <p>{{$teacher->code}}</p>
 
                                 </div>
 
@@ -101,14 +103,15 @@
                                     <img src="{{Gravatar::get($student->email)}}" alt="peopleGravatar">
                                 </div>
 
-                                <div class="col-md-8 d-flex align-items-center justify-content-between">
-                                    <span>{{$student->fullname}}</span>
+                                <div class="col-md-8 col-sm-12">
+                                    <p class="font-weight-bold">Nombre completo:</p>
+                                    <p>{{$student->fullname}}</p>
 
-                                    <span>{{$student->email}}</span>
+                                    <p class="font-weight-bold">Email:</p>
+                                    <p>{{$student->email}}</p>
 
-                                    <span>{{$student->type}}</span>
-
-                                    <span>{{$student->code}}</span>
+                                    <p class="font-weight-bold">Codigo:</p>
+                                    <p>{{$student->code}}</p>
 
                                 </div>
 
