@@ -43,7 +43,7 @@
                                     spellcheck="false"
                                     name="fullname"
                                     id="fullname"
-                                    placeholder="Ingresa tu nombre completo"
+                                    placeholder="Ingresa el nombre completo"
                                     class="form-control mb-2"
                                     value="{{old('fullname')}}"
                                     />
@@ -58,7 +58,7 @@
                                     spellcheck="false"
                                     name="telephoneNumber"
                                     id="telephoneNumber"
-                                    placeholder="Ingresa tu nombre completo"
+                                    placeholder="Ingresa el nombre completo"
                                     class="form-control mb-2"
                                     value="{{old('telephoneNumber')}}"
                                     />
@@ -73,7 +73,7 @@
                                     spellcheck="false"
                                     name="dni"
                                     id="dni"
-                                    placeholder="Ingresa tu nombre completo"
+                                    placeholder="Ingresa el nombre completo"
                                     class="form-control mb-2"
                                     value="{{old('dni')}}"
                                     />
@@ -88,7 +88,7 @@
                                     spellcheck="false"
                                     name="address"
                                     id="address"
-                                    placeholder="Ingresa tu nombre completo"
+                                    placeholder="Ingresa el nombre completo"
                                     class="form-control mb-2"
                                     value="{{old('address')}}"
                                     />
@@ -103,7 +103,7 @@
                                     spellcheck="false"
                                     name="age"
                                     id="age"
-                                    placeholder="Ingresa tu nombre completo"
+                                    placeholder="Ingresa el nombre completo"
                                     class="form-control mb-2"
                                     value="{{old('age')}}"
                                     />
@@ -113,17 +113,34 @@
                                 <div class="form-group">
                                     <label>Email:</label>
                                     <input
-                                    type="text"
+                                    type="email"
                                     autocomplete="none"
                                     spellcheck="false"
                                     name="email"
                                     id="email"
-                                    placeholder="Ingresa tu email"
+                                    placeholder="Ingresa el email"
                                     class="form-control mb-2"
                                     value="{{old('email')}}"
                                     />
                                 </div>
                             </div>
+                            @if(Request::is('people/form/administration'))
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Cargo:</label>
+                                    <input
+                                    type="text"
+                                    autocomplete="none"
+                                    spellcheck="false"
+                                    name="role"
+                                    id="role"
+                                    placeholder="Ingresa el cargo"
+                                    class="form-control mb-2"
+                                    value="{{old('role')}}"
+                                    />
+                                </div>
+                            </div>
+                            @endif
                         </div>
                         <div class="form-group">
                             <button class="btn btn-primary btn-block" id="button-prevent-multiple-submits" type="submit">

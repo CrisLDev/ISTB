@@ -27,14 +27,17 @@
                                     id="username"
                                     placeholder="Ingresa tu nombre de usuario"
                                     class="form-control mb-2"
+                                    maxlength="50"
+                                    minlength="5"
                                     value="{{$user->username}}"
+                                    required
                                     />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="inputState">Rol</label>
-                                    <select id="inputState" class="form-control" name="role">
+                                    <select id="inputState" class="form-control" name="role" required>
                                       <option selected>Elige uno...</option>
                                       <option value="admin" {{ $user->role === 'admin' ? 'selected' : '' }}>Admin</option>
                                       <option value="user" {{ $user->role === 'user' ? 'selected' : '' }}>Usuario</option>
@@ -54,6 +57,9 @@
                                     placeholder="Ingresa tu nombre completo"
                                     class="form-control mb-2"
                                     value="{{$user->name}}"
+                                    maxlength="50"
+                                    minlength="5"
+                                    required
                                     />
                                 </div>
                             </div>
@@ -69,6 +75,9 @@
                                     placeholder="Ingresa tu email"
                                     class="form-control mb-2"
                                     value="{{$user->email}}"
+                                    maxlength="50"
+                                    minlength="10"
+                                    required
                                     />
                                 </div>
                             </div>
@@ -83,6 +92,7 @@
                                     id="password"
                                     placeholder="Ingresa tus contraseña"
                                     class="form-control mb-2"
+                                    maxlength="20"
                                     />
                                 </div>
                             </div>
@@ -97,6 +107,7 @@
                                     id="password_confirmation"
                                     placeholder="Ingresa tus contraseña"
                                     class="form-control mb-2"
+                                    maxlength="20"
                                     />
                                 </div>
                             </div>

@@ -90,10 +90,10 @@ class UserController extends Controller
         $uid = $id;
         $data = User::where('id', $uid)->first();
         $rules = [
-            'name' => 'required|max:50',
+            'name' => 'required|max:50|min:5',
             'role' => 'required|max:6',
-            'username' => 'required|max:50',
-            'email' => 'required',
+            'username' => 'required|max:50|min:5',
+            'email' => 'required|min:10|max:50',
             'password' => 'max:20',
         ];
         $niceNames = [

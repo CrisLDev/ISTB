@@ -55,6 +55,7 @@ class PeopleController extends Controller
         $rules = [
             'fullname' => 'required|max:60',
             'telephoneNumber' => 'required|unique:administrations|max:9999999999|numeric',
+            'role' => 'required|max:20|min:5',
             'dni' => 'required|unique:administrations|max:999999999999999|numeric',
             'address' => 'required|max:40',
             'age' => 'required|max:100|numeric',
@@ -63,6 +64,7 @@ class PeopleController extends Controller
         $niceNames = [
             'fullname' => 'nombre completo',
             'telephoneNumber' => 'número de teléfono',
+            'role' => 'cargo',
             'dni' => 'número de cédula',
             'address' => 'lugar de domicilio',
             'age' => 'rango de edad',
@@ -70,6 +72,7 @@ class PeopleController extends Controller
         ]; 
         $this->validate($request, $rules, [], $niceNames);
         $data->fullname = $request->fullname;
+        $data->role = $request->role;
         $data->telephoneNumber = $request->telephoneNumber;
         $data->user_id = auth()->user()->id;
         $data->dni = $request->dni;
@@ -92,8 +95,8 @@ class PeopleController extends Controller
         $data = new Student();
         $rules = [
             'fullname' => 'required|max:60',
-            'telephoneNumber' => 'required|unique:administrations|max:9999999999|numeric',
-            'dni' => 'required|unique:administrations|max:999999999999999|numeric',
+            'telephoneNumber' => 'required|unique:students|max:9999999999|numeric',
+            'dni' => 'required|unique:students|max:999999999999999|numeric',
             'address' => 'required|max:40',
             'age' => 'required|max:100|numeric',
             'email' => 'required|max:50',
@@ -130,8 +133,8 @@ class PeopleController extends Controller
         $data = new Teacher();
         $rules = [
             'fullname' => 'required|max:60',
-            'telephoneNumber' => 'required|unique:administrations|max:9999999999|numeric',
-            'dni' => 'required|unique:administrations|max:999999999999999|numeric',
+            'telephoneNumber' => 'required|unique:teachers|max:9999999999|numeric',
+            'dni' => 'required|unique:teachers|max:999999999999999|numeric',
             'address' => 'required|max:40',
             'age' => 'required|max:100|numeric',
             'email' => 'required|max:50',
@@ -211,9 +214,9 @@ class PeopleController extends Controller
         $data = Teacher::where('id', $id)->first();
         $rules = [
             'fullname' => 'required|max:60',
-            'telephoneNumber' => 'required|unique:administrations|max:10|numeric',
+            'telephoneNumber' => 'required|unique:teachers|max:10|numeric',
             'user_id' => 'required',
-            'dni' => 'required|unique:administrations|max:15|numeric',
+            'dni' => 'required|unique:teachers|max:15|numeric',
             'address' => 'required|max:40',
             'age' => 'required|max:2|numeric',
             'email' => 'required|max:50',
@@ -257,6 +260,7 @@ class PeopleController extends Controller
         $rules = [
             'fullname' => 'required|max:60',
             'telephoneNumber' => 'required|unique:administrations|max:10|numeric',
+            'role' => 'required|max:20|min:5',
             'user_id' => 'required',
             'dni' => 'required|unique:administrations|max:15|numeric',
             'address' => 'required|max:40',
@@ -267,6 +271,7 @@ class PeopleController extends Controller
             'fullname' => 'nombre completo',
             'user_id' => 'usuario',
             'telephoneNumber' => 'número de teléfono',
+            'role' => 'cargo',
             'dni' => 'número de cédula',
             'address' => 'lugar de domicilio',
             'age' => 'rango de edad',
@@ -276,6 +281,7 @@ class PeopleController extends Controller
         if($id == $data->id){
             $data->fullname = $request->fullname;
             $data->telephoneNumber = $request->telephoneNumber;
+            $data->role = $request->role;
             $data->dni = $request->dni;
             $data->code = rand();
             $data->address = $request->address;
@@ -301,9 +307,9 @@ class PeopleController extends Controller
         $data = Student::where('id', $id)->first();
         $rules = [
             'fullname' => 'required|max:60',
-            'telephoneNumber' => 'required|unique:administrations|max:10|numeric',
+            'telephoneNumber' => 'required|unique:students|max:10|numeric',
             'user_id' => 'required',
-            'dni' => 'required|unique:administrations|max:15|numeric',
+            'dni' => 'required|unique:students|max:15|numeric',
             'address' => 'required|max:40',
             'age' => 'required|max:2|numeric',
             'email' => 'required|max:50',
