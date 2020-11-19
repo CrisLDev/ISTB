@@ -234,15 +234,20 @@ class PeopleController extends Controller
             'email' => 'email',
         ]; 
         $this->validate($request, $rules, [], $niceNames);
-        $data->fullname = $request->fullname;
-        $data->telephoneNumber = $request->telephoneNumber;
-        $data->dni = $request->dni;
-        $data->code = rand();
-        $data->address = $request->address;
-        $data->age = $request->age;
-        $data->email = $request->email;
-        $data->save();
-        return back()->with('message', 'Profesor editado con éxito.');
+        if($id == $data->id){
+            $data->fullname = $request->fullname;
+            $data->telephoneNumber = $request->telephoneNumber;
+            $data->dni = $request->dni;
+            $data->code = rand();
+            $data->address = $request->address;
+            $data->age = $request->age;
+            $data->email = $request->email;
+            $data->save();
+            return back()->with('message', 'Docente editado con éxito.');
+        }
+
+        return back()->with('userErrors', 'El docente ya existe.');
+        
     }
 
     /**
@@ -274,15 +279,20 @@ class PeopleController extends Controller
             'email' => 'email',
         ]; 
         $this->validate($request, $rules, [], $niceNames);
-        $data->fullname = $request->fullname;
-        $data->telephoneNumber = $request->telephoneNumber;
-        $data->dni = $request->dni;
-        $data->code = rand();
-        $data->address = $request->address;
-        $data->age = $request->age;
-        $data->email = $request->email;
-        $data->save();
-        return back()->with('message', 'Personal editado con éxito.');
+        if($id == $data->id){
+            $data->fullname = $request->fullname;
+            $data->telephoneNumber = $request->telephoneNumber;
+            $data->dni = $request->dni;
+            $data->code = rand();
+            $data->address = $request->address;
+            $data->age = $request->age;
+            $data->email = $request->email;
+            $data->save();
+            return back()->with('message', 'Personal editado con éxito.');
+        }
+
+        return back()->with('userErrors', 'El nombre del personal ya existe.');
+        
     }
 
     /**
@@ -314,15 +324,20 @@ class PeopleController extends Controller
             'email' => 'email',
         ]; 
         $this->validate($request, $rules, [], $niceNames);
-        $data->fullname = $request->fullname;
-        $data->telephoneNumber = $request->telephoneNumber;
-        $data->dni = $request->dni;
-        $data->code = rand();
-        $data->address = $request->address;
-        $data->age = $request->age;
-        $data->email = $request->email;
-        $data->save();
-        return back()->with('message', 'Estudiante editado con éxito.');
+        if($id == $data->id){
+            $data->fullname = $request->fullname;
+            $data->telephoneNumber = $request->telephoneNumber;
+            $data->dni = $request->dni;
+            $data->code = rand();
+            $data->address = $request->address;
+            $data->age = $request->age;
+            $data->email = $request->email;
+            $data->save();
+            return back()->with('message', 'Estudiante editado con éxito.');
+        }
+
+        return back()->with('userErrors', 'El estudiante ya existe.');
+        
     }
 
     /**
