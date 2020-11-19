@@ -64,6 +64,10 @@
                                 </div>
                                 
                             @endif
+
+                            <div class="container d-flex justify-content-center">
+                                {{$administrations->links()}}
+                            </div>
                 </div>
             </div>
         </div>

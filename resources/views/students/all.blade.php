@@ -18,7 +18,7 @@
 
                                 @foreach ($students as $student)
 
-                                <div class="col-md-2 col-sm-2 d-flex align-items-center justify-content-center">
+                                <div class="col-md-2 col-sm-2 d-flex align-items-center justify-content-center mb-2">
                                     <img src="{{Gravatar::get($student->email)}}" alt="peopleGravatar">
                                 </div>
 
@@ -55,6 +55,9 @@
                                 </div>
 
                             @endif
+                        </div>
+                        <div class="container d-flex justify-content-center">
+                            {{$students->links()}}
                         </div>
                     </div>
                 </div>

@@ -31,8 +31,8 @@ class OtherController extends Controller
      */
     public function index()
     {
-        $subjects = Subject::get();
-        $courses = Course::get();
+        $subjects = Subject::paginate(5);
+        $courses = Course::paginate(5);
         return view('other.index', compact('subjects', 'courses'));
     }
 
@@ -79,7 +79,7 @@ class OtherController extends Controller
      */
     public function indexStudents()
     {
-        $students = Student::get();
+        $students = Student::paginate(10);
         return view('students.all', compact('students'));
     }
 
@@ -90,7 +90,7 @@ class OtherController extends Controller
      */
     public function indexAdministration()
     {
-        $administrations = Administration::get();
+        $administrations = Administration::paginate(10);
         return view('administration.all', compact('administrations'));
     }
 
@@ -101,7 +101,7 @@ class OtherController extends Controller
      */
     public function indexTeachers()
     {
-        $teachers = Teacher::get();
+        $teachers = Teacher::paginate(10);
         return view('teachers.all', compact('teachers'));
     }
 
@@ -118,7 +118,7 @@ class OtherController extends Controller
                             ->join('teachers', 'reports.teacher_id', '=', 'teachers.id')
                             ->join('students', 'reports.student_id', '=', 'students.id')
                             ->select('reports.*', 'reports.resume', 'reports.content', 'teachers.fullname as tFullname', 'students.fullname as sFullname', 'courses.courseName', 'subjects.subjectName')
-                            ->get();
+                            ->paginate(10);
         return view('reports.all', compact('reports'));
     }
 
@@ -133,7 +133,7 @@ class OtherController extends Controller
                         ->join('courses', 'records.course_id', '=', 'courses.id')
                         ->join('students', 'records.student_id', '=', 'students.id')
                         ->select('records.*', 'records.allergies', 'records.glasses', 'students.fullname as sFullname', 'courses.courseName', 'records.treatment', 'records.cardiovascular', 'records.lice', 'records.asthma', 'records.malformation', 'records.glasses', 'records.observations')
-                        ->get();
+                        ->paginate(10);
         return view('records.all', compact('records'));
     }
 

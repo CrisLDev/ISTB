@@ -17,11 +17,11 @@
                             @if (count($teachers) !== 0)
 
                                 @foreach ($teachers as $teacher)
-                                <div class="col-md-2 col-sm-2 d-flex align-items-center">
+                                <div class="col-md-2 col-sm-2 d-flex align-items-center justify-content-center mb-2">
                                     <img src="{{Gravatar::get($teacher->email)}}" alt="peopleGravatar">
                                 </div>
 
-                                <div class="col-md-8 col-sm-12 d-flex align-items-center justify-content-between">
+                                <div class="col-md-8 col-sm-12">
                                     <p class="font-weight-bold">Nombre completo:</p>
                                     <p>{{$teacher->fullname}}</p>
 
@@ -53,6 +53,9 @@
                                 </div>
 
                                 @endif
+                        </div>
+                        <div class="container d-flex justify-content-center">
+                            {{$teachers->links()}}
                         </div>
                     </div>
                 </div>

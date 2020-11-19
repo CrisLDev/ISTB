@@ -57,6 +57,9 @@
                                 </div>
 
                             @endforeach
+                            <div class="col-md-12 mb-2 d-flex justify-content-center">
+                                <p>{{$reports->links()}}</p>
+                            </div>
                             @endif
                 </div>
             </div>
