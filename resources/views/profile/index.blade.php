@@ -68,7 +68,7 @@
                     <div class="body d-flex justify-content-center align-items-baseline">
                             @if(!$profileInfo)
                                 <h5 class="mr-3">¡No tienes un perfil, Crea uno ahora!</h5>
-                                <button class=" btn border hoverEdited">Crear Aqui</button>
+                                <a href="{{route('profile.form')}}" class=" btn border hoverEdited">Crear Aqui</a>
                             @else
                             @endif
                     </div>

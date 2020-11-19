@@ -29,6 +29,8 @@ Route::get( '/profile', [App\Http\Controllers\ProfileController::class, 'index']
 
 Route::get( '/profile/update', [App\Http\Controllers\ProfileController::class, 'update'])->name( 'profile.update' );
 
+Route::get( '/profile/form', [App\Http\Controllers\ProfileController::class, 'create'])->name( 'profile.form' );
+
 // User Routes
 
 Route::get( '/users/', [App\Http\Controllers\UserController::class, 'index'])->name( 'user.index' );

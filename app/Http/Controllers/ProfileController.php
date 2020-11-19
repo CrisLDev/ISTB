@@ -56,7 +56,7 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return redirect('/');
     }
 
     /**
@@ -67,7 +67,7 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        //
+        return redirect('/');
     }
 
     /**
@@ -78,7 +78,7 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        //
+        return redirect('/');
     }
 
     /**
