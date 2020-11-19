@@ -50,7 +50,9 @@
             <ul class="list-unstyled components">
                 <p class="text-dark">Todas las acciones</p>
                 <li class="active">
+                    @if(Auth::user()->role == 'admin')
                     <a href="{{ route('user.index') }}">Usuarios</a>
+                    @endif
                     <a href="#registerSubmenu" data-toggle="collapse" aria-expanded="false">Registrar</a>
                     <ul class="collapse list-unstyled" id="registerSubmenu">
                         <li>
@@ -114,7 +116,7 @@
                             <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
                           </svg></span>
                     </button>
-                    @endCan
+                    @endif
                     @endguest
                     <a class="navbar-brand d-flex align-items-center justify-content-center" href="{{ url('/') }}">
                         <img class="w-25 mr-2" src="{{ asset('assets/logo.svg') }}" alt="logo">
