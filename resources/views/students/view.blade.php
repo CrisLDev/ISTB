@@ -13,26 +13,36 @@
                     <h3>{{$student->fullname}}</h3>
                 </div>
                 <div class="card-body">
-                    <div>
-                        <img src="{{Gravatar::get($student->email)}}" alt="peopleGravatar">
+                    <div class="text-center">
+                        <img class="mb-3" src="{{Gravatar::get($student->email)}}" alt="peopleGravatar">
                     </div>
                     <div>
+                        <p class="font-weight-bold">Nombre completo:</p>
                         <p>{{$student->fullname}}</p>
+                        <p class="font-weight-bold">Número de teléfono:</p>
                         <p>{{$student->telephoneNumber}}</p>
+                        <p class="font-weight-bold">Nombre de cédula:</p>
                         <p>{{$student->dni}}</p>
+                        <p class="font-weight-bold">Direccion:</p>
                         <p>{{$student->address}}</p>
+                        <p class="font-weight-bold">Eddad:</p>
                         <p>{{$student->age}}</p>
+                        <p class="font-weight-bold">Email:</p>
                         <p>{{$student->email}}</p>
+                        <p class="font-weight-bold">Codigo:</p>
                         <p>{{$student->code}}</p>
                     </div>
                     <div class="mt-5">
-                        @foreach ($grade as $item)
+                        @if (count($records) == 0)
+                            <P class="font-weight-bold">No exister fichas</P>
+                        @else
+                        @foreach ($records as $item)
                             <div class="accordion" id="accordionGrades">
                                 <div class="card mb-4">
                                 <div class="card-header bg-white" id="heading{{$item[0]['course_id']}}">
                                     <h2 class="mb-0">
                                     <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse{{$item[0]['course_id']}}" aria-expanded="true" aria-controls="collapse{{$item[0]['course_id']}}">
-                                        <h3 class="mb-0">Notas @foreach ($item as $course)
+                                        <h3 class="mb-0">Fichas @foreach ($item as $course)
                                             @if ($loop->first) {{$course->courseName}} @endif
                                             @endforeach</h3>
                                     </button>
@@ -40,31 +50,36 @@
                                 </div>
                                 <div id="collapse{{$item[0]['course_id']}}" class="collapse show" aria-labelledby="heading{{$item[0]['course_id']}}" data-parent="#accordionGrades">
                                     <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table">
-                                                <thead>
-                                                  <tr>
-                                                    <th scope="col">Materia</th>
-                                                    <th scope="col">Nota</th>
-                                                    <th scope="col">Asistencia</th>
-                                                  </tr>
-                                                </thead>
-                                                <tbody>
-                                                @foreach ($item as $grade)
-                                                  <tr>
-                                                    <td>{{$grade->subjectName}}</td>
-                                                    <td>{{$grade->grade}}</td>
-                                                    <td>{{$grade->assistance}}%</td>
-                                                  </tr>
-                                                @endforeach
-                                                </tbody>
-                                            </table>
+                                        <div class="container">
+                                            @foreach ($item as $record)
+                                                <div class="container">
+                                                    <p class="font-weight-bold">Curso:</p>
+                                                    <p>{{$record->courseName}}</p>
+                                                    <p class="font-weight-bold">Alergias:</p>
+                                                    <p>{{$record->allergies}}</p>
+                                                    <p class="font-weight-bold">Tratamientos:</p>
+                                                    <p>{{$record->treatment}}</p>
+                                                    <p class="font-weight-bold">Enfermedad cardiovascular:</p>
+                                                    <p>{{$record->cardiovascular}}</p>
+                                                    <p class="font-weight-bold">Piojos:</p>
+                                                    <p>{{$record->lice}}</p>
+                                                    <p class="font-weight-bold">Asma:</p>
+                                                    <p>{{$record->asthma}}</p>
+                                                    <p class="font-weight-bold">Malformaciones:</p>
+                                                    <p>{{$record->malformation}}</p>
+                                                    <p class="font-weight-bold">Lentes:</p>
+                                                    <p>{{$record->glasses}}</p>
+                                                    <p class="font-weight-bold">Observaciones:</p>
+                                                    <p>{{$record->observations}}</p>
+                                                </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
                                 </div>
                             </div>
                         @endforeach
+                        @endif
                     </div>
                     <div class="mt-5">
                         @if (count($reports) !== 0)

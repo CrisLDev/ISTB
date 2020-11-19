@@ -239,22 +239,28 @@ class OtherController extends Controller
     {
         $data = new Record();
         $rules = [
-            'resume' => 'required|unique:records|max:100',
-            'user_id' => 'required',
             'course_id' => 'required',
             'student_id' => 'required',
-            'teacher_id' => 'required',
-            'subject_id' => 'required',
-            'content' => 'required',
+            'allergies' => 'required',
+            'treatment' => 'required',
+            'cardiovascular' => 'required',
+            'lice' => 'required',
+            'asthma' => 'required',
+            'malformation' => 'required',
+            'glasses' => 'required',
+            'observations' => 'required',
         ];
         $niceNames = [
-            'resume' => 'resumen',
-            'user_id' => 'usuario',
             'course_id' => 'curso',
             'student_id' => 'estudiante',
-            'teacher_id' => 'docente',
-            'subject_id' => 'id de la materia',
-            'content' => 'contenido',
+            'allergies' => 'campo alergias',
+            'treatment' => 'campo tratamientos',
+            'cardiovascular' => 'campo enfermedades cardiovasculares',
+            'lice' => 'campo piojos',
+            'asthma' => 'campo asma',
+            'malformation' => 'campo malfomarciones',
+            'glasses' => 'campo lentes',
+            'observations' => 'campo observaciones',
         ]; 
         $this->validate($request, $rules, [], $niceNames);
         $data->user_id = auth()->user()->id;
@@ -282,12 +288,10 @@ class OtherController extends Controller
     {
         $student = Student::where('id', $id)->first();
 
-        $grade = Grades::where('student_id', '=', $id)
-                        ->join('users', 'grades.user_id', '=', 'users.id')
-                        ->join('subjects', 'grades.subject_id', '=', 'subjects.id')
-                        ->join('courses', 'grades.course_id', '=', 'courses.id')
-                        ->join('teachers', 'grades.teacher_id', '=', 'teachers.id')
-                        ->select('grades.*', 'users.name as userName', 'users.email as userEmail', 'subjects.subjectName as subjectName', 'grades.grade', 'grades.assistance', 'teachers.fullname as teacherFullname', 'courses.courseName', 'grades.course_id')
+        $records = Record::where('student_id', '=', $id)
+                        ->join('users', 'records.user_id', '=', 'users.id')
+                        ->join('courses', 'records.course_id', '=', 'courses.id')
+                        ->select('records.*', 'users.name as userName', 'users.email as userEmail', 'courses.courseName')
                         ->get()
                         ->groupBy('course_id');
 
@@ -304,7 +308,7 @@ class OtherController extends Controller
             return redirect('/other/students')->with('userErrors', '¡El estudiante no existe!');
         };
 
-        return view('students.view', compact('student', 'grade', 'reports'));
+        return view('students.view', compact('student', 'records', 'reports'));
     }
 
     /**
@@ -483,23 +487,30 @@ class OtherController extends Controller
     public function updateRecord(Request $request, $id)
     {
         $data = Record::where('id', $id)->first();
+        $data = new Record();
         $rules = [
-            'resume' => 'required|unique:records|max:100',
-            'user_id' => 'required',
             'course_id' => 'required',
             'student_id' => 'required',
-            'teacher_id' => 'required',
-            'subject_id' => 'required',
-            'content' => 'required',
+            'allergies' => 'required',
+            'treatment' => 'required',
+            'cardiovascular' => 'required',
+            'lice' => 'required',
+            'asthma' => 'required',
+            'malformation' => 'required',
+            'glasses' => 'required',
+            'observations' => 'required',
         ];
         $niceNames = [
-            'resume' => 'resumen',
-            'user_id' => 'usuario',
             'course_id' => 'curso',
             'student_id' => 'estudiante',
-            'teacher_id' => 'docente',
-            'subject_id' => 'id de la materia',
-            'content' => 'contenido',
+            'allergies' => 'campo alergias',
+            'treatment' => 'campo tratamientos',
+            'cardiovascular' => 'campo enfermedades cardiovasculares',
+            'lice' => 'campo piojos',
+            'asthma' => 'campo asma',
+            'malformation' => 'campo malfomarciones',
+            'glasses' => 'campo lentes',
+            'observations' => 'campo observaciones',
         ]; 
         $this->validate($request, $rules, [], $niceNames);
         if($id == $data->id){

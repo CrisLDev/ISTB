@@ -22,7 +22,7 @@
                                     <img src="{{Gravatar::get($student->email)}}" alt="peopleGravatar">
                                 </div>
 
-                                <div class="col-md-8 col-sm-12">
+                                <div class="col-md-7 col-sm-12">
                                     <p class="font-weight-bold">Nombre completo:</p>
                                     <p>{{$student->fullname}}</p>
 
@@ -34,7 +34,8 @@
 
                                 </div>
 
-                                <div class="col-md-2 col-sm-2 d-flex align-items-center">
+                                <div class="col-md-3 col-sm-4 d-flex align-items-center">
+                                    <a class="btn btn-info mr-2" href="{{route('students.showStudent', $student->id)}}">ver</a>
                                     <a class="btn btn-dark mr-2" href="{{route('people.editStudent', $student->id)}}">editar</a>
                                 <form action="{{route('people.deleteStudent', $student->id)}}" method="POST" class="d-inline">
                                     @method('DELETE')
