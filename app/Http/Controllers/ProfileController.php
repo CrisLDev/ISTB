@@ -59,13 +59,11 @@ class ProfileController extends Controller
         $data = new Profile();
         $rules = [
             'telephoneNumber' => 'required|unique:profiles|max:10',
-            'user_id' => 'required',
             'dni' => 'required|unique:profiles|max:10',
             'address' => 'required|max:50',
         ];
         $niceNames = [
             'telephoneNumber' => 'número de teléfono',
-            'user_id' => 'usuario',
             'dni' => 'número de cédula',
             'address' => 'campo dirección',
         ]; 
