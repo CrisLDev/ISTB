@@ -26,6 +26,9 @@
                                         placeholder="Ingresa un mini resumen"
                                         class="form-control mb-2"
                                         value="{{$report->resume}}"
+                                        maxlength="100"
+                                        minlength="10"
+                                        required
                                         />
                                     </div>
                                     <div class="form-group">
@@ -74,7 +77,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="reportTextarea">Cotenido</label>
-                                        <textarea class="form-control" id="reportTextarea" rows="3" name="content">{{$report->content}}</textarea>
+                                        <textarea class="form-control" id="reportTextarea" rows="3" name="content" required>{{$report->content}}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <button class="btn btn-warning btn-block" id="button-prevent-multiple-submits" type="submit">

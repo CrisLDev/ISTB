@@ -39,11 +39,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="Grades">Alergias</label>
-                                        <textarea type="text" class="form-control" id="allergies" name="allergies" placeholder="Ingresar las alergias">{{$record->allergies}}</textarea>
+                                        <textarea type="text" class="form-control" id="allergies" name="allergies" placeholder="Ingresar las alergias" required>{{$record->allergies}}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="Assistance">Asistencia</label>
-                                        <textarea type="text" class="form-control" id="treatment" name="treatment" placeholder="Ingrese una descripcion del tratamiento">{{$record->treatment}}</textarea>
+                                        <textarea type="text" class="form-control" id="treatment" name="treatment" placeholder="Ingrese una descripcion del tratamiento" required>{{$record->treatment}}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputState">Enfermedad Cardiovascular</label>
@@ -68,7 +68,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="Assistance">Malformacion</label>
-                                        <textarea type="text" class="form-control" id="malformation" name="malformation" placeholder="Ingrese alguna malformacion">{{$record->malformation}}</textarea>
+                                        <textarea type="text" class="form-control" id="malformation" name="malformation" placeholder="Ingrese alguna malformacion" required>{{$record->malformation}}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputState">Lentes</label>
@@ -79,7 +79,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="Assistance">Observaciones</label>
-                                        <textarea type="text" class="form-control" id="observations" name="observations" placeholder="Ingrese las observaciones">{{$record->observations}}</textarea>
+                                        <textarea type="text" class="form-control" id="observations" name="observations" placeholder="Ingrese las observaciones" required>{{$record->observations}}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <button class="btn btn-warning btn-block" id="button-prevent-multiple-submits" type="submit">
