@@ -12,28 +12,33 @@
                     </h3>
                 </div>
                 <div class="card-body">
-                    <div class="container">
-                        <div class="row justify-content-center">
                             @if (count($administrations) !== 0)
 
                                 @foreach ($administrations as $administration)
 
-                                <div class="col-md-2 d-flex align-items-center">
-                                    <img src="{{Gravatar::get($administration->email)}}" alt="peopleGravatar">
+                                <div class="container">
+                                    <div class="row justify-content-center">
+
+                                <div class="col-md-2 col-sm-2 d-flex justify-content-center align-items-center">
+                                    <img class="mb-2" src="{{Gravatar::get($administration->email)}}" alt="peopleGravatar">
                                 </div>
 
-                                <div class="col-md-8 d-flex align-items-center justify-content-between">
-                                    <span>{{$administration->fullname}}</span>
+                                <div class="col-md-8 col-sm-12">
+                                    <p class="font-weight-bold">Nombre:</p>
+                                    <p>{{$administration->fullname}}</p>
 
-                                    <span>{{$administration->email}}</span>
+                                    <p class="font-weight-bold">Email:</p>
+                                    <p>{{$administration->email}}</p>
 
-                                    <span>{{$administration->type}}</span>
+                                    <p class="font-weight-bold">Codigo:</p>
+                                    <p>{{$administration->code}}</p>
 
-                                    <span>{{$administration->code}}</span>
+                                    <p class="font-weight-bold">Cargo:</p>
+                                    <p class="font-weight-bold">{{$administration->role}}</p>
 
                                 </div>
 
-                                <div class="col-md-2 d-flex align-items-center">
+                                <div class="col-md-2 col-sm-2 d-flex align-items-center">
                                     <a class="btn btn-dark mr-2" href="{{route('people.editAdmin', $administration->id)}}">editar</a>
                                 <form action="{{route('people.deleteAdmin', $administration->id)}}" method="POST" class="d-inline">
                                     @method('DELETE')
@@ -43,18 +48,22 @@
                                     </button>
                                 </form>
                                 </div>
+                                </div>
+                            </div>
 
                                 @endforeach
 
                             @else
 
-                                <div class="col-md-12">
-                                    <p>No hay registros de Personal</p>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p>No hay registros de Personal</p>
+                                        </div>
+                                    </div>
                                 </div>
                                 
                             @endif
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
