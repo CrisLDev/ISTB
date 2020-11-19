@@ -88,9 +88,16 @@ class OtherController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexAdministration()
+    public function indexAdministration(Request $request)
     {
-        $administrations = Administration::paginate(10);
+        $fullname = $request->get('fullname');
+        $email = $request->get('email');
+        $code = $request->get('code');
+        $administrations = Administration::orderBy('id', 'desc')
+        ->fullname($fullname)
+        ->email($email)
+        ->code($code)
+        ->paginate(10);
         return view('administration.all', compact('administrations'));
     }
 

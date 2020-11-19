@@ -8,4 +8,24 @@ use Illuminate\Database\Eloquent\Model;
 class Administration extends Model
 {
     use HasFactory;
+
+    //Scope
+    public function scopefullName($query, $fullname){
+        if($fullname){return 
+            $query->where('fullname', 'LIKE', "%$fullname%");
+        }
+    }
+
+    public function scopeEmail($query, $email){
+        if($email){return
+            $query->where('email', 'LIKE', "%$email%");
+        }
+    }
+
+    public function scopeCode($query, $code){
+        if($code){return
+            $query->where('code', 'LIKE', "%$code%");
+        }
+    }
+
 }

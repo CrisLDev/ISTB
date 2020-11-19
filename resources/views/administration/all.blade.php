@@ -10,6 +10,20 @@
                     <h3 class="card-title">
                         Todos los registros de personal
                     </h3>
+                    <form method="get">
+                        <div class="form-group">
+                            <input type="text" placeholder="Nombre" name="fullname" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Email" name="email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Codigo" name="code" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-secondary">Buscar</button>
+                        </div>
+                    </form>
                 </div>
                 <div class="card-body">
                             @if (count($administrations) !== 0)
@@ -34,7 +48,7 @@
                                     <p>{{$administration->code}}</p>
 
                                     <p class="font-weight-bold">Cargo:</p>
-                                    <p class="font-weight-bold">{{$administration->role}}</p>
+                                    <p>{{$administration->role}}</p>
 
                                 </div>
 
