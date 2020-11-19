@@ -24,6 +24,7 @@
                                         id="resume"
                                         placeholder="Ingresa un mini resumen"
                                         class="form-control mb-2"
+                                        value="{{old('resume')}}"
                                         />
                                     </div>
                                     <div class="form-group">
@@ -72,7 +73,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="reportTextarea">Cotenido</label>
-                                        <textarea class="form-control" id="reportTextarea" rows="3" name="content" placeholder="Ingresa el contenido"></textarea>
+                                        <textarea class="form-control" id="reportTextarea" rows="3" name="content" placeholder="Ingresa el contenido">{{old('content')}}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <button class="btn btn-primary btn-block" id="button-prevent-multiple-submits" type="submit">

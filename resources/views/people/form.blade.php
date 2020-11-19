@@ -45,6 +45,7 @@
                                     id="fullname"
                                     placeholder="Ingresa tu nombre completo"
                                     class="form-control mb-2"
+                                    value="{{old('fullname')}}"
                                     />
                                 </div>
                             </div>
@@ -59,6 +60,7 @@
                                     id="telephoneNumber"
                                     placeholder="Ingresa tu nombre completo"
                                     class="form-control mb-2"
+                                    value="{{old('telephoneNumber')}}"
                                     />
                                 </div>
                             </div>
@@ -73,6 +75,7 @@
                                     id="dni"
                                     placeholder="Ingresa tu nombre completo"
                                     class="form-control mb-2"
+                                    value="{{old('dni')}}"
                                     />
                                 </div>
                             </div>
@@ -87,6 +90,7 @@
                                     id="address"
                                     placeholder="Ingresa tu nombre completo"
                                     class="form-control mb-2"
+                                    value="{{old('address')}}"
                                     />
                                 </div>
                             </div>
@@ -101,6 +105,7 @@
                                     id="age"
                                     placeholder="Ingresa tu nombre completo"
                                     class="form-control mb-2"
+                                    value="{{old('age')}}"
                                     />
                                 </div>
                             </div>
@@ -115,6 +120,7 @@
                                     id="email"
                                     placeholder="Ingresa tu email"
                                     class="form-control mb-2"
+                                    value="{{old('email')}}"
                                     />
                                 </div>
                             </div>

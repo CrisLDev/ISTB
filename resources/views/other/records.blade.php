@@ -38,11 +38,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="Grades">Alergias</label>
-                                        <textarea type="text" class="form-control" id="allergies" name="allergies" placeholder="Ingresar las alergias"></textarea>
+                                        <textarea type="text" class="form-control" id="allergies" name="allergies" placeholder="Ingresar las alergias">{{old('allergies')}}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="Assistance">Asistencia</label>
-                                        <textarea type="text" class="form-control" id="treatment" name="treatment" placeholder="Ingrese una descripcion del tratamiento"></textarea>
+                                        <textarea type="text" class="form-control" id="treatment" name="treatment" placeholder="Ingrese una descripcion del tratamiento">{{old('treatment')}}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputState">Enfermedad Cardiovascular</label>
@@ -67,7 +67,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="Assistance">Malformacion</label>
-                                        <textarea type="text" class="form-control" id="malformation" name="malformation" placeholder="Ingrese alguna malformacion"></textarea>
+                                        <textarea type="text" class="form-control" id="malformation" name="malformation" placeholder="Ingrese alguna malformacion">{{old('malformation')}}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputState">Lentes</label>
@@ -78,7 +78,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="Assistance">Observaciones</label>
-                                        <textarea type="text" class="form-control" id="observations" name="observations" placeholder="Ingrese las observaciones"></textarea>
+                                        <textarea type="text" class="form-control" id="observations" name="observations" placeholder="Ingrese las observaciones">{{old('observations')}}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <button class="btn btn-primary btn-block" id="button-prevent-multiple-submits" type="submit">

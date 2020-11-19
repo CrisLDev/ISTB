@@ -26,6 +26,7 @@
                                     id="telephoneNumber"
                                     placeholder="Ingresa tu número de telefono"
                                     class="form-control mb-2"
+                                    value="{{old('telephoneNumber')}}"
                                     />
                                 </div>
                             </div>
@@ -40,6 +41,7 @@
                                     id="dni"
                                     placeholder="Ingresa tu número de cédula"
                                     class="form-control mb-2"
+                                    value="{{old('dni')}}"
                                     />
                                 </div>
                             </div>
@@ -54,6 +56,7 @@
                                     id="address"
                                     placeholder="Dirección de tu domicilio"
                                     class="form-control mb-2"
+                                    value="{{old('address')}}"
                                     />
                                 </div>
                             </div>
