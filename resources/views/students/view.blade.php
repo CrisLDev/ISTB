@@ -34,7 +34,7 @@
                     </div>
                     <div class="mt-5">
                         @if (count($records) == 0)
-                            <P class="font-weight-bold">No exister fichas</P>
+                            <div class="font-weight-bold">No exister fichas</div>
                         @else
                         @foreach ($records as $item)
                             <div class="accordion" id="accordionGrades">
@@ -99,10 +99,14 @@
                                         <div class="card-body">
                                             @foreach ($item as $report)
                                                 <div class="container-fluid border shadow pt-3 pb-3">
-                                                    <div>{{$report->subjectName}}</div>
+                                                    <p class="font-weight-bold">Nombre de la materia:</p>
+                                                    <p>{{$report->subjectName}}</p>
+                                                    <p class="font-weight-bold">Contenido:</p>
                                                     <p>{{$report->content}}</p>
-                                                    <div>{{$report->teacherFullname}}</div>
-                                                    <div>{{$report->created_at}}</div>
+                                                    <p class="font-weight-bold">Nombre del docente:</p>
+                                                    <p>{{$report->teacherFullname}}</p>
+                                                    <p class="font-weight-bold">Fecha de creación:</p>
+                                                    <p>{{$report->created_at}}</p>
                                                     <div>
                                                         <a class="btn btn-dark" href="{{route('reports.editReport', $report->id)}}">editar</a>
 
@@ -122,7 +126,7 @@
                                 </div>
                             @endforeach
                         @else
-                            <div>No hay reportes</div>
+                            <div class="font-weight-bold">No hay reportes</div>
                         @endif
                     </div>
                 </div>
