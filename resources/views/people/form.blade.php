@@ -46,6 +46,9 @@
                                     placeholder="Ingresa el nombre completo"
                                     class="form-control mb-2"
                                     value="{{old('fullname')}}"
+                                    maxlength="60"
+                                    minlength="20"
+                                    required
                                     />
                                 </div>
                             </div>
@@ -61,6 +64,9 @@
                                     placeholder="Ingresa el nombre completo"
                                     class="form-control mb-2"
                                     value="{{old('telephoneNumber')}}"
+                                    maxlength="11"
+                                    minlength="10"
+                                    required
                                     />
                                 </div>
                             </div>
@@ -76,6 +82,9 @@
                                     placeholder="Ingresa el nombre completo"
                                     class="form-control mb-2"
                                     value="{{old('dni')}}"
+                                    maxlength="15"
+                                    minlength="10"
+                                    required
                                     />
                                 </div>
                             </div>
@@ -91,6 +100,9 @@
                                     placeholder="Ingresa el nombre completo"
                                     class="form-control mb-2"
                                     value="{{old('address')}}"
+                                    maxlength="40"
+                                    minlength="20"
+                                    required
                                     />
                                 </div>
                             </div>
@@ -106,6 +118,9 @@
                                     placeholder="Ingresa el nombre completo"
                                     class="form-control mb-2"
                                     value="{{old('age')}}"
+                                    maxlength="3"
+                                    minlength="1"
+                                    required
                                     />
                                 </div>
                             </div>
@@ -121,6 +136,9 @@
                                     placeholder="Ingresa el email"
                                     class="form-control mb-2"
                                     value="{{old('email')}}"
+                                    maxlength="50"
+                                    minlength="10"
+                                    required
                                     />
                                 </div>
                             </div>
@@ -137,6 +155,9 @@
                                     placeholder="Ingresa el cargo"
                                     class="form-control mb-2"
                                     value="{{old('role')}}"
+                                    maxlength="20"
+                                    minlength="5"
+                                    required
                                     />
                                 </div>
                             </div>
