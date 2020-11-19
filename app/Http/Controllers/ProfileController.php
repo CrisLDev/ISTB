@@ -62,18 +62,12 @@ class ProfileController extends Controller
             'user_id' => 'required',
             'dni' => 'required|unique:profiles|max:10',
             'address' => 'required|max:50',
-            'teacher_id' => 'required',
-            'subject_id' => 'required',
-            'content' => 'required',
         ];
         $niceNames = [
             'telephoneNumber' => 'número de teléfono',
             'user_id' => 'usuario',
             'dni' => 'número de cédula',
             'address' => 'campo dirección',
-            'teacher_id' => 'docente',
-            'subject_id' => 'id de la materia',
-            'content' => 'contenido',
         ]; 
         $this->validate($request, $rules, [], $niceNames);
         $data->user_id = auth()->user()->id;
@@ -116,32 +110,27 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $uid = $id;
         $data = Profile::where('id', $id)->first();
         $rules = [
-            'telephoneNumber' => 'required|unique:profiles|max:10',
-            'user_id' => 'required',
-            'dni' => 'required|unique:profiles|max:10',
+            'telephoneNumber' => 'required|max:10',
+            'dni' => 'required|max:10',
             'address' => 'required|max:50',
-            'teacher_id' => 'required',
-            'subject_id' => 'required',
-            'content' => 'required',
         ];
         $niceNames = [
             'telephoneNumber' => 'número de teléfono',
-            'user_id' => 'usuario',
             'dni' => 'número de cédula',
             'address' => 'campo dirección',
-            'teacher_id' => 'docente',
-            'subject_id' => 'id de la materia',
-            'content' => 'contenido',
         ]; 
-        $this->validate($request, $rules, [], $niceNames);
-        $data->user_id = auth()->user()->id;
-        $data->telephoneNumber = $request->telephoneNumber;
-        $data->dni = $request->dni;
-        $data->address = $request->address;
-        $data->save();
-        return redirect('/profile')->with('message', 'Perfil editado correctamente.');
+        if($uid !== $data->id){
+            $this->validate($request, $rules, [], $niceNames);
+            $data->telephoneNumber = $request->telephoneNumber;
+            $data->dni = $request->dni;
+            $data->address = $request->address;
+            $data->save();
+            return redirect('/profile')->with('message', 'Perfil editado correctamente.');  
+        }
+        return back()->with('userErrors', ' Los datos ya estan en uso');
     }
 
     /**
