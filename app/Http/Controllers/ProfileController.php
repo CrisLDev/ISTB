@@ -56,7 +56,13 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        return redirect('/');
+        $data = new Profile();
+        $data->user_id = auth()->user()->id;
+        $data->telephoneNumber = $request->telephoneNumber;
+        $data->dni = $request->dni;
+        $data->address = $request->address;
+        $data->save();
+        return redirect('/profile')->with('message', 'Perfil creado correctamente.');
     }
 
     /**

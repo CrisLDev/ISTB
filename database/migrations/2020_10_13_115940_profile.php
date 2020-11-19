@@ -20,6 +20,7 @@ class Profile extends Migration
             $table->integer('telephoneNumber');
             $table->integer('dni');
             $table->string('address');
+            $table->timestamps();
             $table->engine = 'InnoDB';
             $table->charset = 'utf8';
             $table->collation = 'utf8_unicode_ci';
