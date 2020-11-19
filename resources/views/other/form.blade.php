@@ -27,6 +27,9 @@
                                             placeholder="Ingresa nombre de la materia"
                                             class="form-control mb-2"
                                             value="{{old('subjectName')}}"
+                                            maxlength="20"
+                                            minlength="6"
+                                            required
                                             />
                                         </div>
                                         <div class="form-group">
@@ -54,6 +57,9 @@
                                             placeholder="Ingresa nombre del curso"
                                             class="form-control mb-2"
                                             value="{{old('courseName')}}"
+                                            maxlength="5"
+                                            minlength="2"
+                                            required
                                             />
                                         </div>
                                         <div class="form-group">

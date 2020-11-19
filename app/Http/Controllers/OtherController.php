@@ -179,7 +179,7 @@ class OtherController extends Controller
     {
         $data = new Course();
         $rules = [
-            'courseName' => 'required|unique:courses|max:20',
+            'courseName' => 'required|unique:courses|max:5',
         ];
         $niceNames = [
             'courseName' => 'nombre del curso'

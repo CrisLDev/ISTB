@@ -36,6 +36,9 @@
                                     placeholder="Ingresa tu nombre completo"
                                     class="form-control mb-2"
                                     value="{{$people->fullname}}"
+                                    maxlength="60"
+                                    minlength="20"
+                                    required
                                     />
                                 </div>
                             </div>
@@ -51,6 +54,9 @@
                                     placeholder="Ingresa tu nombre completo"
                                     class="form-control mb-2"
                                     value="{{$people->telephoneNumber}}"
+                                    maxlength="11"
+                                    minlength="10"
+                                    required
                                     />
                                 </div>
                             </div>
@@ -66,6 +72,9 @@
                                     placeholder="Ingresa tu nombre completo"
                                     class="form-control mb-2"
                                     value="{{$people->dni}}"
+                                    maxlength="15"
+                                    minlength="10"
+                                    required
                                     />
                                 </div>
                             </div>
@@ -81,6 +90,9 @@
                                     placeholder="Ingresa tu nombre completo"
                                     class="form-control mb-2"
                                     value="{{$people->address}}"
+                                    maxlength="40"
+                                    minlength="20"
+                                    required
                                     />
                                 </div>
                             </div>
@@ -96,6 +108,9 @@
                                     placeholder="Ingresa tu nombre completo"
                                     class="form-control mb-2"
                                     value="{{$people->age}}"
+                                    maxlength="3"
+                                    minlength="1"
+                                    required
                                     />
                                 </div>
                             </div>
@@ -103,7 +118,7 @@
                                 <div class="form-group">
                                     <label>Email:</label>
                                     <input
-                                    type="text"
+                                    type="email"
                                     autocomplete="none"
                                     spellcheck="false"
                                     name="email"
@@ -111,9 +126,32 @@
                                     placeholder="Ingresa tu email"
                                     class="form-control mb-2"
                                     value="{{$people->email}}"
+                                    maxlength="50"
+                                    minlength="10"
+                                    required
                                     />
                                 </div>
                             </div>
+                            @if(Request::is('people/form/administration/edit/'.$people->id))
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Cargo:</label>
+                                    <input
+                                    type="text"
+                                    autocomplete="none"
+                                    spellcheck="false"
+                                    name="role"
+                                    id="role"
+                                    placeholder="Ingresa el cargo"
+                                    class="form-control mb-2"
+                                    value="{{$people->role}}"
+                                    maxlength="20"
+                                    minlength="5"
+                                    required
+                                    />
+                                </div>
+                            </div>
+                            @endif
                         <div class="form-group">
                             <button class="btn btn-warning btn-block" id="button-prevent-multiple-submits" type="submit">
                                 <span class="spinner-border spinner-border-sm" id="spinner" role="status" aria-hidden="true"></span>    

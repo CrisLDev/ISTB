@@ -28,6 +28,9 @@
                                             placeholder="Ingresa nombre de la materia"
                                             class="form-control mb-2"
                                             value="{{$subject->subjectName}}"
+                                            maxlength="20"
+                                            minlength="6"
+                                            required
                                             />
                                         </div>
                                         <div class="form-group">

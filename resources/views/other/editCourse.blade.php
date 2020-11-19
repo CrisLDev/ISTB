@@ -28,6 +28,9 @@
                                             placeholder="Ingresa nombre del curso"
                                             class="form-control mb-2"
                                             value="{{$course->courseName}}"
+                                            maxlength="5"
+                                            minlength="2"
+                                            required
                                             />
                                         </div>
                                         <div class="form-group">
