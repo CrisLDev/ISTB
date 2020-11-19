@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use App\Models\User;
 
-class isAdmin
+class isCoor
 {
     /**
      * Handle an incoming request.
@@ -20,7 +20,7 @@ class isAdmin
 
         $role = auth()->user()->role;
 
-        if ($role != 'coor') {
+        if ($role !== 'coor' || $role !== 'admin') {
             return redirect('/home')->with('messageError', '¡No tienes permisos!');
         }
 
