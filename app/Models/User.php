@@ -41,4 +41,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //Scope
+    public function scopeName($query, $username){
+        if($username){return 
+            $query->where('username', 'LIKE', "%$username%");
+        }
+    }
+
+    public function scopeEmail($query, $email){
+        if($email){return
+            $query->where('email', 'LIKE', "%$email%");
+        }
+    }
 }

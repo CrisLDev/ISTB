@@ -23,12 +23,17 @@ class UserController extends Controller
 
     /**
      * Display a listing of the resource.
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::get();
+        $username = $request->get('username');
+        $email = $request->get('email');
+        $users = User::orderBy('id', 'desc')
+                        ->email($email)
+                        ->name($username)
+                        ->paginate(5);
         return view('user.all', compact('users'));
     }
 

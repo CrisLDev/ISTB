@@ -30,7 +30,7 @@
                                         </form>
                                     </div>
                                 @endforeach
-                                <div class="col-md-12 mb-2">
+                                <div class="col-md-12 mb-2 d-flex justify-content-center">
                                     <p>{{$subjects->links()}}</p>
                                 </div>
                             @else
