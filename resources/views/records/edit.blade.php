@@ -19,7 +19,7 @@
                                         <label for="inputState">Estudiante</label>
                                         <select id="inputState" class="form-control" name="student_id">
                                         @if (count($students) === 0)
-                                            <option>No hay docentes</option>
+                                            <option value="">No hay estudiantes</option>
                                         @endif
                                         @foreach ($students as $student)
                                           <option value="{{$student->id}}" {{ $student->id == $record->student_id ? 'selected' : '' }}>{{$student->fullname}}</option>
@@ -30,7 +30,7 @@
                                         <label for="inputState">Cursos</label>
                                         <select id="inputState" class="form-control" name="course_id">
                                         @if (count($courses) === 0)
-                                            <option>No hay docentes</option>
+                                            <option value="">No hay cursos</option>
                                         @endif
                                         @foreach ($courses as $course)
                                           <option value="{{$course->id}}" {{ $course->id == $record->course_id ? 'selected' : '' }}>{{$course->courseName}}</option>
@@ -38,11 +38,11 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="Grades">Alergias</label>
+                                        <label for="allergies">Alergias</label>
                                         <textarea type="text" class="form-control" id="allergies" name="allergies" placeholder="Ingresar las alergias" required>{{$record->allergies}}</textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label for="Assistance">Asistencia</label>
+                                        <label for="treatment">Asistencia</label>
                                         <textarea type="text" class="form-control" id="treatment" name="treatment" placeholder="Ingrese una descripcion del tratamiento" required>{{$record->treatment}}</textarea>
                                     </div>
                                     <div class="form-group">

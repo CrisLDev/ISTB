@@ -201,7 +201,6 @@ class OtherController extends Controller
         $data = new Reports();
         $rules = [
             'resume' => 'required|unique:reports|max:100',
-            'user_id' => 'required',
             'course_id' => 'required',
             'student_id' => 'required',
             'teacher_id' => 'required',
@@ -210,7 +209,6 @@ class OtherController extends Controller
         ];
         $niceNames = [
             'resume' => 'resumen',
-            'user_id' => 'usuario',
             'course_id' => 'curso',
             'student_id' => 'estudiante',
             'teacher_id' => 'docente',

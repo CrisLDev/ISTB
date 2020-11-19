@@ -35,7 +35,7 @@
                                 <div class="form-group">
                                     <label for="inputState">Rol</label>
                                     <select id="inputState" class="form-control" name="role">
-                                      <option selected>Elige uno...</option>
+                                      <option selected value="">Elige uno...</option>
                                       <option value="admin" {{ $user->role === 'admin' ? 'selected' : '' }}>Admin</option>
                                       <option value="user" {{ $user->role === 'user' ? 'selected' : '' }}>Usuario</option>
                                       <option value="user" {{ $user->role === 'coor' ? 'selected' : '' }}>Coordinador</option>

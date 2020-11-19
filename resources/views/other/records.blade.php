@@ -18,7 +18,7 @@
                                         <label for="inputState">Estudiante</label>
                                         <select id="inputState" class="form-control" name="student_id">
                                         @if (count($students) === 0)
-                                            <option>No hay docentes</option>
+                                            <option value="">No hay estudiantes</option>
                                         @endif
                                         @foreach ($students as $student)
                                           <option value="{{$student->id}}">{{$student->fullname}}</option>
@@ -29,7 +29,7 @@
                                         <label for="inputState">Curso</label>
                                         <select id="inputState" class="form-control" name="course_id">
                                         @if (count($courses) === 0)
-                                            <option>No hay docentes</option>
+                                            <option value="">No hay cursos</option>
                                         @endif
                                         @foreach ($courses as $course)
                                           <option value="{{$course->id}}">{{$course->courseName}}</option>
