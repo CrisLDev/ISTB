@@ -284,26 +284,18 @@ class OtherController extends Controller
         $rules = [
             'course_id' => 'required',
             'student_id' => 'required',
-            'allergies' => 'required',
-            'treatment' => 'required',
             'cardiovascular' => 'required',
             'lice' => 'required',
             'asthma' => 'required',
-            'malformation' => 'required',
-            'glasses' => 'required',
-            'observations' => 'required',
+            'glasses' => 'required'
         ];
         $niceNames = [
             'course_id' => 'curso',
             'student_id' => 'estudiante',
-            'allergies' => 'campo alergias',
-            'treatment' => 'campo tratamientos',
             'cardiovascular' => 'campo enfermedades cardiovasculares',
             'lice' => 'campo piojos',
             'asthma' => 'campo asma',
-            'malformation' => 'campo malfomarciones',
-            'glasses' => 'campo lentes',
-            'observations' => 'campo observaciones',
+            'glasses' => 'campo lentes'
         ]; 
         $this->validate($request, $rules, [], $niceNames);
         $data->user_id = auth()->user()->id;
@@ -529,26 +521,18 @@ class OtherController extends Controller
         $rules = [
             'course_id' => 'required',
             'student_id' => 'required',
-            'allergies' => 'required',
-            'treatment' => 'required',
             'cardiovascular' => 'required',
             'lice' => 'required',
             'asthma' => 'required',
-            'malformation' => 'required',
-            'glasses' => 'required',
-            'observations' => 'required',
+            'glasses' => 'required'
         ];
         $niceNames = [
             'course_id' => 'curso',
             'student_id' => 'estudiante',
-            'allergies' => 'campo alergias',
-            'treatment' => 'campo tratamientos',
             'cardiovascular' => 'campo enfermedades cardiovasculares',
             'lice' => 'campo piojos',
             'asthma' => 'campo asma',
-            'malformation' => 'campo malfomarciones',
-            'glasses' => 'campo lentes',
-            'observations' => 'campo observaciones',
+            'glasses' => 'campo lentes'
         ]; 
         $this->validate($request, $rules, [], $niceNames);
         if($id == $data->id){
