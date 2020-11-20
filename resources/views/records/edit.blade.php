@@ -15,6 +15,7 @@
                         @csrf
                             <div class="row">
                                 <div class="col-md-12">
+                                    <h6 class="form-text text-muted mb-3">Los campos Alergias, Tratamientos, Malformaciones y Observaciones pueden estar vacios.</h6>
                                     <div class="form-group">
                                         <label for="inputState">Estudiante</label>
                                         <select id="inputState" class="form-control" name="student_id">
