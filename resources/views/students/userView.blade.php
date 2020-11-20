@@ -20,7 +20,7 @@
                         <p class="font-weight-bold">Nombre completo:</p>
                         <p>{{$student->fullname}}</p>
                         <p class="font-weight-bold">Número de teléfono:</p>
-                        <p>{{$student->telephoneNumber}}</p>
+                        <p>0{{$student->telephoneNumber}}</p>
                         <p class="font-weight-bold">Nombre de cédula:</p>
                         <p>{{$student->dni}}</p>
                         <p class="font-weight-bold">Direccion:</p>

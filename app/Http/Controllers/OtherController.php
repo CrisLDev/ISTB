@@ -10,6 +10,7 @@ use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\Administration;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class OtherController extends Controller
 {
@@ -203,7 +204,7 @@ class OtherController extends Controller
     {
         $data = new Subject();
         $rules = [
-            'subjectName' => 'required|unique:subjects|max:40',
+            'subjectName' => 'required|unique:subjects|max:60',
         ];
         $niceNames = [
             'subjectName' => 'nombre de la materia'
@@ -425,7 +426,7 @@ class OtherController extends Controller
     {
         $data = Course::where('id', $id)->first();
         $rules = [
-            'courseName' => 'required|max:40',
+            'courseName' => ['required',Rule::unique('courses')->ignore($id),'max:6']
         ];
         $niceNames = [
             'courseName' => 'nombre del curso'
@@ -450,7 +451,7 @@ class OtherController extends Controller
     {
         $data = Subject::where('id', $id)->first();
         $rules = [
-            'subjectName' => 'required|max:20',
+            'subjectName' => ['required',Rule::unique('subjects')->ignore($id),'max:60']
         ];
         $niceNames = [
             'subjectName' => 'nombre de la materia'
