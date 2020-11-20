@@ -23,14 +23,14 @@
                     </form>
                 </div>
                 <div class="card-body">
-                    <div class="container">
-                        <div class="row">
                             @if (count($subjects) !== 0)
                                 @foreach ($subjects as $subject)
-                                    <div class="col-md-9 col-5">
+                                <div class="container border-bottom mb-4 pb-4">
+                                    <div class="row">
+                                    <div class="col-lg-8 col-md-12 col-12">
                                         <p>{{$subject->subjectName}}</p>
                                     </div>
-                                    <div class="col-md-3 col-7">
+                                    <div class="col-lg-4 col-md-12 col-12">
                                         <a class="btn btn-dark mr-2" href="{{route('other.editSubject', $subject->id)}}">editar</a>
                                         <form action="{{route('other.deleteSubject', $subject->id)}}" method="POST" class="d-inline">
                                             @method('DELETE')
@@ -40,8 +40,10 @@
                                             </button>
                                         </form>
                                     </div>
+                                    </div>
+                                </div>
                                 @endforeach
-                                <div class="col-md-12 d-flex justify-content-center">
+                                <div class="container d-flex justify-content-center">
                                     <p>{{$subjects->links()}}</p>
                                 </div>
                             @else
@@ -54,10 +56,12 @@
 
                             @if (count($courses) !== 0)
                                 @foreach ($courses as $course)
-                                    <div class="col-md-9 col-5">
+                                <div class="container pb-4 mb-4 border-bottom">
+                                    <div class="row">
+                                    <div class="col-lg-8 col-md-9 col-12">
                                         <p>{{$course->courseName}}</p>
                                     </div>
-                                    <div class="col-md-3 col-7">
+                                    <div class="col-lg-4 col-md-3 col-12">
                                         <a class="btn btn-dark mr-2" href="{{route('other.editCourse', $course->id)}}">editar</a>
                                         <form action="{{route('other.deleteCourse', $course->id)}}" method="POST" class="d-inline">
                                             @method('DELETE')
@@ -67,8 +71,10 @@
                                             </button>
                                         </form>
                                     </div>
+                                    </div>
+                                </div>
                                 @endforeach
-                                <div class="col-md-12 mb-2">
+                                <div class="container d-flex justify-content-center">
                                     <p>{{$courses->links()}}</p>
                                 </div>
                             @else
@@ -76,8 +82,6 @@
                                     No hya cursos
                                 </div>
                             @endif
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

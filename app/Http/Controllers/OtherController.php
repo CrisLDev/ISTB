@@ -92,7 +92,7 @@ class OtherController extends Controller
         ->fullname($fullname)
         ->email($email)
         ->code($code)
-        ->paginate(10);
+        ->paginate(5);
         return view('students.all', compact('students'));
     }
 
@@ -110,7 +110,7 @@ class OtherController extends Controller
         ->fullname($fullname)
         ->email($email)
         ->code($code)
-        ->paginate(10);
+        ->paginate(5);
         return view('administration.all', compact('administrations'));
     }
 
@@ -128,7 +128,7 @@ class OtherController extends Controller
         ->fullname($fullname)
         ->email($email)
         ->code($code)
-        ->paginate(10);
+        ->paginate(5);
         return view('teachers.all', compact('teachers'));
     }
 
