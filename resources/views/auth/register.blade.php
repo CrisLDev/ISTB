@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card mb-5">
                 <div class="card-header bg-white text-center">
                     <h3 class="font-weight-bold">{{ __('Registro') }}</h3>
                     <img style="max-width: 100px" src="./assets/logo.svg" alt="Logo">
