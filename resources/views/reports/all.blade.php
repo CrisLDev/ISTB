@@ -4,8 +4,8 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-xl-12 col-md-8 mb-3">
-            <div class="card">
+        <div class="col-xl-12 col-md-8 mb-5">
+            <div class="card mb-5">
                 <div class="card-header bg-white text-center pt-4 mb-3">
                     <h3 class="card-title">
                         Todos los reportes

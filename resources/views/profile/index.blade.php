@@ -3,8 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-xl-12 mb-3">
-            <div class="card">
+        <div class="col-xl-12 mb-5">
+            <div class="card mb-5">
                 <div class="card-header bg-white text-center mb-3 pt-4">
                     <a href="{{route('user.me')}}" class="editButton">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
