@@ -140,6 +140,22 @@
                                     />
                                 </div>
                             </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Fecha de nacimiento:</label>
+                                    <input
+                                    type="date"
+                                    autocomplete="none"
+                                    spellcheck="false"
+                                    name="birthDate"
+                                    id="birthDate"
+                                    placeholder="Ingresa tu fecha de nacimiento"
+                                    class="form-control mb-2"
+                                    value="{{$people->birthDate}}"
+                                    required
+                                    />
+                                </div>
+                            </div>
                             @if(Request::is('people/form/administration/edit/'.$people->id))
                             <div class="col-md-12">
                                 <div class="form-group">

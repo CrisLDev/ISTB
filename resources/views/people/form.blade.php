@@ -154,8 +154,6 @@
                                     placeholder="Ingresa tu fecha de nacimiento"
                                     class="form-control mb-2"
                                     value="{{old('birthDate')}}"
-                                    maxlength="50"
-                                    minlength="10"
                                     required
                                     />
                                 </div>
