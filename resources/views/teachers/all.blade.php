@@ -26,12 +26,12 @@
                     </form>
                 </div>
                 <div class="card-body">
-                    <div class="container">
-                        <div class="row justify-content-center">
                             @if (count($teachers) !== 0)
 
                                 @foreach ($teachers as $teacher)
-                                <div class="col-md-2 col-sm-2 d-flex align-items-center justify-content-center mb-4">
+                                <div class="container mb-4 border-bottom">
+                                    <div class="row justify-content-center">
+                                <div class="col-md-2 col-sm-2 d-flex align-items-center justify-content-center">
                                     <img src="{{Gravatar::get($teacher->email)}}" alt="peopleGravatar">
                                 </div>
 
@@ -47,7 +47,7 @@
 
                                 </div>
 
-                                <div class="col-md-2 col-sm-2 d-flex align-items-center mb-4">
+                                <div class="col-md-2 col-sm-2 d-flex align-items-center">
                                     <a class="btn btn-dark mr-2" href="{{route('people.editTeacher', $teacher->id)}}">editar</a>
                                 <form action="{{route('people.deleteTeacher', $teacher->id)}}" method="POST" class="d-inline">
                                     @method('DELETE')
@@ -57,7 +57,8 @@
                                     </button>
                                 </form>
                                 </div>
-
+                            </div>
+                        </div>
                                 @endforeach
 
                                 @else
@@ -71,8 +72,6 @@
                         <div class="container d-flex justify-content-center">
                             {{$teachers->links()}}
                         </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

@@ -27,10 +27,10 @@
                         <div class="row">
                             @if (count($subjects) !== 0)
                                 @foreach ($subjects as $subject)
-                                    <div class="col-md-9 col-5 mb-2">
+                                    <div class="col-md-9 col-5">
                                         <p>{{$subject->subjectName}}</p>
                                     </div>
-                                    <div class="col-md-3 col-7 mb-2">
+                                    <div class="col-md-3 col-7">
                                         <a class="btn btn-dark mr-2" href="{{route('other.editSubject', $subject->id)}}">editar</a>
                                         <form action="{{route('other.deleteSubject', $subject->id)}}" method="POST" class="d-inline">
                                             @method('DELETE')
@@ -41,7 +41,7 @@
                                         </form>
                                     </div>
                                 @endforeach
-                                <div class="col-md-12 mb-2 d-flex justify-content-center">
+                                <div class="col-md-12 d-flex justify-content-center">
                                     <p>{{$subjects->links()}}</p>
                                 </div>
                             @else
@@ -50,12 +50,14 @@
                                 </div>
                             @endif
 
+                            <div class="col-md-12 mb-4"><hr></div>
+
                             @if (count($courses) !== 0)
                                 @foreach ($courses as $course)
-                                    <div class="col-md-9 col-5 mb-2">
+                                    <div class="col-md-9 col-5">
                                         <p>{{$course->courseName}}</p>
                                     </div>
-                                    <div class="col-md-3 col-7 mb-2">
+                                    <div class="col-md-3 col-7">
                                         <a class="btn btn-dark mr-2" href="{{route('other.editCourse', $course->id)}}">editar</a>
                                         <form action="{{route('other.deleteCourse', $course->id)}}" method="POST" class="d-inline">
                                             @method('DELETE')
