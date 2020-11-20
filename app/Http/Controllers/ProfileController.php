@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 
+use Illuminate\Validation\Rule;
+
 use App\Models\Profile;
 
 class ProfileController extends Controller
