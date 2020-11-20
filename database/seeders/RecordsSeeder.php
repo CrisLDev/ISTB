@@ -17,7 +17,6 @@ class RecordsSeeder extends Seeder
     {
         Record::create([
             'id' => '1',
-            'resume' => 'Clase de desarrollo',
             'user_id' => '1',
             'course_id' => '1',
             'student_id' => '1',
@@ -26,13 +25,12 @@ class RecordsSeeder extends Seeder
             'cardiovascular' => 'no',
             'lice' => 'no',
             'asthma' => 'no',
-            'malformation' => 'No se observan malfomraciones'
+            'malformation' => 'No se observan malfomraciones',
             'glasses' => 'no',
-            'observations' => ''
+            'observations' => 'Se debe consultar con un profesional mas preparado'
         ]);
         Record::create([
             'id' => '2',
-            'resume' => 'Clase de psicologia',
             'user_id' => '1',
             'course_id' => '4',
             'student_id' => '2',
@@ -41,13 +39,12 @@ class RecordsSeeder extends Seeder
             'cardiovascular' => 'si',
             'lice' => 'si',
             'asthma' => 'no',
-            'malformation' => 'No se observan malfomraciones'
+            'malformation' => 'No se observan malfomraciones',
             'glasses' => 'si',
-            'observations' => ''
+            'observations' => 'Se debe llevar a un lugar mas capacitado'
         ]);
         Record::create([
             'id' => '3',
-            'resume' => 'Problema en clase de educacion historica',
             'user_id' => '1',
             'course_id' => '5',
             'student_id' => '2',
@@ -56,13 +53,12 @@ class RecordsSeeder extends Seeder
             'cardiovascular' => 'no',
             'lice' => 'no',
             'asthma' => 'si',
-            'malformation' => 'No se observan malfomraciones'
+            'malformation' => 'No se observan malfomraciones',
             'glasses' => 'si',
-            'observations' => ''
+            'observations' => 'No es necesario mayor intervencion'
         ]);
         Record::create([
             'id' => '4',
-            'resume' => 'Realizacoin del proyectyos para Desarrollo y aprendizaje',
             'user_id' => '1',
             'course_id' => '4',
             'student_id' => '3',
@@ -71,13 +67,12 @@ class RecordsSeeder extends Seeder
             'cardiovascular' => 'si',
             'lice' => 'no',
             'asthma' => 'si',
-            'malformation' => 'Se observa una malformacion en el pie derecho'
+            'malformation' => 'Se observa una malformacion en el pie derecho',
             'glasses' => 'no',
             'observations' => ''
         ]);
         Record::create([
             'id' => '5',
-            'resume' => 'Clase de teoria pedagogica',
             'user_id' => '1',
             'course_id' => '5',
             'student_id' => '5',
@@ -86,13 +81,12 @@ class RecordsSeeder extends Seeder
             'cardiovascular' => 'no',
             'lice' => 'no',
             'asthma' => 'no',
-            'malformation' => 'No se observan malfomraciones'
+            'malformation' => 'No se observan malfomraciones',
             'glasses' => 'no',
-            'observations' => ''
+            'observations' => 'No es necesario mayor intervencion'
         ]);
         Record::create([
             'id' => '6',
-            'resume' => 'Creación de ambientes de aprendizaje',
             'user_id' => '1',
             'course_id' => '3',
             'student_id' => '6',
@@ -101,13 +95,12 @@ class RecordsSeeder extends Seeder
             'cardiovascular' => 'si',
             'lice' => 'no',
             'asthma' => 'si',
-            'malformation' => 'No se observan malfomraciones'
+            'malformation' => 'No se observan malfomraciones',
             'glasses' => 'si',
-            'observations' => ''
+            'observations' => 'No es necesario mayor intervencion'
         ]);
         Record::create([
             'id' => '7',
-            'resume' => 'Clase de Educación Artística',
             'user_id' => '1',
             'course_id' => '5',
             'student_id' => '8',
@@ -116,7 +109,7 @@ class RecordsSeeder extends Seeder
             'cardiovascular' => 'si',
             'lice' => 'si',
             'asthma' => 'no',
-            'malformation' => 'No se observan malfomraciones'
+            'malformation' => 'No se observan malfomraciones',
             'glasses' => 'no',
             'observations' => ''
         ]);
