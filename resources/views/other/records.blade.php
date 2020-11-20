@@ -41,7 +41,7 @@
                                         <textarea type="text" class="form-control" id="allergies" name="allergies" placeholder="Ingresar las alergias" required>{{old('allergies')}}</textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label for="Assistance">Asistencia</label>
+                                        <label for="Assistance">Tratamientos</label>
                                         <textarea type="text" class="form-control" id="treatment" name="treatment" placeholder="Ingrese una descripcion del tratamiento" required>{{old('treatment')}}</textarea>
                                     </div>
                                     <div class="form-group">
