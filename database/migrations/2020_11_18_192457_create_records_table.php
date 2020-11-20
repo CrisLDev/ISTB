@@ -21,14 +21,14 @@ class CreateRecordsTable extends Migration
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
             $table->unsignedBigInteger('student_id');
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
-            $table->text('allergies');
-            $table->text('treatment');
+            $table->text('allergies')->nullable();
+            $table->text('treatment')->nullable();
             $table->string('cardiovascular');
             $table->string('lice');
             $table->string('asthma');
-            $table->text('malformation');
+            $table->text('malformation')->nullable();
             $table->string('glasses');
-            $table->text('observations');
+            $table->text('observations')->nullable();
             $table->timestamps();
             $table->engine = 'InnoDB';
             $table->charset = 'utf8';
