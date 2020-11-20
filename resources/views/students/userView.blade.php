@@ -31,6 +31,8 @@
                         <p>{{$student->email}}</p>
                         <p class="font-weight-bold">Codigo:</p>
                         <p>{{$student->code}}</p>
+                        <p class="font-weight-bold">Fecha de nacimiento:</p>
+                        <p>{{$student->birthDate}}</p>
                     </div>
                     <div class="mt-5">
                         @if (count($records) == 0)
@@ -49,26 +51,42 @@
                                 <div id="collapse{{$item->course_id}}" class="collapse show" aria-labelledby="heading{{$item->course_id}}" data-parent="#accordionGrades">
                                     <div class="card-body">
                                         <div class="container">
-                                                <div class="container">
-                                                    <p class="font-weight-bold">Curso:</p>
-                                                    <p>{{$item->courseName}}</p>
-                                                    <p class="font-weight-bold">Alergias:</p>
-                                                    <p>{{$item->allergies}}</p>
-                                                    <p class="font-weight-bold">Tratamientos:</p>
-                                                    <p>{{$item->treatment}}</p>
-                                                    <p class="font-weight-bold">Enfermedad cardiovascular:</p>
-                                                    <p>{{$item->cardiovascular}}</p>
-                                                    <p class="font-weight-bold">Piojos:</p>
-                                                    <p>{{$item->lice}}</p>
-                                                    <p class="font-weight-bold">Asma:</p>
-                                                    <p>{{$item->asthma}}</p>
-                                                    <p class="font-weight-bold">Malformaciones:</p>
-                                                    <p>{{$item->malformation}}</p>
-                                                    <p class="font-weight-bold">Lentes:</p>
-                                                    <p>{{$item->glasses}}</p>
-                                                    <p class="font-weight-bold">Observaciones:</p>
-                                                    <p>{{$item->observations}}</p>
-                                                </div>
+                                            <div class="container">
+                                                <p class="font-weight-bold">Curso:</p>
+                                                <p>{{$item->courseName}}</p>
+                                                <p class="font-weight-bold">Alergias:</p>
+                                                @if($item->allergies !== '')
+                                                <p>{{$item->allergies}}</p>
+                                                @else
+                                                <p>N/A</p>
+                                                @endif
+                                                <p class="font-weight-bold">Tratamientos:</p>
+                                                @if($item->treatment !== '')
+                                                <p>{{$item->treatment}}</p>
+                                                @else
+                                                <p>N/A</p>
+                                                @endif
+                                                <p class="font-weight-bold">Enfermedad cardiovascular:</p>
+                                                <p>{{$item->cardiovascular}}</p>
+                                                <p class="font-weight-bold">Piojos:</p>
+                                                <p>{{$item->lice}}</p>
+                                                <p class="font-weight-bold">Asma:</p>
+                                                <p>{{$item->asthma}}</p>
+                                                <p class="font-weight-bold">Malformaciones:</p>
+                                                @if($item->malformation !== '')
+                                                <p>{{$item->malformation}}</p>
+                                                @else
+                                                <p>N/A</p>
+                                                @endif
+                                                <p class="font-weight-bold">Lentes:</p>
+                                                <p>{{$item->glasses}}</p>
+                                                <p class="font-weight-bold">Observaciones:</p>
+                                                @if($item->observations !== '')
+                                                <p>{{$item->observations}}</p>
+                                                @else
+                                                <p>N/A</p>
+                                                @endif
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
