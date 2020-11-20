@@ -39,14 +39,14 @@
                         @foreach ($records as $item)
                             <div class="accordion" id="accordionGrades">
                                 <div class="card mb-4">
-                                <div class="card-header bg-white" id="heading{{$item[0]['course_id']}}">
+                                <div class="card-header bg-white" id="heading{{$item->course_id}}">
                                     <h2 class="mb-0">
-                                    <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse{{$item[0]['course_id']}}" aria-expanded="true" aria-controls="collapse{{$item[0]['course_id']}}">
+                                    <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse{{$item->course_id}}" aria-expanded="true" aria-controls="collapse{{$item->course_id}}">
                                         <h3 class="mb-0">Fichas {{$item->courseName}}
                                     </button>
                                     </h2>
                                 </div>
-                                <div id="collapse{{$item[0]['course_id']}}" class="collapse show" aria-labelledby="heading{{$item[0]['course_id']}}" data-parent="#accordionGrades">
+                                <div id="collapse{{$item->course_id}}" class="collapse show" aria-labelledby="heading{{$item->course_id}}" data-parent="#accordionGrades">
                                     <div class="card-body">
                                         <div class="container">
                                                 <div class="container">
@@ -87,14 +87,14 @@
                             @foreach ($reports as $item)
                                 <div class="accordion" id="accordionGrades">
                                     <div class="card mb-4">
-                                    <div class="card-header bg-white" id="headingR{{$item[0]['course_id']}}">
+                                    <div class="card-header bg-white" id="headingR{{$item->course_id}}">
                                         <h2 class="mb-0">
-                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseR{{$item[0]['course_id']}}" aria-expanded="true" aria-controls="collapseR{{$item[0]['course_id']}}">
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseR{{$item->course_id}}" aria-expanded="true" aria-controls="collapseR{{$item->course_id}}">
                                             <h3 class="mb-0">Reportes
                                         </button>
                                         </h2>
                                     </div>
-                                    <div id="collapseR{{$item[0]['course_id']}}" class="collapse show" aria-labelledby="headingR{{$item[0]['course_id']}}" data-parent="#accordionGrades">
+                                    <div id="collapseR{{$item->course_id}}" class="collapse show" aria-labelledby="headingR{{$item->course_id}}" data-parent="#accordionGrades">
                                         <div class="card-body">
                                                 <div class="container-fluid border shadow pt-3 pb-3">
                                                     <p class="font-weight-bold">Nombre de la materia:</p>
