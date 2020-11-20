@@ -30,7 +30,7 @@
 
                                 @foreach ($administrations as $administration)
 
-                                <div class="container mb-4 border-bottom">
+                                <div class="container mb-5 border-bottom">
                                     <div class="row justify-content-center">
 
                                 <div class="col-md-2 col-sm-2 d-flex justify-content-center align-items-center">
@@ -52,7 +52,7 @@
 
                                 </div>
 
-                                <div class="col-md-2 col-sm-2 d-flex align-items-center">
+                                <div class="col-md-2 col-sm-12 d-flex align-items-center mb-5">
                                     <a class="btn btn-dark mr-2" href="{{route('people.editAdmin', $administration->id)}}">editar</a>
                                 <form action="{{route('people.deleteAdmin', $administration->id)}}" method="POST" class="d-inline">
                                     @method('DELETE')

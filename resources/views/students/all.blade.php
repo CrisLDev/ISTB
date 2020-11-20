@@ -30,14 +30,14 @@
 
                                 @foreach ($students as $student)
 
-                                <div class="container mb-4 border-bottom">
+                                <div class="container mb-5 border-bottom">
                                     <div class="row justify-content-center">
 
-                                <div class="col-md-2 col-sm-2 d-flex align-items-center justify-content-center">
+                                <div class="col-lg-2 col-md-2 col-sm-12 d-flex align-items-center justify-content-center">
                                     <img src="{{Gravatar::get($student->email)}}" alt="peopleGravatar">
                                 </div>
 
-                                <div class="col-md-7 col-sm-12 mb-4">
+                                <div class="col-lg-7 col-md-10 col-sm-12 mb-4">
                                     <p class="font-weight-bold">Nombre completo:</p>
                                     <p>{{$student->fullname}}</p>
 
@@ -49,7 +49,7 @@
 
                                 </div>
 
-                                <div class="col-md-3 col-sm-4 d-flex align-items-center">
+                                <div class="col-lg-3 col-md-12 col-sm-12 col-12 d-flex align-items-center mb-5">
                                     <a class="btn btn-info mr-2" href="{{route('students.showStudent', $student->id)}}">ver</a>
                                     <a class="btn btn-dark mr-2" href="{{route('people.editStudent', $student->id)}}">editar</a>
                                 <form action="{{route('people.deleteStudent', $student->id)}}" method="POST" class="d-inline">

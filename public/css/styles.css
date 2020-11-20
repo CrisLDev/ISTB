@@ -162,4 +162,9 @@ ul.CTAs a {
     #appName{
         justify-content: center!important;
     }
+
+    #sidebarCollapse{
+        display: block!important;
+        width: 100%!important;
+    }
 }

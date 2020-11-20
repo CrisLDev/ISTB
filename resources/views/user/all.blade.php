@@ -42,7 +42,7 @@
                                     <p>{{$user->role}}</p>
                                 </div>
 
-                                <div class="col-md-3 col-sm-12d-flex align-items-center">
+                                <div class="col-md-3 col-sm-12d-flex align-items-center mb-5">
                                     <a class="btn btn-dark mr-2" href="{{route('user.edit', $user->id)}}">editar</a>
 
                                     <form action="{{route('user.delete', $user->id)}}" method="POST" class="d-inline">
