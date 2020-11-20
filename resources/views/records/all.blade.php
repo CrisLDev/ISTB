@@ -10,6 +10,32 @@
                     <h3 class="card-title">
                         Todas las fichas
                     </h3>
+                    <form method="get">
+                        <div class="form-group">
+                            <input type="text" placeholder="Alergias" name="allergies" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Tratamiento" name="treatment" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Enfermedad cardiovascular" name="cardiovascular" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Piojos" name="lice" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Asma" name="asthma" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Malformaciones" name="malformation" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Lentes" name="glasses" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-secondary">Buscar</button>
+                        </div>
+                    </form>
                 </div>
                 <div class="card-body">
                             @if (count($records) === 0)
@@ -28,10 +54,6 @@
                                         <div>
                                             <h4>Alergias</h4>
                                             <p>{{$record->allergies}}</p>
-                                        </div>
-                                        <div>
-                                            <h4>Lentes</h4>
-                                            <p>{{$record->glasses}}</p>
                                         </div>
                                         <div>
                                             <h4>Nombre del estdiante</h4>

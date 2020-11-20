@@ -158,12 +158,26 @@ class OtherController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexRecord()
+    public function indexRecord(Request $request)
     {
+        $allergies = $request->get('allergies');
+        $treatment = $request->get('treatment');
+        $cardiovascular = $request->get('cardiovascular');
+        $lice = $request->get('lice');
+        $asthma = $request->get('asthma');
+        $glasses = $request->get('glasses');
+        $malformation = $request->get('malformation');
         $records = Record::join('users', 'records.user_id', '=', 'users.id')
                         ->join('courses', 'records.course_id', '=', 'courses.id')
                         ->join('students', 'records.student_id', '=', 'students.id')
                         ->select('records.*', 'records.allergies', 'records.glasses', 'students.fullname as sFullname', 'courses.courseName', 'records.treatment', 'records.cardiovascular', 'records.lice', 'records.asthma', 'records.malformation', 'records.glasses', 'records.observations')
+                        ->allergies($allergies)
+                        ->treatment($treatment)
+                        ->cardiovascular($cardiovascular)
+                        ->lice($lice)
+                        ->asthma($asthma)
+                        ->glasses($glasses)
+                        ->malformation($malformation)
                         ->paginate(10);
         return view('records.all', compact('records'));
     }
@@ -512,7 +526,6 @@ class OtherController extends Controller
     public function updateRecord(Request $request, $id)
     {
         $data = Record::where('id', $id)->first();
-        $data = new Record();
         $rules = [
             'course_id' => 'required',
             'student_id' => 'required',
