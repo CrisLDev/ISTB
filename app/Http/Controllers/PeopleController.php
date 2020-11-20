@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\Administration;
+use Illuminate\Validation\Rule;
 
 class PeopleController extends Controller
 {
@@ -54,9 +55,9 @@ class PeopleController extends Controller
         $data = new Administration();
         $rules = [
             'fullname' => 'required|max:60',
-            'telephoneNumber' => 'required|unique:administrations|numeric',
+            'telephoneNumber' => ['required',Rule::unique('administrations')->ignore($id),'numeric', 'max:9999999999'],
+            'dni' => ['required',Rule::unique('administrations')->ignore($id),'numeric', 'max:999999999999999'],
             'role' => 'required|max:20|min:5',
-            'dni' => 'required|unique:administrations|numeric',
             'address' => 'required|max:40',
             'age' => 'required|max:100|numeric',
             'email' => 'required|max:50',
@@ -95,10 +96,10 @@ class PeopleController extends Controller
         $data = new Student();
         $rules = [
             'fullname' => 'required|max:60',
-            'telephoneNumber' => 'required|unique:students|numeric',
+            'telephoneNumber' => 'required|unique:students|numeric|max:9999999999',
             'dni' => 'required|unique:students|numeric',
             'address' => 'required|max:40',
-            'age' => 'required|max:100|numeric',
+            'age' => 'required|max:6|numeric',
             'email' => 'required|max:50',
         ];
         $niceNames = [
@@ -133,8 +134,8 @@ class PeopleController extends Controller
         $data = new Teacher();
         $rules = [
             'fullname' => 'required|max:60',
-            'telephoneNumber' => 'required|unique:teachers|numeric',
-            'dni' => 'required|unique:teachers|numeric',
+            'telephoneNumber' => ['required',Rule::unique('teachers')->ignore($id),'numeric', 'max:9999999999'],
+            'dni' => ['required',Rule::unique('teachers')->ignore($id),'numeric', 'max:999999999999999'],
             'address' => 'required|max:40',
             'age' => 'required|max:100|numeric',
             'email' => 'required|max:50',
@@ -214,9 +215,8 @@ class PeopleController extends Controller
         $data = Teacher::where('id', $id)->first();
         $rules = [
             'fullname' => 'required|max:60',
-            'telephoneNumber' => 'required|unique:teachers|max:10|numeric',
-            'user_id' => 'required',
-            'dni' => 'required|unique:teachers|max:15|numeric',
+            'telephoneNumber' => ['required',Rule::unique('teachers')->ignore($id),'numeric', 'max:9999999999'],
+            'dni' => ['required',Rule::unique('teachers')->ignore($id),'numeric', 'max:999999999999999'],
             'address' => 'required|max:40',
             'age' => 'required|max:2|numeric',
             'email' => 'required|max:50',
@@ -259,17 +259,15 @@ class PeopleController extends Controller
         $data = Administration::where('id', $id)->first();
         $rules = [
             'fullname' => 'required|max:60',
-            'telephoneNumber' => 'required|unique:administrations|max:10|numeric',
+            'telephoneNumber' => ['required',Rule::unique('administrations')->ignore($id),'numeric', 'max:9999999999'],
+            'dni' => ['required',Rule::unique('administrations')->ignore($id),'numeric', 'max:999999999999999'],
             'role' => 'required|max:20|min:5',
-            'user_id' => 'required',
-            'dni' => 'required|unique:administrations|max:15|numeric',
             'address' => 'required|max:40',
             'age' => 'required|max:2|numeric',
             'email' => 'required|max:50',
         ];
         $niceNames = [
             'fullname' => 'nombre completo',
-            'user_id' => 'usuario',
             'telephoneNumber' => 'número de teléfono',
             'role' => 'cargo',
             'dni' => 'número de cédula',
@@ -307,16 +305,14 @@ class PeopleController extends Controller
         $data = Student::where('id', $id)->first();
         $rules = [
             'fullname' => 'required|max:60',
-            'telephoneNumber' => 'required|unique:students|max:10|numeric',
-            'user_id' => 'required',
-            'dni' => 'required|unique:students|max:15|numeric',
+            'telephoneNumber' => ['required',Rule::unique('students')->ignore($id),'numeric', 'max:9999999999'],
+            'dni' => ['required',Rule::unique('students')->ignore($id),'numeric', 'max:999999999999999'],
             'address' => 'required|max:40',
-            'age' => 'required|max:2|numeric',
+            'age' => 'required|max:6|numeric',
             'email' => 'required|max:50',
         ];
         $niceNames = [
             'fullname' => 'nombre completo',
-            'user_id' => 'usuario',
             'telephoneNumber' => 'número de teléfono',
             'dni' => 'número de cédula',
             'address' => 'lugar de domicilio',

@@ -61,7 +61,7 @@
                                     id="telephoneNumber"
                                     placeholder="Ingresa tu nombre completo"
                                     class="form-control mb-2"
-                                    value="{{$people->telephoneNumber}}"
+                                    value="0{{$people->telephoneNumber}}"
                                     maxlength="11"
                                     minlength="10"
                                     required
