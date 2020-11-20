@@ -12,11 +12,11 @@
                     </h3>
                 </div>
                 <div class="card-body">
-                    <div class="container">
-                        <div class="row justify-content-center">
                             @if (count($administrations) !== 0)
 
                                 @foreach ($administrations as $administration)
+                                <div class="container border-bottom mb-4">
+                                    <div class="row justify-content-center">
 
                                 <div class="col-md-2 col-sm-2 d-flex align-items-center justify-content-center">
                                     <img src="{{Gravatar::get($administration->email)}}" alt="peopleGravatar">
@@ -44,12 +44,13 @@
                                     </button>
                                 </form>
                                 </div>
-
+                            </div>
+                        </div>
                                 @endforeach
 
                                 @else
 
-                                <div class="col-md-12">
+                                <div class="container justify-content-center">
                                     <p>No hay registros de Personal</p>
                                 </div>
 
@@ -58,6 +59,8 @@
                                 @if (count($teachers) !== 0)
 
                                 @foreach ($teachers as $teacher)
+                                <div class="container border-bottom mb-4">
+                                    <div class="row justify-content-center">
                                 <div class="col-md-2 d-flex align-items-center justify-content-center">
                                     <img src="{{Gravatar::get($teacher->email)}}" alt="peopleGravatar">
                                 </div>
@@ -84,7 +87,8 @@
                                     </button>
                                 </form>
                                 </div>
-
+                                    </div>
+                                </div>
                                 @endforeach
 
                                 @else
@@ -98,6 +102,8 @@
                                 @if (count($students) !== 0)
 
                                 @foreach ($students as $student)
+                                <div class="container border-bottom mb-4">
+                                    <div class="row justify-content-center">
 
                                 <div class="col-md-2 d-flex align-items-center">
                                     <img src="{{Gravatar::get($student->email)}}" alt="peopleGravatar">
@@ -125,7 +131,8 @@
                                     </button>
                                 </form>
                                 </div>
-
+                                    </div>
+                                </div>
                                 @endforeach
 
                                 @else
@@ -135,8 +142,6 @@
                                 </div>
 
                             @endif
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
