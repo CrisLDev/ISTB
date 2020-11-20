@@ -203,7 +203,7 @@ class OtherController extends Controller
     {
         $data = new Subject();
         $rules = [
-            'subjectName' => 'required|unique:subjects|max:20',
+            'subjectName' => 'required|unique:subjects|max:40',
         ];
         $niceNames = [
             'subjectName' => 'nombre de la materia'
@@ -433,7 +433,7 @@ class OtherController extends Controller
     {
         $data = Course::where('id', $id)->first();
         $rules = [
-            'courseName' => 'required|max:20',
+            'courseName' => 'required|max:40',
         ];
         $niceNames = [
             'courseName' => 'nombre del curso'
