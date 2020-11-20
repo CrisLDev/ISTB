@@ -33,11 +33,11 @@
                                 <div class="container mb-5 border-bottom">
                                     <div class="row justify-content-center">
 
-                                <div class="col-md-2 col-sm-2 d-flex justify-content-center align-items-center">
+                                <div class="col-lg-2 col-md-2 col-sm-12 col-12 d-flex justify-content-center align-items-center">
                                     <img class="mb-2" src="{{Gravatar::get($administration->email)}}" alt="peopleGravatar">
                                 </div>
 
-                                <div class="col-md-8 col-sm-12">
+                                <div class="col-lg-7 col-md-10 col-sm-12 col-12">
                                     <p class="font-weight-bold">Nombre:</p>
                                     <p>{{$administration->fullname}}</p>
 
@@ -52,7 +52,7 @@
 
                                 </div>
 
-                                <div class="col-md-2 col-sm-12 d-flex align-items-center mb-5">
+                                <div class="col-lg-3 col-md-12 col-sm-12 col-12 d-flex align-items-center mb-5">
                                     <a class="btn btn-dark mr-2" href="{{route('people.editAdmin', $administration->id)}}">editar</a>
                                 <form action="{{route('people.deleteAdmin', $administration->id)}}" method="POST" class="d-inline">
                                     @method('DELETE')

@@ -18,11 +18,11 @@
                                 <div class="container border-bottom mb-4">
                                     <div class="row justify-content-center">
 
-                                <div class="col-md-2 col-sm-2 d-flex align-items-center justify-content-center">
+                                <div class="col-lg-2 col-md-2 col-sm-12 col-12 d-flex align-items-center justify-content-center">
                                     <img src="{{Gravatar::get($administration->email)}}" alt="peopleGravatar">
                                 </div>
 
-                                <div class="col-md-8 col-sm-12">
+                                <div class="col-lg-7 col-md-10 col-sm-12 col-12">
                                     <p class="font-weight-bold">Nombre completo:</p>
                                     <p>{{$administration->fullname}}</p>
 
@@ -34,7 +34,7 @@
 
                                 </div>
 
-                                <div class="col-md-2 col-sm-2 d-flex align-items-center">
+                                <div class="col-lg-3 col-md-12 col-sm-12 col-12 d-flex align-items-center mb-5">
                                     <a class="btn btn-dark mr-2" href="{{route('people.editAdmin', $administration->id)}}">editar</a>
                                 <form action="{{route('people.deleteAdmin', $administration->id)}}" method="POST" class="d-inline">
                                     @method('DELETE')
@@ -61,11 +61,11 @@
                                 @foreach ($teachers as $teacher)
                                 <div class="container border-bottom mb-4">
                                     <div class="row justify-content-center">
-                                <div class="col-md-2 d-flex align-items-center justify-content-center">
+                                <div class="col-md-2 col-sm-12 col-12 d-flex align-items-center justify-content-center">
                                     <img src="{{Gravatar::get($teacher->email)}}" alt="peopleGravatar">
                                 </div>
 
-                                <div class="col-md-8 col-sm-12">
+                                <div class="col-md-10 col-sm-12 col-12">
                                     <p class="font-weight-bold">Nombre completo:</p>
                                     <p>{{$teacher->fullname}}</p>
 
@@ -77,7 +77,7 @@
 
                                 </div>
 
-                                <div class="col-md-2 d-flex align-items-center">
+                                <div class="col-md-12 col-sm-12 col-12 d-flex align-items-center mb-5">
                                     <a class="btn btn-dark mr-2" href="{{route('people.editTeacher', $teacher->id)}}">editar</a>
                                 <form action="{{route('people.deleteTeacher', $teacher->id)}}" method="POST" class="d-inline">
                                     @method('DELETE')
@@ -121,7 +121,7 @@
 
                                 </div>
 
-                                <div class="col-md-2 d-flex align-items-center">
+                                <div class="col-md-12 d-flex align-items-center mb-5">
                                     <a class="btn btn-dark mr-2" href="{{route('people.editStudent', $student->id)}}">editar</a>
                                 <form action="{{route('people.deleteStudent', $student->id)}}" method="POST" class="d-inline">
                                     @method('DELETE')

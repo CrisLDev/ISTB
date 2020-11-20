@@ -50,7 +50,7 @@
                             @foreach ($records as $record)
                             <div class="container border pt-2 pb-2 mb-5">
                                 <div class="row">
-                                    <div class="col-md-9">
+                                    <div class="col-xl-9 col-lg-12 col-md-12 col-sm-12">
                                         <div>
                                             <h4>Alergias</h4>
                                             <p>{{$record->allergies}}</p>
@@ -93,7 +93,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12">
                                         <a class="btn btn-dark" href="{{route('records.editRecords', $record->id)}}">editar</a>
 
                                         <form action="{{route('records.destroyRecords', $record->id)}}" method="POST" class="d-inline">

@@ -27,11 +27,11 @@
                             <div class="container mb-4 border-bottom">
                                 <div class="row justify-content-center">
 
-                                <div class="col-md-2 col-sm-12 d-flex align-items-center justify-content-center">
+                                <div class="col-lg-2 col-md-2 col-sm-12 d-flex align-items-center justify-content-center">
                                     <img class="mb-2" src="{{Gravatar::get($user->email)}}" alt="userGravatar">
                                 </div>
 
-                                <div class="col-md-7 col-sm-12">
+                                <div class="col-lg-7 col-md-10 col-sm-12 col-sm-12">
                                     <p class="font-weight-bold">Nombre de usuario:</p>
                                     <p>{{$user->username}}</p>
 
@@ -42,7 +42,7 @@
                                     <p>{{$user->role}}</p>
                                 </div>
 
-                                <div class="col-md-3 col-sm-12d-flex align-items-center mb-5">
+                                <div class="col-lg-3 col-md-12 col-sm-12 col-sm-12d-flex align-items-center mb-5">
                                     <a class="btn btn-dark mr-2" href="{{route('user.edit', $user->id)}}">editar</a>
 
                                     <form action="{{route('user.delete', $user->id)}}" method="POST" class="d-inline">

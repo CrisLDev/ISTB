@@ -32,7 +32,7 @@
 
                                 <div class="container border pt-3 pb-3 mb-5">
                                     <div class="row">
-                                        <div class="col-md-9">
+                                        <div class="col-lg-8 col-md-12">
                                             <div>
                                                 <h4>Resumen</h4>
                                                 <p>{{$report->resume}}</p>
@@ -50,14 +50,14 @@
                                                 <p>{{$report->resume}}</p>
                                                 <span>{{$report->content}}</span>
                                             </div>
-                                            <div>
+                                            <div class="mb-3">
                                                 <h4>Curso y materia</h4>
                                                 <span>{{$report->courseName}}</span>
                                                 <span>{{$report->subjectName}}</span>
                                             </div>
                                         </div>
         
-                                        <div class="col-md-3">
+                                        <div class="col-lg-4 col-md-12">
                                             <a class="btn btn-dark" href="{{route('reports.editReport', $report->id)}}">editar</a>
         
                                             <form action="{{route('reports.destroyReport', $report->id)}}" method="POST" class="d-inline">
