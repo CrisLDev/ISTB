@@ -157,3 +157,9 @@ ul.CTAs a {
   ::-webkit-scrollbar-thumb:hover {
     background: #555; 
   }
+
+@media(max-width: 767.98px){
+    #appName{
+        justify-content: center!important;
+    }
+}

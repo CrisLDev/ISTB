@@ -106,7 +106,7 @@
             <div id="content">
         
                 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-                <div class="container d-flex justify-content-between">
+                <div class="container d-flex justify-content-between" id="appName">
                     @guest
                     @else
                     @if(Auth::user()->role == 'admin' || Auth::user()->role == 'coor')
@@ -122,7 +122,7 @@
                         <img class="w-25 mr-2" src="{{ asset('assets/logo.svg') }}" alt="logo">
                         <h3 class="mb-0">{{ config('app.name', 'Laravel') }}</h3>
                     </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <button class="navbar-toggler btn-block" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                         <span class="navbar-toggler-icon"></span>
                     </button>
     
