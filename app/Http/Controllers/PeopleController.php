@@ -55,8 +55,8 @@ class PeopleController extends Controller
         $data = new Administration();
         $rules = [
             'fullname' => 'required|max:60',
-            'telephoneNumber' => ['required',Rule::unique('administrations')->ignore($id),'numeric', 'max:9999999999'],
-            'dni' => ['required',Rule::unique('administrations')->ignore($id),'numeric', 'max:999999999999999'],
+            'telephoneNumber' => 'required|unique:administrations|numeric|max:9999999999',
+            'dni' => 'required|unique:administrations|numeric|max:999999999999999',
             'role' => 'required|max:20|min:5',
             'address' => 'required|max:40',
             'age' => 'required|max:100|numeric',
@@ -134,8 +134,8 @@ class PeopleController extends Controller
         $data = new Teacher();
         $rules = [
             'fullname' => 'required|max:60',
-            'telephoneNumber' => ['required',Rule::unique('teachers')->ignore($id),'numeric', 'max:9999999999'],
-            'dni' => ['required',Rule::unique('teachers')->ignore($id),'numeric', 'max:999999999999999'],
+            'telephoneNumber' => 'required|unique:teachers|numeric|max:9999999999',
+            'dni' => 'required|unique:teachers|numeric|max:999999999999999',
             'address' => 'required|max:40',
             'age' => 'required|max:100|numeric',
             'email' => 'required|max:50',

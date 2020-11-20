@@ -27,7 +27,7 @@
                                     id="telephoneNumber"
                                     placeholder="Ingresa tu número de telefono"
                                     class="form-control mb-2"
-                                    value="{{$profile->telephoneNumber}}"
+                                    value="0{{$profile->telephoneNumber}}"
                                     />
                                 </div>
                             </div>

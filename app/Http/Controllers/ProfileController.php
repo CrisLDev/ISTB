@@ -111,8 +111,8 @@ class ProfileController extends Controller
         $uid = $id;
         $data = Profile::where('id', $id)->first();
         $rules = [
-            'telephoneNumber' => 'required|max:10',
-            'dni' => 'required|max:10',
+            'telephoneNumber' => ['required',Rule::unique('profiles')->ignore($id),'numeric', 'max:9999999999'],
+            'dni' => ['required',Rule::unique('profiles')->ignore($id),'numeric', 'max:999999999999999'],
             'address' => 'required|max:50',
         ];
         $niceNames = [
