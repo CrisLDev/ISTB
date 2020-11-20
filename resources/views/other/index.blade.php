@@ -79,7 +79,7 @@
                                 </div>
                             @else
                                 <div class="col-md-12">
-                                    No hya cursos
+                                    No hay cursos
                                 </div>
                             @endif
                 </div>

@@ -149,7 +149,7 @@ class OtherController extends Controller
                             ->select('reports.*', 'reports.resume', 'reports.content', 'teachers.fullname as tFullname', 'students.fullname as sFullname', 'courses.courseName', 'subjects.subjectName')
                             ->content($content)
                             ->resume($resume)
-                            ->paginate(10);
+                            ->paginate(5);
         return view('reports.all', compact('reports'));
     }
 
@@ -178,7 +178,7 @@ class OtherController extends Controller
                         ->asthma($asthma)
                         ->glasses($glasses)
                         ->malformation($malformation)
-                        ->paginate(10);
+                        ->paginate(5);
         return view('records.all', compact('records'));
     }
 
