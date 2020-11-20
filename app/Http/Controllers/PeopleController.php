@@ -54,9 +54,9 @@ class PeopleController extends Controller
         $data = new Administration();
         $rules = [
             'fullname' => 'required|max:60',
-            'telephoneNumber' => 'required|unique:administrations|max:9999999999|numeric',
+            'telephoneNumber' => 'required|unique:administrations|numeric',
             'role' => 'required|max:20|min:5',
-            'dni' => 'required|unique:administrations|max:999999999999999|numeric',
+            'dni' => 'required|unique:administrations|numeric',
             'address' => 'required|max:40',
             'age' => 'required|max:100|numeric',
             'email' => 'required|max:50',
@@ -95,8 +95,8 @@ class PeopleController extends Controller
         $data = new Student();
         $rules = [
             'fullname' => 'required|max:60',
-            'telephoneNumber' => 'required|unique:students|max:9999999999|numeric',
-            'dni' => 'required|unique:students|max:999999999999999|numeric',
+            'telephoneNumber' => 'required|unique:students|numeric',
+            'dni' => 'required|unique:students|numeric',
             'address' => 'required|max:40',
             'age' => 'required|max:100|numeric',
             'email' => 'required|max:50',
@@ -133,8 +133,8 @@ class PeopleController extends Controller
         $data = new Teacher();
         $rules = [
             'fullname' => 'required|max:60',
-            'telephoneNumber' => 'required|unique:teachers|max:9999999999|numeric',
-            'dni' => 'required|unique:teachers|max:999999999999999|numeric',
+            'telephoneNumber' => 'required|unique:teachers|numeric',
+            'dni' => 'required|unique:teachers|numeric',
             'address' => 'required|max:40',
             'age' => 'required|max:100|numeric',
             'email' => 'required|max:50',
