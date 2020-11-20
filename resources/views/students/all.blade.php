@@ -47,6 +47,9 @@
                                     <p class="font-weight-bold">Codigo:</p>
                                     <p>{{$student->code}}</p>
 
+                                    <p class="font-weight-bold">Fecha de nacimiento:</p>
+                                    <p>{{$student->birthDate}}</p>
+
                                 </div>
 
                                 <div class="col-lg-3 col-md-12 col-sm-12 col-12 d-flex align-items-center mb-5">

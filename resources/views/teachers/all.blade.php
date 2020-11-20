@@ -45,6 +45,9 @@
                                     <p class="font-weight-bold">Codigo:</p>
                                     <p>{{$teacher->code}}</p>
 
+                                    <p class="font-weight-bold">Fecha de nacimiento:</p>
+                                    <p>{{$teacher->birthDate}}</p>
+
                                 </div>
 
                                 <div class="col-lg-3 col-md-12 col-sm-2 d-flex align-items-center mb-5">

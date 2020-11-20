@@ -24,6 +24,7 @@ class CreateAdministrationsTable extends Migration
             $table->string('age');
             $table->string('email');
             $table->string('code')->rand();
+            $table->date('birthDate');
             $table->string('role');
             $table->timestamps();
             $table->engine = 'InnoDB';
