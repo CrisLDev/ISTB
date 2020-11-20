@@ -23,9 +23,9 @@
                     </form>
                 </div>
                 <div class="card-body">
-                    <div class="container">
-                        <div class="row justify-content-center">
                             @foreach ($users as $user)
+                            <div class="container mb-4 border-bottom">
+                                <div class="row justify-content-center">
 
                                 <div class="col-md-2 col-sm-12 d-flex align-items-center justify-content-center">
                                     <img class="mb-2" src="{{Gravatar::get($user->email)}}" alt="userGravatar">
@@ -54,12 +54,12 @@
                                     </form>
                                     
                                 </div>
-                            @endforeach
-                            <div class="col-md-12 mb-2 d-flex justify-content-center">
-                                <p>{{$users->links()}}</p>
                             </div>
                         </div>
-                    </div>
+                            @endforeach
+                        <div class="container mb-2 d-flex justify-content-center">
+                            <p>{{$users->links()}}</p>
+                        </div>
                 </div>
             </div>
         </div>
