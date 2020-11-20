@@ -137,14 +137,18 @@ class OtherController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexReports()
+    public function indexReports(Request $request)
     {
+        $content = $request->get('content');
+        $resume = $request->get('resume');
         $reports = Reports::join('users', 'reports.user_id', '=', 'users.id')
                             ->join('subjects', 'reports.subject_id', '=', 'subjects.id')
                             ->join('courses', 'reports.course_id', '=', 'courses.id')
                             ->join('teachers', 'reports.teacher_id', '=', 'teachers.id')
                             ->join('students', 'reports.student_id', '=', 'students.id')
                             ->select('reports.*', 'reports.resume', 'reports.content', 'teachers.fullname as tFullname', 'students.fullname as sFullname', 'courses.courseName', 'subjects.subjectName')
+                            ->content($content)
+                            ->resume($resume)
                             ->paginate(10);
         return view('reports.all', compact('reports'));
     }
@@ -467,8 +471,7 @@ class OtherController extends Controller
     {
         $data = Reports::where('id', $id)->first();
         $rules = [
-            'resume' => 'required|unique:records|max:100',
-            'user_id' => 'required',
+            'resume' => 'required|max:100',
             'course_id' => 'required',
             'student_id' => 'required',
             'teacher_id' => 'required',
@@ -477,7 +480,6 @@ class OtherController extends Controller
         ];
         $niceNames = [
             'resume' => 'resumen',
-            'user_id' => 'usuario',
             'course_id' => 'curso',
             'student_id' => 'estudiante',
             'teacher_id' => 'docente',

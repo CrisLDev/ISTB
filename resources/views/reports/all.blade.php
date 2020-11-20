@@ -10,6 +10,17 @@
                     <h3 class="card-title">
                         Todos los reportes
                     </h3>
+                    <form method="get">
+                        <div class="form-group">
+                            <input type="text" placeholder="Resumen" name="resume" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Cotenido" name="content" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-secondary">Buscar</button>
+                        </div>
+                    </form>
                 </div>
                 <div class="card-body">
                             @if (count($reports) === 0)
@@ -22,6 +33,10 @@
                                 <div class="container border pt-3 pb-3 mb-3">
                                     <div class="row">
                                         <div class="col-md-9">
+                                            <div>
+                                                <h4>Resumen</h4>
+                                                <p>{{$report->resume}}</p>
+                                            </div>
                                             <div>
                                                 <h4>Docente</h4>
                                                 <p>{{$report->tFullname}}</p>
