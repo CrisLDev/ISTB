@@ -8,6 +8,18 @@ use App\Models\User;
 
 use Creativeorange\Gravatar\Facades\Gravatar;
 
+use App\Models\Student;
+
+use App\Models\Reports;
+
+use App\Models\Record;
+
+use App\Models\Teacher;
+
+use App\Models\Subject;
+
+use App\Models\Course;
+
 class UserController extends Controller
 {
 
@@ -35,6 +47,48 @@ class UserController extends Controller
                         ->name($username)
                         ->paginate(5);
         return view('user.all', compact('users'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function consultRedirect(Request $request)
+    {
+        return redirect(route('consult.index', $request->code));
+    }
+
+    /**
+     * Display a listing of the resource.
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function consult($code)
+    {
+        $student = Student::where('code', $code)->first();
+
+        if(!$student)return back()->with('userErrors', 'Codigo invalido');
+
+        $records = Record::where('student_id', '=', $student->id)
+                        ->join('users', 'records.user_id', '=', 'users.id')
+                        ->join('courses', 'records.course_id', '=', 'courses.id')
+                        ->select('records.*', 'users.name as userName', 'users.email as userEmail', 'courses.courseName')
+                        ->paginate(1);
+
+        $reports = Reports::where('student_id', '=', $student->id)
+                        ->join('users', 'reports.user_id', '=', 'users.id')
+                        ->join('subjects', 'reports.subject_id', '=', 'subjects.id')
+                        ->join('courses', 'reports.course_id', '=', 'courses.id')
+                        ->join('teachers', 'reports.teacher_id', '=', 'teachers.id')
+                        ->select('reports.*', 'users.name as userName', 'users.email as userEmail', 'subjects.subjectName as subjectName', 'teachers.fullname as teacherFullname', 'courses.courseName', 'reports.course_id', 'teachers.fullname as teacherFullname')
+                        ->paginate(1);
+
+        if(!$student){
+            return redirect('/other/students')->with('userErrors', '¡El estudiante no existe!');
+        };
+
+        return view('students.view', compact('student', 'records', 'reports'));
     }
 
     /**

@@ -142,3 +142,7 @@ Route::get( '/other/records/edit/{id}', [App\Http\Controllers\OtherController::c
 Route::put( '/other/records/update/{id}', [App\Http\Controllers\OtherController::class, 'updateRecord'])->name( 'records.updateRecords' )->middleware('isCoor');
 
 Route::delete( '/other/records/delete/{id}', [App\Http\Controllers\OtherController::class, 'destroyRecord'])->name( 'records.destroyRecords' )->middleware('isCoor');
+
+Route::get( '/consult/{code}', [App\Http\Controllers\UserController::class, 'consult'])->name( 'consult.index' );
+
+Route::post( '/consult', [App\Http\Controllers\UserController::class, 'consultRedirect'])->name( 'consult.redir' );

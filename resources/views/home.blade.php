@@ -20,10 +20,16 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <form onsubmit="disable()" method="POST" enctype="multipart/form-data" >
+                                    <form onsubmit="disable()" method="POST" enctype="multipart/form-data" action="{{route('consult.redir')}}">
+                                        @csrf
                                         <h4>Ingresa un código para consultar</h4>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="codee" name="code" placeholder="Ingresa tu código">
+                                            <input type="text" class="form-control" id="code" name="code" placeholder="Ingresa tu código">
+                                        </div>
+                                        <div class="form-group">
+                                            <button class="btn btn-primary btn-block" id="button-prevent-multiple-submits" type="submit">
+                                                <span class="spinner-border spinner-border-sm" id="spinner" role="status" aria-hidden="true"></span>    
+                                                <span id="btex">Envair</span></button>
                                         </div>
                                     </form>
                                 </div>
