@@ -220,12 +220,12 @@ class OtherController extends Controller
             'activityName' => 'required|unique:activities|max:60',
         ];
         $niceNames = [
-            'activityName' => 'nombre de la materia'
+            'activityName' => 'nombre de la actividad'
         ]; 
         $this->validate($request, $rules, [], $niceNames);
         $data->activityName = $request->activityName;
         $data->save();
-        return back()->with('message', 'Materia agregada con éxito.');
+        return back()->with('message', 'Actividad agregada con éxito.');
     }
 
      /**
@@ -271,7 +271,7 @@ class OtherController extends Controller
             'course_id' => 'curso',
             'student_id' => 'estudiante',
             'teacher_id' => 'docente',
-            'Activity_id' => 'id de la materia',
+            'Activity_id' => 'id de la actividad',
             'content' => 'contenido',
         ]; 
         $this->validate($request, $rules, [], $niceNames);
@@ -308,7 +308,7 @@ class OtherController extends Controller
             'course_id' => 'curso',
             'student_id' => 'estudiante',
             'teacher_id' => 'docente',
-            'Activity_id' => 'id de la materia',
+            'Activity_id' => 'id de la actividad',
             'content' => 'contenido',
         ]; 
         $this->validate($request, $rules, [], $niceNames);
@@ -423,7 +423,7 @@ class OtherController extends Controller
         $Activity = Activity::where('id', $id)->first();
 
         if(!$Activity){
-            return redirect('/other/all')->with('userErrors', '¡La materia no existe!');
+            return redirect('/other/all')->with('userErrors', '¡La actividad no existe!');
         };
 
         return view('other.editActivity', compact('Activity'));
@@ -504,16 +504,16 @@ class OtherController extends Controller
             'activityName' => ['required',Rule::unique('activities')->ignore($id),'max:60']
         ];
         $niceNames = [
-            'activityName' => 'nombre de la materia'
+            'activityName' => 'nombre de la actividad'
         ]; 
         $this->validate($request, $rules, [], $niceNames);
         if($id == $data->id){
             $data->activityName = $request->activityName;
             $data->save();
-            return back()->with('message', 'Materia actualizado con éxito.');
+            return back()->with('message', 'Actividad actualizado con éxito.');
         }
 
-        return back()->with('userErrors', 'La materia ya existe.');
+        return back()->with('userErrors', 'La actividad ya existe.');
         
     }
 
@@ -540,7 +540,7 @@ class OtherController extends Controller
             'course_id' => 'curso',
             'student_id' => 'estudiante',
             'teacher_id' => 'docente',
-            'Activity_id' => 'id de la materia',
+            'Activity_id' => 'id de la actividad',
             'content' => 'contenido',
         ]; 
         $this->validate($request, $rules, [], $niceNames);
@@ -627,7 +627,7 @@ class OtherController extends Controller
     public function destroyActivity($id)
     {
         $data = Activity::findOrFail( $id )->delete();
-        return back()->with( 'message', 'Materia Eliminado' );
+        return back()->with( 'message', 'Actividad Eliminado' );
     }
 
     /**

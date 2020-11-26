@@ -12,21 +12,21 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <form onsubmit="disable()" method="POST" enctype="multipart/form-data" action="{{ route('other.storeSubject') }}">
+                            <form onsubmit="disable()" method="POST" enctype="multipart/form-data" action="{{ route('other.storeActivity') }}">
                             @csrf
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label>Nombre de la materia:</label>
+                                            <label>Nombre de la actividad:</label>
                                             <input
                                             type="text"
                                             autocomplete="none"
                                             spellcheck="false"
-                                            name="subjectName"
-                                            id="subjectName"
+                                            name="activityName"
+                                            id="activityName"
                                             placeholder="Ingresa nombre de la materia"
                                             class="form-control mb-2"
-                                            value="{{old('subjectName')}}"
+                                            value="{{old('activityName')}}"
                                             maxlength="20"
                                             minlength="6"
                                             required
