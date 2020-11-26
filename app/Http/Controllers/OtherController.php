@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Subject;
+use App\Models\Activity;
 use App\Models\Course;
 use App\Models\Reports;
+use App\Models\Grades;
 use App\Models\Record;
 use App\Models\Student;
 use App\Models\Teacher;
@@ -32,15 +33,15 @@ class OtherController extends Controller
      */
     public function index(Request $request)
     {
-        $subjectName = $request->get('subjectName');
+        $activityName = $request->get('activityName');
         $courseName = $request->get('courseName');
-        $subjects = Subject::orderBy('id', 'desc')
-        ->subjectName($subjectName)
+        $activities = Activity::orderBy('id', 'desc')
+        ->activityName($activityName)
         ->paginate(5);
         $courses = Course::orderBy('id', 'desc')
         ->courseName($courseName)
         ->paginate(5);
-        return view('other.index', compact('subjects', 'courses'));
+        return view('other.index', compact('activities', 'courses'));
     }
 
     /**
@@ -63,8 +64,8 @@ class OtherController extends Controller
         $teachers = Teacher::get();
         $students = Student::get();
         $courses = Course::get();
-        $subjects = Subject::get();
-        return view('other.reports', compact('teachers', 'students', 'courses', 'subjects'));
+        $activities = Activity::get();
+        return view('other.reports', compact('teachers', 'students', 'courses', 'activities'));
     }
 
     /**
@@ -77,6 +78,18 @@ class OtherController extends Controller
         $students = Student::get();
         $courses = Course::get();
         return view('other.records', compact('students', 'courses'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function formGrades()
+    {
+        $students = Student::get();
+        $courses = Course::get();
+        return view('other.grades', compact('students', 'courses'));
     }
 
     /**
@@ -143,11 +156,11 @@ class OtherController extends Controller
         $content = $request->get('content');
         $resume = $request->get('resume');
         $reports = Reports::join('users', 'reports.user_id', '=', 'users.id')
-                            ->join('subjects', 'reports.subject_id', '=', 'subjects.id')
+                            ->join('activities', 'reports.Activity_id', '=', 'activities.id')
                             ->join('courses', 'reports.course_id', '=', 'courses.id')
                             ->join('teachers', 'reports.teacher_id', '=', 'teachers.id')
                             ->join('students', 'reports.student_id', '=', 'students.id')
-                            ->select('reports.*', 'reports.resume', 'reports.content', 'teachers.fullname as tFullname', 'students.fullname as sFullname', 'courses.courseName', 'subjects.subjectName')
+                            ->select('reports.*', 'reports.resume', 'reports.content', 'teachers.fullname as tFullname', 'students.fullname as sFullname', 'courses.courseName', 'activities.activityName')
                             ->content($content)
                             ->resume($resume)
                             ->paginate(5);
@@ -200,17 +213,17 @@ class OtherController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storeSubject(Request $request)
+    public function storeActivity(Request $request)
     {
-        $data = new Subject();
+        $data = new Activity();
         $rules = [
-            'subjectName' => 'required|unique:subjects|max:60',
+            'activityName' => 'required|unique:activities|max:60',
         ];
         $niceNames = [
-            'subjectName' => 'nombre de la materia'
+            'activityName' => 'nombre de la materia'
         ]; 
         $this->validate($request, $rules, [], $niceNames);
-        $data->subjectName = $request->subjectName;
+        $data->activityName = $request->activityName;
         $data->save();
         return back()->with('message', 'Materia agregada con éxito.');
     }
@@ -250,7 +263,7 @@ class OtherController extends Controller
             'course_id' => 'required',
             'student_id' => 'required',
             'teacher_id' => 'required',
-            'subject_id' => 'required',
+            'Activity_id' => 'required',
             'content' => 'required',
         ];
         $niceNames = [
@@ -258,7 +271,7 @@ class OtherController extends Controller
             'course_id' => 'curso',
             'student_id' => 'estudiante',
             'teacher_id' => 'docente',
-            'subject_id' => 'id de la materia',
+            'Activity_id' => 'id de la materia',
             'content' => 'contenido',
         ]; 
         $this->validate($request, $rules, [], $niceNames);
@@ -267,10 +280,47 @@ class OtherController extends Controller
         $data->course_id = $request->course_id;
         $data->student_id = $request->student_id;
         $data->teacher_id = $request->teacher_id;
-        $data->subject_id = $request->subject_id;
+        $data->Activity_id = $request->Activity_id;
         $data->content = $request->content;
         $data->save();
         return back()->with('message', 'Reporte agregado con éxito.');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeGrades(Request $request)
+    {
+        $data = new Grades();
+        $rules = [
+            'resume' => 'required|unique:reports|max:100',
+            'course_id' => 'required',
+            'student_id' => 'required',
+            'teacher_id' => 'required',
+            'Activity_id' => 'required',
+            'content' => 'required',
+        ];
+        $niceNames = [
+            'resume' => 'resumen',
+            'course_id' => 'curso',
+            'student_id' => 'estudiante',
+            'teacher_id' => 'docente',
+            'Activity_id' => 'id de la materia',
+            'content' => 'contenido',
+        ]; 
+        $this->validate($request, $rules, [], $niceNames);
+        $data->resume = $request->resume;
+        $data->user_id = auth()->user()->id;
+        $data->course_id = $request->course_id;
+        $data->student_id = $request->student_id;
+        $data->teacher_id = $request->teacher_id;
+        $data->Activity_id = $request->Activity_id;
+        $data->content = $request->content;
+        $data->save();
+        return back()->with('message', 'Nota agregada correctamente agregado con éxito.');
     }
 
     /**
@@ -332,10 +382,10 @@ class OtherController extends Controller
 
         $reports = Reports::where('student_id', '=', $id)
                         ->join('users', 'reports.user_id', '=', 'users.id')
-                        ->join('subjects', 'reports.subject_id', '=', 'subjects.id')
+                        ->join('activities', 'reports.Activity_id', '=', 'activities.id')
                         ->join('courses', 'reports.course_id', '=', 'courses.id')
                         ->join('teachers', 'reports.teacher_id', '=', 'teachers.id')
-                        ->select('reports.*', 'users.name as userName', 'users.email as userEmail', 'subjects.subjectName as subjectName', 'teachers.fullname as teacherFullname', 'courses.courseName', 'reports.course_id', 'teachers.fullname as teacherFullname')
+                        ->select('reports.*', 'users.name as userName', 'users.email as userEmail', 'activities.activityName as activityName', 'teachers.fullname as teacherFullname', 'courses.courseName', 'reports.course_id', 'teachers.fullname as teacherFullname')
                         ->paginate(1, ['*'], 'reports');
 
         if(!$student){
@@ -368,15 +418,15 @@ class OtherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function editSubject($id)
+    public function editActivity($id)
     {
-        $subject = Subject::where('id', $id)->first();
+        $Activity = Activity::where('id', $id)->first();
 
-        if(!$subject){
+        if(!$Activity){
             return redirect('/other/all')->with('userErrors', '¡La materia no existe!');
         };
 
-        return view('other.editSubject', compact('subject'));
+        return view('other.editActivity', compact('Activity'));
     }
 
     /**
@@ -390,12 +440,12 @@ class OtherController extends Controller
         $teachers = Teacher::get();
         $students = Student::get();
         $courses = Course::get();
-        $subjects = Subject::get();
+        $activities = Activity::get();
         $report = Reports::where('id', $id)->first();
         if(!$report){
             return redirect('/other/reports')->with('userErrors', '¡El reporte no existe!');
         };
-        return view('reports.edit', compact('teachers', 'students', 'courses', 'subjects', 'report'));
+        return view('reports.edit', compact('teachers', 'students', 'courses', 'activities', 'report'));
     }
 
     /**
@@ -419,7 +469,7 @@ class OtherController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Subject  $subject
+     * @param  \App\Models\Activity  $Activity
      * @return \Illuminate\Http\Response
      */
     public function updateCourse(Request $request, $id)
@@ -444,21 +494,21 @@ class OtherController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Subject  $subject
+     * @param  \App\Models\Activity  $Activity
      * @return \Illuminate\Http\Response
      */
-    public function updateSubject(Request $request, $id)
+    public function updateActivity(Request $request, $id)
     {
-        $data = Subject::where('id', $id)->first();
+        $data = Activity::where('id', $id)->first();
         $rules = [
-            'subjectName' => ['required',Rule::unique('subjects')->ignore($id),'max:60']
+            'activityName' => ['required',Rule::unique('activities')->ignore($id),'max:60']
         ];
         $niceNames = [
-            'subjectName' => 'nombre de la materia'
+            'activityName' => 'nombre de la materia'
         ]; 
         $this->validate($request, $rules, [], $niceNames);
         if($id == $data->id){
-            $data->subjectName = $request->subjectName;
+            $data->activityName = $request->activityName;
             $data->save();
             return back()->with('message', 'Materia actualizado con éxito.');
         }
@@ -471,7 +521,7 @@ class OtherController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Subject  $subject
+     * @param  \App\Models\Activity  $Activity
      * @return \Illuminate\Http\Response
      */
     public function updateReport(Request $request, $id)
@@ -482,7 +532,7 @@ class OtherController extends Controller
             'course_id' => 'required',
             'student_id' => 'required',
             'teacher_id' => 'required',
-            'subject_id' => 'required',
+            'Activity_id' => 'required',
             'content' => 'required',
         ];
         $niceNames = [
@@ -490,7 +540,7 @@ class OtherController extends Controller
             'course_id' => 'curso',
             'student_id' => 'estudiante',
             'teacher_id' => 'docente',
-            'subject_id' => 'id de la materia',
+            'Activity_id' => 'id de la materia',
             'content' => 'contenido',
         ]; 
         $this->validate($request, $rules, [], $niceNames);
@@ -499,7 +549,7 @@ class OtherController extends Controller
             $data->course_id = $request->course_id;
             $data->student_id = $request->student_id;
             $data->teacher_id = $request->teacher_id;
-            $data->subject_id = $request->subject_id;
+            $data->Activity_id = $request->Activity_id;
             $data->content = $request->content;
             $data->save();
             return back()->with('message', 'Reporte editado con éxito.');
@@ -513,7 +563,7 @@ class OtherController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Subject  $subject
+     * @param  \App\Models\Activity  $Activity
      * @return \Illuminate\Http\Response
      */
     public function updateRecord(Request $request, $id)
@@ -559,7 +609,7 @@ class OtherController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Subject  $subject
+     * @param  \App\Models\Activity  $Activity
      * @return \Illuminate\Http\Response
      */
     public function destroyCourse($id)
@@ -571,19 +621,19 @@ class OtherController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Subject  $subject
+     * @param  \App\Models\Activity  $Activity
      * @return \Illuminate\Http\Response
      */
-    public function destroySubject($id)
+    public function destroyActivity($id)
     {
-        $data = Subject::findOrFail( $id )->delete();
+        $data = Activity::findOrFail( $id )->delete();
         return back()->with( 'message', 'Materia Eliminado' );
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Subject  $subject
+     * @param  \App\Models\Activity  $Activity
      * @return \Illuminate\Http\Response
      */
     public function destroyReport($id)
@@ -596,7 +646,7 @@ class OtherController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Subject  $subject
+     * @param  \App\Models\Activity  $Activity
      * @return \Illuminate\Http\Response
      */
     public function destroyRecord($id)

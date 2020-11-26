@@ -143,6 +143,22 @@ Route::put( '/other/records/update/{id}', [App\Http\Controllers\OtherController:
 
 Route::delete( '/other/records/delete/{id}', [App\Http\Controllers\OtherController::class, 'destroyRecord'])->name( 'records.destroyRecords' )->middleware('isCoor');
 
+// Only Users Views
+
 Route::get( '/consult/{code}', [App\Http\Controllers\UserController::class, 'consult'])->name( 'consult.index' );
 
 Route::post( '/consult', [App\Http\Controllers\UserController::class, 'consultRedirect'])->name( 'consult.redir' );
+
+// Routes Grades
+
+Route::get( '/other/grades/form', [App\Http\Controllers\OtherController::class, 'formGrades'])->name( 'grades.index' )->middleware('isCoor');
+
+Route::post( '/other/grades/form', [App\Http\Controllers\OtherController::class, 'storeGrades'])->name( 'grades.storeGrades' )->middleware('isCoor');
+
+Route::get( '/other/grades', [App\Http\Controllers\OtherController::class, 'indexRecord'])->name( 'records.indexRecords' )->middleware('isCoor');
+
+Route::get( '/other/grades/edit/{id}', [App\Http\Controllers\OtherController::class, 'editRecord'])->name( 'records.editRecords' )->middleware('isCoor');
+
+Route::put( '/other/grades/update/{id}', [App\Http\Controllers\OtherController::class, 'updateRecord'])->name( 'records.updateRecords' )->middleware('isCoor');
+
+Route::delete( '/other/grades/delete/{id}', [App\Http\Controllers\OtherController::class, 'destroyRecord'])->name( 'records.destroyRecords' )->middleware('isCoor');

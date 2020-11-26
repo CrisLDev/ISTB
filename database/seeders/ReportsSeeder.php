@@ -22,7 +22,7 @@ class ReportsSeeder extends Seeder
             'course_id' => '1',
             'student_id' => '1',
             'teacher_id' => '1',
-            'subject_id' => '1',
+            'activity_id' => '1',
             'content' => 'Dutante la clase de desarrollo del aprendizaje se realizaron todas las actividades que ser tenian prebvistas sin problemas al parecder todo bien'
         ]);
         Reports::create([
@@ -32,7 +32,7 @@ class ReportsSeeder extends Seeder
             'course_id' => '4',
             'student_id' => '2',
             'teacher_id' => '1',
-            'subject_id' => '5',
+            'activity_id' => '5',
             'content' => 'Dutante la clase de psicologia se pudo notas lo comprometido del estudiante'
         ]);
         Reports::create([
@@ -42,7 +42,7 @@ class ReportsSeeder extends Seeder
             'course_id' => '5',
             'student_id' => '2',
             'teacher_id' => '9',
-            'subject_id' => '7',
+            'activity_id' => '7',
             'content' => 'Se observo que el estudiante tiene problemas pra amantenerse concnetrado en cuanto a la clase'
         ]);
         Reports::create([
@@ -52,7 +52,7 @@ class ReportsSeeder extends Seeder
             'course_id' => '4',
             'student_id' => '3',
             'teacher_id' => '8',
-            'subject_id' => '7',
+            'activity_id' => '7',
             'content' => 'Se Realizaron todos los proyectos sin problema el estudainte no tiene problema con las actividades que se realizan'
         ]);
         Reports::create([
@@ -62,7 +62,7 @@ class ReportsSeeder extends Seeder
             'course_id' => '5',
             'student_id' => '5',
             'teacher_id' => '4',
-            'subject_id' => '5',
+            'activity_id' => '5',
             'content' => 'Dutante la clase de psicologia se pudo notas lo comprometido del estudiante'
         ]);
         Reports::create([
@@ -72,7 +72,7 @@ class ReportsSeeder extends Seeder
             'course_id' => '3',
             'student_id' => '6',
             'teacher_id' => '2',
-            'subject_id' => '3',
+            'activity_id' => '3',
             'content' => 'Se le enseño al estudiante a mantener el orden en el salon de clases'
         ]);
         Reports::create([
@@ -82,7 +82,7 @@ class ReportsSeeder extends Seeder
             'course_id' => '5',
             'student_id' => '8',
             'teacher_id' => '1',
-            'subject_id' => '7',
+            'activity_id' => '7',
             'content' => 'Se observo que el estudiante tiene problemas para mantener el ritmo de la clase'
         ]);
     }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSubjectsTable extends Migration
+class CreateActivitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateSubjectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('subjects', function (Blueprint $table) {
+        Schema::create('activities', function (Blueprint $table) {
             $table->id();
-            $table->string('subjectName');
+            $table->string('activityName');
             $table->timestamps();
             $table->engine = 'InnoDB';
             $table->charset = 'utf8';
@@ -30,6 +30,6 @@ class CreateSubjectsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subjects');
+        Schema::dropIfExists('activities');
     }
 }

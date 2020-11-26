@@ -24,8 +24,8 @@ class CreateReportsTable extends Migration
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
             $table->unsignedBigInteger('teacher_id');
             $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('cascade');
-            $table->unsignedBigInteger('subject_id');
-            $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
+            $table->unsignedBigInteger('activity_id');
+            $table->foreign('activity_id')->references('id')->on('activities')->onDelete('cascade');
             $table->text('content');
             $table->timestamps();
             $table->engine = 'InnoDB';

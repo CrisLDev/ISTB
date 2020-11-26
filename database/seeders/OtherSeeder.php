@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-use App\Models\Subject;
+use App\Models\Activity;
 
 use App\Models\Course;
 
@@ -17,45 +17,45 @@ class OtherSeeder extends Seeder
      */
     public function run()
     {
-        Subject::create([
+        Activity::create([
             'id' => '1',
-            'subjectName' => 'Desarrollo y aprendizaje'
+            'activityName' => 'Desarrollo y aprendizaje'
         ]);
-        Subject::create([
+        Activity::create([
             'id' => '2',
-            'subjectName' => 'Planeación y evaluación de la enseñanza y el aprendizaje'
+            'activityName' => 'Planeación y evaluación de la enseñanza y el aprendizaje'
         ]);
-        Subject::create([
+        Activity::create([
             'id' => '3',
-            'subjectName' => 'Teoría Pedagógica'
+            'activityName' => 'Teoría Pedagógica'
         ]);
-        Subject::create([
+        Activity::create([
             'id' => '4',
-            'subjectName' => 'Tecnologías de la Información'
+            'activityName' => 'Tecnologías de la Información'
         ]);
-        Subject::create([
+        Activity::create([
             'id' => '5',
-            'subjectName' => 'Psicología del desarrollo infantil'
+            'activityName' => 'Psicología del desarrollo infantil'
         ]);
-        Subject::create([
+        Activity::create([
             'id' => '6',
-            'subjectName' => 'Acercamiento a las Ciencias Naturales en el Preescolar'
+            'activityName' => 'Acercamiento a las Ciencias Naturales en el Preescolar'
         ]);
-        Subject::create([
+        Activity::create([
             'id' => '7',
-            'subjectName' => 'Educación Histórica en el aula'
+            'activityName' => 'Educación Histórica en el aula'
         ]);
-        Subject::create([
+        Activity::create([
             'id' => '8',
-            'subjectName' => 'Educación Artística (Artes visuales y Teatro)'
+            'activityName' => 'Educación Artística (Artes visuales y Teatro)'
         ]);
-        Subject::create([
+        Activity::create([
             'id' => '9',
-            'subjectName' => 'Política y Legislación educativa mexicana'
+            'activityName' => 'Política y Legislación educativa mexicana'
         ]);
-        Subject::create([
+        Activity::create([
             'id' => '10',
-            'subjectName' => 'Creación de ambientes de aprendizaje'
+            'activityName' => 'Creación de ambientes de aprendizaje'
         ]);
         Course::create([
             'id' => '1',
