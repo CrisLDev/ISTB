@@ -7,7 +7,7 @@
         <div class="col-xl-12 mb-3">
             <div class="card">
                 <div class="card-header bg-white text-center mb-3 pt-4">
-                     <h3>Materias y Cursos</h3>
+                     <h3>Actividades y Cursos</h3>
                 </div>
                 <div class="card-body">
                     <div class="row">

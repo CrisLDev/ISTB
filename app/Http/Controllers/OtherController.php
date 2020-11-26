@@ -420,13 +420,13 @@ class OtherController extends Controller
      */
     public function editActivity($id)
     {
-        $Activity = Activity::where('id', $id)->first();
+        $activity = Activity::where('id', $id)->first();
 
-        if(!$Activity){
+        if(!$activity){
             return redirect('/other/all')->with('userErrors', '¡La actividad no existe!');
         };
 
-        return view('other.editActivity', compact('Activity'));
+        return view('other.editActivity', compact('activity'));
     }
 
     /**

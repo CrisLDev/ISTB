@@ -51,9 +51,9 @@
                                                 <span>{{$report->content}}</span>
                                             </div>
                                             <div class="mb-3">
-                                                <h4>Curso y materia</h4>
+                                                <h4>Curso y actividad</h4>
                                                 <span>{{$report->courseName}}</span>
-                                                <span>{{$report->subjectName}}</span>
+                                                <span>{{$report->activityName}}</span>
                                             </div>
                                         </div>
         

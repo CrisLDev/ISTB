@@ -116,7 +116,7 @@
                                         <div class="card-body">
                                                 <div class="container-fluid border shadow pt-3 pb-3">
                                                     <p class="font-weight-bold">Nombre de la materia:</p>
-                                                    <p>{{$item->subjectName}}</p>
+                                                    <p>{{$item->activityName}}</p>
                                                     <p class="font-weight-bold">Contenido:</p>
                                                     <p>{{$item->content}}</p>
                                                     <p class="font-weight-bold">Nombre del docente:</p>

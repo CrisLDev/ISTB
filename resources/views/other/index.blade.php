@@ -8,7 +8,7 @@
             <div class="card mb-5">
                 <div class="card-header pt-4 bg-white text-center">
                     <h3 class="card-title">
-                        Cursos - Materias
+                        Cursos - Actividades
                     </h3>
                     <form method="get">
                         <div class="form-group">

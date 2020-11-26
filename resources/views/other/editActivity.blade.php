@@ -7,27 +7,27 @@
         <div class="col-xl-12 mb-3">
             <div class="card">
                 <div class="card-header bg-white text-center mb-3 pt-4">
-                     <h3>Materias</h3>
+                     <h3>Actividades</h3>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <form onsubmit="disable()" method="POST" enctype="multipart/form-data" action="{{ route('other.updateSubject', $subject->id) }}">
+                            <form onsubmit="disable()" method="POST" enctype="multipart/form-data" action="{{ route('other.updateActivity', $activity->id) }}">
                             @method('PUT')
                             @csrf
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label>Nombre de la materia:</label>
+                                            <label>Nombre de la actividad:</label>
                                             <input
                                             type="text"
                                             autocomplete="none"
                                             spellcheck="false"
-                                            name="subjectName"
-                                            id="subjectName"
-                                            placeholder="Ingresa nombre de la materia"
+                                            name="activityName"
+                                            id="activityName"
+                                            placeholder="Ingresa nombre de la actividad"
                                             class="form-control mb-2"
-                                            value="{{$subject->subjectName}}"
+                                            value="{{$activity->activityName}}"
                                             maxlength="20"
                                             minlength="6"
                                             required

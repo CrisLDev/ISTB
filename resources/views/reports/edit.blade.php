@@ -65,13 +65,13 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputState">Materias</label>
-                                        <select id="inputState" class="form-control" name="subject_id">
-                                        @if (count($subjects) === 0)
-                                            <option>No hay materias</option>
+                                        <label for="inputState">Actividades</label>
+                                        <select id="inputState" class="form-control" name="activity_id">
+                                        @if (count($activities) === 0)
+                                            <option>No hay actividades</option>
                                         @endif
-                                        @foreach ($subjects as $subject)
-                                          <option value="{{$subject->id}}" {{ $subject->id == $report->subject_id ? 'selected' : '' }}>{{$subject->subjectName}}</option>
+                                        @foreach ($activities as $activity)
+                                          <option value="{{$activity->id}}" {{ $activity->id == $report->activity_id ? 'selected' : '' }}>{{$activity->activityName}}</option>
                                         @endforeach
                                         </select>
                                     </div>
