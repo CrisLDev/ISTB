@@ -25,8 +25,16 @@ class CreateGradesTable extends Migration
             $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('cascade');
             $table->unsignedBigInteger('activity_id');
             $table->foreign('activity_id')->references('id')->on('activities')->onDelete('cascade');
-            $table->double('grade');
-            $table->double('assistance');
+            $table->text('activity1')->nullable();
+            $table->text('answer1')->nullable();
+            $table->text('activity2')->nullable();
+            $table->text('answer2')->nullable();
+            $table->text('activity3')->nullable();
+            $table->text('answer3')->nullable();
+            $table->text('activity4')->nullable();
+            $table->text('answer4')->nullable();
+            $table->text('activity5')->nullable();
+            $table->text('answer5')->nullable();
             $table->timestamps();
             $table->engine = 'InnoDB';
             $table->charset = 'utf8';

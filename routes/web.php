@@ -99,11 +99,11 @@ Route::put( '/other/form/course/edit/{id}', [App\Http\Controllers\OtherControlle
 
 Route::delete( '/other/form/course/delete/{id}', [App\Http\Controllers\OtherController::class, 'destroyCourse'])->name( 'other.deleteCourse' )->middleware('isCoor');
 
-Route::get( '/other/form/subject/edit/{id}', [App\Http\Controllers\OtherController::class, 'editSubject'])->name( 'other.editSubject' )->middleware('isCoor');
+Route::get( '/other/form/subject/edit/{id}', [App\Http\Controllers\OtherController::class, 'editActivity'])->name( 'other.editActivity' )->middleware('isCoor');
 
-Route::put( '/other/form/subject/edit/{id}', [App\Http\Controllers\OtherController::class, 'updateSubject'])->name( 'other.updateSubject' )->middleware('isCoor');
+Route::put( '/other/form/subject/edit/{id}', [App\Http\Controllers\OtherController::class, 'updateActivity'])->name( 'other.updateSubject' )->middleware('isCoor');
 
-Route::delete( '/other/form/subject/delete/{id}', [App\Http\Controllers\OtherController::class, 'destroySubject'])->name( 'other.deleteSubject' )->middleware('isCoor');
+Route::delete( '/other/form/subject/delete/{id}', [App\Http\Controllers\OtherController::class, 'destroyActivity'])->name( 'other.deleteActivity' )->middleware('isCoor');
 
 // Routes Students
 

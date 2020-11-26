@@ -12,7 +12,7 @@
                     </h3>
                     <form method="get">
                         <div class="form-group">
-                            <input type="text" placeholder="Nombre de la materia" name="subjectName" class="form-control">
+                            <input type="text" placeholder="Nombre de la materia" name="activityName" class="form-control">
                         </div>
                         <div class="form-group">
                             <input type="text" placeholder="Nombre del curso" name="courseName" class="form-control">
@@ -23,16 +23,16 @@
                     </form>
                 </div>
                 <div class="card-body">
-                            @if (count($subjects) !== 0)
-                                @foreach ($subjects as $subject)
+                            @if (count($activities) !== 0)
+                                @foreach ($activities as $activity)
                                 <div class="container border-bottom mb-4 pb-4">
                                     <div class="row">
                                     <div class="col-lg-8 col-md-12 col-12">
-                                        <p>{{$subject->subjectName}}</p>
+                                        <p>{{$activity->activityName}}</p>
                                     </div>
                                     <div class="col-lg-4 col-md-12 col-12">
-                                        <a class="btn btn-dark mr-2" href="{{route('other.editSubject', $subject->id)}}">editar</a>
-                                        <form action="{{route('other.deleteSubject', $subject->id)}}" method="POST" class="d-inline">
+                                        <a class="btn btn-dark mr-2" href="{{route('other.editActivity', $activity->id)}}">editar</a>
+                                        <form action="{{route('other.deleteActivity', $activity->id)}}" method="POST" class="d-inline">
                                             @method('DELETE')
                                             @csrf
                                             <button class="btn btn-danger" type="submit">
@@ -44,7 +44,7 @@
                                 </div>
                                 @endforeach
                                 <div class="container d-flex justify-content-center">
-                                    <p>{{$subjects->links()}}</p>
+                                    <p>{{$activities->links()}}</p>
                                 </div>
                             @else
                                 <div class="col-md-12">
