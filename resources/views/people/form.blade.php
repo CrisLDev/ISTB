@@ -18,9 +18,6 @@
                             Crear Estudiante
                         @endif
                     </h3>
-                    @if ( session('userErrors') )
-                        <div class="alert alert-danger">{{ session('userErrors')}}</div>
-                    @endif
                 </div>
                 <div class="card-body">
                     @if(Request::is('people/form/administration'))
@@ -238,6 +235,19 @@
                                     <select id="inputState" class="form-control" name="memorandumOfAssociation" name="cardiovascular">
                                         <option value="si">Si</option>
                                         <option value="no">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="inputState">Cursos</label>
+                                    <select id="inputState" class="form-control" name="course_id">
+                                    @if (count($courses) === 0)
+                                        <option value="">No hay cursos</option>
+                                    @endif
+                                    @foreach ($courses as $course)
+                                      <option value="{{$course->id}}+{{$course->ageRange}}">{{$course->courseName}}</option>
+                                    @endforeach
                                     </select>
                                 </div>
                             </div>

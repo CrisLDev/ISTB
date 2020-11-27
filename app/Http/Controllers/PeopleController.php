@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Student;
 use App\Models\Teacher;
+use App\Models\Course;
 use App\Models\Administration;
 use Illuminate\Validation\Rule;
 
@@ -41,7 +42,8 @@ class PeopleController extends Controller
      */
     public function create()
     {
-        return view('people.form');
+        $courses = Course::get();
+        return view('people.form', compact('courses'));
     }
 
     /**
@@ -51,7 +53,8 @@ class PeopleController extends Controller
     * @return \Illuminate\Http\Response
     */
 
-    public function storeAdmin( Request $request ) {
+    public function storeAdmin( Request $request ) 
+    {
         $data = new Administration();
         $rules = [
             'fullname' => 'required|max:60',
@@ -95,7 +98,8 @@ class PeopleController extends Controller
     * @return \Illuminate\Http\Response
     */
 
-    public function storeStudent( Request $request ) {
+    public function storeStudent( Request $request ) 
+    {
         $data = new Student();
         $rules = [
             'fullname' => 'required|max:60',
@@ -128,10 +132,15 @@ class PeopleController extends Controller
             'memorandumOfAssociation' => 'acta de nacimiento'
         ]; 
         $this->validate($request, $rules, [], $niceNames);
+        $courseD = explode("+", $request->course_id);
+        if($request->age != $courseD[1]){
+            return back()->withInput()->with('userErrors', 'El rango de edad permitida en este curso es de '.$courseD[1].'.');
+        }
         $data->fullname = $request->fullname;
         $data->birthDate = $request->birthDate;
         $data->telephoneNumber = $request->telephoneNumber;
         $data->user_id = auth()->user()->id;
+        $data->course_id = $courseD[0];
         $data->dni = $request->dni;
         $data->code = rand();
         $data->address = $request->address;
