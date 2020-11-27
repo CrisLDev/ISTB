@@ -45,6 +45,8 @@
                         <p>{{$student->vaccinationCard}}</p>
                         <p class="font-weight-bold">Acta de compromiso:</p>
                         <p>{{$student->memorandumOfAssociation}}</p>
+                        <p class="font-weight-bold">Nombre del curso:</p>
+                        <p>{{$course->courseName}}</p>
                     </div>
                     <div class="mt-5">
                         @if (count($records) == 0)

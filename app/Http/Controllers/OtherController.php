@@ -504,12 +504,14 @@ class OtherController extends Controller
 
         $dailyActivities = DailyActivity::where('student_id', $id)->paginate(5, ['*'], 'dactivities');
 
+        $course = Course::where('id', $student->course_id)->first();
+
 
         if(!$student){
             return redirect('/other/students')->with('userErrors', '¡El estudiante no existe!');
         };
 
-        return view('students.view', compact('student', 'records', 'reports', 'dailyActivities'));
+        return view('students.view', compact('student', 'course', 'records', 'reports', 'dailyActivities'));
     }
 
     /**
