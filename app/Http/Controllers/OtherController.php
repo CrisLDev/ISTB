@@ -815,4 +815,16 @@ class OtherController extends Controller
         $data = Record::findOrFail( $id )->delete();
         return back()->with( 'message', 'Ficha médica Eliminada' );
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Activity  $Activity
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyDaily($id)
+    {
+        $data = DailyActivity::findOrFail( $id )->delete();
+        return back()->with( 'message', 'Actividad diaria Eliminada' );
+    }
 }

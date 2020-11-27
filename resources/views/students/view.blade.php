@@ -169,7 +169,7 @@
                                                     <div>
                                                         <a class="btn btn-dark" href="{{route('dactivities.editDaily', $item->id)}}">editar</a>
 
-                                                        <form action="{{route('reports.destroyReport', $item->id)}}" method="POST" class="d-inline">
+                                                        <form action="{{route('dactivities.destroyDaily', $item->id)}}" method="POST" class="d-inline">
                                                             @method('DELETE')
                                                             @csrf
                                                             <button class="btn btn-danger" type="submit">
