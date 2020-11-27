@@ -663,7 +663,7 @@ class OtherController extends Controller
             'course_id' => 'required',
             'student_id' => 'required',
             'teacher_id' => 'required',
-            'Activity_id' => 'required',
+            'activity_id' => 'required',
             'content' => 'required',
         ];
         $niceNames = [
@@ -671,7 +671,7 @@ class OtherController extends Controller
             'course_id' => 'curso',
             'student_id' => 'estudiante',
             'teacher_id' => 'docente',
-            'Activity_id' => 'id de la actividad',
+            'activity_id' => 'id de la actividad',
             'content' => 'contenido',
         ]; 
         $this->validate($request, $rules, [], $niceNames);
@@ -680,7 +680,7 @@ class OtherController extends Controller
             $data->course_id = $request->course_id;
             $data->student_id = $request->student_id;
             $data->teacher_id = $request->teacher_id;
-            $data->Activity_id = $request->Activity_id;
+            $data->activity_id = $request->activity_id;
             $data->content = $request->content;
             $data->save();
             return back()->with('message', 'Reporte editado con éxito.');

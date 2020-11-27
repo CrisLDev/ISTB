@@ -101,10 +101,16 @@ class PeopleController extends Controller
             'fullname' => 'required|max:60',
             'birthDate' => 'required|date',
             'telephoneNumber' => 'required|unique:students|numeric|max:9999999999',
-            'dni' => 'required|unique:students|numeric',
+            'dni' => 'required|unique:students|numeric|max:999999999999999',
             'address' => 'required|max:40',
             'age' => 'required|max:6|numeric',
             'email' => 'required|max:50',
+            'fatherName' => 'required|max:50',
+            'dniFather' => 'required|unique:students|numeric|max:999999999999999',
+            'motherName' => 'required|max:50',
+            'dniMother' => 'required|unique:students|numeric|max:999999999999999',
+            'vaccinationCard' => 'required',
+            'memorandumOfAssociation' => 'required'
         ];
         $niceNames = [
             'fullname' => 'nombre completo',
@@ -114,6 +120,12 @@ class PeopleController extends Controller
             'address' => 'lugar de domicilio',
             'age' => 'rango de edad',
             'email' => 'email',
+            'fatherName' => 'nombre del padre',
+            'dniFather' => 'numero de cedula del padre',
+            'motherName' => 'nombre de la madre',
+            'dniMother' => 'numero de cedula de la madre',
+            'vaccinationCard' => 'carnet de vacunacion',
+            'memorandumOfAssociation' => 'acta de nacimiento'
         ]; 
         $this->validate($request, $rules, [], $niceNames);
         $data->fullname = $request->fullname;
@@ -125,6 +137,12 @@ class PeopleController extends Controller
         $data->address = $request->address;
         $data->age = $request->age;
         $data->email = $request->email;
+        $data->fatherName = $request->fatherName;
+        $data->dniFather = $request->dniFather;
+        $data->motherName = $request->motherName;
+        $data->dniMother = $request->dniMother;
+        $data->vaccinationCard = $request->vaccinationCard;
+        $data->memorandumOfAssociation = $request->memorandumOfAssociation;
         $data->save();
         return back()->with('message', 'Estudiante agregado con éxito.');
     }
@@ -325,6 +343,12 @@ class PeopleController extends Controller
             'address' => 'required|max:40',
             'age' => 'required|max:6|numeric',
             'email' => 'required|max:50',
+            'fatherName' => 'required|max:50',
+            'dniFather' => 'required|unique:students|numeric|max:999999999999999',
+            'motherName' => 'required|max:50',
+            'dniMother' => 'required|unique:students|numeric|max:999999999999999',
+            'vaccinationCard' => 'required',
+            'memorandumOfAssociation' => 'required'
         ];
         $niceNames = [
             'fullname' => 'nombre completo',
@@ -334,6 +358,12 @@ class PeopleController extends Controller
             'address' => 'lugar de domicilio',
             'age' => 'rango de edad',
             'email' => 'email',
+            'fatherName' => 'nombre del padre',
+            'dniFather' => 'numero de cedula del padre',
+            'motherName' => 'nombre de la madre',
+            'dniMother' => 'numero de cedula de la madre',
+            'vaccinationCard' => 'carnet de vacunacion',
+            'memorandumOfAssociation' => 'acta de nacimiento'
         ]; 
         $this->validate($request, $rules, [], $niceNames);
         if($id == $data->id){
@@ -345,6 +375,12 @@ class PeopleController extends Controller
             $data->address = $request->address;
             $data->age = $request->age;
             $data->email = $request->email;
+            $data->fatherName = $request->fatherName;
+            $data->dniFather = $request->dniFather;
+            $data->motherName = $request->motherName;
+            $data->dniMother = $request->dniMother;
+            $data->vaccinationCard = $request->vaccinationCard;
+            $data->memorandumOfAssociation = $request->memorandumOfAssociation;
             $data->save();
             return back()->with('message', 'Estudiante editado con éxito.');
         }

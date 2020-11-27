@@ -25,7 +25,13 @@ class StudentSeeder extends Seeder
             'age' => '6',
             'email' => 'leonardomoreirapazmio@gmail.com',
             'code' => rand(),
-            'birthDate' => '2014-09-09'
+            'birthDate' => '2015-12-15',
+            'fatherName' => 'Juan Frasciso Espinosa de los Monteros',
+            'dniFather' => '1203626263',
+            'motherName' => 'Ana Paula Murillo Rodrigeus',
+            'dniMother' => '1203030303',
+            'vaccinationCard' => 'si',
+            'memorandumOfAssociation' => 'si'
         ]);
         Student::create([
             'id' => '2',
@@ -37,7 +43,13 @@ class StudentSeeder extends Seeder
             'age' => '5',
             'email' => 'danimejia@gmail.com',
             'code' => rand(),
-            'birthDate' => '2015-12-15'
+            'birthDate' => '2015-12-15',
+            'fatherName' => 'Juan Frasciso Espinosa de los Monteros',
+            'dniFather' => '1203626263',
+            'motherName' => 'Ana Paula Murillo Rodrigeus',
+            'dniMother' => '1203030303',
+            'vaccinationCard' => 'si',
+            'memorandumOfAssociation' => 'si'
         ]);
         Student::create([
             'id' => '3',
@@ -49,7 +61,13 @@ class StudentSeeder extends Seeder
             'age' => '5',
             'email' => 'jmiguekss@gmail.com',
             'code' => rand(),
-            'birthDate' => '2015-07-14'
+            'birthDate' => '2015-07-14',
+            'fatherName' => 'Juan Frasciso Espinosa de los Monteros',
+            'dniFather' => '1203626263',
+            'motherName' => 'Ana Paula Murillo Rodrigeus',
+            'dniMother' => '1203030303',
+            'vaccinationCard' => 'si',
+            'memorandumOfAssociation' => 'si'
         ]);
         Student::create([
             'id' => '4',
@@ -61,7 +79,13 @@ class StudentSeeder extends Seeder
             'age' => '6',
             'email' => 'orpaladin@gmail.com',
             'code' => rand(),
-            'birthDate' => '2014-12-16'
+            'birthDate' => '2014-12-16',
+            'fatherName' => 'Juan Frasciso Espinosa de los Monteros',
+            'dniFather' => '1203626263',
+            'motherName' => 'Ana Paula Murillo Rodrigeus',
+            'dniMother' => '1203030303',
+            'vaccinationCard' => 'si',
+            'memorandumOfAssociation' => 'si'
         ]);
         Student::create([
             'id' => '5',
@@ -73,7 +97,13 @@ class StudentSeeder extends Seeder
             'age' => '5',
             'email' => 'amanriquez2000@gmail.com',
             'code' => rand(),
-            'birthDate' => '2015-05-14'
+            'birthDate' => '2015-05-14',
+            'fatherName' => 'Juan Frasciso Espinosa de los Monteros',
+            'dniFather' => '1203626263',
+            'motherName' => 'Ana Paula Murillo Rodrigeus',
+            'dniMother' => '1203030303',
+            'vaccinationCard' => 'si',
+            'memorandumOfAssociation' => 'si'
         ]);
         Student::create([
             'id' => '6',
@@ -85,7 +115,13 @@ class StudentSeeder extends Seeder
             'age' => '5',
             'email' => 'silvidelcruz@gmail.com',
             'code' => rand(),
-            'birthDate' => '2015-06-14'
+            'birthDate' => '2015-06-14',
+            'fatherName' => 'Juan Frasciso Espinosa de los Monteros',
+            'dniFather' => '1203626263',
+            'motherName' => 'Ana Paula Murillo Rodrigeus',
+            'dniMother' => '1203030303',
+            'vaccinationCard' => 'si',
+            'memorandumOfAssociation' => 'si'
         ]);
         Student::create([
             'id' => '7',
@@ -97,7 +133,13 @@ class StudentSeeder extends Seeder
             'age' => '6',
             'email' => 'fcrisshawfbed@gmail.com',
             'code' => rand(),
-            'birthDate' => '2014-07-20'
+            'birthDate' => '2014-07-20',
+            'fatherName' => 'Juan Frasciso Espinosa de los Monteros',
+            'dniFather' => '1203626263',
+            'motherName' => 'Ana Paula Murillo Rodrigeus',
+            'dniMother' => '1203030303',
+            'vaccinationCard' => 'si',
+            'memorandumOfAssociation' => 'si'
         ]);
         Student::create([
             'id' => '8',
@@ -109,7 +151,13 @@ class StudentSeeder extends Seeder
             'age' => '5',
             'email' => 'miguela65de@gmail.com',
             'code' => rand(),
-            'birthDate' => '2015-10-15'
+            'birthDate' => '2015-10-15',
+            'fatherName' => 'Juan Frasciso Espinosa de los Monteros',
+            'dniFather' => '1203626263',
+            'motherName' => 'Ana Paula Murillo Rodrigeus',
+            'dniMother' => '1203030303',
+            'vaccinationCard' => 'si',
+            'memorandumOfAssociation' => 'si'
         ]);
         Student::create([
             'id' => '9',
@@ -121,7 +169,13 @@ class StudentSeeder extends Seeder
             'age' => '6',
             'email' => 'veramurrrrislo@gmail.com',
             'code' => rand(),
-            'birthDate' => '2014-05-20'
+            'birthDate' => '2014-05-20',
+            'fatherName' => 'Juan Frasciso Espinosa de los Monteros',
+            'dniFather' => '1203626263',
+            'motherName' => 'Ana Paula Murillo Rodrigeus',
+            'dniMother' => '1203030303',
+            'vaccinationCard' => 'si',
+            'memorandumOfAssociation' => 'si'
         ]);
         Student::create([
             'id' => '10',
@@ -133,7 +187,13 @@ class StudentSeeder extends Seeder
             'age' => '6',
             'email' => 'jcarlosco@gmail.com',
             'code' => rand(),
-            'birthDate' => '2014-09-13'
+            'birthDate' => '2014-09-13',
+            'fatherName' => 'Juan Frasciso Espinosa de los Monteros',
+            'dniFather' => '1203626263',
+            'motherName' => 'Ana Paula Murillo Rodrigeus',
+            'dniMother' => '1203030303',
+            'vaccinationCard' => 'si',
+            'memorandumOfAssociation' => 'si'
         ]);
     }
 }

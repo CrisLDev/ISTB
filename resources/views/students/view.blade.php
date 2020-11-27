@@ -33,10 +33,24 @@
                         <p>{{$student->code}}</p>
                         <p class="font-weight-bold">Fecha de nacimiento:</p>
                         <p>{{$student->birthDate}}</p>
+                        <p class="font-weight-bold">Nombre del padre:</p>
+                        <p>{{$student->fatherName}}</p>
+                        <p class="font-weight-bold">Numero de cedula del padre:</p>
+                        <p>{{$student->dniFather}}</p>
+                        <p class="font-weight-bold">Nombre de la madre:</p>
+                        <p>{{$student->motherName}}</p>
+                        <p class="font-weight-bold">Numero de cedula de la madre:</p>
+                        <p>{{$student->dniMother}}</p>
+                        <p class="font-weight-bold">Carnet de vacunacion:</p>
+                        <p>{{$student->vaccinationCard}}</p>
+                        <p class="font-weight-bold">Acta de compromiso:</p>
+                        <p>{{$student->memorandumOfAssociation}}</p>
                     </div>
                     <div class="mt-5">
                         @if (count($records) == 0)
-                            <div class="font-weight-bold">No existen fichas</div>
+                            <div class="container">
+                                <div class="font-weight-bold">No existen fichas</div>
+                            </div>
                         @else
                         @foreach ($records as $item)
                             <div class="accordion" id="accordionGrades">
@@ -86,6 +100,17 @@
                                                     @else
                                                     <p>N/A</p>
                                                     @endif
+                                                    <div>
+                                                        <a class="btn btn-dark" href="{{route('records.editRecords', $item->id)}}">editar</a>
+                
+                                                        <form action="{{route('records.destroyRecords', $item->id)}}" method="POST" class="d-inline">
+                                                            @method('DELETE')
+                                                            @csrf
+                                                            <button class="btn btn-danger" type="submit">
+                                                                Eliminar
+                                                            </button>
+                                                        </form>
+                                                    </div>
                                                 </div>
                                         </div>
                                     </div>
@@ -141,7 +166,9 @@
                                 </div>
                             @endforeach
                         @else
-                            <div class="font-weight-bold">No hay reportes</div>
+                            <div class="container">
+                                <div class="font-weight-bold">No hay reportes</div>
+                            </div>
                         @endif
 
                         <div class="container pt-3 d-flex justify-content-center">
@@ -184,7 +211,9 @@
                                 </div>
                             @endforeach
                         @else
-                            <div class="font-weight-bold">No hay actividades diarias</div>
+                            <div class="container">
+                                <div class="font-weight-bold">No hay actividades diarias</div>
+                            </div>
                         @endif
 
                         <div class="container pt-3 d-flex justify-content-center">

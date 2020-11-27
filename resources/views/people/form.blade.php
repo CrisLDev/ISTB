@@ -158,6 +158,90 @@
                                     />
                                 </div>
                             </div>
+                            @if(Request::is('people/form/student'))
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Nombre del padre:</label>
+                                    <input
+                                    type="text"
+                                    autocomplete="none"
+                                    spellcheck="false"
+                                    name="fatherName"
+                                    id="fatherName"
+                                    placeholder="Ingresa el nombre del padre"
+                                    class="form-control mb-2"
+                                    value="{{old('fatherName')}}"
+                                    required
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Número de cédula del padre:</label>
+                                    <input
+                                    type="text"
+                                    autocomplete="none"
+                                    spellcheck="false"
+                                    name="dniFather"
+                                    id="dniFather"
+                                    placeholder="Ingresa cedula del padre"
+                                    class="form-control mb-2"
+                                    value="{{old('dniFather')}}"
+                                    required
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Nombre de la madre:</label>
+                                    <input
+                                    type="text"
+                                    autocomplete="none"
+                                    spellcheck="false"
+                                    name="motherName"
+                                    id="motherName"
+                                    placeholder="Ingresa el nombre de la madre"
+                                    class="form-control mb-2"
+                                    value="{{old('motherName')}}"
+                                    required
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Numero de cedula de la madre:</label>
+                                    <input
+                                    type="text"
+                                    autocomplete="none"
+                                    spellcheck="false"
+                                    name="dniMother"
+                                    id="dniMother"
+                                    placeholder="Ingresa cedula de la madre"
+                                    class="form-control mb-2"
+                                    value="{{old('dniMother')}}"
+                                    required
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Carnet de vacunacion:</label>
+                                    <select id="inputState" class="form-control" name="vaccinationCard" name="cardiovascular">
+                                        <option value="si">Si</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Acta de compromiso:</label>
+                                    <select id="inputState" class="form-control" name="memorandumOfAssociation" name="cardiovascular">
+                                        <option value="si">Si</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            @endif
                             @if(Request::is('people/form/administration'))
                             <div class="col-md-12">
                                 <div class="form-group">

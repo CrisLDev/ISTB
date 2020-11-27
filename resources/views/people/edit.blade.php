@@ -156,6 +156,90 @@
                                     />
                                 </div>
                             </div>
+                            @if(Request::is('people/form/student/edit/'.$people->id))
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Nombre del padre:</label>
+                                    <input
+                                    type="text"
+                                    autocomplete="none"
+                                    spellcheck="false"
+                                    name="fatherName"
+                                    id="fatherName"
+                                    placeholder="Ingresa el nombre del padre"
+                                    class="form-control mb-2"
+                                    value="{{$people->fatherName}}"
+                                    required
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Número de cédula del padre:</label>
+                                    <input
+                                    type="text"
+                                    autocomplete="none"
+                                    spellcheck="false"
+                                    name="dniFather"
+                                    id="dniFather"
+                                    placeholder="Ingresa cedula del padre"
+                                    class="form-control mb-2"
+                                    value="{{$people->dniFather}}"
+                                    required
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Nombre de la madre:</label>
+                                    <input
+                                    type="text"
+                                    autocomplete="none"
+                                    spellcheck="false"
+                                    name="motherName"
+                                    id="motherName"
+                                    placeholder="Ingresa el nombre de la madre"
+                                    class="form-control mb-2"
+                                    value="{{$people->motherName}}"
+                                    required
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Numero de cedula de la madre:</label>
+                                    <input
+                                    type="text"
+                                    autocomplete="none"
+                                    spellcheck="false"
+                                    name="dniMother"
+                                    id="dniMother"
+                                    placeholder="Ingresa cedula de la madre"
+                                    class="form-control mb-2"
+                                    value="{{$people->dniMother}}"
+                                    required
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Carnet de vacunacion:</label>
+                                    <select id="inputState" class="form-control" id="vaccinationCard" name="cardiovascular">
+                                        <option value="si" {{ $people->vaccinationCard == 'si' ? 'selected' : '' }}>Si</option>
+                                        <option value="no" {{ $people->vaccinationCard == 'no' ? 'selected' : '' }}>No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Acta de compromiso:</label>
+                                    <select id="inputState" class="form-control" id="memorandumOfAssociation" name="cardiovascular">
+                                        <option value="si" {{ $people->memorandumOfAssociation == 'si' ? 'selected' : '' }}>Si</option>
+                                        <option value="no" {{ $people->memorandumOfAssociation == 'no' ? 'selected' : '' }}>No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            @endif
                             @if(Request::is('people/form/administration/edit/'.$people->id))
                             <div class="col-md-12">
                                 <div class="form-group">

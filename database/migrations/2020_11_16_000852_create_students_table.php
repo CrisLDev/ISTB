@@ -25,6 +25,12 @@ class CreateStudentsTable extends Migration
             $table->string('email');
             $table->string('code')->rand();
             $table->date('birthDate');
+            $table->string('fatherName');
+            $table->integer('dniFather');
+            $table->string('motherName');
+            $table->integer('dniMother');
+            $table->string('vaccinationCard');
+            $table->string('memorandumOfAssociation');
             $table->timestamps();
             $table->engine = 'InnoDB';
             $table->charset = 'utf8';
