@@ -34,6 +34,22 @@
                                             />
                                         </div>
                                         <div class="form-group">
+                                            <label>Rango de edad:</label>
+                                            <input
+                                            type="text"
+                                            autocomplete="none"
+                                            spellcheck="false"
+                                            name="ageRange"
+                                            id="ageRange"
+                                            placeholder="Ingresa el rango de edad"
+                                            class="form-control mb-2"
+                                            value="{{$course->ageRange}}"
+                                            maxlength="1"
+                                            minlength="1"
+                                            required
+                                        />
+                                        </div>
+                                        <div class="form-group">
                                             <button class="btn btn-warning btn-block" id="button-prevent-multiple-submits" type="submit">
                                                 <span class="spinner-border spinner-border-sm" id="spinner" role="status" aria-hidden="true"></span>    
                                                 <span id="btex">Enviar</span></button>

@@ -27,10 +27,10 @@
                                 @foreach ($activities as $activity)
                                 <div class="container border-bottom mb-4 pb-4">
                                     <div class="row">
-                                    <div class="col-lg-8 col-md-12 col-12">
+                                    <div class="col-lg-9 col-md-12 col-12">
                                         <p>{{$activity->activityName}}</p>
                                     </div>
-                                    <div class="col-lg-4 col-md-12 col-12">
+                                    <div class="col-lg-3 col-md-12 col-12">
                                         <a class="btn btn-dark mr-2" href="{{route('other.editActivity', $activity->id)}}">editar</a>
                                         <form action="{{route('other.deleteActivity', $activity->id)}}" method="POST" class="d-inline">
                                             @method('DELETE')
@@ -58,10 +58,13 @@
                                 @foreach ($courses as $course)
                                 <div class="container pb-4 mb-4 border-bottom">
                                     <div class="row">
-                                    <div class="col-lg-8 col-md-9 col-12">
+                                    <div class="col-lg-9 col-md-9 col-12">
+                                        <span class="font-weight-bold">Nombre del curso:</span>
                                         <p>{{$course->courseName}}</p>
+                                        <span class="font-weight-bold">Rango de edad del curso:</span>
+                                        <p>{{$course->ageRange}}</p>
                                     </div>
-                                    <div class="col-lg-4 col-md-3 col-12">
+                                    <div class="col-lg-3 col-md-3 col-12">
                                         <a class="btn btn-dark mr-2" href="{{route('other.editCourse', $course->id)}}">editar</a>
                                         <form action="{{route('other.deleteCourse', $course->id)}}" method="POST" class="d-inline">
                                             @method('DELETE')

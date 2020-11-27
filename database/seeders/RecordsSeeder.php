@@ -32,7 +32,7 @@ class RecordsSeeder extends Seeder
         Record::create([
             'id' => '2',
             'user_id' => '1',
-            'course_id' => '4',
+            'course_id' => '2',
             'student_id' => '2',
             'allergies' => 'Tipos de pintura - polvo',
             'treatment' => 'Se debe tener cuidado y mantener al paciente en un lugar libre sin objetos que pouedan cuasarle problemas',
@@ -46,7 +46,7 @@ class RecordsSeeder extends Seeder
         Record::create([
             'id' => '3',
             'user_id' => '1',
-            'course_id' => '5',
+            'course_id' => '1',
             'student_id' => '2',
             'allergies' => '',
             'treatment' => 'Se concidera necesario que se realice una evaluacion medica en un lugar mas capacitado',
@@ -60,7 +60,7 @@ class RecordsSeeder extends Seeder
         Record::create([
             'id' => '4',
             'user_id' => '1',
-            'course_id' => '4',
+            'course_id' => '1',
             'student_id' => '3',
             'allergies' => '',
             'treatment' => 'Con mantener alejado al estudiante es suficiente',
@@ -74,7 +74,7 @@ class RecordsSeeder extends Seeder
         Record::create([
             'id' => '5',
             'user_id' => '1',
-            'course_id' => '5',
+            'course_id' => '3',
             'student_id' => '5',
             'allergies' => 'Polvo',
             'treatment' => 'Se debe dar los medicamentos y mantener tranquyilo al alumno',
@@ -102,7 +102,7 @@ class RecordsSeeder extends Seeder
         Record::create([
             'id' => '7',
             'user_id' => '1',
-            'course_id' => '5',
+            'course_id' => '2',
             'student_id' => '8',
             'allergies' => '',
             'treatment' => 'Se recomienda mantener alejado al alumno de cualquier lugar que pueda causarle problemas con sus alergias',

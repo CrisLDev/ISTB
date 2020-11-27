@@ -240,13 +240,16 @@ class OtherController extends Controller
     {
         $data = new Course();
         $rules = [
-            'courseName' => 'required|unique:courses|max:5',
+            'courseName' => 'required|unique:courses|max:40',
+            'ageRange' => 'required|numeric|max:3'
         ];
         $niceNames = [
-            'courseName' => 'nombre del curso'
+            'courseName' => 'nombre del curso',
+            'ageRange' => 'rango de edad'
         ]; 
         $this->validate($request, $rules, [], $niceNames);
         $data->courseName = $request->courseName;
+        $data->ageRange = $request->ageRange;
         $data->save();
         return back()->with('message', 'Curso agregado con éxito.');
     }
@@ -607,13 +610,18 @@ class OtherController extends Controller
     {
         $data = Course::where('id', $id)->first();
         $rules = [
-            'courseName' => ['required',Rule::unique('courses')->ignore($id),'max:6']
+            'courseName' => ['required',Rule::unique('courses')->ignore($id),'max:40'],
+            'ageRange' => 'required|numeric|max:3'
         ];
         $niceNames = [
-            'courseName' => 'nombre del curso'
+            'courseName' => 'nombre del curso',
+            'ageRange' => 'rango de edad',
+            
         ];
+        $this->validate($request, $rules, [], $niceNames);
         if($id == $data->id){
             $data->courseName = $request->courseName;
+            $data->ageRange = $request->ageRange;
         $data->save();
         return back()->with('message', 'Curso actualizado con éxito.');
         }
