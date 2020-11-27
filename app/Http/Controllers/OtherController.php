@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Activity;
+use App\Models\DailyActivity;
 use App\Models\Course;
 use App\Models\Reports;
 use App\Models\Grades;
@@ -89,7 +90,8 @@ class OtherController extends Controller
     {
         $students = Student::get();
         $courses = Course::get();
-        return view('other.grades', compact('students', 'courses'));
+        $activities = Activity::get();
+        return view('other.grades', compact('students', 'courses', 'activities'));
     }
 
     /**
@@ -296,31 +298,135 @@ class OtherController extends Controller
     {
         $data = new Grades();
         $rules = [
-            'resume' => 'required|unique:reports|max:100',
             'course_id' => 'required',
             'student_id' => 'required',
-            'teacher_id' => 'required',
-            'Activity_id' => 'required',
-            'content' => 'required',
         ];
         $niceNames = [
-            'resume' => 'resumen',
             'course_id' => 'curso',
-            'student_id' => 'estudiante',
-            'teacher_id' => 'docente',
-            'Activity_id' => 'id de la actividad',
-            'content' => 'contenido',
+            'student_id' => 'estudiante'
         ]; 
         $this->validate($request, $rules, [], $niceNames);
-        $data->resume = $request->resume;
         $data->user_id = auth()->user()->id;
         $data->course_id = $request->course_id;
         $data->student_id = $request->student_id;
-        $data->teacher_id = $request->teacher_id;
-        $data->Activity_id = $request->Activity_id;
-        $data->content = $request->content;
         $data->save();
-        return back()->with('message', 'Nota agregada correctamente agregado con éxito.');
+        $idd = $data->id;
+        if($request->activity1_id !== '' || $request->activity1 !== '' || $request->answer1 !== ''){
+            $rules1 = [
+                'activity1_id' => 'required',
+                'activity1' => 'required',
+                'answer1' => 'required',
+            ];
+            $niceNames1 = [
+                'activity1_id' => 'campo actividad 1',
+                'activity1' => 'campo nombre de actividad 1',
+                'answer1' => 'campo actividad cumplida 1'
+            ]; 
+            $this->validate($request, $rules1, [], $niceNames1);
+            if($request->activity1_id && $request->activity1 && $request->answer1){
+                $dataA1 = new DailyActivity();
+                $dataA1->grade_id = $idd;
+                $dataA1->activity_id = $request->activity1_id;
+                $dataA1->dailyActivityText = $request->activity1;
+                $dataA1->dailyActivityCheck = $request->answer1;
+                $dataA1->save();
+            }else{
+                back()->with('message', 'Completa toda la actividad.');
+            }
+        }
+        if($request->activity2_id || $request->activity2 || $request->answer2){
+            $rules2 = [
+                'activity2_id' => 'required',
+                'activity2' => 'required',
+                'answer2' => 'required',
+            ];
+            $niceNames2 = [
+                'activity2_id' => 'campo actividad 2',
+                'activity2' => 'campo nombre de actividad 2',
+                'answer2' => 'campo actividad cumplida 2'
+            ]; 
+            $this->validate($request, $rules2, [], $niceNames2);
+            if($request->activity2_id && $request->activity2 && $request->answer2){
+                $dataA2 = new DailyActivity();
+                $dataA2->grade_id = $idd;
+                $dataA2->activity_id = $request->activity2_id;
+                $dataA2->dailyActivityText = $request->activity2;
+                $dataA2->dailyActivityCheck = $request->answer2;
+                $dataA2->save();
+            }else{
+                back()->with('message', 'Completa toda la actividad.');
+            }
+        }
+        if($request->activity3_id || $request->activity3 || $request->answer3){
+            $rules3 = [
+                'activity3_id' => 'required',
+                'activity3' => 'required',
+                'answer3' => 'required',
+            ];
+            $niceNames3 = [
+                'activity3_id' => 'campo actividad 3',
+                'activity3' => 'campo nombre de actividad 3',
+                'answer3' => 'campo actividad cumplida 3'
+            ]; 
+            $this->validate($request, $rules3, [], $niceNames3);
+            if($request->activity3_id && $request->activity3 && $request->answer3){
+                $dataA3 = new DailyActivity();
+                $dataA3->grade_id = $idd;
+                $dataA3->activity_id = $request->activity3_id;
+                $dataA3->dailyActivityText = $request->activity3;
+                $dataA3->dailyActivityCheck = $request->answer3;
+                $dataA3->save();
+            }else{
+                back()->with('message', 'Completa toda la actividad.');
+            }
+        }
+        if($request->activity4_id || $request->activity4 || $request->answer4){
+            $rules4 = [
+                'activity4_id' => 'required',
+                'activity4' => 'required',
+                'answer4' => 'required',
+            ];
+            $niceNames4 = [
+                'activity4_id' => 'campo actividad 4',
+                'activity4' => 'campo nombre de actividad 4',
+                'answer4' => 'campo actividad cumplida 4'
+            ]; 
+            $this->validate($request, $rules4, [], $niceNames4);
+            if($request->activity4_id && $request->activity4 && $request->answer4){
+                $dataA4 = new DailyActivity();
+                $dataA4->grade_id = $idd;
+                $dataA4->activity_id = $request->activity4_id;
+                $dataA4->dailyActivityText = $request->activity4;
+                $dataA4->dailyActivityCheck = $request->answer4;
+                $dataA4->save();
+            }else{
+                back()->with('message', 'Completa toda la actividad.');
+            }
+        }
+        if($request->activity5_id || $request->activity5 || $request->answer5){
+            $rules5 = [
+                'activity5_id' => 'required',
+                'activity5' => 'required',
+                'answer5' => 'required',
+            ];
+            $niceNames5 = [
+                'activity5_id' => 'campo actividad 5',
+                'activity5' => 'campo nombre de actividad 5',
+                'answer5' => 'campo actividad cumplida 5'
+            ]; 
+            $this->validate($request, $rules5, [], $niceNames5);
+            if($request->activity5_id && $request->activity5 && $request->answer5){
+                $dataA5 = new DailyActivity();
+                $dataA5->grade_id = $idd;
+                $dataA5->activity_id = $request->activity5_id;
+                $dataA5->dailyActivityText = $request->activity5;
+                $dataA5->dailyActivityCheck = $request->answer5;
+                $dataA5->save();
+            }else{
+                back()->with('message', 'Completa toda la actividad.');
+            }
+        }
+        return back()->with('message', 'Calificación agregada correctamente agregado con éxito.');
     }
 
     /**

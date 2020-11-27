@@ -21,7 +21,7 @@
                                             <option value="">No hay estudiantes</option>
                                         @endif
                                         @foreach ($students as $student)
-                                          <option value="{{$student->id}}+{{$student->code}}">{{$student->fullname}}</option>
+                                          <option value="{{$student->id}}">{{$student->fullname}}</option>
                                         @endforeach
                                         </select>
                                     </div>
@@ -43,6 +43,7 @@
                                                 <thead>
                                                   <tr>
                                                     <th scope="col">Número</th>
+                                                    <th scope="col">Actividad</th>
                                                     <th scope="col">Nombre</th>
                                                     <th scope="col">Cumplido</th>
                                                   </tr>
@@ -51,12 +52,27 @@
                                                   <tr>
                                                     <th scope="row">1</th>
                                                     <td>
-                                                      <div class="form-group">
+                                                      <div class="form-group" style="min-width: 10em">
+                                                        <select class="custom-select" name="activity1_id" required>
+                                                          @if (count($activities) === 0)
+                                                              <option value="">No hay actividades</option>
+                                                          @endif
+                                                          @foreach ($activities as $activity)
+                                                            <option value="{{$activity->id}}">{{$activity->activityName}}</option>
+                                                          @endforeach
+                                                        </select>
+                                                        <div class="invalid-feedback">
+                                                          Please select a valid state.
+                                                        </div>
+                                                      </div>
+                                                    </td>
+                                                    <td>
+                                                      <div class="form-group" style="min-width: 10em">
                                                         <textarea class="form-control" rows="1" name="activity1"></textarea>
                                                       </div>
                                                     </td>
                                                     <td>
-                                                      <div class="form-group">
+                                                      <div class="form-group" style="min-width: 10em">
                                                         <select class="custom-select" name="answer1" required>
                                                           <option selected value="null">Escoge uno...</option>
                                                           <option value="si">Si</option>
@@ -70,6 +86,21 @@
                                                   </tr>
                                                   <tr>
                                                     <th scope="row">2</th>
+                                                    <td>
+                                                      <div class="form-group">
+                                                        <select class="custom-select" name="activity2_id" required>
+                                                          @if (count($activities) === 0)
+                                                              <option value="">No hay actividades</option>
+                                                          @endif
+                                                          @foreach ($activities as $activity)
+                                                            <option value="{{$activity->id}}">{{$activity->activityName}}</option>
+                                                          @endforeach
+                                                        </select>
+                                                        <div class="invalid-feedback">
+                                                          Please select a valid state.
+                                                        </div>
+                                                      </div>
+                                                    </td>
                                                     <td>
                                                       <div class="form-group">
                                                         <textarea class="form-control" rows="1" name="activity2"></textarea>
@@ -92,6 +123,21 @@
                                                     <th scope="row">3</th>
                                                     <td>
                                                       <div class="form-group">
+                                                        <select class="custom-select" name="activity3_id" required>
+                                                          @if (count($activities) === 0)
+                                                              <option value="">No hay actividades</option>
+                                                          @endif
+                                                          @foreach ($activities as $activity)
+                                                            <option value="{{$activity->id}}">{{$activity->activityName}}</option>
+                                                          @endforeach
+                                                        </select>
+                                                        <div class="invalid-feedback">
+                                                          Please select a valid state.
+                                                        </div>
+                                                      </div>
+                                                    </td>
+                                                    <td>
+                                                      <div class="form-group">
                                                         <textarea class="form-control" name="activity3" rows="1"></textarea>
                                                       </div>
                                                     </td>
@@ -112,6 +158,21 @@
                                                     <th scope="row">4</th>
                                                     <td>
                                                       <div class="form-group">
+                                                        <select class="custom-select" name="activity4_id" required>
+                                                          @if (count($activities) === 0)
+                                                              <option value="">No hay actividades</option>
+                                                          @endif
+                                                          @foreach ($activities as $activity)
+                                                            <option value="{{$activity->id}}">{{$activity->activityName}}</option>
+                                                          @endforeach
+                                                        </select>
+                                                        <div class="invalid-feedback">
+                                                          Please select a valid state.
+                                                        </div>
+                                                      </div>
+                                                    </td>
+                                                    <td>
+                                                      <div class="form-group">
                                                         <textarea class="form-control" name="activity4" rows="1"></textarea>
                                                       </div>
                                                     </td>
@@ -130,6 +191,21 @@
                                                   </tr>
                                                   <tr>
                                                     <th scope="row">5</th>
+                                                    <td>
+                                                      <div class="form-group">
+                                                        <select class="custom-select" name="activity5_id" required>
+                                                          @if (count($activities) === 0)
+                                                              <option value="">No hay actividades</option>
+                                                          @endif
+                                                          @foreach ($activities as $activity)
+                                                            <option value="{{$activity->id}}">{{$activity->activityName}}</option>
+                                                          @endforeach
+                                                        </select>
+                                                        <div class="invalid-feedback">
+                                                          Please select a valid state.
+                                                        </div>
+                                                      </div>
+                                                    </td>
                                                     <td>
                                                       <div class="form-group">
                                                         <textarea class="form-control" name="activity5" rows="1"></textarea>
