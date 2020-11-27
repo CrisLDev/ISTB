@@ -36,7 +36,7 @@
                     </div>
                     <div class="mt-5">
                         @if (count($records) == 0)
-                            <div class="font-weight-bold">No exister fichas</div>
+                            <div class="font-weight-bold">No existen fichas</div>
                         @else
                         @foreach ($records as $item)
                             <div class="accordion" id="accordionGrades">

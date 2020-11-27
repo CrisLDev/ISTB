@@ -36,7 +36,7 @@
                     </div>
                     <div class="mt-5">
                         @if (count($records) == 0)
-                            <div class="font-weight-bold">No exister fichas</div>
+                            <div class="font-weight-bold">No existen fichas</div>
                         @else
                         @foreach ($records as $item)
                             <div class="accordion" id="accordionGrades">
@@ -146,6 +146,49 @@
 
                         <div class="container pt-3 d-flex justify-content-center">
                             {{$reports->links()}}
+                    </div>
+                    <div class="mt-5">
+                        @if (count($dailyActivities) !== 0)
+                            @foreach ($dailyActivities as $item)
+                                <div class="accordion" id="accordionGrades">
+                                    <div class="card mb-4">
+                                    <div class="card-header bg-white" id="headingA{{$item->id}}">
+                                        <h2 class="mb-0">
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseA{{$item->id}}" aria-expanded="true" aria-controls="collapseA{{$item->id}}">
+                                            <h3 class="mb-0">Actividad del día {{$item->created_at->format('d-m-Y')}}
+                                        </button>
+                                        </h2>
+                                    </div>
+                                    <div id="collapseA{{$item->id}}" class="collapse show" aria-labelledby="headingA{{$item->id}}" data-parent="#accordionGrades">
+                                        <div class="card-body">
+                                                <div class="container-fluid border shadow pt-3 pb-3">
+                                                    <p class="font-weight-bold">Nombre de la actividad:</p>
+                                                    <p>{{$item->dailyActivityCheck}}</p>
+                                                    <p class="font-weight-bold">La actividad fue cumplida:</p>
+                                                    <p>{{$item->dailyActivityText}}</p>
+                                                    <div>
+                                                        <a class="btn btn-dark" href="{{route('reports.editReport', $item->id)}}">editar</a>
+
+                                                        <form action="{{route('reports.destroyReport', $item->id)}}" method="POST" class="d-inline">
+                                                            @method('DELETE')
+                                                            @csrf
+                                                            <button class="btn btn-danger" type="submit">
+                                                                Eliminar
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @else
+                            <div class="font-weight-bold">No hay actividades diarias</div>
+                        @endif
+
+                        <div class="container pt-3 d-flex justify-content-center">
+                            {{$dailyActivities->links()}}
                     </div>
                 </div>
             </div>

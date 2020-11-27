@@ -19,8 +19,10 @@ class CreateDailyActivitiesTable extends Migration
             $table->foreign('activity_id')->references('id')->on('activities')->onDelete('cascade');
             $table->unsignedBigInteger('grade_id');
             $table->foreign('grade_id')->references('id')->on('grades')->onDelete('cascade');
-            $table->text('dailyActivityText')->nullable();
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
+            $table->unsignedBigInteger('student_id');
             $table->string('dailyActivityCheck')->nullable();
+            $table->text('dailyActivityText')->nullable();
             $table->timestamps();
             $table->engine = 'InnoDB';
             $table->charset = 'utf8';

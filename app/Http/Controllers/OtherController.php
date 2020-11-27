@@ -326,6 +326,7 @@ class OtherController extends Controller
             if($request->activity1_id && $request->activity1 && $request->answer1){
                 $dataA1 = new DailyActivity();
                 $dataA1->grade_id = $idd;
+                $dataA1->student_id = $request->student_id;
                 $dataA1->activity_id = $request->activity1_id;
                 $dataA1->dailyActivityText = $request->activity1;
                 $dataA1->dailyActivityCheck = $request->answer1;
@@ -334,7 +335,7 @@ class OtherController extends Controller
                 back()->with('message', 'Completa toda la actividad.');
             }
         }
-        if($request->activity2_id || $request->activity2 || $request->answer2){
+        if($request->activity2_id !== '' || $request->activity2 !== '' || $request->answer2 !== ''){
             $rules2 = [
                 'activity2_id' => 'required',
                 'activity2' => 'required',
@@ -349,6 +350,7 @@ class OtherController extends Controller
             if($request->activity2_id && $request->activity2 && $request->answer2){
                 $dataA2 = new DailyActivity();
                 $dataA2->grade_id = $idd;
+                $dataA2->student_id = $request->student_id;
                 $dataA2->activity_id = $request->activity2_id;
                 $dataA2->dailyActivityText = $request->activity2;
                 $dataA2->dailyActivityCheck = $request->answer2;
@@ -357,7 +359,7 @@ class OtherController extends Controller
                 back()->with('message', 'Completa toda la actividad.');
             }
         }
-        if($request->activity3_id || $request->activity3 || $request->answer3){
+        if($request->activity3_id !== '' || $request->activity3 !== '' || $request->answer3 !== ''){
             $rules3 = [
                 'activity3_id' => 'required',
                 'activity3' => 'required',
@@ -372,6 +374,7 @@ class OtherController extends Controller
             if($request->activity3_id && $request->activity3 && $request->answer3){
                 $dataA3 = new DailyActivity();
                 $dataA3->grade_id = $idd;
+                $dataA3->student_id = $request->student_id;
                 $dataA3->activity_id = $request->activity3_id;
                 $dataA3->dailyActivityText = $request->activity3;
                 $dataA3->dailyActivityCheck = $request->answer3;
@@ -380,7 +383,7 @@ class OtherController extends Controller
                 back()->with('message', 'Completa toda la actividad.');
             }
         }
-        if($request->activity4_id || $request->activity4 || $request->answer4){
+        if($request->activity4_id !== '' || $request->activity4 !== '' || $request->answer4 !== ''){
             $rules4 = [
                 'activity4_id' => 'required',
                 'activity4' => 'required',
@@ -395,6 +398,7 @@ class OtherController extends Controller
             if($request->activity4_id && $request->activity4 && $request->answer4){
                 $dataA4 = new DailyActivity();
                 $dataA4->grade_id = $idd;
+                $dataA4->student_id = $request->student_id;
                 $dataA4->activity_id = $request->activity4_id;
                 $dataA4->dailyActivityText = $request->activity4;
                 $dataA4->dailyActivityCheck = $request->answer4;
@@ -403,7 +407,7 @@ class OtherController extends Controller
                 back()->with('message', 'Completa toda la actividad.');
             }
         }
-        if($request->activity5_id || $request->activity5 || $request->answer5){
+        if($request->activity5_id !== '' || $request->activity5 !== '' || $request->answer5 !== ''){
             $rules5 = [
                 'activity5_id' => 'required',
                 'activity5' => 'required',
@@ -418,6 +422,7 @@ class OtherController extends Controller
             if($request->activity5_id && $request->activity5 && $request->answer5){
                 $dataA5 = new DailyActivity();
                 $dataA5->grade_id = $idd;
+                $dataA5->student_id = $request->student_id;
                 $dataA5->activity_id = $request->activity5_id;
                 $dataA5->dailyActivityText = $request->activity5;
                 $dataA5->dailyActivityCheck = $request->answer5;
@@ -494,11 +499,14 @@ class OtherController extends Controller
                         ->select('reports.*', 'users.name as userName', 'users.email as userEmail', 'activities.activityName as activityName', 'teachers.fullname as teacherFullname', 'courses.courseName', 'reports.course_id', 'teachers.fullname as teacherFullname')
                         ->paginate(1, ['*'], 'reports');
 
+        $dailyActivities = DailyActivity::where('student_id', $id)->paginate(5, ['*'], 'dactivities');
+
+
         if(!$student){
             return redirect('/other/students')->with('userErrors', '¡El estudiante no existe!');
         };
 
-        return view('students.view', compact('student', 'records', 'reports'));
+        return view('students.view', compact('student', 'records', 'reports', 'dailyActivities'));
     }
 
     /**
