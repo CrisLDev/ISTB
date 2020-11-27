@@ -163,11 +163,11 @@
                                         <div class="card-body">
                                                 <div class="container-fluid border shadow pt-3 pb-3">
                                                     <p class="font-weight-bold">Nombre de la actividad:</p>
-                                                    <p>{{$item->dailyActivityCheck}}</p>
-                                                    <p class="font-weight-bold">La actividad fue cumplida:</p>
                                                     <p>{{$item->dailyActivityText}}</p>
+                                                    <p class="font-weight-bold">La actividad fue cumplida:</p>
+                                                    <p>{{$item->dailyActivityCheck}}</p>
                                                     <div>
-                                                        <a class="btn btn-dark" href="{{route('reports.editReport', $item->id)}}">editar</a>
+                                                        <a class="btn btn-dark" href="{{route('dactivities.editDaily', $item->id)}}">editar</a>
 
                                                         <form action="{{route('reports.destroyReport', $item->id)}}" method="POST" class="d-inline">
                                                             @method('DELETE')

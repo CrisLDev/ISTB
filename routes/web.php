@@ -155,10 +155,8 @@ Route::get( '/other/grades/form', [App\Http\Controllers\OtherController::class, 
 
 Route::post( '/other/grades/form', [App\Http\Controllers\OtherController::class, 'storeGrades'])->name( 'grades.storeGrades' )->middleware('isCoor');
 
-Route::get( '/other/grades', [App\Http\Controllers\OtherController::class, 'indexRecord'])->name( 'records.indexRecords' )->middleware('isCoor');
+Route::get( '/other/dailyactivity/edit/{id}', [App\Http\Controllers\OtherController::class, 'editDaily'])->name( 'dactivities.editDaily' )->middleware('isCoor');
 
-Route::get( '/other/grades/edit/{id}', [App\Http\Controllers\OtherController::class, 'editRecord'])->name( 'records.editRecords' )->middleware('isCoor');
-
-Route::put( '/other/grades/update/{id}', [App\Http\Controllers\OtherController::class, 'updateRecord'])->name( 'records.updateRecords' )->middleware('isCoor');
+Route::put( '/other/dailyactivity/update/{id}', [App\Http\Controllers\OtherController::class, 'updateDaily'])->name( 'dactivities.updateDaily' )->middleware('isCoor');
 
 Route::delete( '/other/grades/delete/{id}', [App\Http\Controllers\OtherController::class, 'destroyRecord'])->name( 'records.destroyRecords' )->middleware('isCoor');

@@ -549,6 +549,23 @@ class OtherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function editDaily($id)
+    {
+        $dailyactivity = DailyActivity::where('id', $id)->first();
+
+        if(!$dailyactivity){
+            return redirect('/other/students')->with('userErrors', '¡La actividad diaria no existe!');
+        };
+
+        return view('other.editDailyActivity', compact('dailyactivity'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function editReport($id)
     {
         $teachers = Teacher::get();
@@ -670,6 +687,36 @@ class OtherController extends Controller
         }
 
         return back()->with('userErrors', 'El reporte ya existe.');
+        
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Activity  $Activity
+     * @return \Illuminate\Http\Response
+     */
+    public function updateDaily(Request $request, $id)
+    {
+        $data = DailyActivity::where('id', $id)->first();
+        $rules = [
+            'dailyActivityCheck' => 'required',
+            'dailyActivityText' => 'required',
+        ];
+        $niceNames = [
+            'dailyActivityCheck' => 'campo nombre de actividad',
+            'dailyActivityText' => 'campo actividad cumplida'
+        ]; 
+        $this->validate($request, $rules, [], $niceNames);
+        if($id == $data->id){
+            $data->dailyActivityCheck = $request->dailyActivityCheck;
+            $data->dailyActivityText = $request->dailyActivityText;
+            $data->save();
+            return back()->with('message', 'Actividad diaria editada con éxito.');
+        }
+
+        return back()->with('userErrors', 'La actividad ya existe.');
         
     }
 
