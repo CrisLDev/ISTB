@@ -224,7 +224,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Carnet de vacunacion:</label>
-                                    <select id="inputState" class="form-control" id="vaccinationCard" name="cardiovascular">
+                                    <select id="inputState" class="form-control" name="vaccinationCard" name="cardiovascular">
                                         <option value="si" {{ $people->vaccinationCard == 'si' ? 'selected' : '' }}>Si</option>
                                         <option value="no" {{ $people->vaccinationCard == 'no' ? 'selected' : '' }}>No</option>
                                     </select>
@@ -233,7 +233,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Acta de compromiso:</label>
-                                    <select id="inputState" class="form-control" id="memorandumOfAssociation" name="cardiovascular">
+                                    <select id="inputState" class="form-control" name="memorandumOfAssociation" name="cardiovascular">
                                         <option value="si" {{ $people->memorandumOfAssociation == 'si' ? 'selected' : '' }}>Si</option>
                                         <option value="no" {{ $people->memorandumOfAssociation == 'no' ? 'selected' : '' }}>No</option>
                                     </select>

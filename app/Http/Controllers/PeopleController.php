@@ -358,9 +358,9 @@ class PeopleController extends Controller
             'age' => 'required|max:6|numeric',
             'email' => 'required|max:50',
             'fatherName' => 'required|max:50',
-            'dniFather' => 'required|unique:students|numeric|max:999999999999999',
+            'dniFather' => ['required',Rule::unique('students')->ignore($id),'numeric', 'max:9999999999'],
             'motherName' => 'required|max:50',
-            'dniMother' => 'required|unique:students|numeric|max:999999999999999',
+            'dniMother' => ['required',Rule::unique('students')->ignore($id),'numeric', 'max:9999999999'],
             'vaccinationCard' => 'required',
             'memorandumOfAssociation' => 'required'
         ];
