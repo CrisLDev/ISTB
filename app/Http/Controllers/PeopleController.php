@@ -133,8 +133,13 @@ class PeopleController extends Controller
         ]; 
         $this->validate($request, $rules, [], $niceNames);
         $courseD = explode("+", $request->course_id);
+        $datee = date("Y");
+        $studentsCuantity = Student::where('course_id', $courseD[0])->whereYear('created_at', $datee)->get();
         if($request->age != $courseD[1]){
             return back()->withInput()->with('userErrors', 'El rango de edad permitida en este curso es de '.$courseD[1].'.');
+        }
+        if(count($studentsCuantity) > 8){
+            return back()->withInput()->with('userErrors', 'El curso esta lleno para este ciclo.');
         }
         $data->fullname = $request->fullname;
         $data->birthDate = $request->birthDate;
@@ -406,8 +411,8 @@ class PeopleController extends Controller
      */
     public function destroyAdmin($id)
     {
-        $data = People::findOrFail( $id )->delete();
-        return back()->with( 'message', 'Personal Eliminado' );
+        $data = Administration::findOrFail( $id )->delete();
+        return redirect("/other/administration")->with( 'message', 'Personal Eliminado' );
     }
 
     /**
@@ -418,8 +423,8 @@ class PeopleController extends Controller
      */
     public function destroyTeacher($id)
     {
-        $data = People::findOrFail( $id )->delete();
-        return back()->with( 'message', 'Profesor Eliminado' );
+        $data = Teacher::findOrFail( $id )->delete();
+        return redirect("/other/teachers")->with( 'message', 'Profesor Eliminado' );
     }
 
     /**
@@ -430,7 +435,7 @@ class PeopleController extends Controller
      */
     public function destroyStudent($id)
     {
-        $data = People::findOrFail( $id )->delete();
-        return back()->with( 'message', 'Estudiante Eliminado' );
+        $data = Student::findOrFail( $id )->delete();
+        return redirect("/other/students")->with( 'message', 'Estudiante Eliminado' );
     }
 }
