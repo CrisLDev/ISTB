@@ -10,6 +10,8 @@ use App\Models\Course;
 use App\Models\Administration;
 use Illuminate\Validation\Rule;
 
+use App\Models\Assistance;
+
 class PeopleController extends Controller
 {
     /**
@@ -158,6 +160,10 @@ class PeopleController extends Controller
         $data->vaccinationCard = $request->vaccinationCard;
         $data->memorandumOfAssociation = $request->memorandumOfAssociation;
         $data->save();
+        $idd = $data->id;
+        $data2 = new Assistance();
+        $data2->student_id = $idd;
+        $data2->save();
         return back()->with('message', 'Estudiante agregado con éxito.');
     }
 
@@ -358,11 +364,12 @@ class PeopleController extends Controller
             'age' => 'required|max:6|numeric',
             'email' => 'required|max:50',
             'fatherName' => 'required|max:50',
-            'dniFather' => ['required',Rule::unique('students')->ignore($id),'numeric', 'max:9999999999'],
+            'dniFather' => ['required',Rule::unique('students')->ignore($id),'numeric', 'max:999999999999999'],
             'motherName' => 'required|max:50',
-            'dniMother' => ['required',Rule::unique('students')->ignore($id),'numeric', 'max:9999999999'],
+            'dniMother' => ['required',Rule::unique('students')->ignore($id),'numeric', 'max:999999999999999'],
             'vaccinationCard' => 'required',
-            'memorandumOfAssociation' => 'required'
+            'memorandumOfAssociation' => 'required',
+            'status' => 'required'
         ];
         $niceNames = [
             'fullname' => 'nombre completo',
@@ -377,7 +384,8 @@ class PeopleController extends Controller
             'motherName' => 'nombre de la madre',
             'dniMother' => 'numero de cedula de la madre',
             'vaccinationCard' => 'carnet de vacunacion',
-            'memorandumOfAssociation' => 'acta de nacimiento'
+            'memorandumOfAssociation' => 'acta de nacimiento',
+            'status' => 'campo estado'
         ]; 
         $this->validate($request, $rules, [], $niceNames);
         if($id == $data->id){
@@ -395,6 +403,7 @@ class PeopleController extends Controller
             $data->dniMother = $request->dniMother;
             $data->vaccinationCard = $request->vaccinationCard;
             $data->memorandumOfAssociation = $request->memorandumOfAssociation;
+            $data->status = $request->status;
             $data->save();
             return back()->with('message', 'Estudiante editado con éxito.');
         }

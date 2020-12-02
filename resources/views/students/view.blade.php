@@ -17,6 +17,21 @@
                         <img class="mb-3" src="{{Gravatar::get($student->email)}}" alt="peopleGravatar">
                     </div>
                     <div>
+                        {{$assistances->total}}
+                        <div class="d-flex justify-content-end">
+                            <form class="d-flex" onsubmit="disable()" method="POST" action="{{ route('assitance.update', $assistances->student_id) }}">
+                                @method('PUT')
+                                @csrf
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="absense" placeholder="Agrega las faltas">
+                                    <small class="form-text text-muted">Si no agregas una cantidad se sumará 1 automaticamente.</small>
+                                </div>
+                                <div class="form-group ml-2">
+                                    <button type="submit" class="btn btn-primary" d="button-prevent-multiple-submits"><span class="spinner-border spinner-border-sm" id="spinner" role="status" aria-hidden="true"></span>    
+                                        <span id="btex">Agregar</span></button>
+                                </div>
+                            </form>
+                        </div>
                         <p class="font-weight-bold">Nombre completo:</p>
                         <p>{{$student->fullname}}</p>
                         <p class="font-weight-bold">Número de teléfono:</p>
@@ -47,6 +62,10 @@
                         <p>{{$student->memorandumOfAssociation}}</p>
                         <p class="font-weight-bold">Nombre del curso:</p>
                         <p>{{$course->courseName}}</p>
+                        <p class="font-weight-bold">Horario de clases:</p>
+                        <p>{{$course->startDate}} - {{$course->endDate}}</p>
+                        <p class="font-weight-bold">Estado:</p>
+                        <p>{{$student->status}}</p>
                     </div>
                     <div class="mt-5">
                         @if (count($records) == 0)

@@ -32,7 +32,8 @@ class StudentSeeder extends Seeder
             'motherName' => 'Ana Paula Murillo Rodrigeus',
             'dniMother' => '1203030303',
             'vaccinationCard' => 'si',
-            'memorandumOfAssociation' => 'si'
+            'memorandumOfAssociation' => 'si',
+            'status' => 'Enfermo'
         ]);
         Student::create([
             'id' => '2',
@@ -51,7 +52,8 @@ class StudentSeeder extends Seeder
             'motherName' => 'Ana Paula Murillo Rodrigeus',
             'dniMother' => '1203030303',
             'vaccinationCard' => 'si',
-            'memorandumOfAssociation' => 'si'
+            'memorandumOfAssociation' => 'si',
+            'status' => 'Enfermo'
         ]);
         Student::create([
             'id' => '3',
@@ -70,7 +72,8 @@ class StudentSeeder extends Seeder
             'motherName' => 'Ana Paula Murillo Rodrigeus',
             'dniMother' => '1203030303',
             'vaccinationCard' => 'si',
-            'memorandumOfAssociation' => 'si'
+            'memorandumOfAssociation' => 'si',
+            'status' => 'Enfermo'
         ]);
         Student::create([
             'id' => '4',
@@ -89,7 +92,8 @@ class StudentSeeder extends Seeder
             'motherName' => 'Ana Paula Murillo Rodrigeus',
             'dniMother' => '1203030303',
             'vaccinationCard' => 'si',
-            'memorandumOfAssociation' => 'si'
+            'memorandumOfAssociation' => 'si',
+            'status' => 'Enfermo'
         ]);
         Student::create([
             'id' => '5',
@@ -108,7 +112,8 @@ class StudentSeeder extends Seeder
             'motherName' => 'Ana Paula Murillo Rodrigeus',
             'dniMother' => '1203030303',
             'vaccinationCard' => 'si',
-            'memorandumOfAssociation' => 'si'
+            'memorandumOfAssociation' => 'si',
+            'status' => 'Enfermo'
         ]);
         Student::create([
             'id' => '6',
@@ -127,7 +132,8 @@ class StudentSeeder extends Seeder
             'motherName' => 'Ana Paula Murillo Rodrigeus',
             'dniMother' => '1203030303',
             'vaccinationCard' => 'si',
-            'memorandumOfAssociation' => 'si'
+            'memorandumOfAssociation' => 'si',
+            'status' => 'Enfermo'
         ]);
         Student::create([
             'id' => '7',
@@ -146,7 +152,8 @@ class StudentSeeder extends Seeder
             'motherName' => 'Ana Paula Murillo Rodrigeus',
             'dniMother' => '1203030303',
             'vaccinationCard' => 'si',
-            'memorandumOfAssociation' => 'si'
+            'memorandumOfAssociation' => 'si',
+            'status' => 'Enfermo'
         ]);
         Student::create([
             'id' => '8',
@@ -165,7 +172,8 @@ class StudentSeeder extends Seeder
             'motherName' => 'Ana Paula Murillo Rodrigeus',
             'dniMother' => '1203030303',
             'vaccinationCard' => 'si',
-            'memorandumOfAssociation' => 'si'
+            'memorandumOfAssociation' => 'si',
+            'status' => 'Enfermo'
         ]);
         Student::create([
             'id' => '9',
@@ -184,7 +192,8 @@ class StudentSeeder extends Seeder
             'motherName' => 'Ana Paula Murillo Rodrigeus',
             'dniMother' => '1203030303',
             'vaccinationCard' => 'si',
-            'memorandumOfAssociation' => 'si'
+            'memorandumOfAssociation' => 'si',
+            'status' => 'Enfermo'
         ]);
         Student::create([
             'id' => '10',
@@ -203,7 +212,8 @@ class StudentSeeder extends Seeder
             'motherName' => 'Ana Paula Murillo Rodrigeus',
             'dniMother' => '1203030303',
             'vaccinationCard' => 'si',
-            'memorandumOfAssociation' => 'si'
+            'memorandumOfAssociation' => 'si',
+            'status' => 'Enfermo'
         ]);
     }
 }

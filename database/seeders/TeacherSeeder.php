@@ -25,7 +25,9 @@ class TeacherSeeder extends Seeder
             'age' => '20',
             'email' => 'leonardomoreirapazmio@gmail.com',
             'code' => rand(),
-            'birthDate' => '2020-11-20'
+            'birthDate' => '2020-11-20',
+            'startDate' => '07:07',
+            'endDate' => '22:07'
         ]);
         Teacher::create([
             'id' => '2',
@@ -37,7 +39,9 @@ class TeacherSeeder extends Seeder
             'age' => '23',
             'email' => 'danimejia@gmail.com',
             'code' => rand(),
-            'birthDate' => '2000-11-20'
+            'birthDate' => '2000-11-20',
+            'startDate' => '07:07',
+            'endDate' => '22:07'
         ]);
         Teacher::create([
             'id' => '3',
@@ -49,7 +53,9 @@ class TeacherSeeder extends Seeder
             'age' => '50',
             'email' => 'jmiguekss@gmail.com',
             'code' => rand(),
-            'birthDate' => '1990-11-20'
+            'birthDate' => '1990-11-20',
+            'startDate' => '07:07',
+            'endDate' => '22:07'
         ]);
         Teacher::create([
             'id' => '4',
@@ -61,7 +67,9 @@ class TeacherSeeder extends Seeder
             'age' => '70',
             'email' => 'orpaladin@gmail.com',
             'code' => rand(),
-            'birthDate' => '1930-11-20'
+            'birthDate' => '1930-11-20',
+            'startDate' => '07:07',
+            'endDate' => '22:07'
         ]);
         Teacher::create([
             'id' => '5',
@@ -73,7 +81,9 @@ class TeacherSeeder extends Seeder
             'age' => '30',
             'email' => 'amanriquez2000@gmail.com',
             'code' => rand(),
-            'birthDate' => '1990-11-20'
+            'birthDate' => '1990-11-20',
+            'startDate' => '07:07',
+            'endDate' => '22:07'
         ]);
         Teacher::create([
             'id' => '6',
@@ -85,7 +95,9 @@ class TeacherSeeder extends Seeder
             'age' => '30',
             'email' => 'silvidelcruz@gmail.com',
             'code' => rand(),
-            'birthDate' => '1990-11-20'
+            'birthDate' => '1990-11-20',
+            'startDate' => '07:07',
+            'endDate' => '22:07'
         ]);
         Teacher::create([
             'id' => '7',
@@ -97,7 +109,9 @@ class TeacherSeeder extends Seeder
             'age' => '30',
             'email' => 'fcrisshawfbed@gmail.com',
             'code' => rand(),
-            'birthDate' => '1990-11-20'
+            'birthDate' => '1990-11-20',
+            'startDate' => '07:07',
+            'endDate' => '22:07'
         ]);
         Teacher::create([
             'id' => '8',
@@ -109,7 +123,9 @@ class TeacherSeeder extends Seeder
             'age' => '40',
             'email' => 'miguela65de@gmail.com',
             'code' => rand(),
-            'birthDate' => '1980-12-20'
+            'birthDate' => '1980-12-20',
+            'startDate' => '07:07',
+            'endDate' => '22:07'
         ]);
         Teacher::create([
             'id' => '9',
@@ -121,7 +137,9 @@ class TeacherSeeder extends Seeder
             'age' => '50',
             'email' => 'veramurrrrislo@gmail.com',
             'code' => rand(),
-            'birthDate' => '1970-05-20'
+            'birthDate' => '1970-05-20',
+            'startDate' => '07:07',
+            'endDate' => '22:07'
         ]);
         Teacher::create([
             'id' => '10',
@@ -133,7 +151,9 @@ class TeacherSeeder extends Seeder
             'age' => '60',
             'email' => 'jcarlosco@gmail.com',
             'code' => rand(),
-            'birthDate' => '1960-10-12'
+            'birthDate' => '1960-10-12',
+            'startDate' => '07:07',
+            'endDate' => '22:07'
         ]);
     }
 }

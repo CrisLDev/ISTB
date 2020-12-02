@@ -60,17 +60,23 @@ class OtherSeeder extends Seeder
         Course::create([
             'id' => '1',
             'courseName' => 'Mis pequeños angelitos',
-            'ageRange' => '2'
+            'ageRange' => '2',
+            'startDate' => '07:44',
+            'endDate' => '07:44'
         ]);
         Course::create([
             'id' => '2',
             'courseName' => 'Girasoles',
-            'ageRange' => '3'
+            'ageRange' => '3',
+            'startDate' => '07:44',
+            'endDate' => '07:44'
         ]);
         Course::create([
             'id' => '3',
             'courseName' => 'Pequeños Traviesos',
-            'ageRange' => '1'
+            'ageRange' => '1',
+            'startDate' => '07:44',
+            'endDate' => '22:07'
         ]);
     }
 }

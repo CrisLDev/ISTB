@@ -17,6 +17,8 @@ class CreateCoursesTable extends Migration
             $table->id();
             $table->string('courseName');
             $table->integer('ageRange');
+            $table->string('startDate');
+            $table->string('endDate');
             $table->timestamps();
             $table->engine = 'InnoDB';
             $table->charset = 'utf8';

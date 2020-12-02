@@ -160,3 +160,7 @@ Route::get( '/other/dailyactivity/edit/{id}', [App\Http\Controllers\OtherControl
 Route::put( '/other/dailyactivity/update/{id}', [App\Http\Controllers\OtherController::class, 'updateDaily'])->name( 'dactivities.updateDaily' )->middleware('isCoor');
 
 Route::delete( '/other/dailyactivity/delete/{id}', [App\Http\Controllers\OtherController::class, 'destroyDaily'])->name( 'dactivities.destroyDaily' )->middleware('isCoor');
+
+// Assistance
+
+Route::put('/other/assitance/{id}', [App\Http\Controllers\AssistanceController::class, 'update'])->name( 'assitance.update' )->middleware('isCoor');

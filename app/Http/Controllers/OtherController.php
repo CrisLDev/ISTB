@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Activity;
 use App\Models\DailyActivity;
+use App\Models\Assistance;
 use App\Models\Course;
 use App\Models\Reports;
 use App\Models\Grades;
@@ -241,15 +242,21 @@ class OtherController extends Controller
         $data = new Course();
         $rules = [
             'courseName' => 'required|unique:courses|max:40',
-            'ageRange' => 'required|numeric|max:3'
+            'ageRange' => 'required|numeric|max:3',
+            'startDate' => 'required',
+            'endDate' => 'required'
         ];
         $niceNames = [
             'courseName' => 'nombre del curso',
-            'ageRange' => 'rango de edad'
+            'ageRange' => 'rango de edad',
+            'startDate' => 'campo hora de inicio',
+            'endDate' => 'campo hora de fin'
         ]; 
         $this->validate($request, $rules, [], $niceNames);
         $data->courseName = $request->courseName;
         $data->ageRange = $request->ageRange;
+        $data->startDate = $request->startDate;
+        $data->endDate = $request->endDate;
         $data->save();
         return back()->with('message', 'Curso agregado con éxito.');
     }
@@ -504,14 +511,15 @@ class OtherController extends Controller
 
         $dailyActivities = DailyActivity::where('student_id', $id)->paginate(5, ['*'], 'dactivities');
 
-        $course = Course::where('id', $student->course_id)->first();
+        $assistances = Assistance::where('student_id', $id)->first();
 
+        $course = Course::where('id', $student->course_id)->first();
 
         if(!$student){
             return redirect('/other/students')->with('userErrors', '¡El estudiante no existe!');
         };
 
-        return view('students.view', compact('student', 'course', 'records', 'reports', 'dailyActivities'));
+        return view('students.view', compact('student', 'course', 'records', 'reports', 'dailyActivities', 'assistances'));
     }
 
     /**
@@ -613,17 +621,23 @@ class OtherController extends Controller
         $data = Course::where('id', $id)->first();
         $rules = [
             'courseName' => ['required',Rule::unique('courses')->ignore($id),'max:40'],
-            'ageRange' => 'required|numeric|max:3'
+            'ageRange' => 'required|numeric|max:3',
+            'startDate' => 'required',
+            'endDate' => 'required'
         ];
         $niceNames = [
             'courseName' => 'nombre del curso',
             'ageRange' => 'rango de edad',
+            'startDate' => 'campo hora de inicio',
+            'endDate' => 'campo hora de fin'
             
         ];
         $this->validate($request, $rules, [], $niceNames);
         if($id == $data->id){
             $data->courseName = $request->courseName;
             $data->ageRange = $request->ageRange;
+            $data->startDate = $request->startDate;
+        $data->endDate = $request->endDate;
         $data->save();
         return back()->with('message', 'Curso actualizado con éxito.');
         }

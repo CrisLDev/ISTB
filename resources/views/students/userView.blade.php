@@ -47,6 +47,10 @@
                         <p>{{$student->memorandumOfAssociation}}</p>
                         <p class="font-weight-bold">Nombre del curso:</p>
                         <p>{{$course->courseName}}</p>
+                        <p class="font-weight-bold">Horario de clases:</p>
+                        <p>{{$course->startDate}} - {{$course->endDate}}</p>
+                        <p class="font-weight-bold">Estado:</p>
+                        <p>{{$student->status}}</p>
                     </div>
                     <div class="mt-5">
                         @if (count($records) == 0)

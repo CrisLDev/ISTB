@@ -33,6 +33,7 @@ class CreateStudentsTable extends Migration
             $table->integer('dniMother');
             $table->string('vaccinationCard');
             $table->string('memorandumOfAssociation');
+            $table->string('status')->default('Activo');
             $table->timestamps();
             $table->engine = 'InnoDB';
             $table->charset = 'utf8';

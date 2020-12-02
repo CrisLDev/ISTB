@@ -224,7 +224,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Carnet de vacunacion:</label>
-                                    <select id="inputState" class="form-control" name="vaccinationCard" name="cardiovascular">
+                                    <select id="inputState" class="form-control" name="vaccinationCard">
                                         <option value="si" {{ $people->vaccinationCard == 'si' ? 'selected' : '' }}>Si</option>
                                         <option value="no" {{ $people->vaccinationCard == 'no' ? 'selected' : '' }}>No</option>
                                     </select>
@@ -233,9 +233,19 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Acta de compromiso:</label>
-                                    <select id="inputState" class="form-control" name="memorandumOfAssociation" name="cardiovascular">
+                                    <select id="inputState" class="form-control" name="memorandumOfAssociation">
                                         <option value="si" {{ $people->memorandumOfAssociation == 'si' ? 'selected' : '' }}>Si</option>
                                         <option value="no" {{ $people->memorandumOfAssociation == 'no' ? 'selected' : '' }}>No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Estado:</label>
+                                    <select id="inputState" class="form-control" name="status">
+                                        <option value="Activo" {{ $people->status == 'Activo' ? 'selected' : '' }}>Activo</option>
+                                        <option value="Enfermo" {{ $people->status == 'Enfermo' ? 'selected' : '' }}>Enfermo</option>
+                                        <option value="Expulsado" {{ $people->status == 'Expulsado' ? 'selected' : '' }}>Expulsado</option>
                                     </select>
                                 </div>
                             </div>
