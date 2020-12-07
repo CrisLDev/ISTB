@@ -34,7 +34,7 @@
                             </form>
                         </div>
                         <a href="{{ route('assitance.index', $student->id) }}" style="text-decoration: none">
-                            <p class="font-weight-bold">Faltas: <span class="badge badge-primary">{{$assistances}}</span></p>
+                            <p class="font-weight-bold">Faltas: <span class="badge badge-primary">{{$assistances}}</span> <span class="text-muted">(Click aquí para ver todo.)</span></p>
                         </a>
                         <p class="font-weight-bold">Nombre completo:</p>
                         <p>{{$student->fullname}}</p>

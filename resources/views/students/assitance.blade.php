@@ -19,7 +19,7 @@
                                     <p>{{$item->justification}}</p>
                                     <p class="font-weight-bold">{{$item->day}}</p>
                                     <div>
-                                        <a href="{{route('assitance.show', $item->student_id)}}" class="btn btn-warning">Editar</a>
+                                        <a href="{{route('assitance.show', $item->student_id)}}" class="btn btn-dark">Editar</a>
                                         <form action="{{route('assitance.delete', $item->id)}}" method="POST" class="d-inline">
                                             @method('DELETE')
                                             @csrf

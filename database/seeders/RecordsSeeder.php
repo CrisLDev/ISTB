@@ -27,7 +27,8 @@ class RecordsSeeder extends Seeder
             'asthma' => 'no',
             'malformation' => 'No se observan malfomraciones',
             'glasses' => 'no',
-            'observations' => 'Se debe consultar con un profesional mas preparado'
+            'observations' => 'Se debe consultar con un profesional mas preparado',
+            'date' => '2015-12-15'
         ]);
         Record::create([
             'id' => '2',
@@ -41,7 +42,8 @@ class RecordsSeeder extends Seeder
             'asthma' => 'no',
             'malformation' => 'No se observan malfomraciones',
             'glasses' => 'si',
-            'observations' => 'Se debe llevar a un lugar mas capacitado'
+            'observations' => 'Se debe llevar a un lugar mas capacitado',
+            'date' => '2015-12-15'
         ]);
         Record::create([
             'id' => '3',
@@ -55,7 +57,8 @@ class RecordsSeeder extends Seeder
             'asthma' => 'si',
             'malformation' => 'No se observan malfomraciones',
             'glasses' => 'si',
-            'observations' => 'No es necesario mayor intervencion'
+            'observations' => 'No es necesario mayor intervencion',
+            'date' => '2015-12-15'
         ]);
         Record::create([
             'id' => '4',
@@ -69,7 +72,8 @@ class RecordsSeeder extends Seeder
             'asthma' => 'si',
             'malformation' => 'Se observa una malformacion en el pie derecho',
             'glasses' => 'no',
-            'observations' => ''
+            'observations' => '',
+            'date' => '2015-12-15'
         ]);
         Record::create([
             'id' => '5',
@@ -83,7 +87,8 @@ class RecordsSeeder extends Seeder
             'asthma' => 'no',
             'malformation' => 'No se observan malfomraciones',
             'glasses' => 'no',
-            'observations' => 'No es necesario mayor intervencion'
+            'observations' => 'No es necesario mayor intervencion',
+            'date' => '2015-12-15'
         ]);
         Record::create([
             'id' => '6',
@@ -97,7 +102,8 @@ class RecordsSeeder extends Seeder
             'asthma' => 'si',
             'malformation' => 'No se observan malfomraciones',
             'glasses' => 'si',
-            'observations' => 'No es necesario mayor intervencion'
+            'observations' => 'No es necesario mayor intervencion',
+            'date' => '2015-12-15'
         ]);
         Record::create([
             'id' => '7',
@@ -111,7 +117,8 @@ class RecordsSeeder extends Seeder
             'asthma' => 'no',
             'malformation' => 'No se observan malfomraciones',
             'glasses' => 'no',
-            'observations' => ''
+            'observations' => '',
+            'date' => '2015-12-15'
         ]);
     }
 }

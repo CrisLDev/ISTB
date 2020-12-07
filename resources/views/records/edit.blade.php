@@ -41,10 +41,12 @@
                                     <div class="form-group">
                                         <label for="allergies">Alergias</label>
                                         <textarea type="text" class="form-control" id="allergies" name="allergies" placeholder="Ingresar las alergias">{{$record->allergies}}</textarea>
+                                        <h6 class="form-text text-muted mb-3">Favor utiizar (- o ,) para separar los diferentes items.</h6>
                                     </div>
                                     <div class="form-group">
-                                        <label for="treatment">Asistencia</label>
+                                        <label for="treatment">Tratamientos</label>
                                         <textarea type="text" class="form-control" id="treatment" name="treatment" placeholder="Ingrese una descripcion del tratamiento">{{$record->treatment}}</textarea>
+                                        <h6 class="form-text text-muted mb-3">Favor utiizar (- o ,) para separar los diferentes items.</h6>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputState">Enfermedad Cardiovascular</label>
@@ -70,6 +72,7 @@
                                     <div class="form-group">
                                         <label for="Assistance">Malformacion</label>
                                         <textarea type="text" class="form-control" id="malformation" name="malformation" placeholder="Ingrese alguna malformacion">{{$record->malformation}}</textarea>
+                                        <h6 class="form-text text-muted mb-3">Favor utiizar (- o ,) para separar los diferentes items.</h6>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputState">Lentes</label>
@@ -81,6 +84,10 @@
                                     <div class="form-group">
                                         <label for="Assistance">Observaciones</label>
                                         <textarea type="text" class="form-control" id="observations" name="observations" placeholder="Ingrese las observaciones">{{$record->observations}}</textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Assistance">Fecha</label>
+                                    <input type="date" class="form-control" id="date" name="date" value="{{$record->date }}">
                                     </div>
                                     <div class="form-group">
                                         <button class="btn btn-warning btn-block" id="button-prevent-multiple-submits" type="submit">

@@ -29,6 +29,7 @@ class CreateRecordsTable extends Migration
             $table->text('malformation')->nullable();
             $table->string('glasses');
             $table->text('observations')->nullable();
+            $table->date('date');
             $table->timestamps();
             $table->engine = 'InnoDB';
             $table->charset = 'utf8';

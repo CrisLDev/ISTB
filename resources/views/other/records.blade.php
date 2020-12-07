@@ -41,9 +41,11 @@
                                         <label for="Grades">Alergias</label>
                                         <textarea type="text" class="form-control" id="allergies" name="allergies" placeholder="Ingresar las alergias">{{old('allergies')}}</textarea>
                                     </div>
+                                    <h6 class="form-text text-muted mb-3">Favor utiizar (- o ,) para separar los diferentes items.</h6>
                                     <div class="form-group">
                                         <label for="Assistance">Tratamientos</label>
                                         <textarea type="text" class="form-control" id="treatment" name="treatment" placeholder="Ingrese una descripcion del tratamiento">{{old('treatment')}}</textarea>
+                                        <h6 class="form-text text-muted mb-3">Favor utiizar (- o ,) para separar los diferentes items.</h6>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputState">Enfermedad Cardiovascular</label>
@@ -80,6 +82,11 @@
                                     <div class="form-group">
                                         <label for="Assistance">Observaciones</label>
                                         <textarea type="text" class="form-control" id="observations" name="observations" placeholder="Ingrese las observaciones">{{old('observations')}}</textarea>
+                                        <h6 class="form-text text-muted mb-3">Favor utiizar (- o ,) para separar los diferentes items.</h6>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Assistance">Fecha</label>
+                                        <input type="date" class="form-control" id="date" name="date" {{old('date')}}>
                                     </div>
                                     <div class="form-group">
                                         <button class="btn btn-primary btn-block" id="button-prevent-multiple-submits" type="submit">
