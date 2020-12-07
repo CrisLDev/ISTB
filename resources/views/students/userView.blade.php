@@ -17,6 +17,7 @@
                         <img class="mb-3" src="{{Gravatar::get($student->email)}}" alt="peopleGravatar">
                     </div>
                     <div>
+                        <p class="font-weight-bold">Faltas: <span class="badge badge-primary">{{$assistances}}</span></p>
                         <p class="font-weight-bold">Nombre completo:</p>
                         <p>{{$student->fullname}}</p>
                         <p class="font-weight-bold">Número de teléfono:</p>
@@ -54,7 +55,9 @@
                     </div>
                     <div class="mt-5">
                         @if (count($records) == 0)
-                            <div class="font-weight-bold">No existen fichas</div>
+                            <div class="container">
+                                <div class="font-weight-bold">No existen fichas</div>
+                            </div>
                         @else
                         @foreach ($records as $item)
                             <div class="accordion" id="accordionGrades">
@@ -69,42 +72,53 @@
                                 <div id="collapse{{$item->course_id}}" class="collapse show" aria-labelledby="heading{{$item->course_id}}" data-parent="#accordionGrades">
                                     <div class="card-body">
                                         <div class="container">
-                                            <div class="container">
-                                                <p class="font-weight-bold">Curso:</p>
-                                                <p>{{$item->courseName}}</p>
-                                                <p class="font-weight-bold">Alergias:</p>
-                                                @if($item->allergies !== '')
-                                                <p>{{$item->allergies}}</p>
-                                                @else
-                                                <p>N/A</p>
-                                                @endif
-                                                <p class="font-weight-bold">Tratamientos:</p>
-                                                @if($item->treatment !== '')
-                                                <p>{{$item->treatment}}</p>
-                                                @else
-                                                <p>N/A</p>
-                                                @endif
-                                                <p class="font-weight-bold">Enfermedad cardiovascular:</p>
-                                                <p>{{$item->cardiovascular}}</p>
-                                                <p class="font-weight-bold">Piojos:</p>
-                                                <p>{{$item->lice}}</p>
-                                                <p class="font-weight-bold">Asma:</p>
-                                                <p>{{$item->asthma}}</p>
-                                                <p class="font-weight-bold">Malformaciones:</p>
-                                                @if($item->malformation !== '')
-                                                <p>{{$item->malformation}}</p>
-                                                @else
-                                                <p>N/A</p>
-                                                @endif
-                                                <p class="font-weight-bold">Lentes:</p>
-                                                <p>{{$item->glasses}}</p>
-                                                <p class="font-weight-bold">Observaciones:</p>
-                                                @if($item->observations !== '')
-                                                <p>{{$item->observations}}</p>
-                                                @else
-                                                <p>N/A</p>
-                                                @endif
-                                            </div>
+                                                <div class="container">
+                                                    <p class="font-weight-bold">Curso:</p>
+                                                    <p>{{$item->courseName}}</p>
+                                                    <p class="font-weight-bold">Alergias:</p>
+                                                    @if($item->allergies !== '')
+                                                    <p>{{$item->allergies}}</p>
+                                                    @else
+                                                    <p>N/A</p>
+                                                    @endif
+                                                    <p class="font-weight-bold">Tratamientos:</p>
+                                                    @if($item->treatment !== '')
+                                                    <p>{{$item->treatment}}</p>
+                                                    @else
+                                                    <p>N/A</p>
+                                                    @endif
+                                                    <p class="font-weight-bold">Enfermedad cardiovascular:</p>
+                                                    <p>{{$item->cardiovascular}}</p>
+                                                    <p class="font-weight-bold">Piojos:</p>
+                                                    <p>{{$item->lice}}</p>
+                                                    <p class="font-weight-bold">Asma:</p>
+                                                    <p>{{$item->asthma}}</p>
+                                                    <p class="font-weight-bold">Malformaciones:</p>
+                                                    @if($item->malformation !== '')
+                                                    <p>{{$item->malformation}}</p>
+                                                    @else
+                                                    <p>N/A</p>
+                                                    @endif
+                                                    <p class="font-weight-bold">Lentes:</p>
+                                                    <p>{{$item->glasses}}</p>
+                                                    <p class="font-weight-bold">Observaciones:</p>
+                                                    @if($item->observations !== '')
+                                                    <p>{{$item->observations}}</p>
+                                                    @else
+                                                    <p>N/A</p>
+                                                    @endif
+                                                    <div>
+                                                        <a class="btn btn-dark" href="{{route('records.editRecords', $item->id)}}">editar</a>
+                
+                                                        <form action="{{route('records.destroyRecords', $item->id)}}" method="POST" class="d-inline">
+                                                            @method('DELETE')
+                                                            @csrf
+                                                            <button class="btn btn-danger" type="submit">
+                                                                Eliminar
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
                                         </div>
                                     </div>
                                 </div>
@@ -159,7 +173,9 @@
                                 </div>
                             @endforeach
                         @else
-                            <div class="font-weight-bold">No hay reportes</div>
+                            <div class="container">
+                                <div class="font-weight-bold">No hay reportes</div>
+                            </div>
                         @endif
 
                         <div class="container pt-3 d-flex justify-content-center">

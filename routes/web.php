@@ -163,4 +163,12 @@ Route::delete( '/other/dailyactivity/delete/{id}', [App\Http\Controllers\OtherCo
 
 // Assistance
 
+Route::post('/other/assitance/{id}', [App\Http\Controllers\AssistanceController::class, 'store'])->name( 'assitance.create' )->middleware('isCoor');
+
+Route::get('/other/assitance/{id}', [App\Http\Controllers\AssistanceController::class, 'index'])->name( 'assitance.index' )->middleware('isCoor');
+
+Route::get('/other/assitance/edit/{id}', [App\Http\Controllers\AssistanceController::class, 'show'])->name( 'assitance.show' )->middleware('isCoor');
+
+Route::delete('/other/assitance/delete/{id}', [App\Http\Controllers\AssistanceController::class, 'destroy'])->name( 'assitance.delete' )->middleware('isCoor');
+
 Route::put('/other/assitance/{id}', [App\Http\Controllers\AssistanceController::class, 'update'])->name( 'assitance.update' )->middleware('isCoor');

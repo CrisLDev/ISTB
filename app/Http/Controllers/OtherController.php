@@ -511,7 +511,7 @@ class OtherController extends Controller
 
         $dailyActivities = DailyActivity::where('student_id', $id)->paginate(5, ['*'], 'dactivities');
 
-        $assistances = Assistance::where('student_id', $id)->first();
+        $assistances = Assistance::where('student_id', $id)->count();
 
         $course = Course::where('id', $student->course_id)->first();
 

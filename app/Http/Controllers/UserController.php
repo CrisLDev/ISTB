@@ -16,7 +16,9 @@ use App\Models\Record;
 
 use App\Models\Teacher;
 
-use App\Models\Subject;
+use App\Models\Assistance;
+
+use App\Models\DailyActivity;
 
 use App\Models\Course;
 
@@ -74,26 +76,27 @@ class UserController extends Controller
                         ->join('users', 'records.user_id', '=', 'users.id')
                         ->join('courses', 'records.course_id', '=', 'courses.id')
                         ->select('records.*', 'users.name as userName', 'users.email as userEmail', 'courses.courseName')
-                        ->paginate(1, ['*'], 'records');
+                        ->paginate(1, ['*'], 'records');                       
 
         $reports = Reports::where('student_id', '=', $student->id)
                         ->join('users', 'reports.user_id', '=', 'users.id')
-                        ->join('subjects', 'reports.subject_id', '=', 'subjects.id')
+                        ->join('activities', 'reports.Activity_id', '=', 'activities.id')
                         ->join('courses', 'reports.course_id', '=', 'courses.id')
                         ->join('teachers', 'reports.teacher_id', '=', 'teachers.id')
-                        ->select('reports.*', 'users.name as userName', 'users.email as userEmail', 'subjects.subjectName as subjectName', 'teachers.fullname as teacherFullname', 'courses.courseName', 'reports.course_id', 'teachers.fullname as teacherFullname')
+                        ->select('reports.*', 'users.name as userName', 'users.email as userEmail', 'activities.activityName as activityName', 'teachers.fullname as teacherFullname', 'courses.courseName', 'reports.course_id', 'teachers.fullname as teacherFullname')
                         ->paginate(1, ['*'], 'reports');
 
+                        $assistances = Assistance::where('student_id', $student->id)->count();
 
-                        $dailyActivities = DailyActivity::where('student_id', $id)->paginate(5, ['*'], 'dactivities');
+                        $dailyActivities = DailyActivity::where('student_id', $student->id)->paginate(5, ['*'], 'dactivities');
 
                         $course = Course::where('id', $student->course_id)->first();
 
         if(!$student){
-            return redirect('/other/students')->with('userErrors', '¡El estudiante no existe!');
+            return redirect('/home')->with('userErrors', '¡El estudiante no existe!');
         };
 
-        return view('students.view', compact('student', 'course', 'records', 'reports', 'dailyActivities'));
+        return view('students.userView', compact('student', 'course', 'records', 'reports', 'dailyActivities', 'assistances'));
     }
 
     /**

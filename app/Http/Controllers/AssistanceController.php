@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Assistance;
 use Illuminate\Http\Request;
 
-use App\Models\Assistance;
-
 class AssistanceController extends Controller
 {
     /**
@@ -14,9 +12,11 @@ class AssistanceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $data = Assistance::where('student_id', $id)->get();
+
+        return view('students.assitance', compact('data'));
     }
 
     /**
@@ -35,9 +35,28 @@ class AssistanceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $data = Assistance::where('student_id', $id)->count();
+        if($data > 30){
+            return back()->with('userErrors', 'El estudiante ya ha alcanzado lo maximo en faltas.');
+        }
+        $data2 =  new Assistance();
+        $rules = [
+            'justification' => 'required|min:6',
+            'day' => 'required',
+        ];
+        $niceNames = [
+            'justification' => 'campo justificación',
+            'day' => 'campo día'
+        ]; 
+        $this->validate($request, $rules, [], $niceNames);
+        $data2->justification = $request->justification;
+        $data2->student_id = $id;
+        $data2->day = $request->day;
+        $data2->save();
+        return back()->with('message', 'Inacistencia agregada con éxito.');
+        
     }
 
     /**
@@ -46,9 +65,11 @@ class AssistanceController extends Controller
      * @param  \App\Models\Assistance  $assistance
      * @return \Illuminate\Http\Response
      */
-    public function show(Assistance $assistance)
+    public function show($id)
     {
-        //
+        $data = Assistance::where('student_id', $id)->first();
+
+        return view('students.editA', compact('data'));
     }
 
     /**
@@ -71,7 +92,25 @@ class AssistanceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = Assistance::where('student_id', $id)->first();
+        $data = Assistance::where('student_id', $id)->count();
+        if($data > 30){
+            return back()->with('userErrors', 'El estudiante ya ha alcanzado lo maximo en faltas.');
+        }
+        $data2 =  Assistance::where('student_id', $id)->first();
+        $rules = [
+            'justification' => 'required|min:6',
+            'day' => 'required',
+        ];
+        $niceNames = [
+            'justification' => 'campo justificación',
+            'day' => 'campo día'
+        ]; 
+        $this->validate($request, $rules, [], $niceNames);
+        $data2->justification = $request->justification;
+        $data2->student_id = $id;
+        $data2->day = $request->day;
+        $data2->save();
+        return back()->with('message', 'Inacistencia agregada con éxito.');
     }
 
     /**
@@ -80,8 +119,9 @@ class AssistanceController extends Controller
      * @param  \App\Models\Assistance  $assistance
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Assistance $assistance)
+    public function destroy($id)
     {
-        //
+        $data = Assistance::findOrFail( $id )->delete();
+        return back()->with( 'message', 'Falta diaria Eliminada' );
     }
 }

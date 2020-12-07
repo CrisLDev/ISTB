@@ -17,21 +17,25 @@
                         <img class="mb-3" src="{{Gravatar::get($student->email)}}" alt="peopleGravatar">
                     </div>
                     <div>
-                        {{$assistances->total}}
-                        <div class="d-flex justify-content-end">
-                            <form class="d-flex" onsubmit="disable()" method="POST" action="{{ route('assitance.update', $assistances->student_id) }}">
-                                @method('PUT')
+                        <h5 class="font-weight-bold">Agregar inacistencia</h5>
+                        <div>
+                            <form onsubmit="disable()" method="POST" action="{{ route('assitance.create', $student->id) }}">
                                 @csrf
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="absense" placeholder="Agrega las faltas">
-                                    <small class="form-text text-muted">Si no agregas una cantidad se sumará 1 automaticamente.</small>
+                                    <input type="text" class="form-control" name="justification" placeholder="Escriba la justificación" value="{{old('justification')}}" minlength="6" required>
                                 </div>
-                                <div class="form-group ml-2">
-                                    <button type="submit" class="btn btn-primary" d="button-prevent-multiple-submits"><span class="spinner-border spinner-border-sm" id="spinner" role="status" aria-hidden="true"></span>    
+                                <div class="form-group">
+                                    <input type="date" class="form-control" name="day" required>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-block" d="button-prevent-multiple-submits"><span class="spinner-border spinner-border-sm" id="spinner" role="status" aria-hidden="true"></span>    
                                         <span id="btex">Agregar</span></button>
                                 </div>
                             </form>
                         </div>
+                        <a href="{{ route('assitance.index', $student->id) }}" style="text-decoration: none">
+                            <p class="font-weight-bold">Faltas: <span class="badge badge-primary">{{$assistances}}</span></p>
+                        </a>
                         <p class="font-weight-bold">Nombre completo:</p>
                         <p>{{$student->fullname}}</p>
                         <p class="font-weight-bold">Número de teléfono:</p>

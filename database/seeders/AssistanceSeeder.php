@@ -17,26 +17,38 @@ class AssistanceSeeder extends Seeder
     {
     Assistance::create([
         'id' => '1',
+        'day' => '2015-12-15',
+        'justification' => 'El vato no jue',
         'student_id' => '1',
     ]);
     Assistance::create([
         'id' => '2',
+        'day' => '2015-12-15',
+        'justification' => 'El vato no jue',
         'student_id' => '2',
     ]);
     Assistance::create([
         'id' => '3',
+        'day' => '2015-12-15',
+        'justification' => 'El vato no jue',
         'student_id' => '3',
     ]);
     Assistance::create([
         'id' => '4',
+        'day' => '2015-12-15',
+        'justification' => 'El vato no jue',
         'student_id' => '4',
     ]);
     Assistance::create([
         'id' => '5',
+        'day' => '2015-12-15',
+        'justification' => 'El vato no jue',
         'student_id' => '5',
     ]);
     Assistance::create([
         'id' => '6',
+        'day' => '2015-12-15',
+        'justification' => 'El vato no jue',
         'student_id' => '6',
     ]);
     }

@@ -17,7 +17,8 @@ class CreateAssistancesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('student_id');
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
-            $table->integer('total')->default(0);
+            $table->date('day');
+            $table->text('justification')->nullable();
             $table->timestamps();
         });
     }
