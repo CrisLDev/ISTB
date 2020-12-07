@@ -211,7 +211,7 @@
 
         
               
-
+<!--
         <footer>
             <nav class="navbar fixed-bottom navbar-light bg-light border-top" style="z-index: 3">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
@@ -219,7 +219,7 @@
                     <h3 class="mb-0">{{ config('app.name', 'Laravel') }}</h3>
                 </a>
             </nav>
-        </footer>
+        </footer>-->
 
     </div>
 
