@@ -34,7 +34,11 @@
                                     <div class="row justify-content-center">
 
                                 <div class="col-lg-2 col-md-2 col-sm-12 col-12 d-flex justify-content-center align-items-center">
-                                    <img class="mb-2" src="{{Gravatar::get($administration->email)}}" alt="peopleGravatar">
+                                    @if ($administration->imgUrl)
+                                    <img class="img-fluid mb-3" src="/storage/peopleImage/{{$administration->imgUrl}}" alt="peopleGravatar">
+                                @else
+                                    <img class="img-fluid mb-3" src="/assets/nouse.png" alt="peopleGravatar">
+                                @endif
                                 </div>
 
                                 <div class="col-lg-7 col-md-10 col-sm-12 col-12">

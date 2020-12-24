@@ -16,6 +16,10 @@ class AssistanceController extends Controller
     {
         $data = Assistance::where('student_id', $id)->get();
 
+        if(count($data) <= 0){
+            return back()->with('userErrors', 'El estudiante no tiene faltas registradas.');
+        }
+
         return view('students.assitance', compact('data'));
     }
 

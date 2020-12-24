@@ -25,8 +25,8 @@ class CreateTeachersTable extends Migration
             $table->string('email');
             $table->string('code')->rand();
             $table->date('birthDate');
-            $table->string('startDate');
-            $table->string('endDate');
+            $table->string('imgUrl')->nullable();
+            $table->string('curriculum')->nullable();
             $table->timestamps();
             $table->engine = 'InnoDB';
             $table->charset = 'utf8';

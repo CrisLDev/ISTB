@@ -33,7 +33,12 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Nombre completo:</label>
+                                    @if(!Request::is('people/form/student'))
+                                        <label>Nombre completo:</label>
+                                    @endif
+                                    @if(Request::is('people/form/student'))
+                                        <label>Apellidos y nombres del niño/a:</label>
+                                    @endif
                                     <input
                                     type="text"
                                     autocomplete="none"
@@ -97,26 +102,8 @@
                                     placeholder="Ingresa el nombre completo"
                                     class="form-control mb-2"
                                     value="{{old('address')}}"
-                                    maxlength="40"
+                                    maxlength="50"
                                     minlength="20"
-                                    required
-                                    />
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Edad:</label>
-                                    <input
-                                    type="text"
-                                    autocomplete="none"
-                                    spellcheck="false"
-                                    name="age"
-                                    id="age"
-                                    placeholder="Ingresa el nombre completo"
-                                    class="form-control mb-2"
-                                    value="{{old('age')}}"
-                                    maxlength="3"
-                                    minlength="1"
                                     required
                                     />
                                 </div>
@@ -139,7 +126,7 @@
                                     />
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Fecha de nacimiento:</label>
                                     <input
@@ -158,7 +145,7 @@
                             @if(Request::is('people/form/student'))
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Nombre del padre:</label>
+                                    <label>Apellidos y nombres del padre:</label>
                                     <input
                                     type="text"
                                     autocomplete="none"
@@ -190,7 +177,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Nombre de la madre:</label>
+                                    <label>Apellidos y nombres de la madre:</label>
                                     <input
                                     type="text"
                                     autocomplete="none"
@@ -230,12 +217,12 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Acta de compromiso:</label>
-                                    <select id="inputState" class="form-control" name="memorandumOfAssociation" name="cardiovascular">
-                                        <option value="si">Si</option>
-                                        <option value="no">No</option>
-                                    </select>
+                                <div class="form-group w-100">
+                                <label>Acta de compromiso:</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="customFileAct" name="fileAct">
+                                    <label class="custom-file-label act" for="customFileAct">Escoger archivo...</label>
+                                </div>
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -249,6 +236,17 @@
                                       <option value="{{$course->id}}+{{$course->ageRange}}">{{$course->courseName}}</option>
                                     @endforeach
                                     </select>
+                                </div>
+                            </div>
+                            @endif
+                            @if(Request::is('people/form/teacher'))
+                            <div class="col-md-12">
+                                <div class="form-group w-100">
+                                <label>Curriculum:</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="customFileAct" name="fileAct">
+                                    <label class="custom-file-label act" for="customFileAct">Escoger archivo...</label>
+                                </div>
                                 </div>
                             </div>
                             @endif
@@ -271,7 +269,25 @@
                                     />
                                 </div>
                             </div>
+                            <div class="col-md-12">
+                                <div class="form-group w-100">
+                                <label>Curriculum:</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="customFileAct" name="fileAct">
+                                    <label class="custom-file-label act" for="customFileAct">Escoger archivo...</label>
+                                </div>
+                                </div>
+                            </div>
                             @endif
+                        </div>
+                        <div class="col-md-12 p-0">
+                            <div class="form-group w-100">
+                            <label>Foto tamaño carnet:</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="customFile" name="file">
+                                <label class="custom-file-label" for="customFile">Escoger archivo...</label>
+                            </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <button class="btn btn-primary btn-block" id="button-prevent-multiple-submits" type="submit">

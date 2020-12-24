@@ -68,15 +68,17 @@
                                                     </td>
                                                     <td>
                                                       <div class="form-group" style="min-width: 10em">
-                                                        <textarea class="form-control" rows="1" name="activity1"></textarea>
+                                                        <textarea class="form-control" rows="1" name="activity1" placeholder="Actividad"></textarea>
                                                       </div>
                                                     </td>
                                                     <td>
                                                       <div class="form-group" style="min-width: 10em">
                                                         <select class="custom-select" name="answer1" required>
-                                                          <option selected value="null">Escoge uno...</option>
-                                                          <option value="si">Si</option>
-                                                          <option value="no">No</option>
+                                                        <option selected value="null">Escoge uno...</option>
+                                                          <option value="Totalmente logrado">Totalmente logrado</option>
+                                                          <option value="Mediante logrado">Mediante logrado</option>
+                                                          <option value="Parcialmente logrado">Parcialmente logrado</option>
+                                                          <option value="No logrado">No logrado</option>
                                                         </select>
                                                         <div class="invalid-feedback">
                                                           Please select a valid state.
@@ -103,15 +105,17 @@
                                                     </td>
                                                     <td>
                                                       <div class="form-group">
-                                                        <textarea class="form-control" rows="1" name="activity2"></textarea>
+                                                        <textarea class="form-control" rows="1" name="activity2" placeholder="Actividad"></textarea>
                                                       </div>
                                                     </td>
                                                     <td>
                                                       <div class="form-group">
                                                         <select class="custom-select" name="answer2" required>
-                                                          <option selected value="null">Escoge uno...</option>
-                                                          <option value="si">Si</option>
-                                                          <option value="no">No</option>
+                                                        <option selected value="null">Escoge uno...</option>
+                                                          <option value="Totalmente logrado">Totalmente logrado</option>
+                                                          <option value="Mediante logrado">Mediante logrado</option>
+                                                          <option value="Parcialmente logrado">Parcialmente logrado</option>
+                                                          <option value="No logrado">No logrado</option>
                                                         </select>
                                                         <div class="invalid-feedback">
                                                           Please select a valid state.
@@ -138,15 +142,17 @@
                                                     </td>
                                                     <td>
                                                       <div class="form-group">
-                                                        <textarea class="form-control" name="activity3" rows="1"></textarea>
+                                                        <textarea class="form-control" name="activity3" rows="1" placeholder="Actividad"></textarea>
                                                       </div>
                                                     </td>
                                                     <td>
                                                       <div class="form-group">
                                                         <select class="custom-select" name="answer3" required>
-                                                          <option selected value="null">Escoge uno...</option>
-                                                          <option value="si">Si</option>
-                                                          <option value="no">No</option>
+                                                        <option selected value="null">Escoge uno...</option>
+                                                          <option value="Totalmente logrado">Totalmente logrado</option>
+                                                          <option value="Mediante logrado">Mediante logrado</option>
+                                                          <option value="Parcialmente logrado">Parcialmente logrado</option>
+                                                          <option value="No logrado">No logrado</option>
                                                         </select>
                                                         <div class="invalid-feedback">
                                                           Please select a valid state.
@@ -173,15 +179,17 @@
                                                     </td>
                                                     <td>
                                                       <div class="form-group">
-                                                        <textarea class="form-control" name="activity4" rows="1"></textarea>
+                                                        <textarea class="form-control" name="activity4" rows="1" placeholder="Actividad"></textarea>
                                                       </div>
                                                     </td>
                                                     <td>
                                                       <div class="form-group">
                                                         <select class="custom-select" name="answer4" required>
                                                           <option selected value="null">Escoge uno...</option>
-                                                          <option value="si">Si</option>
-                                                          <option value="no">No</option>
+                                                          <option value="Totalmente logrado">Totalmente logrado</option>
+                                                          <option value="Mediante logrado">Mediante logrado</option>
+                                                          <option value="Parcialmente logrado">Parcialmente logrado</option>
+                                                          <option value="No logrado">No logrado</option>
                                                         </select>
                                                         <div class="invalid-feedback">
                                                           Please select a valid state.
@@ -208,15 +216,17 @@
                                                     </td>
                                                     <td>
                                                       <div class="form-group">
-                                                        <textarea class="form-control" name="activity5" rows="1"></textarea>
+                                                        <textarea class="form-control" name="activity5" rows="1" placeholder="Actividad"></textarea>
                                                       </div>
                                                     </td>
                                                     <td>
                                                       <div class="form-group">
                                                         <select class="custom-select" name="answer5" required>
-                                                          <option selected value="null">Escoge uno...</option>
-                                                          <option value="si">Si</option>
-                                                          <option value="no">No</option>
+                                                        <option selected value="null">Escoge uno...</option>
+                                                          <option value="Totalmente logrado">Totalmente logrado</option>
+                                                          <option value="Mediante logrado">Mediante logrado</option>
+                                                          <option value="Parcialmente logrado">Parcialmente logrado</option>
+                                                          <option value="No logrado">No logrado</option>
                                                         </select>
                                                         <div class="invalid-feedback">
                                                           Please select a valid state.

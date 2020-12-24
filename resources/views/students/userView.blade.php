@@ -14,7 +14,11 @@
                 </div>
                 <div class="card-body">
                     <div class="text-center">
-                        <img class="mb-3" src="{{Gravatar::get($student->email)}}" alt="peopleGravatar">
+                        @if ($student->imgUrl)
+                            <img class="w-25 mb-3" src="/storage/peopleImage/{{$student->imgUrl}}" alt="peopleGravatar">
+                        @else
+                            <img class="w-25 mb-3" src="/assets/nouse.png" alt="peopleGravatar">
+                        @endif
                     </div>
                     <div>
                         <p class="font-weight-bold">Faltas: <span class="badge badge-primary">{{$assistances}}</span></p>
@@ -26,7 +30,7 @@
                         <p>{{$student->dni}}</p>
                         <p class="font-weight-bold">Direccion:</p>
                         <p>{{$student->address}}</p>
-                        <p class="font-weight-bold">Eddad:</p>
+                        <p class="font-weight-bold">Edad:</p>
                         <p>{{$student->age}}</p>
                         <p class="font-weight-bold">Email:</p>
                         <p>{{$student->email}}</p>

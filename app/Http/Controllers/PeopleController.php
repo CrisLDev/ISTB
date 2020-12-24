@@ -9,8 +9,9 @@ use App\Models\Teacher;
 use App\Models\Course;
 use App\Models\Administration;
 use Illuminate\Validation\Rule;
-
+use DateTime;
 use App\Models\Assistance;
+use Illuminate\Support\Facades\Storage;
 
 class PeopleController extends Controller
 {
@@ -58,6 +59,9 @@ class PeopleController extends Controller
     public function storeAdmin( Request $request ) 
     {
         $data = new Administration();
+        $from = new DateTime($request->birthDate);
+        $to = new DateTime();
+        $age = $from->diff($to);
         $rules = [
             'fullname' => 'required|max:60',
             'birthDate' => 'required|date',
@@ -65,8 +69,9 @@ class PeopleController extends Controller
             'dni' => 'required|unique:administrations|numeric|max:999999999999999',
             'role' => 'required|max:60|min:5',
             'address' => 'required|max:40',
-            'age' => 'required|max:100|numeric',
             'email' => 'required|max:50',
+            'file' => 'required|mimes:png,jpg,jpeg|max:2048',
+            'fileAct' => 'required|mimes:pdf,docx|max:2048'
         ];
         $niceNames = [
             'fullname' => 'nombre completo',
@@ -75,8 +80,9 @@ class PeopleController extends Controller
             'role' => 'cargo',
             'dni' => 'número de cédula',
             'address' => 'lugar de domicilio',
-            'age' => 'rango de edad',
             'email' => 'email',
+            'file' => 'archivo',
+            'fileAct' => 'curriculum'
         ]; 
         $this->validate($request, $rules, [], $niceNames);
         $data->fullname = $request->fullname;
@@ -87,8 +93,16 @@ class PeopleController extends Controller
         $data->dni = $request->dni;
         $data->code = rand();
         $data->address = $request->address;
-        $data->age = $request->age;
+        $data->age = $age->y;
         $data->email = $request->email;
+        $saveTo = 'public/peopleImage';
+        $path = $request->file('file')->store($saveTo);
+        $filename = substr($path, strlen($saveTo) + 1);
+        $data->imgUrl = $filename;
+        $saveTo2 = 'public/peopleDocs';
+        $path2 = $request->file('fileAct')->store($saveTo2);
+        $filename2 = substr($path2, strlen($saveTo2) + 1);
+        $data->curriculum = $filename2;
         $data->save();
         return back()->with('message', 'Personal agregado con éxito.');
     }
@@ -103,20 +117,23 @@ class PeopleController extends Controller
     public function storeStudent( Request $request ) 
     {
         $data = new Student();
+        $from = new DateTime($request->birthDate);
+        $to = new DateTime();
+        $age = $from->diff($to);
         $rules = [
             'fullname' => 'required|max:60',
             'birthDate' => 'required|date',
             'telephoneNumber' => 'required|unique:students|numeric|max:9999999999',
             'dni' => 'required|unique:students|numeric|max:999999999999999',
-            'address' => 'required|max:40',
-            'age' => 'required|max:6|numeric',
+            'address' => 'required|max:50',
             'email' => 'required|max:50',
             'fatherName' => 'required|max:50',
             'dniFather' => 'required|unique:students|numeric|max:999999999999999',
             'motherName' => 'required|max:50',
             'dniMother' => 'required|unique:students|numeric|max:999999999999999',
             'vaccinationCard' => 'required',
-            'memorandumOfAssociation' => 'required'
+            'file' => 'required|mimes:png,jpg,jpeg|max:2048',
+            'fileAct' => 'required|mimes:pdf,docx|max:2048'
         ];
         $niceNames = [
             'fullname' => 'nombre completo',
@@ -124,20 +141,20 @@ class PeopleController extends Controller
             'telephoneNumber' => 'número de teléfono',
             'dni' => 'número de cédula',
             'address' => 'lugar de domicilio',
-            'age' => 'rango de edad',
             'email' => 'email',
             'fatherName' => 'nombre del padre',
             'dniFather' => 'numero de cedula del padre',
             'motherName' => 'nombre de la madre',
             'dniMother' => 'numero de cedula de la madre',
             'vaccinationCard' => 'carnet de vacunacion',
-            'memorandumOfAssociation' => 'acta de nacimiento'
+            'fileAct' => 'acta de nacimiento',
+            'file' => 'archivo',
         ]; 
         $this->validate($request, $rules, [], $niceNames);
         $courseD = explode("+", $request->course_id);
         $datee = date("Y");
         $studentsCuantity = Student::where('course_id', $courseD[0])->whereYear('created_at', $datee)->get();
-        if($request->age != $courseD[1]){
+        if($age->y != $courseD[1]){
             return back()->withInput()->with('userErrors', 'El rango de edad permitida en este curso es de '.$courseD[1].'.');
         }
         if(count($studentsCuantity) > 8){
@@ -151,19 +168,27 @@ class PeopleController extends Controller
         $data->dni = $request->dni;
         $data->code = rand();
         $data->address = $request->address;
-        $data->age = $request->age;
+        $data->age = $age->y;
         $data->email = $request->email;
         $data->fatherName = $request->fatherName;
         $data->dniFather = $request->dniFather;
         $data->motherName = $request->motherName;
         $data->dniMother = $request->dniMother;
         $data->vaccinationCard = $request->vaccinationCard;
-        $data->memorandumOfAssociation = $request->memorandumOfAssociation;
+        $saveTo = 'public/peopleImage';
+        $path = $request->file('file')->store($saveTo);
+        $filename = substr($path, strlen($saveTo) + 1);
+        $data->imgUrl = $filename;
+        $saveTo2 = 'public/peopleDocs';
+        $path2 = $request->file('fileAct')->store($saveTo2);
+        $filename2 = substr($path2, strlen($saveTo2) + 1);
+        $data->memorandumOfAssociation = $filename2;
         $data->save();
+        /*
         $idd = $data->id;
         $data2 = new Assistance();
         $data2->student_id = $idd;
-        $data2->save();
+        $data2->save();*/
         return back()->with('message', 'Estudiante agregado con éxito.');
     }
 
@@ -176,14 +201,18 @@ class PeopleController extends Controller
 
     public function storeTeacher( Request $request ) {
         $data = new Teacher();
+        $from = new DateTime($request->birthDate);
+        $to = new DateTime();
+        $age = $from->diff($to);
         $rules = [
             'fullname' => 'required|max:60',
             'birthDate' => 'required|date',
             'telephoneNumber' => 'required|unique:teachers|numeric|max:9999999999',
             'dni' => 'required|unique:teachers|numeric|max:999999999999999',
             'address' => 'required|max:40',
-            'age' => 'required|max:100|numeric',
             'email' => 'required|max:50',
+            'file' => 'required|mimes:png,jpg,jpeg|max:2048',
+            'fileAct' => 'mimes:pdf,docx|max:2048'
         ];
         $niceNames = [
             'fullname' => 'nombre completo',
@@ -191,8 +220,9 @@ class PeopleController extends Controller
             'telephoneNumber' => 'número de teléfono',
             'dni' => 'número de cédula',
             'address' => 'lugar de domicilio',
-            'age' => 'rango de edad',
             'email' => 'email',
+            'file' => 'archivo',
+            'fileAct' => 'curriculum'
         ]; 
         $this->validate($request, $rules, [], $niceNames);
         $data->fullname = $request->fullname;
@@ -202,8 +232,16 @@ class PeopleController extends Controller
         $data->dni = $request->dni;
         $data->code = rand();
         $data->address = $request->address;
-        $data->age = $request->age;
+        $data->age = $age->y;
         $data->email = $request->email;
+        $saveTo = 'public/peopleImage';
+        $path = $request->file('file')->store($saveTo);
+        $filename = substr($path, strlen($saveTo) + 1);
+        $data->imgUrl = $filename;
+        $saveTo2 = 'public/peopleDocs';
+        $path2 = $request->file('fileAct')->store($saveTo2);
+        $filename2 = substr($path2, strlen($saveTo2) + 1);
+        $data->curriculum = $filename2;
         $data->save();
         return back()->with('message', 'Docente agregado con éxito.');
     }
@@ -260,14 +298,17 @@ class PeopleController extends Controller
     public function updateTeacher(Request $request, $id)
     {
         $data = Teacher::where('id', $id)->first();
+        $from = new DateTime($request->birthDate);
+        $to = new DateTime();
+        $age = $from->diff($to);
         $rules = [
             'fullname' => 'required|max:60',
             'birthDate' => 'required|date',
             'telephoneNumber' => ['required',Rule::unique('teachers')->ignore($id),'numeric', 'max:9999999999'],
             'dni' => ['required',Rule::unique('teachers')->ignore($id),'numeric', 'max:999999999999999'],
             'address' => 'required|max:40',
-            'age' => 'required|max:100|numeric',
             'email' => 'required|max:50',
+            'fileAct' => 'mimes:pdf,docx|max:2048'
         ];
         $niceNames = [
             'fullname' => 'nombre completo',
@@ -275,8 +316,8 @@ class PeopleController extends Controller
             'telephoneNumber' => 'número de teléfono',
             'dni' => 'número de cédula',
             'address' => 'lugar de domicilio',
-            'age' => 'rango de edad',
             'email' => 'email',
+            'fileAct' => 'curriculum'
         ]; 
         $this->validate($request, $rules, [], $niceNames);
         if($id == $data->id){
@@ -284,10 +325,32 @@ class PeopleController extends Controller
             $data->birthDate = $request->birthDate;
             $data->telephoneNumber = $request->telephoneNumber;
             $data->dni = $request->dni;
+            $data->age = $age->y;
             $data->code = rand();
             $data->address = $request->address;
-            $data->age = $request->age;
             $data->email = $request->email;
+            if($request->file){
+                $imantigua = $data->imgUrl;
+                if(Storage::disk('public')->path($imantigua)){
+                    $nombre = class_basename($imantigua);
+                     Storage::disk('public')->delete('peopleImage/'.$nombre);
+                }
+                $saveTo = 'public/peopleImage';
+                $path = $request->file('file')->store($saveTo);
+                $filename = substr($path, strlen($saveTo) + 1);
+                $data->imgUrl = $filename;
+            }
+            if($request->fileAct){
+                $imantigua = $data->curriculum;
+                if(Storage::disk('public')->path($imantigua)){
+                    $nombre = class_basename($imantigua);
+                     Storage::disk('public')->delete('peopleDocs/'.$nombre);
+                }
+                $saveTo2 = 'public/peopleDocs';
+                $path2 = $request->file('fileAct')->store($saveTo2);
+                $filename2 = substr($path2, strlen($saveTo2) + 1);
+                $data->curriculum = $filename2;
+            }
             $data->save();
             return back()->with('message', 'Docente editado con éxito.');
         }
@@ -306,6 +369,9 @@ class PeopleController extends Controller
     public function updateAdmin(Request $request, $id)
     {
         $data = Administration::where('id', $id)->first();
+        $from = new DateTime($request->birthDate);
+        $to = new DateTime();
+        $age = $from->diff($to);
         $rules = [
             'fullname' => 'required|max:60',
             'birthDate' => 'required|date',
@@ -313,8 +379,8 @@ class PeopleController extends Controller
             'dni' => ['required',Rule::unique('administrations')->ignore($id),'numeric', 'max:999999999999999'],
             'role' => 'required|max:60|min:5',
             'address' => 'required|max:40',
-            'age' => 'required|max:100|numeric',
             'email' => 'required|max:50',
+            'fileAct' => 'mimes:pdf,docx|max:2048'
         ];
         $niceNames = [
             'fullname' => 'nombre completo',
@@ -323,8 +389,8 @@ class PeopleController extends Controller
             'role' => 'cargo',
             'dni' => 'número de cédula',
             'address' => 'lugar de domicilio',
-            'age' => 'rango de edad',
             'email' => 'email',
+            'fileAct' => 'curriculum'
         ]; 
         $this->validate($request, $rules, [], $niceNames);
         if($id == $data->id){
@@ -335,8 +401,30 @@ class PeopleController extends Controller
             $data->dni = $request->dni;
             $data->code = rand();
             $data->address = $request->address;
-            $data->age = $request->age;
+            $data->age = $age->y;
             $data->email = $request->email;
+            if($request->file){
+                $imantigua = $data->imgUrl;
+                if(Storage::disk('public')->path($imantigua)){
+                    $nombre = class_basename($imantigua);
+                     Storage::disk('public')->delete('peopleImage/'.$nombre);
+                }
+                $saveTo = 'public/peopleImage';
+                $path = $request->file('file')->store($saveTo);
+                $filename = substr($path, strlen($saveTo) + 1);
+                $data->imgUrl = $filename;
+            }
+            if($request->fileAct){
+                $imantigua = $data->curriculum;
+                if(Storage::disk('public')->path($imantigua)){
+                    $nombre = class_basename($imantigua);
+                     Storage::disk('public')->delete('peopleDocs/'.$nombre);
+                }
+                $saveTo2 = 'public/peopleDocs';
+                $path2 = $request->file('fileAct')->store($saveTo2);
+                $filename2 = substr($path2, strlen($saveTo2) + 1);
+                $data->curriculum = $filename2;
+            }
             $data->save();
             return back()->with('message', 'Personal editado con éxito.');
         }
@@ -355,21 +443,24 @@ class PeopleController extends Controller
     public function updateStudent(Request $request, $id)
     {
         $data = Student::where('id', $id)->first();
+        $from = new DateTime($request->birthDate);
+        $to = new DateTime();
+        $age = $from->diff($to);
         $rules = [
             'fullname' => 'required|max:60',
             'birthDate' => 'required|date',
             'telephoneNumber' => ['required',Rule::unique('students')->ignore($id),'numeric', 'max:9999999999'],
             'dni' => ['required',Rule::unique('students')->ignore($id),'numeric', 'max:999999999999999'],
             'address' => 'required|max:40',
-            'age' => 'required|max:6|numeric',
             'email' => 'required|max:50',
             'fatherName' => 'required|max:50',
             'dniFather' => ['required',Rule::unique('students')->ignore($id),'numeric', 'max:999999999999999'],
             'motherName' => 'required|max:50',
             'dniMother' => ['required',Rule::unique('students')->ignore($id),'numeric', 'max:999999999999999'],
             'vaccinationCard' => 'required',
-            'memorandumOfAssociation' => 'required',
-            'status' => 'required'
+            'status' => 'required',
+            'file' => 'mimes:png,jpg,jpeg|max:2048',
+            'fileAct' => 'mimes:pdf,docx|max:2048'
         ];
         $niceNames = [
             'fullname' => 'nombre completo',
@@ -377,15 +468,15 @@ class PeopleController extends Controller
             'telephoneNumber' => 'número de teléfono',
             'dni' => 'número de cédula',
             'address' => 'lugar de domicilio',
-            'age' => 'rango de edad',
             'email' => 'email',
             'fatherName' => 'nombre del padre',
             'dniFather' => 'numero de cedula del padre',
             'motherName' => 'nombre de la madre',
             'dniMother' => 'numero de cedula de la madre',
             'vaccinationCard' => 'carnet de vacunacion',
-            'memorandumOfAssociation' => 'acta de nacimiento',
-            'status' => 'campo estado'
+            'status' => 'campo estado',
+            'file' => 'archivo',
+            'fileAct' => 'acta de compromiso'
         ]; 
         $this->validate($request, $rules, [], $niceNames);
         if($id == $data->id){
@@ -395,15 +486,36 @@ class PeopleController extends Controller
             $data->dni = $request->dni;
             $data->code = rand();
             $data->address = $request->address;
-            $data->age = $request->age;
+            $data->age = $age->y;
             $data->email = $request->email;
             $data->fatherName = $request->fatherName;
             $data->dniFather = $request->dniFather;
             $data->motherName = $request->motherName;
             $data->dniMother = $request->dniMother;
             $data->vaccinationCard = $request->vaccinationCard;
-            $data->memorandumOfAssociation = $request->memorandumOfAssociation;
             $data->status = $request->status;
+            if($request->file){
+                $imantigua = $data->imgUrl;
+                if(Storage::disk('public')->path($imantigua)){
+                    $nombre = class_basename($imantigua);
+                     Storage::disk('public')->delete('peopleImage/'.$nombre);
+                }
+                $saveTo = 'public/peopleImage';
+                $path = $request->file('file')->store($saveTo);
+                $filename = substr($path, strlen($saveTo) + 1);
+                $data->imgUrl = $filename;
+            }
+            if($request->fileAct){
+                $acttigua = $data->memorandumOfAssociation;
+                if(Storage::disk('public')->path($acttigua)){
+                    $nombre = class_basename($acttigua);
+                     Storage::disk('public')->delete('peopleDocs/'.$nombre);
+                }
+                $saveTo2 = 'public/peopleDocs';
+                $path2 = $request->file('fileAct')->store($saveTo2);
+                $filename2 = substr($path2, strlen($saveTo2) + 1);
+                $data->memorandumOfAssociation = $filename2;
+            }
             $data->save();
             return back()->with('message', 'Estudiante editado con éxito.');
         }

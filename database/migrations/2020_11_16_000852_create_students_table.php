@@ -34,6 +34,7 @@ class CreateStudentsTable extends Migration
             $table->string('vaccinationCard');
             $table->string('memorandumOfAssociation');
             $table->string('status')->default('Activo');
+            $table->string('imgUrl')->nullable();
             $table->timestamps();
             $table->engine = 'InnoDB';
             $table->charset = 'utf8';

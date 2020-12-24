@@ -36,8 +36,10 @@
                                         <div class="form-group">
                                             <label>Actividad cumplida:</label>
                                             <select class="custom-select" name="dailyActivityCheck" required>
-                                                <option value="si" {{ $dailyactivity->dailyActivityCheck == 'si' ? 'selected' : '' }}>Si</option>
-                                                <option value="no" {{ $dailyactivity->dailyActivityCheck == 'no' ? 'selected' : '' }}>No</option>
+                                                <option value="Totalmente logrado" {{ $dailyactivity->dailyActivityCheck == 'Totalmente logrado' ? 'selected' : '' }}>Totalmente logrado</option>
+                                                <option value="Mediante logrado" {{ $dailyactivity->dailyActivityCheck == 'Mediante logrado' ? 'selected' : '' }}>Mediante logrado</option>
+                                                <option value="Parcialmente logrado" {{ $dailyactivity->dailyActivityCheck == 'Parcialmente logrado' ? 'selected' : '' }}>Parcialmente logrado</option>
+                                                <option value="No logrado" {{ $dailyactivity->dailyActivityCheck == 'No logrado' ? 'selected' : '' }}>No logrado</option>
                                             </select>
                                             <div class="invalid-feedback">
                                               Please select a valid state.
