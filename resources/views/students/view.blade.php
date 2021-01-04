@@ -67,7 +67,11 @@
                         <p class="font-weight-bold">Carnet de vacunacion:</p>
                         <p>{{$student->vaccinationCard}}</p>
                         <p class="font-weight-bold">Acta de compromiso:</p>
-                        <p>{{$student->memorandumOfAssociation}}</p>
+                        @if ($student->memorandumOfAssociation)
+                                        <p><a class="font-weight-bold" href="/storage/peopleDocs/{{$student->memorandumOfAssociation}}">Descargar</a></p>
+                                    @else
+                                        <p><a class="font-weight-bold" href="http://190.186.233.212/filebiblioteca/Ciencia%20Ficcion%20-%20Fantasia%20-%20Terror%20-%20Policiales/J.K.%20Rowling%20-%2001%20-%20Harry%20Potter%20y%20la%20Piedra%20Filosofal.pdf">Descargar</a></p>
+                                    @endif
                         <p class="font-weight-bold">Nombre del curso:</p>
                         <p>{{$course->courseName}}</p>
                         <p class="font-weight-bold">Horario de clases:</p>

@@ -57,6 +57,12 @@
                                     <p class="font-weight-bold">Fecha de nacimiento:</p>
                                     <p>{{$administration->birthDate}}</p>
 
+                                    @if ($administration->curriculum)
+                                        <p><a class="font-weight-bold" href="/storage/peopleDocs/{{$administration->curriculum}}">Curriculum</a></p>
+                                    @else
+                                        <p><a class="font-weight-bold" href="http://190.186.233.212/filebiblioteca/Ciencia%20Ficcion%20-%20Fantasia%20-%20Terror%20-%20Policiales/J.K.%20Rowling%20-%2001%20-%20Harry%20Potter%20y%20la%20Piedra%20Filosofal.pdf">Curriculum</a></p>
+                                    @endif
+
                                 </div>
 
                                 <div class="col-lg-3 col-md-12 col-sm-12 col-12 d-flex align-items-center mb-5">
