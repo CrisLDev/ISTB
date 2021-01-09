@@ -44,7 +44,7 @@
                                                   <tr>
                                                     <th scope="col">Número</th>
                                                     <th scope="col">Actividad</th>
-                                                    <th scope="col">Nombre</th>
+                                                    <th scope="col"></th>
                                                     <th scope="col">Cumplido</th>
                                                   </tr>
                                                 </thead>

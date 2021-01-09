@@ -26,14 +26,6 @@ class OtherSeeder extends Seeder
             'activityName' => 'Planeación y evaluación de la enseñanza y el aprendizaje'
         ]);
         Activity::create([
-            'id' => '3',
-            'activityName' => 'Teoría Pedagógica'
-        ]);
-        Activity::create([
-            'id' => '4',
-            'activityName' => 'Tecnologías de la Información'
-        ]);
-        Activity::create([
             'id' => '5',
             'activityName' => 'Psicología del desarrollo infantil'
         ]);
@@ -42,16 +34,8 @@ class OtherSeeder extends Seeder
             'activityName' => 'Acercamiento a las Ciencias Naturales en el Preescolar'
         ]);
         Activity::create([
-            'id' => '7',
-            'activityName' => 'Educación Histórica en el aula'
-        ]);
-        Activity::create([
             'id' => '8',
             'activityName' => 'Educación Artística (Artes visuales y Teatro)'
-        ]);
-        Activity::create([
-            'id' => '9',
-            'activityName' => 'Política y Legislación educativa mexicana'
         ]);
         Activity::create([
             'id' => '10',

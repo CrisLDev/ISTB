@@ -102,15 +102,28 @@ class OtherController extends Controller
      */
     public function indexStudents(Request $request)
     {
-        $fullname = $request->get('fullname');
-        $email = $request->get('email');
-        $code = $request->get('code');
-        $students = Student::orderBy('id', 'desc')
-        ->fullname($fullname)
-        ->email($email)
-        ->code($code)
-        ->paginate(5);
-        return view('students.all', compact('students'));
+        if(auth()->user()->role === 'coor'){
+            $fullname = $request->get('fullname');
+            $email = $request->get('email');
+            $code = $request->get('code');
+            $students = Student::orderBy('id', 'desc')
+            ->fullname($fullname)
+            ->email($email)
+            ->code($code)
+            ->where('user_id', auth()->user()->id)
+            ->paginate(5);
+            return view('students.all', compact('students'));
+        }else{
+            $fullname = $request->get('fullname');
+            $email = $request->get('email');
+            $code = $request->get('code');
+            $students = Student::orderBy('id', 'desc')
+            ->fullname($fullname)
+            ->email($email)
+            ->code($code)
+            ->paginate(5);
+            return view('students.all', compact('students'));
+        }
     }
 
     /**
@@ -120,15 +133,28 @@ class OtherController extends Controller
      */
     public function indexAdministration(Request $request)
     {
-        $fullname = $request->get('fullname');
-        $email = $request->get('email');
-        $code = $request->get('code');
-        $administrations = Administration::orderBy('id', 'desc')
-        ->fullname($fullname)
-        ->email($email)
-        ->code($code)
-        ->paginate(5);
-        return view('administration.all', compact('administrations'));
+        if(auth()->user()->role === 'coor'){
+            $fullname = $request->get('fullname');
+            $email = $request->get('email');
+            $code = $request->get('code');
+            $administrations = Administration::orderBy('id', 'desc')
+            ->fullname($fullname)
+            ->email($email)
+            ->code($code)
+            ->where('user_id', auth()->user()->id)
+            ->paginate(5);
+            return view('administration.all', compact('administrations'));
+        }else{
+            $fullname = $request->get('fullname');
+            $email = $request->get('email');
+            $code = $request->get('code');
+            $administrations = Administration::orderBy('id', 'desc')
+            ->fullname($fullname)
+            ->email($email)
+            ->code($code)
+            ->paginate(5);
+            return view('administration.all', compact('administrations'));
+        }
     }
 
     /**
@@ -138,15 +164,28 @@ class OtherController extends Controller
      */
     public function indexTeachers(Request $request)
     {
-        $fullname = $request->get('fullname');
-        $email = $request->get('email');
-        $code = $request->get('code');
-        $teachers = Teacher::orderBy('id', 'desc')
-        ->fullname($fullname)
-        ->email($email)
-        ->code($code)
-        ->paginate(5);
-        return view('teachers.all', compact('teachers'));
+        if(auth()->user()->role === 'coor'){
+            $fullname = $request->get('fullname');
+            $email = $request->get('email');
+            $code = $request->get('code');
+            $teachers = Teacher::orderBy('id', 'desc')
+            ->fullname($fullname)
+            ->email($email)
+            ->code($code)
+            ->where('user_id', auth()->user()->id)
+            ->paginate(5);
+            return view('teachers.all', compact('teachers'));
+        }else{
+            $fullname = $request->get('fullname');
+            $email = $request->get('email');
+            $code = $request->get('code');
+            $teachers = Teacher::orderBy('id', 'desc')
+            ->fullname($fullname)
+            ->email($email)
+            ->code($code)
+            ->paginate(5);
+            return view('teachers.all', compact('teachers'));
+        }
     }
 
     /**

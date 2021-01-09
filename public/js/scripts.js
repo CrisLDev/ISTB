@@ -18,3 +18,10 @@ $('#customFileAct').on('change',function(){
     //replace the "Choose a file" label
     $(this).next('.act').html(fileName);
 })
+
+$('#customFileCard').on('change',function(){
+    //get the file name
+    var fileName = $(this).val();
+    //replace the "Choose a file" label
+    $(this).next('.act').html(fileName);
+})

@@ -42,7 +42,7 @@ class ReportsSeeder extends Seeder
             'course_id' => '2',
             'student_id' => '2',
             'teacher_id' => '9',
-            'activity_id' => '7',
+            'activity_id' => '1',
             'content' => 'Se observo que el estudiante tiene problemas pra amantenerse concnetrado en cuanto a la clase'
         ]);
         Reports::create([
@@ -52,7 +52,7 @@ class ReportsSeeder extends Seeder
             'course_id' => '1',
             'student_id' => '3',
             'teacher_id' => '8',
-            'activity_id' => '7',
+            'activity_id' => '1',
             'content' => 'Se Realizaron todos los proyectos sin problema el estudainte no tiene problema con las actividades que se realizan'
         ]);
         Reports::create([
@@ -72,7 +72,7 @@ class ReportsSeeder extends Seeder
             'course_id' => '3',
             'student_id' => '6',
             'teacher_id' => '2',
-            'activity_id' => '3',
+            'activity_id' => '1',
             'content' => 'Se le enseño al estudiante a mantener el orden en el salon de clases'
         ]);
         Reports::create([
@@ -82,7 +82,7 @@ class ReportsSeeder extends Seeder
             'course_id' => '3',
             'student_id' => '8',
             'teacher_id' => '1',
-            'activity_id' => '7',
+            'activity_id' => '1',
             'content' => 'Se observo que el estudiante tiene problemas para mantener el ritmo de la clase'
         ]);
     }

@@ -37,7 +37,7 @@
                         </div>
                     @endif
 
-                    @if(Auth::user()->role == 'admin')
+                    @if(Auth::user()->role == 'admin' || Auth::user()->role == 'coor')
                         <div class="container">
                             <h5 class="font-weight-bold text-center mb-4">Aquí tienes un pequeño resumen</h5>
                             <div class="row">

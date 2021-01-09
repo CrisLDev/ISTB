@@ -209,12 +209,12 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Carnet de vacunacion:</label>
-                                    <select id="inputState" class="form-control" name="vaccinationCard">
-                                        <option value="si" {{ $people->vaccinationCard == 'si' ? 'selected' : '' }}>Si</option>
-                                        <option value="no" {{ $people->vaccinationCard == 'no' ? 'selected' : '' }}>No</option>
-                                    </select>
+                                <div class="form-group w-100">
+                                <label>Carnet de vacunación:</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="customFileCard" name="vaccinationCard">
+                                    <label class="custom-file-label act" for="customFileCard">Escoger archivo...</label>
+                                </div>
                                 </div>
                             </div>
                             <div class="col-md-6">

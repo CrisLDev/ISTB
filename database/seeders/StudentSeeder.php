@@ -31,8 +31,6 @@ class StudentSeeder extends Seeder
             'dniFather' => '1203626263',
             'motherName' => 'Ana Paula Murillo Rodrigeus',
             'dniMother' => '1203030303',
-            'vaccinationCard' => 'si',
-            'memorandumOfAssociation' => 'si',
             'status' => 'Enfermo'
         ]);
         Student::create([
@@ -51,8 +49,6 @@ class StudentSeeder extends Seeder
             'dniFather' => '1203626263',
             'motherName' => 'Ana Paula Murillo Rodrigeus',
             'dniMother' => '1203030303',
-            'vaccinationCard' => 'si',
-            'memorandumOfAssociation' => 'si',
             'status' => 'Enfermo'
         ]);
         Student::create([
@@ -71,8 +67,6 @@ class StudentSeeder extends Seeder
             'dniFather' => '1203626263',
             'motherName' => 'Ana Paula Murillo Rodrigeus',
             'dniMother' => '1203030303',
-            'vaccinationCard' => 'si',
-            'memorandumOfAssociation' => 'si',
             'status' => 'Enfermo'
         ]);
         Student::create([
@@ -91,8 +85,6 @@ class StudentSeeder extends Seeder
             'dniFather' => '1203626263',
             'motherName' => 'Ana Paula Murillo Rodrigeus',
             'dniMother' => '1203030303',
-            'vaccinationCard' => 'si',
-            'memorandumOfAssociation' => 'si',
             'status' => 'Enfermo'
         ]);
         Student::create([
@@ -111,8 +103,6 @@ class StudentSeeder extends Seeder
             'dniFather' => '1203626263',
             'motherName' => 'Ana Paula Murillo Rodrigeus',
             'dniMother' => '1203030303',
-            'vaccinationCard' => 'si',
-            'memorandumOfAssociation' => 'si',
             'status' => 'Enfermo'
         ]);
         Student::create([
@@ -131,8 +121,6 @@ class StudentSeeder extends Seeder
             'dniFather' => '1203626263',
             'motherName' => 'Ana Paula Murillo Rodrigeus',
             'dniMother' => '1203030303',
-            'vaccinationCard' => 'si',
-            'memorandumOfAssociation' => 'si',
             'status' => 'Enfermo'
         ]);
         Student::create([
@@ -151,8 +139,6 @@ class StudentSeeder extends Seeder
             'dniFather' => '1203626263',
             'motherName' => 'Ana Paula Murillo Rodrigeus',
             'dniMother' => '1203030303',
-            'vaccinationCard' => 'si',
-            'memorandumOfAssociation' => 'si',
             'status' => 'Enfermo'
         ]);
         Student::create([
@@ -171,8 +157,6 @@ class StudentSeeder extends Seeder
             'dniFather' => '1203626263',
             'motherName' => 'Ana Paula Murillo Rodrigeus',
             'dniMother' => '1203030303',
-            'vaccinationCard' => 'si',
-            'memorandumOfAssociation' => 'si',
             'status' => 'Enfermo'
         ]);
         Student::create([
@@ -191,8 +175,6 @@ class StudentSeeder extends Seeder
             'dniFather' => '1203626263',
             'motherName' => 'Ana Paula Murillo Rodrigeus',
             'dniMother' => '1203030303',
-            'vaccinationCard' => 'si',
-            'memorandumOfAssociation' => 'si',
             'status' => 'Enfermo'
         ]);
         Student::create([
@@ -211,8 +193,6 @@ class StudentSeeder extends Seeder
             'dniFather' => '1203626263',
             'motherName' => 'Ana Paula Murillo Rodrigeus',
             'dniMother' => '1203030303',
-            'vaccinationCard' => 'si',
-            'memorandumOfAssociation' => 'si',
             'status' => 'Enfermo'
         ]);
     }

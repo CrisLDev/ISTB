@@ -131,7 +131,7 @@ class PeopleController extends Controller
             'dniFather' => 'required|unique:students|numeric|max:999999999999999',
             'motherName' => 'required|max:50',
             'dniMother' => 'required|unique:students|numeric|max:999999999999999',
-            'vaccinationCard' => 'required',
+            'vaccinationCard' => 'required|mimes:png,jpg,jpeg|max:2048',
             'file' => 'required|mimes:png,jpg,jpeg|max:2048',
             'fileAct' => 'required|mimes:pdf,docx|max:2048'
         ];
@@ -147,7 +147,7 @@ class PeopleController extends Controller
             'motherName' => 'nombre de la madre',
             'dniMother' => 'numero de cedula de la madre',
             'vaccinationCard' => 'carnet de vacunacion',
-            'fileAct' => 'acta de nacimiento',
+            'fileAct' => 'acta de compromiso',
             'file' => 'archivo',
         ]; 
         $this->validate($request, $rules, [], $niceNames);
@@ -174,7 +174,6 @@ class PeopleController extends Controller
         $data->dniFather = $request->dniFather;
         $data->motherName = $request->motherName;
         $data->dniMother = $request->dniMother;
-        $data->vaccinationCard = $request->vaccinationCard;
         $saveTo = 'public/peopleImage';
         $path = $request->file('file')->store($saveTo);
         $filename = substr($path, strlen($saveTo) + 1);
@@ -183,6 +182,10 @@ class PeopleController extends Controller
         $path2 = $request->file('fileAct')->store($saveTo2);
         $filename2 = substr($path2, strlen($saveTo2) + 1);
         $data->memorandumOfAssociation = $filename2;
+        $saveTo3 = 'public/peopleDocs';
+        $path3 = $request->file('vaccinationCard')->store($saveTo3);
+        $filename3 = substr($path3, strlen($saveTo3) + 1);
+        $data->vaccinationCard = $filename3;
         $data->save();
         /*
         $idd = $data->id;
@@ -254,10 +257,19 @@ class PeopleController extends Controller
      */
     public function editStudent($id)
     {
-
+        
         $people = Student::where('id', $id)->first();
+        if(auth()->user()->role === 'coor'){
+            if($people->user_id === auth()->user()->id){
 
-        return view('people.edit', compact('people'));
+                return view('people.edit', compact('people'));
+
+            }else{
+                return redirect('/home')->with('messageError', '¡No tienes permisos!');
+            }
+        }else{
+            return view('people.edit', compact('people'));
+        }
     }
 
     /**
@@ -268,10 +280,16 @@ class PeopleController extends Controller
      */
     public function editAdmin($id)
     {
-
         $people = Administration::where('id', $id)->first();
-
-        return view('people.edit', compact('people'));
+        if(auth()->user()->role === 'coor'){
+            if($people->user_id === auth()->user()->id){
+                return view('people.edit', compact('people'));
+            }else{
+                return redirect('/home')->with('messageError', '¡No tienes permisos!'); 
+            }
+        }else{
+            return view('people.edit', compact('people'));
+        }
     }
 
     /**
@@ -284,8 +302,15 @@ class PeopleController extends Controller
     {
 
         $people = Teacher::where('id', $id)->first();
-
-        return view('people.edit', compact('people'));
+        if(auth()->user()->role === 'coor'){
+            if($people->user_id === auth()->user()->id){
+                    return view('people.edit', compact('people'));
+                }else{
+                return redirect('/home')->with('messageError', '¡No tienes permisos!'); 
+            }
+        }else{
+                return view('people.edit', compact('people'));
+            }
     }
 
     /**
@@ -298,64 +323,129 @@ class PeopleController extends Controller
     public function updateTeacher(Request $request, $id)
     {
         $data = Teacher::where('id', $id)->first();
-        $from = new DateTime($request->birthDate);
-        $to = new DateTime();
-        $age = $from->diff($to);
-        $rules = [
-            'fullname' => 'required|max:60',
-            'birthDate' => 'required|date',
-            'telephoneNumber' => ['required',Rule::unique('teachers')->ignore($id),'numeric', 'max:9999999999'],
-            'dni' => ['required',Rule::unique('teachers')->ignore($id),'numeric', 'max:999999999999999'],
-            'address' => 'required|max:40',
-            'email' => 'required|max:50',
-            'fileAct' => 'mimes:pdf,docx|max:2048'
-        ];
-        $niceNames = [
-            'fullname' => 'nombre completo',
-            'birthDate' => 'campo fecha de nacimiento',
-            'telephoneNumber' => 'número de teléfono',
-            'dni' => 'número de cédula',
-            'address' => 'lugar de domicilio',
-            'email' => 'email',
-            'fileAct' => 'curriculum'
-        ]; 
-        $this->validate($request, $rules, [], $niceNames);
-        if($id == $data->id){
-            $data->fullname = $request->fullname;
-            $data->birthDate = $request->birthDate;
-            $data->telephoneNumber = $request->telephoneNumber;
-            $data->dni = $request->dni;
-            $data->age = $age->y;
-            $data->code = rand();
-            $data->address = $request->address;
-            $data->email = $request->email;
-            if($request->file){
-                $imantigua = $data->imgUrl;
-                if(Storage::disk('public')->path($imantigua)){
-                    $nombre = class_basename($imantigua);
-                     Storage::disk('public')->delete('peopleImage/'.$nombre);
+        if(auth()->user()->role === 'coor'){
+            if($data->user_id === auth()->user()->id){
+                $from = new DateTime($request->birthDate);
+                $to = new DateTime();
+                $age = $from->diff($to);
+                $rules = [
+                    'fullname' => 'required|max:60',
+                    'birthDate' => 'required|date',
+                    'telephoneNumber' => ['required',Rule::unique('teachers')->ignore($id),'numeric', 'max:9999999999'],
+                    'dni' => ['required',Rule::unique('teachers')->ignore($id),'numeric', 'max:999999999999999'],
+                    'address' => 'required|max:40',
+                    'email' => 'required|max:50',
+                    'fileAct' => 'mimes:pdf,docx|max:2048'
+                ];
+                $niceNames = [
+                    'fullname' => 'nombre completo',
+                    'birthDate' => 'campo fecha de nacimiento',
+                    'telephoneNumber' => 'número de teléfono',
+                    'dni' => 'número de cédula',
+                    'address' => 'lugar de domicilio',
+                    'email' => 'email',
+                    'fileAct' => 'curriculum'
+                ]; 
+                $this->validate($request, $rules, [], $niceNames);
+                if($id == $data->id){
+                    $data->fullname = $request->fullname;
+                    $data->birthDate = $request->birthDate;
+                    $data->telephoneNumber = $request->telephoneNumber;
+                    $data->dni = $request->dni;
+                    $data->age = $age->y;
+                    $data->code = rand();
+                    $data->address = $request->address;
+                    $data->email = $request->email;
+                    if($request->file){
+                        $imantigua = $data->imgUrl;
+                        if(Storage::disk('public')->path($imantigua)){
+                            $nombre = class_basename($imantigua);
+                            Storage::disk('public')->delete('peopleImage/'.$nombre);
+                        }
+                        $saveTo = 'public/peopleImage';
+                        $path = $request->file('file')->store($saveTo);
+                        $filename = substr($path, strlen($saveTo) + 1);
+                        $data->imgUrl = $filename;
+                    }
+                    if($request->fileAct){
+                        $imantigua = $data->curriculum;
+                        if(Storage::disk('public')->path($imantigua)){
+                            $nombre = class_basename($imantigua);
+                            Storage::disk('public')->delete('peopleDocs/'.$nombre);
+                        }
+                        $saveTo2 = 'public/peopleDocs';
+                        $path2 = $request->file('fileAct')->store($saveTo2);
+                        $filename2 = substr($path2, strlen($saveTo2) + 1);
+                        $data->curriculum = $filename2;
+                    }
+                    $data->save();
+                    return back()->with('message', 'Docente editado con éxito.');
                 }
-                $saveTo = 'public/peopleImage';
-                $path = $request->file('file')->store($saveTo);
-                $filename = substr($path, strlen($saveTo) + 1);
-                $data->imgUrl = $filename;
+
+                    return back()->with('userErrors', 'El docente ya existe.');
+            }else{
+                return redirect('/home')->with('messageError', '¡No tienes permisos!');
             }
-            if($request->fileAct){
-                $imantigua = $data->curriculum;
-                if(Storage::disk('public')->path($imantigua)){
-                    $nombre = class_basename($imantigua);
-                     Storage::disk('public')->delete('peopleDocs/'.$nombre);
+        }else{
+            $from = new DateTime($request->birthDate);
+            $to = new DateTime();
+            $age = $from->diff($to);
+            $rules = [
+                'fullname' => 'required|max:60',
+                'birthDate' => 'required|date',
+                'telephoneNumber' => ['required',Rule::unique('teachers')->ignore($id),'numeric', 'max:9999999999'],
+                'dni' => ['required',Rule::unique('teachers')->ignore($id),'numeric', 'max:999999999999999'],
+                'address' => 'required|max:40',
+                'email' => 'required|max:50',
+                'fileAct' => 'mimes:pdf,docx|max:2048'
+            ];
+            $niceNames = [
+                'fullname' => 'nombre completo',
+                'birthDate' => 'campo fecha de nacimiento',
+                'telephoneNumber' => 'número de teléfono',
+                'dni' => 'número de cédula',
+                'address' => 'lugar de domicilio',
+                'email' => 'email',
+                'fileAct' => 'curriculum'
+            ]; 
+            $this->validate($request, $rules, [], $niceNames);
+            if($id == $data->id){
+                $data->fullname = $request->fullname;
+                $data->birthDate = $request->birthDate;
+                $data->telephoneNumber = $request->telephoneNumber;
+                $data->dni = $request->dni;
+                $data->age = $age->y;
+                $data->code = rand();
+                $data->address = $request->address;
+                $data->email = $request->email;
+                if($request->file){
+                    $imantigua = $data->imgUrl;
+                    if(Storage::disk('public')->path($imantigua)){
+                        $nombre = class_basename($imantigua);
+                        Storage::disk('public')->delete('peopleImage/'.$nombre);
+                    }
+                    $saveTo = 'public/peopleImage';
+                    $path = $request->file('file')->store($saveTo);
+                    $filename = substr($path, strlen($saveTo) + 1);
+                    $data->imgUrl = $filename;
                 }
-                $saveTo2 = 'public/peopleDocs';
-                $path2 = $request->file('fileAct')->store($saveTo2);
-                $filename2 = substr($path2, strlen($saveTo2) + 1);
-                $data->curriculum = $filename2;
-            }
-            $data->save();
-            return back()->with('message', 'Docente editado con éxito.');
+                if($request->fileAct){
+                    $imantigua = $data->curriculum;
+                    if(Storage::disk('public')->path($imantigua)){
+                        $nombre = class_basename($imantigua);
+                        Storage::disk('public')->delete('peopleDocs/'.$nombre);
+                    }
+                    $saveTo2 = 'public/peopleDocs';
+                    $path2 = $request->file('fileAct')->store($saveTo2);
+                    $filename2 = substr($path2, strlen($saveTo2) + 1);
+                    $data->curriculum = $filename2;
+                }
+                $data->save();
+                return back()->with('message', 'Docente editado con éxito.');
         }
 
         return back()->with('userErrors', 'El docente ya existe.');
+    }
         
     }
 
@@ -369,6 +459,8 @@ class PeopleController extends Controller
     public function updateAdmin(Request $request, $id)
     {
         $data = Administration::where('id', $id)->first();
+        if(auth()->user()->role === 'coor'){
+        if($data->user_id === auth()->user()->id){
         $from = new DateTime($request->birthDate);
         $to = new DateTime();
         $age = $from->diff($to);
@@ -430,6 +522,72 @@ class PeopleController extends Controller
         }
 
         return back()->with('userErrors', 'El nombre del personal ya existe.');
+    }else{
+        return redirect('/home')->with('messageError', '¡No tienes permisos!');
+    }
+}else{
+    $from = new DateTime($request->birthDate);
+        $to = new DateTime();
+        $age = $from->diff($to);
+        $rules = [
+            'fullname' => 'required|max:60',
+            'birthDate' => 'required|date',
+            'telephoneNumber' => ['required',Rule::unique('administrations')->ignore($id),'numeric', 'max:9999999999'],
+            'dni' => ['required',Rule::unique('administrations')->ignore($id),'numeric', 'max:999999999999999'],
+            'role' => 'required|max:60|min:5',
+            'address' => 'required|max:40',
+            'email' => 'required|max:50',
+            'fileAct' => 'mimes:pdf,docx|max:2048'
+        ];
+        $niceNames = [
+            'fullname' => 'nombre completo',
+            'birthDate' => 'campo fecha de nacimiento',
+            'telephoneNumber' => 'número de teléfono',
+            'role' => 'cargo',
+            'dni' => 'número de cédula',
+            'address' => 'lugar de domicilio',
+            'email' => 'email',
+            'fileAct' => 'curriculum'
+        ]; 
+        $this->validate($request, $rules, [], $niceNames);
+        if($id == $data->id){
+            $data->fullname = $request->fullname;
+            $data->birthDate = $request->birthDate;
+            $data->telephoneNumber = $request->telephoneNumber;
+            $data->role = $request->role;
+            $data->dni = $request->dni;
+            $data->code = rand();
+            $data->address = $request->address;
+            $data->age = $age->y;
+            $data->email = $request->email;
+            if($request->file){
+                $imantigua = $data->imgUrl;
+                if(Storage::disk('public')->path($imantigua)){
+                    $nombre = class_basename($imantigua);
+                     Storage::disk('public')->delete('peopleImage/'.$nombre);
+                }
+                $saveTo = 'public/peopleImage';
+                $path = $request->file('file')->store($saveTo);
+                $filename = substr($path, strlen($saveTo) + 1);
+                $data->imgUrl = $filename;
+            }
+            if($request->fileAct){
+                $imantigua = $data->curriculum;
+                if(Storage::disk('public')->path($imantigua)){
+                    $nombre = class_basename($imantigua);
+                     Storage::disk('public')->delete('peopleDocs/'.$nombre);
+                }
+                $saveTo2 = 'public/peopleDocs';
+                $path2 = $request->file('fileAct')->store($saveTo2);
+                $filename2 = substr($path2, strlen($saveTo2) + 1);
+                $data->curriculum = $filename2;
+            }
+            $data->save();
+            return back()->with('message', 'Personal editado con éxito.');
+        }
+
+        return back()->with('userErrors', 'El nombre del personal ya existe.');
+}
         
     }
 
@@ -443,6 +601,8 @@ class PeopleController extends Controller
     public function updateStudent(Request $request, $id)
     {
         $data = Student::where('id', $id)->first();
+        if(auth()->user()->role === 'coor'){
+        if($data->user_id === auth()->user()->id){
         $from = new DateTime($request->birthDate);
         $to = new DateTime();
         $age = $from->diff($to);
@@ -457,7 +617,7 @@ class PeopleController extends Controller
             'dniFather' => ['required',Rule::unique('students')->ignore($id),'numeric', 'max:999999999999999'],
             'motherName' => 'required|max:50',
             'dniMother' => ['required',Rule::unique('students')->ignore($id),'numeric', 'max:999999999999999'],
-            'vaccinationCard' => 'required',
+            'vaccinationCard' => 'mimes:png,jpg,jpeg|max:2048',
             'status' => 'required',
             'file' => 'mimes:png,jpg,jpeg|max:2048',
             'fileAct' => 'mimes:pdf,docx|max:2048'
@@ -492,7 +652,6 @@ class PeopleController extends Controller
             $data->dniFather = $request->dniFather;
             $data->motherName = $request->motherName;
             $data->dniMother = $request->dniMother;
-            $data->vaccinationCard = $request->vaccinationCard;
             $data->status = $request->status;
             if($request->file){
                 $imantigua = $data->imgUrl;
@@ -516,11 +675,116 @@ class PeopleController extends Controller
                 $filename2 = substr($path2, strlen($saveTo2) + 1);
                 $data->memorandumOfAssociation = $filename2;
             }
+            if($request->fileAct){
+                $acttigua = $data->vaccinationCard;
+                if(Storage::disk('public')->path($acttigua)){
+                    $nombre = class_basename($acttigua);
+                     Storage::disk('public')->delete('vacunation/'.$nombre);
+                }
+                $saveTo3 = 'public/vacunation';
+                $path3 = $request->file('vaccinationCard')->store($saveTo3);
+                $filename3 = substr($path3, strlen($saveTo3) + 1);
+                $data->vaccinationCard = $filename3;
+            }
             $data->save();
             return back()->with('message', 'Estudiante editado con éxito.');
         }
 
         return back()->with('userErrors', 'El estudiante ya existe.');
+
+    }else{
+        return redirect('/home')->with('messageError', '¡No tienes permisos!');
+    }
+}else{
+    $from = new DateTime($request->birthDate);
+        $to = new DateTime();
+        $age = $from->diff($to);
+        $rules = [
+            'fullname' => 'required|max:60',
+            'birthDate' => 'required|date',
+            'telephoneNumber' => ['required',Rule::unique('students')->ignore($id),'numeric', 'max:9999999999'],
+            'dni' => ['required',Rule::unique('students')->ignore($id),'numeric', 'max:999999999999999'],
+            'address' => 'required|max:40',
+            'email' => 'required|max:50',
+            'fatherName' => 'required|max:50',
+            'dniFather' => ['required',Rule::unique('students')->ignore($id),'numeric', 'max:999999999999999'],
+            'motherName' => 'required|max:50',
+            'dniMother' => ['required',Rule::unique('students')->ignore($id),'numeric', 'max:999999999999999'],
+            'vaccinationCard' => 'mimes:png,jpg,jpeg|max:2048',
+            'status' => 'required',
+            'file' => 'mimes:png,jpg,jpeg|max:2048',
+            'fileAct' => 'mimes:pdf,docx|max:2048'
+        ];
+        $niceNames = [
+            'fullname' => 'nombre completo',
+            'birthDate' => 'campo fecha de nacimiento',
+            'telephoneNumber' => 'número de teléfono',
+            'dni' => 'número de cédula',
+            'address' => 'lugar de domicilio',
+            'email' => 'email',
+            'fatherName' => 'nombre del padre',
+            'dniFather' => 'numero de cedula del padre',
+            'motherName' => 'nombre de la madre',
+            'dniMother' => 'numero de cedula de la madre',
+            'vaccinationCard' => 'carnet de vacunacion',
+            'status' => 'campo estado',
+            'file' => 'archivo',
+            'fileAct' => 'acta de compromiso'
+        ]; 
+        $this->validate($request, $rules, [], $niceNames);
+        if($id == $data->id){
+            $data->fullname = $request->fullname;
+            $data->birthDate = $request->birthDate;
+            $data->telephoneNumber = $request->telephoneNumber;
+            $data->dni = $request->dni;
+            $data->code = rand();
+            $data->address = $request->address;
+            $data->age = $age->y;
+            $data->email = $request->email;
+            $data->fatherName = $request->fatherName;
+            $data->dniFather = $request->dniFather;
+            $data->motherName = $request->motherName;
+            $data->dniMother = $request->dniMother;
+            $data->status = $request->status;
+            if($request->file){
+                $imantigua = $data->imgUrl;
+                if(Storage::disk('public')->path($imantigua)){
+                    $nombre = class_basename($imantigua);
+                     Storage::disk('public')->delete('peopleImage/'.$nombre);
+                }
+                $saveTo = 'public/peopleImage';
+                $path = $request->file('file')->store($saveTo);
+                $filename = substr($path, strlen($saveTo) + 1);
+                $data->imgUrl = $filename;
+            }
+            if($request->fileAct){
+                $acttigua = $data->memorandumOfAssociation;
+                if(Storage::disk('public')->path($acttigua)){
+                    $nombre = class_basename($acttigua);
+                     Storage::disk('public')->delete('peopleDocs/'.$nombre);
+                }
+                $saveTo2 = 'public/peopleDocs';
+                $path2 = $request->file('fileAct')->store($saveTo2);
+                $filename2 = substr($path2, strlen($saveTo2) + 1);
+                $data->memorandumOfAssociation = $filename2;
+            }
+            if($request->fileAct){
+                $acttigua = $data->vaccinationCard;
+                if(Storage::disk('public')->path($acttigua)){
+                    $nombre = class_basename($acttigua);
+                     Storage::disk('public')->delete('vacunation/'.$nombre);
+                }
+                $saveTo3 = 'public/vacunation';
+                $path3 = $request->file('vaccinationCard')->store($saveTo3);
+                $filename3 = substr($path3, strlen($saveTo3) + 1);
+                $data->vaccinationCard = $filename3;
+            }
+            $data->save();
+            return back()->with('message', 'Estudiante editado con éxito.');
+        }
+
+        return back()->with('userErrors', 'El estudiante ya existe.');
+}
         
     }
 
@@ -532,8 +796,18 @@ class PeopleController extends Controller
      */
     public function destroyAdmin($id)
     {
+        $data = Student::where('id', $id)->first();
+        if(auth()->user()->role === 'coor'){
+        if($data->user_id === auth()->user()->id){
+            $data = Administration::findOrFail( $id )->delete();
+            return redirect("/other/administration")->with( 'message', 'Personal Eliminado' );
+        }else{
+            return redirect('/home')->with('messageError', '¡No tienes permisos!');
+        }
+    }else{
         $data = Administration::findOrFail( $id )->delete();
         return redirect("/other/administration")->with( 'message', 'Personal Eliminado' );
+    }
     }
 
     /**
@@ -544,8 +818,18 @@ class PeopleController extends Controller
      */
     public function destroyTeacher($id)
     {
-        $data = Teacher::findOrFail( $id )->delete();
+        $data = Student::where('id', $id)->first();
+        if(auth()->user()->role === 'coor'){
+        if($data->user_id === auth()->user()->id){
+            $data = Teacher::findOrFail( $id )->delete();
         return redirect("/other/teachers")->with( 'message', 'Profesor Eliminado' );
+    }else{
+        return redirect('/home')->with('messageError', '¡No tienes permisos!');
+    }
+}else{
+    $data = Teacher::findOrFail( $id )->delete();
+        return redirect("/other/teachers")->with( 'message', 'Profesor Eliminado' );
+}
     }
 
     /**
@@ -556,7 +840,17 @@ class PeopleController extends Controller
      */
     public function destroyStudent($id)
     {
-        $data = Student::findOrFail( $id )->delete();
+        $data = Student::where('id', $id)->first();
+        if(auth()->user()->role === 'coor'){
+        if($data->user_id === auth()->user()->id){
+            $data = Student::findOrFail( $id )->delete();
         return redirect("/other/students")->with( 'message', 'Estudiante Eliminado' );
+    }else{
+        return redirect('/home')->with('messageError', '¡No tienes permisos!');
+    }
+}else{
+    $data = Student::findOrFail( $id )->delete();
+        return redirect("/other/students")->with( 'message', 'Estudiante Eliminado' );
+}
     }
 }

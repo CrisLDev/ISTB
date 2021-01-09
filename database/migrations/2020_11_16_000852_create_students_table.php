@@ -31,8 +31,8 @@ class CreateStudentsTable extends Migration
             $table->integer('dniFather');
             $table->string('motherName');
             $table->integer('dniMother');
-            $table->string('vaccinationCard');
-            $table->string('memorandumOfAssociation');
+            $table->string('vaccinationCard')->nullable();
+            $table->string('memorandumOfAssociation')->nullable();
             $table->string('status')->default('Activo');
             $table->string('imgUrl')->nullable();
             $table->timestamps();
