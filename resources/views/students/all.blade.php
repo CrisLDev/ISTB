@@ -58,6 +58,7 @@
 
                                 <div class="col-lg-3 col-md-12 col-sm-12 col-12 d-flex align-items-center mb-5">
                                     <a class="btn btn-info mr-2" href="{{route('students.showStudent', $student->id)}}">ver</a>
+                                    @if (Auth::user()->role == 'admin')
                                     <a class="btn btn-dark mr-2" href="{{route('people.editStudent', $student->id)}}">editar</a>
                                 <form action="{{route('people.deleteStudent', $student->id)}}" method="POST" class="d-inline">
                                     @method('DELETE')
@@ -66,6 +67,7 @@
                                         Eliminar
                                     </button>
                                 </form>
+                                @endif
                                 </div></div>
                                 </div>
 

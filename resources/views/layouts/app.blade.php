@@ -55,6 +55,7 @@
                     @endif
                     <a href="#registerSubmenu" data-toggle="collapse" aria-expanded="false">Registrar</a>
                     <ul class="collapse list-unstyled" id="registerSubmenu">
+                        @if (Auth::user()->role == 'admin')
                         <li>
                             <a href="{{ route('people.createAdmin') }}">Administración</a>
                         </li>
@@ -64,6 +65,7 @@
                         <li>
                             <a href="{{ route('people.createTeacher') }}">Profesores</a>
                         </li>
+                        @endif
                         <li>
                             <a href="{{ route('other.form') }}">Otros</a>
                         </li>
@@ -82,14 +84,16 @@
                         <li>
                             <a href="{{ route('people.index') }}">Todo</a>
                         </li>
+                        @if(Auth::user()->role == 'admin')
                         <li>
                             <a href="{{ route('administration.indexAdministration') }}">Administración</a>
                         </li>
                         <li>
-                            <a href="{{ route('students.indexStudents') }}">Estudiantes</a>
-                        </li>
-                        <li>
                             <a href="{{ route('teachers.indexTeachers') }}">Profesores</a>
+                        </li>
+                        @endif
+                        <li>
+                            <a href="{{ route('students.indexStudents') }}">Estudiantes</a>
                         </li>
                         <li>
                             <a href="{{ route('other.index') }}">Otros</a>

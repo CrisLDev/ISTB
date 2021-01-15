@@ -42,7 +42,7 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        no hayt prro
+                                        No hay fichas.
                                     </div>
                                 </div>
                             </div>

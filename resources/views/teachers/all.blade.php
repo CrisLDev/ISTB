@@ -59,7 +59,7 @@
                                     @endif
 
                                 </div>
-
+                                @if (Auth::user()->role == 'admin')
                                 <div class="col-lg-3 col-md-12 col-sm-2 d-flex align-items-center mb-5">
                                     <a class="btn btn-dark mr-2" href="{{route('people.editTeacher', $teacher->id)}}">editar</a>
                                 <form action="{{route('people.deleteTeacher', $teacher->id)}}" method="POST" class="d-inline">
@@ -70,6 +70,7 @@
                                     </button>
                                 </form>
                                 </div>
+                                @endif
                             </div>
                         </div>
                                 @endforeach
