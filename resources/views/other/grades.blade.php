@@ -43,8 +43,8 @@
                                                 <thead>
                                                   <tr>
                                                     <th scope="col">Número</th>
-                                                    <th scope="col">Actividad</th>
-                                                    <th scope="col"></th>
+                                                    <th scope="col">Actividad General</th>
+                                                    <th scope="col">Actividad Diaria</th>
                                                     <th scope="col">Cumplido</th>
                                                   </tr>
                                                 </thead>
@@ -53,14 +53,8 @@
                                                     <th scope="row">1</th>
                                                     <td>
                                                       <div class="form-group" style="min-width: 10em">
-                                                        <select class="custom-select" name="activity1_id" required>
-                                                          @if (count($activities) === 0)
-                                                              <option value="">No hay actividades</option>
-                                                          @endif
-                                                          @foreach ($activities as $activity)
-                                                            <option value="{{$activity->id}}">{{$activity->activityName}}</option>
-                                                          @endforeach
-                                                        </select>
+                                                        <input type="text" class="form-control" placeholder="Actividad diaria" name="activity1_id" required>
+                                                        </input>
                                                         <div class="invalid-feedback">
                                                           Please select a valid state.
                                                         </div>
@@ -90,14 +84,8 @@
                                                     <th scope="row">2</th>
                                                     <td>
                                                       <div class="form-group">
-                                                        <select class="custom-select" name="activity2_id" required>
-                                                          @if (count($activities) === 0)
-                                                              <option value="">No hay actividades</option>
-                                                          @endif
-                                                          @foreach ($activities as $activity)
-                                                            <option value="{{$activity->id}}">{{$activity->activityName}}</option>
-                                                          @endforeach
-                                                        </select>
+                                                        <input type="text" class="form-control" placeholder="Actividad diaria" name="activity2_id" required>
+                                                        </input>
                                                         <div class="invalid-feedback">
                                                           Please select a valid state.
                                                         </div>
@@ -127,14 +115,8 @@
                                                     <th scope="row">3</th>
                                                     <td>
                                                       <div class="form-group">
-                                                        <select class="custom-select" name="activity3_id" required>
-                                                          @if (count($activities) === 0)
-                                                              <option value="">No hay actividades</option>
-                                                          @endif
-                                                          @foreach ($activities as $activity)
-                                                            <option value="{{$activity->id}}">{{$activity->activityName}}</option>
-                                                          @endforeach
-                                                        </select>
+                                                        <input type="text" class="form-control" placeholder="Actividad diaria" name="activity3_id" required>
+                                                        </input>
                                                         <div class="invalid-feedback">
                                                           Please select a valid state.
                                                         </div>
@@ -164,14 +146,8 @@
                                                     <th scope="row">4</th>
                                                     <td>
                                                       <div class="form-group">
-                                                        <select class="custom-select" name="activity4_id" required>
-                                                          @if (count($activities) === 0)
-                                                              <option value="">No hay actividades</option>
-                                                          @endif
-                                                          @foreach ($activities as $activity)
-                                                            <option value="{{$activity->id}}">{{$activity->activityName}}</option>
-                                                          @endforeach
-                                                        </select>
+                                                        <input type="text" class="form-control" placeholder="Actividad diaria" name="activity4_id" required>
+                                                        </input>
                                                         <div class="invalid-feedback">
                                                           Please select a valid state.
                                                         </div>
@@ -201,14 +177,8 @@
                                                     <th scope="row">5</th>
                                                     <td>
                                                       <div class="form-group">
-                                                        <select class="custom-select" name="activity5_id" required>
-                                                          @if (count($activities) === 0)
-                                                              <option value="">No hay actividades</option>
-                                                          @endif
-                                                          @foreach ($activities as $activity)
-                                                            <option value="{{$activity->id}}">{{$activity->activityName}}</option>
-                                                          @endforeach
-                                                        </select>
+                                                        <input type="text" class="form-control" placeholder="Actividad diaria" name="activity5_id" required>
+                                                        </input>
                                                         <div class="invalid-feedback">
                                                           Please select a valid state.
                                                         </div>

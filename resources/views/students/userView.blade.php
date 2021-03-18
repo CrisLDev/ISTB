@@ -208,6 +208,8 @@
                                     <div id="collapseA{{$item->id}}" class="collapse show" aria-labelledby="headingA{{$item->id}}" data-parent="#accordionGrades">
                                         <div class="card-body">
                                                 <div class="container-fluid border shadow pt-3 pb-3">
+                                                    <p class="font-weight-bold">Nombre de la actividad general:</p>
+                                                    <p>{{$item->activity_id}}</p>
                                                     <p class="font-weight-bold">Nombre de la actividad:</p>
                                                     <p>{{$item->dailyActivityText}}</p>
                                                     <p class="font-weight-bold">La actividad fue cumplida:</p>

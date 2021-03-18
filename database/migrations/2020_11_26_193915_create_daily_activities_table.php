@@ -15,8 +15,7 @@ class CreateDailyActivitiesTable extends Migration
     {
         Schema::create('daily_activities', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('activity_id');
-            $table->foreign('activity_id')->references('id')->on('activities')->onDelete('cascade');
+            $table->string('activity_id')->nullable();
             $table->unsignedBigInteger('grade_id');
             $table->foreign('grade_id')->references('id')->on('grades')->onDelete('cascade');
             $table->unsignedBigInteger('student_id');

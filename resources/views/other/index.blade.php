@@ -8,7 +8,7 @@
             <div class="card mb-5">
                 <div class="card-header pt-4 bg-white text-center">
                     <h3 class="card-title">
-                        Cursos - Actividades
+                        Cursos <!-- Actividades-->
                     </h3>
                     <form method="get">
                         <div class="form-group">
@@ -22,7 +22,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="card-body">
+                <!--<div class="card-body">
                             @if (count($activities) !== 0)
                                 @foreach ($activities as $activity)
                                 <div class="container border-bottom mb-4 pb-4">
@@ -52,7 +52,7 @@
                                 </div>
                             @endif
 
-                            <div class="col-md-12 mb-4"><hr></div>
+                            <div class="col-md-12 mb-4"><hr></div>-->
 
                             @if (count($courses) !== 0)
                                 @foreach ($courses as $course)

@@ -875,15 +875,18 @@ class OtherController extends Controller
         $rules = [
             'dailyActivityCheck' => 'required',
             'dailyActivityText' => 'required',
+            'activity_id' => 'required',
         ];
         $niceNames = [
             'dailyActivityCheck' => 'campo nombre de actividad',
-            'dailyActivityText' => 'campo actividad cumplida'
+            'dailyActivityText' => 'campo actividad cumplida',
+            'activity_id' => 'campo actividad diaria'
         ]; 
         $this->validate($request, $rules, [], $niceNames);
         if($id == $data->id){
             $data->dailyActivityCheck = $request->dailyActivityCheck;
             $data->dailyActivityText = $request->dailyActivityText;
+            $data->activity_id = $request->activity_id;
             $data->save();
             return back()->with('message', 'Actividad diaria editada con éxito.');
         }

@@ -18,6 +18,22 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
+                                            <label>Nombre de la actividad diaria:</label>
+                                            <input
+                                            type="text"
+                                            autocomplete="none"
+                                            spellcheck="false"
+                                            name="activity_id"
+                                            id="activity_id"
+                                            placeholder="Ingresa nombre de la actividad diaria"
+                                            class="form-control mb-2"
+                                            value="{{$dailyactivity->activity_id}}"
+                                            maxlength="20"
+                                            minlength="6"
+                                            required
+                                            />
+                                        </div>
+                                        <div class="form-group">
                                             <label>Nombre de la actividad:</label>
                                             <input
                                             type="text"

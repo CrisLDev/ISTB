@@ -11,7 +11,7 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <form onsubmit="disable()" method="POST" enctype="multipart/form-data" action="{{ route('other.storeCourse') }}">
                             @csrf
                                 <div class="row">
@@ -89,7 +89,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="col-md-6">
+                        <!--<div class="col-md-6">
                             <form onsubmit="disable()" method="POST" enctype="multipart/form-data" action="{{ route('other.storeActivity') }}">
                             @csrf
                                 <div class="row">
@@ -118,7 +118,7 @@
                                     </div>
                                 </div>
                             </form>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
             </div>
