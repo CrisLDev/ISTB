@@ -53,7 +53,7 @@
                                                     <th scope="row">1</th>
                                                     <td>
                                                       <div class="form-group" style="min-width: 10em">
-                                                        <input type="text" class="form-control" placeholder="Actividad diaria" name="activity1_id" required>
+                                                        <input type="text" class="form-control" placeholder="Actividad general" name="activity1_id" required>
                                                         </input>
                                                         <div class="invalid-feedback">
                                                           Please select a valid state.
@@ -84,7 +84,7 @@
                                                     <th scope="row">2</th>
                                                     <td>
                                                       <div class="form-group">
-                                                        <input type="text" class="form-control" placeholder="Actividad diaria" name="activity2_id" required>
+                                                        <input type="text" class="form-control" placeholder="Actividad general" name="activity2_id" required>
                                                         </input>
                                                         <div class="invalid-feedback">
                                                           Please select a valid state.
@@ -115,7 +115,7 @@
                                                     <th scope="row">3</th>
                                                     <td>
                                                       <div class="form-group">
-                                                        <input type="text" class="form-control" placeholder="Actividad diaria" name="activity3_id" required>
+                                                        <input type="text" class="form-control" placeholder="Actividad general" name="activity3_id" required>
                                                         </input>
                                                         <div class="invalid-feedback">
                                                           Please select a valid state.
@@ -146,7 +146,7 @@
                                                     <th scope="row">4</th>
                                                     <td>
                                                       <div class="form-group">
-                                                        <input type="text" class="form-control" placeholder="Actividad diaria" name="activity4_id" required>
+                                                        <input type="text" class="form-control" placeholder="Actividad general" name="activity4_id" required>
                                                         </input>
                                                         <div class="invalid-feedback">
                                                           Please select a valid state.
