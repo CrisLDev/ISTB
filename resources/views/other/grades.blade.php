@@ -177,7 +177,7 @@
                                                     <th scope="row">5</th>
                                                     <td>
                                                       <div class="form-group">
-                                                        <input type="text" class="form-control" placeholder="Actividad diaria" name="activity5_id" required>
+                                                        <input type="text" class="form-control" placeholder="Actividad general" name="activity5_id" required>
                                                         </input>
                                                         <div class="invalid-feedback">
                                                           Please select a valid state.
