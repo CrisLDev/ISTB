@@ -70,7 +70,7 @@
                                                         <select class="custom-select" name="answer1" required>
                                                         <option selected value="null">Escoge uno...</option>
                                                           <option value="Totalmente logrado">Totalmente logrado</option>
-                                                          <option value="Mediante logrado">Mediante logrado</option>
+                                                          <option value="Medianamente logrado">Mediante logrado</option>
                                                           <option value="Parcialmente logrado">Parcialmente logrado</option>
                                                           <option value="No logrado">No logrado</option>
                                                         </select>
@@ -101,7 +101,7 @@
                                                         <select class="custom-select" name="answer2" required>
                                                         <option selected value="null">Escoge uno...</option>
                                                           <option value="Totalmente logrado">Totalmente logrado</option>
-                                                          <option value="Mediante logrado">Mediante logrado</option>
+                                                          <option value="Medianamente logrado">Mediante logrado</option>
                                                           <option value="Parcialmente logrado">Parcialmente logrado</option>
                                                           <option value="No logrado">No logrado</option>
                                                         </select>
@@ -132,7 +132,7 @@
                                                         <select class="custom-select" name="answer3" required>
                                                         <option selected value="null">Escoge uno...</option>
                                                           <option value="Totalmente logrado">Totalmente logrado</option>
-                                                          <option value="Mediante logrado">Mediante logrado</option>
+                                                          <option value="Medianamente logrado">Mediante logrado</option>
                                                           <option value="Parcialmente logrado">Parcialmente logrado</option>
                                                           <option value="No logrado">No logrado</option>
                                                         </select>
@@ -163,7 +163,7 @@
                                                         <select class="custom-select" name="answer4" required>
                                                           <option selected value="null">Escoge uno...</option>
                                                           <option value="Totalmente logrado">Totalmente logrado</option>
-                                                          <option value="Mediante logrado">Mediante logrado</option>
+                                                          <option value="Medianamente logrado">Mediante logrado</option>
                                                           <option value="Parcialmente logrado">Parcialmente logrado</option>
                                                           <option value="No logrado">No logrado</option>
                                                         </select>
@@ -194,7 +194,7 @@
                                                         <select class="custom-select" name="answer5" required>
                                                         <option selected value="null">Escoge uno...</option>
                                                           <option value="Totalmente logrado">Totalmente logrado</option>
-                                                          <option value="Mediante logrado">Mediante logrado</option>
+                                                          <option value="Medianamente logrado">Mediante logrado</option>
                                                           <option value="Parcialmente logrado">Parcialmente logrado</option>
                                                           <option value="No logrado">No logrado</option>
                                                         </select>
