@@ -401,13 +401,9 @@ class OtherController extends Controller
         $idd = $data->id;
         if($request->activity1_id !== '' || $request->activity1 !== '' || $request->answer1 !== ''){
             $rules1 = [
-                'activity1_id' => 'required',
-                'activity1' => 'required',
                 'answer1' => 'required',
             ];
             $niceNames1 = [
-                'activity1_id' => 'campo actividad 1',
-                'activity1' => 'campo nombre de actividad 1',
                 'answer1' => 'campo actividad cumplida 1'
             ]; 
             $this->validate($request, $rules1, [], $niceNames1);
@@ -425,13 +421,9 @@ class OtherController extends Controller
         }
         if($request->activity2_id !== '' || $request->activity2 !== '' || $request->answer2 !== ''){
             $rules2 = [
-                'activity2_id' => 'required',
-                'activity2' => 'required',
                 'answer2' => 'required',
             ];
             $niceNames2 = [
-                'activity2_id' => 'campo actividad 2',
-                'activity2' => 'campo nombre de actividad 2',
                 'answer2' => 'campo actividad cumplida 2'
             ]; 
             $this->validate($request, $rules2, [], $niceNames2);
@@ -449,13 +441,9 @@ class OtherController extends Controller
         }
         if($request->activity3_id !== '' || $request->activity3 !== '' || $request->answer3 !== ''){
             $rules3 = [
-                'activity3_id' => 'required',
-                'activity3' => 'required',
                 'answer3' => 'required',
             ];
             $niceNames3 = [
-                'activity3_id' => 'campo actividad 3',
-                'activity3' => 'campo nombre de actividad 3',
                 'answer3' => 'campo actividad cumplida 3'
             ]; 
             $this->validate($request, $rules3, [], $niceNames3);
@@ -473,13 +461,9 @@ class OtherController extends Controller
         }
         if($request->activity4_id !== '' || $request->activity4 !== '' || $request->answer4 !== ''){
             $rules4 = [
-                'activity4_id' => 'required',
-                'activity4' => 'required',
                 'answer4' => 'required',
             ];
             $niceNames4 = [
-                'activity4_id' => 'campo actividad 4',
-                'activity4' => 'campo nombre de actividad 4',
                 'answer4' => 'campo actividad cumplida 4'
             ]; 
             $this->validate($request, $rules4, [], $niceNames4);
@@ -497,13 +481,9 @@ class OtherController extends Controller
         }
         if($request->activity5_id !== '' || $request->activity5 !== '' || $request->answer5 !== ''){
             $rules5 = [
-                'activity5_id' => 'required',
-                'activity5' => 'required',
                 'answer5' => 'required',
             ];
             $niceNames5 = [
-                'activity5_id' => 'campo actividad 5',
-                'activity5' => 'campo nombre de actividad 5',
                 'answer5' => 'campo actividad cumplida 5'
             ]; 
             $this->validate($request, $rules5, [], $niceNames5);
