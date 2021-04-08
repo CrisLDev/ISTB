@@ -105,8 +105,7 @@
                                     placeholder="Ingresa el nombre completo"
                                     class="form-control mb-2"
                                     value="{{old('address')}}"
-                                    maxlength="50"
-                                    minlength="20"
+                                    maxlength="70"
                                     required
                                     />
                                 </div>

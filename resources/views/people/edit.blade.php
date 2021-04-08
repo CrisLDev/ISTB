@@ -103,8 +103,7 @@
                                     placeholder="Ingresa tu nombre completo"
                                     class="form-control mb-2"
                                     value="{{$people->address}}"
-                                    maxlength="50"
-                                    minlength="20"
+                                    maxlength="70"
                                     required
                                     />
                                 </div>

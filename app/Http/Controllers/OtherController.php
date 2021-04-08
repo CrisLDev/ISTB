@@ -518,7 +518,6 @@ class OtherController extends Controller
             'lice' => 'required',
             'asthma' => 'required',
             'glasses' => 'required',
-            'date' => 'required'
         ];
         $niceNames = [
             'course_id' => 'curso',
@@ -527,7 +526,6 @@ class OtherController extends Controller
             'lice' => 'campo piojos',
             'asthma' => 'campo asma',
             'glasses' => 'campo lentes',
-            'date' => 'campo fecha'
         ]; 
         $this->validate($request, $rules, [], $niceNames);
         $data->user_id = auth()->user()->id;
@@ -541,7 +539,7 @@ class OtherController extends Controller
         $data->malformation = $request->malformation;
         $data->glasses = $request->glasses;
         $data->observations = $request->observations;
-        $data->date = $request->date;
+        $data->date = date('Y-m-d H:i:s');
         $data->save();
         return back()->with('message', 'Ficha médica agregada con éxito.');
     }
@@ -894,7 +892,6 @@ class OtherController extends Controller
             'lice' => 'required',
             'asthma' => 'required',
             'glasses' => 'required',
-            'date' => 'required'
         ];
         $niceNames = [
             'course_id' => 'curso',
@@ -903,7 +900,6 @@ class OtherController extends Controller
             'lice' => 'campo piojos',
             'asthma' => 'campo asma',
             'glasses' => 'campo lentes',
-            'date' => 'campo fecha'
         ]; 
         $this->validate($request, $rules, [], $niceNames);
         if($id == $data->id){
@@ -918,7 +914,7 @@ class OtherController extends Controller
             $data->malformation = $request->malformation;
             $data->glasses = $request->glasses;
             $data->observations = $request->observations;
-            $data->date = $request->date;
+            $data->date = date('Y-m-d H:i:s');
             $data->save();
             return back()->with('message', 'Ficha médica editada con éxito.');
         }
@@ -936,7 +932,6 @@ class OtherController extends Controller
         'lice' => 'required',
         'asthma' => 'required',
         'glasses' => 'required',
-        'date' => 'required'
     ];
     $niceNames = [
         'course_id' => 'curso',
@@ -945,7 +940,6 @@ class OtherController extends Controller
         'lice' => 'campo piojos',
         'asthma' => 'campo asma',
         'glasses' => 'campo lentes',
-        'date' => 'campo fecha'
     ]; 
     $this->validate($request, $rules, [], $niceNames);
     if($id == $data->id){
@@ -960,7 +954,7 @@ class OtherController extends Controller
         $data->malformation = $request->malformation;
         $data->glasses = $request->glasses;
         $data->observations = $request->observations;
-        $data->date = $request->date;
+        $data->date = date('Y-m-d H:i:s');
         $data->save();
         return back()->with('message', 'Ficha médica editada con éxito.');
     }

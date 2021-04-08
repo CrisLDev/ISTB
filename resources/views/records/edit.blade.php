@@ -27,17 +27,7 @@
                                         @endforeach
                                         </select>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="inputState">Cursos</label>
-                                        <select id="inputState" class="form-control" name="course_id">
-                                        @if (count($courses) === 0)
-                                            <option value="">No hay cursos</option>
-                                        @endif
-                                        @foreach ($courses as $course)
-                                          <option value="{{$course->id}}" {{ $course->id == $record->course_id ? 'selected' : '' }}>{{$course->courseName}}</option>
-                                        @endforeach
-                                        </select>
-                                    </div>
+                                    <input type="hidden" value="{{$student->course_id}}" name="course_id">
                                     <div class="form-group">
                                         <label for="allergies">Alergias</label>
                                         <textarea type="text" class="form-control" id="allergies" name="allergies" placeholder="Ingresar las alergias">{{$record->allergies}}</textarea>
@@ -86,13 +76,9 @@
                                         <textarea type="text" class="form-control" id="observations" name="observations" placeholder="Ingrese las observaciones">{{$record->observations}}</textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label for="Assistance">Fecha</label>
-                                    <input type="date" class="form-control" id="date" name="date" value="{{$record->date }}">
-                                    </div>
-                                    <div class="form-group">
                                         <button class="btn btn-warning btn-block" id="button-prevent-multiple-submits" type="submit">
                                             <span class="spinner-border spinner-border-sm" id="spinner" role="status" aria-hidden="true"></span>    
-                                            <span id="btex">Envair</span></button>
+                                            <span id="btex">Enviar</span></button>
                                     </div>
                                 </div>
                             </div>

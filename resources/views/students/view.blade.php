@@ -162,6 +162,7 @@
                         @endif
                         
                     </div>
+                    <!--
                     <div class="mt-5">
                         @if (count($reports) !== 0)
                             @foreach ($reports as $item)
@@ -211,6 +212,7 @@
                         <div class="container pt-3 d-flex justify-content-center">
                             {{$reports->links()}}
                     </div>
+                    -->
                     <div class="mt-5">
                         @if (count($dailyActivities) !== 0)
                             @foreach ($dailyActivities as $item)

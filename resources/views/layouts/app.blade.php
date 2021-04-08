@@ -70,9 +70,6 @@
                             <a href="{{ route('other.form') }}">Otros</a>
                         </li>
                         <li>
-                            <a href="{{ route('reports.index') }}">Reportes</a>
-                        </li>
-                        <li>
                             <a href="{{ route('records.index') }}">Fichas</a>
                         </li>
                         <li>
@@ -97,9 +94,6 @@
                         </li>
                         <li>
                             <a href="{{ route('other.index') }}">Otros</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('reports.indexReports') }}">Reportes</a>
                         </li>
                         <li>
                             <a href="{{ route('records.indexRecords') }}">Fichas</a>

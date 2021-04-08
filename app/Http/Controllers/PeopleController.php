@@ -68,7 +68,7 @@ class PeopleController extends Controller
             'telephoneNumber' => 'required|unique:administrations|numeric|max:9999999999',
             'dni' => 'required|unique:administrations|numeric|max:999999999999999',
             'role' => 'required|max:60|min:5',
-            'address' => 'required|max:40',
+            'address' => 'required|max:70',
             'email' => 'required|max:50',
             'file' => 'required|mimes:png,jpg,jpeg|max:2048',
             'fileAct' => 'required|mimes:pdf,docx|max:2048'
@@ -125,7 +125,7 @@ class PeopleController extends Controller
             'birthDate' => 'required|date',
             'telephoneNumber' => 'required|unique:students|numeric|max:9999999999',
             'dni' => 'required|unique:students|numeric|max:999999999999999',
-            'address' => 'required|max:50',
+            'address' => 'required|max:70',
             'email' => 'required|max:50',
             'fatherName' => 'required|max:50',
             'dniFather' => 'required|unique:students|numeric|max:999999999999999',
@@ -212,7 +212,7 @@ class PeopleController extends Controller
             'birthDate' => 'required|date',
             'telephoneNumber' => 'required|unique:teachers|numeric|max:9999999999',
             'dni' => 'required|unique:teachers|numeric|max:999999999999999',
-            'address' => 'required|max:40',
+            'address' => 'required|max:70',
             'email' => 'required|max:50',
             'file' => 'required|mimes:png,jpg,jpeg|max:2048',
             'fileAct' => 'mimes:pdf,docx|max:2048'
@@ -333,7 +333,7 @@ class PeopleController extends Controller
                     'birthDate' => 'required|date',
                     'telephoneNumber' => ['required',Rule::unique('teachers')->ignore($id),'numeric', 'max:9999999999'],
                     'dni' => ['required',Rule::unique('teachers')->ignore($id),'numeric', 'max:999999999999999'],
-                    'address' => 'required|max:40',
+                    'address' => 'required|max:70',
                     'email' => 'required|max:50',
                     'fileAct' => 'mimes:pdf,docx|max:2048'
                 ];
@@ -395,7 +395,7 @@ class PeopleController extends Controller
                 'birthDate' => 'required|date',
                 'telephoneNumber' => ['required',Rule::unique('teachers')->ignore($id),'numeric', 'max:9999999999'],
                 'dni' => ['required',Rule::unique('teachers')->ignore($id),'numeric', 'max:999999999999999'],
-                'address' => 'required|max:40',
+                'address' => 'required|max:70',
                 'email' => 'required|max:50',
                 'fileAct' => 'mimes:pdf,docx|max:2048'
             ];
@@ -470,7 +470,7 @@ class PeopleController extends Controller
             'telephoneNumber' => ['required',Rule::unique('administrations')->ignore($id),'numeric', 'max:9999999999'],
             'dni' => ['required',Rule::unique('administrations')->ignore($id),'numeric', 'max:999999999999999'],
             'role' => 'required|max:60|min:5',
-            'address' => 'required|max:40',
+            'address' => 'required|max:70',
             'email' => 'required|max:50',
             'fileAct' => 'mimes:pdf,docx|max:2048'
         ];
@@ -535,7 +535,7 @@ class PeopleController extends Controller
             'telephoneNumber' => ['required',Rule::unique('administrations')->ignore($id),'numeric', 'max:9999999999'],
             'dni' => ['required',Rule::unique('administrations')->ignore($id),'numeric', 'max:999999999999999'],
             'role' => 'required|max:60|min:5',
-            'address' => 'required|max:40',
+            'address' => 'required|max:70',
             'email' => 'required|max:50',
             'fileAct' => 'mimes:pdf,docx|max:2048'
         ];
@@ -611,7 +611,7 @@ class PeopleController extends Controller
             'birthDate' => 'required|date',
             'telephoneNumber' => ['required',Rule::unique('students')->ignore($id),'numeric', 'max:9999999999'],
             'dni' => ['required',Rule::unique('students')->ignore($id),'numeric', 'max:999999999999999'],
-            'address' => 'required|max:40',
+            'address' => 'required|max:70',
             'email' => 'required|max:50',
             'fatherName' => 'required|max:50',
             'dniFather' => ['required',Rule::unique('students')->ignore($id),'numeric', 'max:999999999999999'],
@@ -704,7 +704,7 @@ class PeopleController extends Controller
             'birthDate' => 'required|date',
             'telephoneNumber' => ['required',Rule::unique('students')->ignore($id),'numeric', 'max:9999999999'],
             'dni' => ['required',Rule::unique('students')->ignore($id),'numeric', 'max:999999999999999'],
-            'address' => 'required|max:40',
+            'address' => 'required|max:70',
             'email' => 'required|max:50',
             'fatherName' => 'required|max:50',
             'dniFather' => ['required',Rule::unique('students')->ignore($id),'numeric', 'max:999999999999999'],

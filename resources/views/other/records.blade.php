@@ -26,17 +26,7 @@
                                         @endforeach
                                         </select>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="inputState">Curso</label>
-                                        <select id="inputState" class="form-control" name="course_id">
-                                        @if (count($courses) === 0)
-                                            <option value="">No hay cursos</option>
-                                        @endif
-                                        @foreach ($courses as $course)
-                                          <option value="{{$course->id}}">{{$course->courseName}}</option>
-                                        @endforeach
-                                        </select>
-                                    </div>
+                                    <input type="hidden" value="{{$student->course_id}}" name="course_id">
                                     <div class="form-group">
                                         <label for="Grades">Alergias</label>
                                         <textarea type="text" class="form-control" id="allergies" name="allergies" placeholder="Ingresar las alergias">{{old('allergies')}}</textarea>
@@ -83,10 +73,6 @@
                                         <label for="Assistance">Observaciones</label>
                                         <textarea type="text" class="form-control" id="observations" name="observations" placeholder="Ingrese las observaciones">{{old('observations')}}</textarea>
                                         <h6 class="form-text text-muted mb-3">Favor utiizar (- o ,) para separar los diferentes items.</h6>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="Assistance">Fecha</label>
-                                        <input type="date" class="form-control" id="date" name="date" {{old('date')}}>
                                     </div>
                                     <div class="form-group">
                                         <button class="btn btn-primary btn-block" id="button-prevent-multiple-submits" type="submit">
