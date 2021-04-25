@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mb-5">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header mb-3 text-center bg-white pt-4"><h3>{{ __('Dashboard') }}</h3></div>
 
@@ -82,7 +82,7 @@
                                               <tr>
                                                 <th scope="row">5</th>
                                                 <td>Cursos</td>
-                                                <td>{{$courses}}</td>
+                                                <td>{{count($courses)}}</td>
                                                 <td><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-journal-text" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
                                                     <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
@@ -108,6 +108,46 @@
 
                 </div>
             </div>
+        </div>
+        <div class="col-md-12 mt-5">
+           <div class="card">
+               <div class="card-header">
+                    <h3>Consultar por cursos</h3>
+               </div>
+               <div class="card-body">
+                   <form onsubmit="disable()" method="POST" action="{{ route('module.redir') }}">
+                    @csrf
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="inputState">Fecha</label>
+                                    <input type="date" name="date" id="date" class="form-control mb-2">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="inputState">Cursos</label>
+                                    <select id="inputState" class="form-control" name="course_id">
+                                    @if (count($courses) === 0)
+                                        <option value="">No hay cursos</option>
+                                    @endif
+                                    @foreach ($courses as $course)
+                                      <option value="{{$course->id}}">{{$course->courseName}}</option>
+                                    @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <button class="btn btn-warning btn-block" id="button-prevent-multiple-submits" type="submit">
+                                        <span class="spinner-border spinner-border-sm" id="spinner" role="status" aria-hidden="true"></span>    
+                                        <span id="btex">Enviar</span></button>
+                                </div>
+                            </div>
+                        </div>
+                   </form>
+               </div>
+           </div>
         </div>
     </div>
 </div>
