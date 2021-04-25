@@ -15,13 +15,13 @@ class CreateDailyActivitiesTable extends Migration
     {
         Schema::create('daily_activities', function (Blueprint $table) {
             $table->id();
-            $table->string('activity_id')->nullable();
-            $table->unsignedBigInteger('grade_id');
-            $table->foreign('grade_id')->references('id')->on('grades')->onDelete('cascade');
+            $table->string('activity_id')->nullable(true);
+            //$table->unsignedBigInteger('grade_id');
+            //$table->foreign('grade_id')->references('id')->on('grades')->onDelete('cascade');
             $table->unsignedBigInteger('student_id');
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
-            $table->string('dailyActivityCheck')->nullable();
-            $table->text('dailyActivityText')->nullable();
+            $table->string('dailyActivityCheck')->nullable(true);
+            $table->text('dailyActivityText')->nullable(true);
             $table->timestamps();
             $table->engine = 'InnoDB';
             $table->charset = 'utf8';

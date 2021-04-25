@@ -257,5 +257,7 @@
             });
     </script>
 
+    @yield('scriptsByPage')
+
 </body>
 </html>

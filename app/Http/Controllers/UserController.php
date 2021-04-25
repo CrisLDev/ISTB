@@ -86,7 +86,7 @@ class UserController extends Controller
                         ->select('reports.*', 'users.name as userName', 'users.email as userEmail', 'activities.activityName as activityName', 'teachers.fullname as teacherFullname', 'courses.courseName', 'reports.course_id', 'teachers.fullname as teacherFullname')
                         ->paginate(1, ['*'], 'reports');
 
-                        $assistances = Assistance::where('student_id', $student->id)->count();
+                        $assistances = Assistance::where('student_id', $student->id)->where('justification', '!=', null)->count();
 
                         $dailyActivities = DailyActivity::where('student_id', $student->id)->paginate(5, ['*'], 'dactivities');
 

@@ -31,10 +31,10 @@ class CreateStudentsTable extends Migration
             $table->integer('dniFather');
             $table->string('motherName');
             $table->integer('dniMother');
-            $table->string('vaccinationCard')->nullable();
-            $table->string('memorandumOfAssociation')->nullable();
+            $table->string('vaccinationCard')->nullable(true);
+            $table->string('memorandumOfAssociation')->nullable(true);
             $table->string('status')->default('Activo');
-            $table->string('imgUrl')->nullable();
+            $table->string('imgUrl')->nullable(true);
             $table->timestamps();
             $table->engine = 'InnoDB';
             $table->charset = 'utf8';

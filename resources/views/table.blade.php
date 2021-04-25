@@ -27,6 +27,7 @@
                             <th scope="col">Act - Gen - 5</th>
                             <th scope="col">Act - Dia - 5</th>
                             <th scope="col">Act - Nota - 5</th>
+                            <th scope="col">Accion</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -36,7 +37,7 @@
                                     <td>{{$student->fullname}}</td>
                                     @foreach ($reFinalAssistancesSearch as $assistances)
                                         @if ($student->id == $assistances->student_id)
-                                            @if ($assistances->day)
+                                            @if ($assistances->justification === null)
                                                 <td class="text-center"><span class="h2">&#10003;</span></td>
                                             @else
                                                 <td class="text-center"><span class="h2">&times;</span></td>
@@ -45,11 +46,24 @@
                                     @endforeach
                                     @foreach ($reFinalActivitiesSearch as $activity)
                                         @if ($student->id == $activity->student_id)
-                                            <td>{{$activity->activity_id}}</td>
-                                            <td>{{$activity->dailyActivityText}}</td>
-                                            <td>{{$activity->dailyActivityCheck}}</td>
+                                            @if ($activity->activity_id != null)
+                                                <td>{{$activity->activity_id}}</td>
+                                            @else
+                                                <td>N/A</td>
+                                            @endif
+                                            @if ($activity->dailyActivityText != null)
+                                                <td>{{$activity->dailyActivityText}}</td>
+                                            @else
+                                                <td>N/A</td>
+                                            @endif
+                                            @if ($activity->dailyActivityCheck != null)
+                                                <td>{{$activity->dailyActivityCheck}}</td>
+                                            @else
+                                                <td>N/A</td>
+                                            @endif
                                         @endif
                                     @endforeach
+                                    <td><a target="_blank" href="{{route('students.studentEditGrade', [$student->id, $date])}}" class="btn btn-warning">Editar</a></td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -61,4 +75,7 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scriptsByPage')
 @endsection

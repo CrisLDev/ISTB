@@ -384,7 +384,7 @@ class OtherController extends Controller
      */
     public function storeGrades(Request $request)
     {
-        $data = new Grades();
+        //$data = new Grades();
         $rules = [
             'course_id' => 'required',
             'student_id' => 'required',
@@ -392,113 +392,123 @@ class OtherController extends Controller
         $niceNames = [
             'course_id' => 'curso',
             'student_id' => 'estudiante'
-        ]; 
+        ];
+        $currentDate = date("Y-m-d");
+        $da = DailyActivity::whereDate('created_at', $currentDate)->where('student_id', $request->student_id)->get();
+        if(count($da) > 0){
+            return back()->with('userErrors', 'Ya registraste las actividades de hoy.');
+        }
         $this->validate($request, $rules, [], $niceNames);
-        $data->user_id = auth()->user()->id;
-        $data->course_id = $request->course_id;
-        $data->student_id = $request->student_id;
-        $data->save();
-        $idd = $data->id;
-        if($request->activity1_id !== '' || $request->activity1 !== '' || $request->answer1 !== ''){
-            $rules1 = [
-                'answer1' => 'required',
-            ];
-            $niceNames1 = [
-                'answer1' => 'campo actividad cumplida 1'
-            ]; 
-            $this->validate($request, $rules1, [], $niceNames1);
-            if($request->activity1_id && $request->activity1 && $request->answer1){
+        //$data->user_id = auth()->user()->id;
+        //$data->course_id = $request->course_id;
+        //$data->student_id = $request->student_id;
+        //$data->save();
+        //$idd = $data->id;
+        $data2 =  new Assistance();
+        $data2->justification = $request->justification;
+        $data2->student_id = $request->student_id;
+        $data2->day = date("Y-m-d");
+        $data2->save();
+        //if($request->activity1_id !== '' || $request->activity1 !== '' || $request->answer1 !== ''){
+            //$rules1 = [
+                //'answer1' => 'required',
+            //];
+            //$niceNames1 = [
+                //'answer1' => 'campo actividad cumplida 1'
+            //]; 
+            //$this->validate($request, $rules1, [], $niceNames1);
+            //if($request->activity1_id && $request->activity1 && $request->answer1){
                 $dataA1 = new DailyActivity();
-                $dataA1->grade_id = $idd;
+                //$dataA1->grade_id = $idd;
                 $dataA1->student_id = $request->student_id;
                 $dataA1->activity_id = $request->activity1_id;
                 $dataA1->dailyActivityText = $request->activity1;
                 $dataA1->dailyActivityCheck = $request->answer1;
                 $dataA1->save();
-            }else{
-                back()->with('message', 'Completa toda la actividad.');
-            }
-        }
-        if($request->activity2_id !== '' || $request->activity2 !== '' || $request->answer2 !== ''){
-            $rules2 = [
-                'answer2' => 'required',
-            ];
-            $niceNames2 = [
-                'answer2' => 'campo actividad cumplida 2'
-            ]; 
-            $this->validate($request, $rules2, [], $niceNames2);
-            if($request->activity2_id && $request->activity2 && $request->answer2){
+            //}else{
+                //back()->with('message', 'Completa toda la actividad.');
+            //}
+        //}
+        //if($request->activity2_id !== '' || $request->activity2 !== '' || $request->answer2 !== ''){
+            //$rules2 = [
+                //'answer2' => 'required',
+            //];
+            //$niceNames2 = [
+                //'answer2' => 'campo actividad cumplida 2'
+            //]; 
+            //$this->validate($request, $rules2, [], $niceNames2);
+            //if($request->activity2_id && $request->activity2 && $request->answer2){
                 $dataA2 = new DailyActivity();
-                $dataA2->grade_id = $idd;
+                //$dataA2->grade_id = $idd;
                 $dataA2->student_id = $request->student_id;
                 $dataA2->activity_id = $request->activity2_id;
                 $dataA2->dailyActivityText = $request->activity2;
                 $dataA2->dailyActivityCheck = $request->answer2;
                 $dataA2->save();
-            }else{
-                back()->with('message', 'Completa toda la actividad.');
-            }
-        }
-        if($request->activity3_id !== '' || $request->activity3 !== '' || $request->answer3 !== ''){
-            $rules3 = [
-                'answer3' => 'required',
-            ];
-            $niceNames3 = [
-                'answer3' => 'campo actividad cumplida 3'
-            ]; 
-            $this->validate($request, $rules3, [], $niceNames3);
-            if($request->activity3_id && $request->activity3 && $request->answer3){
+            //}else{
+                //back()->with('message', 'Completa toda la actividad.');
+            //}
+        //}
+        //if($request->activity3_id !== '' || $request->activity3 !== '' || $request->answer3 !== ''){
+            //$rules3 = [
+                //'answer3' => 'required',
+            //];
+            ////$niceNames3 = [
+                //'answer3' => 'campo actividad cumplida 3'
+            //]; 
+            //$this->validate($request, $rules3, [], $niceNames3);
+            //if($request->activity3_id && $request->activity3 && $request->answer3){
                 $dataA3 = new DailyActivity();
-                $dataA3->grade_id = $idd;
+                //$dataA3->grade_id = $idd;
                 $dataA3->student_id = $request->student_id;
                 $dataA3->activity_id = $request->activity3_id;
                 $dataA3->dailyActivityText = $request->activity3;
                 $dataA3->dailyActivityCheck = $request->answer3;
                 $dataA3->save();
-            }else{
-                back()->with('message', 'Completa toda la actividad.');
-            }
-        }
-        if($request->activity4_id !== '' || $request->activity4 !== '' || $request->answer4 !== ''){
-            $rules4 = [
-                'answer4' => 'required',
-            ];
-            $niceNames4 = [
-                'answer4' => 'campo actividad cumplida 4'
-            ]; 
-            $this->validate($request, $rules4, [], $niceNames4);
-            if($request->activity4_id && $request->activity4 && $request->answer4){
+            //}else{
+                //back()->with('message', 'Completa toda la actividad.');
+            //}
+        //}
+        //if($request->activity4_id !== '' || $request->activity4 !== '' || $request->answer4 !== ''){
+            //$rules4 = [
+                //'answer4' => 'required',
+            ////];
+            //$niceNames4 = [
+                //'answer4' => 'campo actividad cumplida 4'
+            //]; 
+            //$this->validate($request, $rules4, [], $niceNames4);
+            //if($request->activity4_id && $request->activity4 && $request->answer4){
                 $dataA4 = new DailyActivity();
-                $dataA4->grade_id = $idd;
+                //$dataA4->grade_id = $idd;
                 $dataA4->student_id = $request->student_id;
                 $dataA4->activity_id = $request->activity4_id;
                 $dataA4->dailyActivityText = $request->activity4;
                 $dataA4->dailyActivityCheck = $request->answer4;
                 $dataA4->save();
-            }else{
-                back()->with('message', 'Completa toda la actividad.');
-            }
-        }
-        if($request->activity5_id !== '' || $request->activity5 !== '' || $request->answer5 !== ''){
-            $rules5 = [
-                'answer5' => 'required',
-            ];
-            $niceNames5 = [
-                'answer5' => 'campo actividad cumplida 5'
-            ]; 
-            $this->validate($request, $rules5, [], $niceNames5);
-            if($request->activity5_id && $request->activity5 && $request->answer5){
+            //}else{
+                //back()->with('message', 'Completa toda la actividad.');
+            //}
+        //}
+        //if($request->activity5_id !== '' || $request->activity5 !== '' || $request->answer5 !== ''){
+            //$rules5 = [
+                //'answer5' => 'required',
+            //];
+            //$niceNames5 = [
+                //'answer5' => 'campo actividad cumplida 5'
+            //]; 
+            //$this->validate($request, $rules5, [], $niceNames5);
+            //if($request->activity5_id && $request->activity5 && $request->answer5){
                 $dataA5 = new DailyActivity();
-                $dataA5->grade_id = $idd;
+                //$dataA5->grade_id = $idd;
                 $dataA5->student_id = $request->student_id;
                 $dataA5->activity_id = $request->activity5_id;
                 $dataA5->dailyActivityText = $request->activity5;
                 $dataA5->dailyActivityCheck = $request->answer5;
                 $dataA5->save();
-            }else{
-                back()->with('message', 'Completa toda la actividad.');
-            }
-        }
+            //}else{
+                //back()->with('message', 'Completa toda la actividad.');
+            //}
+        //}
         return back()->with('message', 'Calificación agregada correctamente agregado con éxito.');
     }
 
@@ -517,8 +527,7 @@ class OtherController extends Controller
             'cardiovascular' => 'required',
             'lice' => 'required',
             'asthma' => 'required',
-            'glasses' => 'required',
-            'date' => 'required'
+            'glasses' => 'required'
         ];
         $niceNames = [
             'course_id' => 'curso',
@@ -526,8 +535,7 @@ class OtherController extends Controller
             'cardiovascular' => 'campo enfermedades cardiovasculares',
             'lice' => 'campo piojos',
             'asthma' => 'campo asma',
-            'glasses' => 'campo lentes',
-            'date' => 'campo fecha'
+            'glasses' => 'campo lentes'
         ]; 
         $this->validate($request, $rules, [], $niceNames);
         $data->user_id = auth()->user()->id;
@@ -541,7 +549,6 @@ class OtherController extends Controller
         $data->malformation = $request->malformation;
         $data->glasses = $request->glasses;
         $data->observations = $request->observations;
-        $data->date = $request->date;
         $data->save();
         return back()->with('message', 'Ficha médica agregada con éxito.');
     }
@@ -572,7 +579,7 @@ class OtherController extends Controller
 
         $dailyActivities = DailyActivity::where('student_id', $id)->paginate(5, ['*'], 'dactivities');
 
-        $assistances = Assistance::where('student_id', $id)->count();
+        $assistances = Assistance::where('student_id', $student->id)->where('justification', '!=', null)->count();
 
         $course = Course::where('id', $student->course_id)->first();
 
@@ -893,8 +900,7 @@ class OtherController extends Controller
             'cardiovascular' => 'required',
             'lice' => 'required',
             'asthma' => 'required',
-            'glasses' => 'required',
-            'date' => 'required'
+            'glasses' => 'required'
         ];
         $niceNames = [
             'course_id' => 'curso',
@@ -902,8 +908,7 @@ class OtherController extends Controller
             'cardiovascular' => 'campo enfermedades cardiovasculares',
             'lice' => 'campo piojos',
             'asthma' => 'campo asma',
-            'glasses' => 'campo lentes',
-            'date' => 'campo fecha'
+            'glasses' => 'campo lentes'
         ]; 
         $this->validate($request, $rules, [], $niceNames);
         if($id == $data->id){
@@ -918,7 +923,6 @@ class OtherController extends Controller
             $data->malformation = $request->malformation;
             $data->glasses = $request->glasses;
             $data->observations = $request->observations;
-            $data->date = $request->date;
             $data->save();
             return back()->with('message', 'Ficha médica editada con éxito.');
         }
@@ -935,8 +939,7 @@ class OtherController extends Controller
         'cardiovascular' => 'required',
         'lice' => 'required',
         'asthma' => 'required',
-        'glasses' => 'required',
-        'date' => 'required'
+        'glasses' => 'required'
     ];
     $niceNames = [
         'course_id' => 'curso',
@@ -944,8 +947,7 @@ class OtherController extends Controller
         'cardiovascular' => 'campo enfermedades cardiovasculares',
         'lice' => 'campo piojos',
         'asthma' => 'campo asma',
-        'glasses' => 'campo lentes',
-        'date' => 'campo fecha'
+        'glasses' => 'campo lentes'
     ]; 
     $this->validate($request, $rules, [], $niceNames);
     if($id == $data->id){
@@ -960,7 +962,6 @@ class OtherController extends Controller
         $data->malformation = $request->malformation;
         $data->glasses = $request->glasses;
         $data->observations = $request->observations;
-        $data->date = $request->date;
         $data->save();
         return back()->with('message', 'Ficha médica editada con éxito.');
     }
@@ -1047,4 +1048,88 @@ class OtherController extends Controller
         $data = DailyActivity::findOrFail( $id )->delete();
         return back()->with( 'message', 'Actividad diaria Eliminada' );
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function editStudentGrade($id, $date)
+    {
+        $activities = DailyActivity::where('student_id', $id)->whereDate('created_at', $date)->get();
+        $assistances = Assistance::where('student_id', $id)->whereDate('day', $date)->first();
+        return view('other.editStudentGrade', compact('activities', 'assistances', 'id', 'date'));
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function updateGradeByDate($id, $date, Request $request)
+    {
+                if($request->id1){
+                    $dataA1 = DailyActivity::where('id', $request->id1)->first();
+                }else{
+                    $dataA1 = new DailyActivity();
+                    $dataA1->student_id = $id;
+                }
+                $dataA1->activity_id = $request->activity1_id;
+                $dataA1->dailyActivityText = $request->activity1;
+                $dataA1->dailyActivityCheck = $request->answer1;
+                $dataA1->save();
+                if($request->id1){
+                    $dataA2 = DailyActivity::where('id', $request->id2)->first();
+                }else{
+                    $dataA2 = new DailyActivity();
+                    $dataA2->student_id = $id;
+                }
+                $dataA2->activity_id = $request->activity2_id;
+                $dataA2->dailyActivityText = $request->activity2;
+                $dataA2->dailyActivityCheck = $request->answer2;
+                $dataA2->save();
+                if($request->id1){
+                    $dataA3 = DailyActivity::where('id', $request->id3)->first();
+                }else{
+                    $dataA3 = new DailyActivity();
+                    $dataA3->student_id = $id;
+                }
+                $dataA3->activity_id = $request->activity3_id;
+                $dataA3->dailyActivityText = $request->activity3;
+                $dataA3->dailyActivityCheck = $request->answer3;
+                $dataA3->save();
+                if($request->id1){
+                    $dataA4 = DailyActivity::where('id', $request->id4)->first();
+                }else{
+                    $dataA4 = new DailyActivity();
+                    $dataA4->student_id = $id;
+                }
+                $dataA4->activity_id = $request->activity4_id;
+                $dataA4->dailyActivityText = $request->activity4;
+                $dataA4->dailyActivityCheck = $request->answer4;
+                $dataA4->save();
+                if($request->id1){
+                    $dataA5 = DailyActivity::where('id', $request->id5)->first();
+                }else{
+                    $dataA5 = new DailyActivity();
+                    $dataA5->student_id = $id;
+                }
+                $dataA5->activity_id = $request->activity5_id;
+                $dataA5->dailyActivityText = $request->activity5;
+                $dataA5->dailyActivityCheck = $request->answer5;
+                $dataA5->save();
+                $data2 = Assistance::where('student_id', $id)->where('day', $date)->where('id', $request->assistanceId)->first();
+            if($data2){
+                $data2->justification = $request->justification;
+                $data2->save();
+            }else{
+                $data2 = new Assistance();
+                $data2->justification = $request->justification;
+                $data2->student_id = $id;
+                $data2->day = $date;
+                $data2->save();
+            }
+        return back()->with('message', 'Calificación editada con éxito.');
+    }
+
+    
 }

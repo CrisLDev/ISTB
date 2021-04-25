@@ -109,6 +109,10 @@ Route::delete( '/other/form/activity/delete/{id}', [App\Http\Controllers\OtherCo
 
 Route::get( '/other/students', [App\Http\Controllers\OtherController::class, 'indexStudents'])->name( 'students.indexStudents' )->middleware('isCoor');
 
+Route::get( '/other/student/editgrades/{id}/{date}', [App\Http\Controllers\OtherController::class, 'editStudentGrade'])->name( 'students.studentEditGrade' )->middleware('isCoor');
+
+Route::post( '/other/student/editgrades/{id}/{date}', [App\Http\Controllers\OtherController::class, 'updateGradeByDate'])->name( 'students.updateGradeByDate' )->middleware('isCoor');
+
 Route::get( '/other/students/{id}', [App\Http\Controllers\OtherController::class, 'showStudent'])->name( 'students.showStudent' )->middleware('isCoor');
 
 Route::get( '/other/administration', [App\Http\Controllers\OtherController::class, 'indexAdministration'])->name( 'administration.indexAdministration' )->middleware('isCoor');

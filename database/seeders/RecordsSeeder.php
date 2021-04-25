@@ -27,8 +27,7 @@ class RecordsSeeder extends Seeder
             'asthma' => 'no',
             'malformation' => 'No se observan malfomraciones',
             'glasses' => 'no',
-            'observations' => 'Se debe consultar con un profesional mas preparado',
-            'date' => '2015-12-15'
+            'observations' => 'Se debe consultar con un profesional mas preparado'
         ]);
         Record::create([
             'id' => '2',
@@ -42,38 +41,35 @@ class RecordsSeeder extends Seeder
             'asthma' => 'no',
             'malformation' => 'No se observan malfomraciones',
             'glasses' => 'si',
-            'observations' => 'Se debe llevar a un lugar mas capacitado',
-            'date' => '2015-12-15'
+            'observations' => 'Se debe llevar a un lugar mas capacitado'
         ]);
         Record::create([
             'id' => '3',
             'user_id' => '1',
             'course_id' => '1',
             'student_id' => '2',
-            'allergies' => '',
+            'allergies' => null,
             'treatment' => 'Se concidera necesario que se realice una evaluacion medica en un lugar mas capacitado',
             'cardiovascular' => 'no',
             'lice' => 'no',
             'asthma' => 'si',
             'malformation' => 'No se observan malfomraciones',
             'glasses' => 'si',
-            'observations' => 'No es necesario mayor intervencion',
-            'date' => '2015-12-15'
+            'observations' => 'No es necesario mayor intervencion'
         ]);
         Record::create([
             'id' => '4',
             'user_id' => '1',
             'course_id' => '1',
             'student_id' => '3',
-            'allergies' => '',
+            'allergies' => null,
             'treatment' => 'Con mantener alejado al estudiante es suficiente',
             'cardiovascular' => 'si',
             'lice' => 'no',
             'asthma' => 'si',
             'malformation' => 'Se observa una malformacion en el pie derecho',
             'glasses' => 'no',
-            'observations' => '',
-            'date' => '2015-12-15'
+            'observations' => null
         ]);
         Record::create([
             'id' => '5',
@@ -87,8 +83,7 @@ class RecordsSeeder extends Seeder
             'asthma' => 'no',
             'malformation' => 'No se observan malfomraciones',
             'glasses' => 'no',
-            'observations' => 'No es necesario mayor intervencion',
-            'date' => '2015-12-15'
+            'observations' => 'No es necesario mayor intervencion'
         ]);
         Record::create([
             'id' => '6',
@@ -102,23 +97,21 @@ class RecordsSeeder extends Seeder
             'asthma' => 'si',
             'malformation' => 'No se observan malfomraciones',
             'glasses' => 'si',
-            'observations' => 'No es necesario mayor intervencion',
-            'date' => '2015-12-15'
+            'observations' => 'No es necesario mayor intervencion'
         ]);
         Record::create([
             'id' => '7',
             'user_id' => '1',
             'course_id' => '2',
             'student_id' => '8',
-            'allergies' => '',
+            'allergies' => null,
             'treatment' => 'Se recomienda mantener alejado al alumno de cualquier lugar que pueda causarle problemas con sus alergias',
             'cardiovascular' => 'si',
             'lice' => 'si',
             'asthma' => 'no',
             'malformation' => 'No se observan malfomraciones',
             'glasses' => 'no',
-            'observations' => '',
-            'date' => '2015-12-15'
+            'observations' => null
         ]);
     }
 }

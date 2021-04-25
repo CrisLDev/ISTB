@@ -26,8 +26,8 @@ class CreateAdministrationsTable extends Migration
             $table->string('code')->rand();
             $table->date('birthDate');
             $table->string('role');
-            $table->string('imgUrl')->nullable();
-            $table->string('curriculum')->nullable();
+            $table->string('imgUrl')->nullable(true);
+            $table->string('curriculum')->nullable(true);
             $table->timestamps();
             $table->engine = 'InnoDB';
             $table->charset = 'utf8';

@@ -6,43 +6,23 @@
     <div class="row justify-content-center">
         <div class="col-xl-12 mb-5">
             <div class="card">
-                <div class="card-header bg-white text-center mb-5 pt-4">
+                <div class="card-header bg-white text-center mb-4 pt-4">
                      <h3>Crear Calificación</h3>
                 </div>
                 <div class="card-body">
-                    <form onsubmit="disable()" method="POST" enctype="multipart/form-data" action="{{ route('grades.storeGrades') }}">
+                    <form onsubmit="disable()" method="POST" enctype="multipart/form-data" action="{{ route('students.updateGradeByDate', [$id, $date]) }}">
                         @csrf
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="inputState">Estudiante</label>
-                                        <select id="inputState" class="form-control" name="student_id">
-                                        @if (count($students) === 0)
-                                            <option value="">No hay estudiantes</option>
-                                        @endif
-                                        @foreach ($students as $student)
-                                          <option value="{{$student->id}}">{{$student->fullname}}</option>
-                                        @endforeach
-                                        </select>
-                                    </div>
-                                    <div>
-                                      <form onsubmit="disable()" method="POST" action="{{ route('assitance.create', $student->id) }}">
-                                          @csrf
                                       <div class="form-group">
-                                        <label for="inputState">En caso de inasistencia llenar este campo</label>
-                                        <input type="text" class="form-control" name="justification" placeholder="Escriba la justificación" value="{{old('justification')}}" minlength="6">
-                                      </div>
-                                    <div class="form-group">
-                                        <label for="inputState">Curso</label>
-                                        <select id="inputState" class="form-control" name="course_id">
-                                        @if (count($courses) === 0)
-                                            <option value="">No hay cursos</option>
+                                        <label for="inputState">Para borrar la inasistencia solo tiene que vaciar este campo</label>
+                                        @if ($assistances)
+                                          <input type="text" class="form-control" name="justification" placeholder="Escriba la justificación" value="{{$assistances->justification}}" minlength="6">
+                                          <input type="hidden" name="assistanceId" value="{{$assistances->id}}" id="assistanceId">
+                                        @else
+                                          <input type="text" class="form-control" name="justification" placeholder="Escriba la justificación" minlength="6">
                                         @endif
-                                        @foreach ($courses as $course)
-                                          <option value="{{$course->id}}">{{$course->courseName}}</option>
-                                        @endforeach
-                                        </select>
-                                    </div>
+                                      </div>
                                     <div class="form-group">
                                       <h4>Actividades</h4>
                                         <div class="table-responsive">
@@ -56,6 +36,41 @@
                                                   </tr>
                                                 </thead>
                                                 <tbody>
+                                                  @forelse ($activities as $item)
+                                                  <tr>
+                                                    <th scope="row">{{$loop->iteration}}</th>
+                                                    <td>
+                                                      <div class="form-group" style="min-width: 10em">
+                                                        <input type="hidden" name="id{{$loop->iteration}}" value="{{$item->id}}">
+                                                        </input>
+                                                        <input type="text" class="form-control" placeholder="Actividad general" name="activity{{$loop->iteration}}_id" value="{{$item->activity_id}}">
+                                                        </input>
+                                                        <div class="invalid-feedback">
+                                                          Please select a valid state.
+                                                        </div>
+                                                      </div>
+                                                    </td>
+                                                    <td>
+                                                      <div class="form-group" style="min-width: 10em">
+                                                        <textarea class="form-control" rows="1" name="activity{{$loop->iteration}}" placeholder="Actividad">{{$item->dailyActivityText}}</textarea>
+                                                      </div>
+                                                    </td>
+                                                    <td>
+                                                      <div class="form-group" style="min-width: 10em">
+                                                        <select class="custom-select" name="answer{{$loop->iteration}}" >
+                                                        <option selected value="">Escoge uno...</option>
+                                                          <option value="Totalmente logrado"{{ $item->dailyActivityCheck == 'Totalmente logrado' ? 'selected' : '' }}>Totalmente logrado</option>
+                                                          <option value="Medianamente logrado" {{ $item->dailyActivityCheck == 'Mediante logrado' ? 'selected' : '' }}>Mediante logrado</option>
+                                                          <option value="Parcialmente logrado" {{ $item->dailyActivityCheck == 'Parcialmente logrado' ? 'selected' : '' }}>Parcialmente logrado</option>
+                                                          <option value="No logrado" {{ $item->dailyActivityCheck == 'No logrado' ? 'selected' : '' }}>No logrado</option>
+                                                        </select>
+                                                        <div class="invalid-feedback">
+                                                          Please select a valid state.
+                                                        </div>
+                                                      </div>
+                                                    </td>
+                                                  </tr>
+                                                  @empty
                                                   <tr>
                                                     <th scope="row">1</th>
                                                     <td>
@@ -211,14 +226,15 @@
                                                       </div>
                                                     </td>
                                                   </tr>
+                                                  @endforelse
                                                 </tbody>
                                               </table>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <button class="btn btn-primary btn-block" id="button-prevent-multiple-submits" type="submit">
+                                        <button class="btn btn-warning btn-block" id="button-prevent-multiple-submits" type="submit">
                                             <span class="spinner-border spinner-border-sm" id="spinner" role="status" aria-hidden="true"></span>    
-                                            <span id="btex">Crear</span></button>
+                                            <span id="btex">Editar</span></button>
                                     </div>
                                 </div>
                             </div>

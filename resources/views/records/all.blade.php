@@ -53,7 +53,11 @@
                                     <div class="col-xl-9 col-lg-12 col-md-12 col-sm-12">
                                         <div>
                                             <h4>Alergias</h4>
-                                            <p>{{$record->allergies}}</p>
+                                            @if ($record->allergies != null)
+                                                <p>{{$record->allergies}}</p>
+                                            @else
+                                                <p>N/A</p>
+                                            @endif
                                         </div>
                                         <div>
                                             <h4>Nombre del estdiante</h4>
@@ -65,7 +69,11 @@
                                         </div>
                                         <div>
                                             <h4>Tratamiento</h4>
-                                            <p>{{$record->treatment}}</p>
+                                            @if ($record->treatment != null)
+                                                <p>{{$record->treatment}}</p>
+                                            @else
+                                                <p>N/A</p>
+                                            @endif
                                         </div>
                                         <div>
                                             <h4>Enfermedad cardiovascular</h4>
@@ -81,7 +89,11 @@
                                         </div>
                                         <div>
                                             <h4>Malformaciones</h4>
-                                            <p>{{$record->malformation}}</p>
+                                            @if ($record->malformation != null)
+                                                <p>{{$record->malformation}}</p>
+                                            @else
+                                            <p>N/A</p>
+                                            @endif
                                         </div>
                                         <div>
                                             <h4>Lentes</h4>
@@ -89,7 +101,11 @@
                                         </div>
                                         <div>
                                             <h4>Observaciones</h4>
-                                            <p>{{$record->observations}}</p>
+                                            @if ($record->observations != null)
+                                                <p>{{$record->observations}}</p>
+                                            @else
+                                                <p>N/A</p>
+                                            @endif
                                         </div>
                                     </div>
 

@@ -87,6 +87,10 @@ class HomeController extends Controller
             }
         }
 
+        if(count($activitiesSearch) <= 0){
+            return redirect(route('home'))->withInput()->with('userErrors', 'No hay contenido para mostrar');
+        }
+
         $idsNoContainActivities = array_diff($ids, $dasid);
 
         $idsNoContainAssistances = array_diff($ids, $asid);
@@ -138,10 +142,10 @@ class HomeController extends Controller
             $toArraya = array(
                 "id" => 1,
                 "student_id" => $noAids,
-                "day" => '',
+                "day" => '2021/04/21',
                 "justification" => '',
-                "created_at" => $assistan->created_at,
-                "updated_at" => $assistan->updated_at);
+                "created_at" => "N/A",
+                "updated_at" => "N/A");
             array_push($finalAssistancesSearch, $toArraya);
         }
 
@@ -149,6 +153,6 @@ class HomeController extends Controller
 
         $reFinalAssistancesSearch = json_decode(json_encode($finalAssistancesSearch));
 
-        return view('table', compact('students', 'assistancesSearch', 'activitiesSearch','reFinalActivitiesSearch', 'reFinalAssistancesSearch'));
+        return view('table', compact('students', 'assistancesSearch', 'activitiesSearch','reFinalActivitiesSearch', 'reFinalAssistancesSearch', 'date'));
     }
 }

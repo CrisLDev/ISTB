@@ -88,13 +88,13 @@
                                                     <p class="font-weight-bold">Curso:</p>
                                                     <p>{{$item->courseName}}</p>
                                                     <p class="font-weight-bold">Alergias:</p>
-                                                    @if($item->allergies !== '')
+                                                    @if($item->allergies !== null)
                                                     <p>{{$item->allergies}}</p>
                                                     @else
                                                     <p>N/A</p>
                                                     @endif
                                                     <p class="font-weight-bold">Tratamientos:</p>
-                                                    @if($item->treatment !== '')
+                                                    @if($item->treatment !== null)
                                                     <p>{{$item->treatment}}</p>
                                                     @else
                                                     <p>N/A</p>
@@ -106,7 +106,7 @@
                                                     <p class="font-weight-bold">Asma:</p>
                                                     <p>{{$item->asthma}}</p>
                                                     <p class="font-weight-bold">Malformaciones:</p>
-                                                    @if($item->malformation !== '')
+                                                    @if($item->malformation !== null)
                                                     <p>{{$item->malformation}}</p>
                                                     @else
                                                     <p>N/A</p>
@@ -114,7 +114,7 @@
                                                     <p class="font-weight-bold">Lentes:</p>
                                                     <p>{{$item->glasses}}</p>
                                                     <p class="font-weight-bold">Observaciones:</p>
-                                                    @if($item->observations !== '')
+                                                    @if($item->observations !== null)
                                                     <p>{{$item->observations}}</p>
                                                     @else
                                                     <p>N/A</p>
