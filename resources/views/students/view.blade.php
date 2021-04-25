@@ -229,11 +229,23 @@
                                         <div class="card-body">
                                                 <div class="container-fluid border shadow pt-3 pb-3">
                                                     <p class="font-weight-bold">Nombre de la actividad general:</p>
-                                                    <p>{{$item->activity_id}}</p>
+                                                    @if ($item->activity_id)
+                                                        <p>{{$item->activity_id}}</p>
+                                                    @else
+                                                        <p>N/A</p>
+                                                    @endif
                                                     <p class="font-weight-bold">Nombre de la actividad:</p>
-                                                    <p>{{$item->dailyActivityText}}</p>
+                                                    @if ($item->dailyActivityText)
+                                                        <p>{{$item->dailyActivityText}}</p>
+                                                    @else
+                                                        <p>N/A</p>
+                                                    @endif
                                                     <p class="font-weight-bold">La actividad fue cumplida:</p>
-                                                    <p>{{$item->dailyActivityCheck}}</p>
+                                                    @if ($item->dailyActivityCheck)
+                                                        <p>{{$item->dailyActivityCheck}}</p>
+                                                    @else
+                                                        <p>N/A</p>
+                                                    @endif
                                                     <div>
                                                         <a class="btn btn-dark" href="{{route('dactivities.editDaily', $item->id)}}">editar</a>
 

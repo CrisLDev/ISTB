@@ -22,11 +22,10 @@
                                             <option value="">No hay estudiantes</option>
                                         @endif
                                         @foreach ($students as $student)
-                                          <option value="{{$student->id}}">{{$student->fullname}}</option>
+                                          <option value="{{$student->id}}+{{$student->course_id}}">{{$student->fullname}}</option>
                                         @endforeach
                                         </select>
                                     </div>
-                                    <input type="hidden" value="{{$student->course_id}}" name="course_id">
                                     <div class="form-group">
                                         <label for="Grades">Alergias</label>
                                         <textarea type="text" class="form-control" id="allergies" name="allergies" placeholder="Ingresar las alergias">{{old('allergies')}}</textarea>

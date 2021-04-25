@@ -37,7 +37,7 @@ class StudentSeeder extends Seeder
             'id' => '2',
             'fullname' => 'Daniel Gutierres Mejía',
             'user_id' => '1',
-            'course_id' => '1',
+            'course_id' => '2',
             'telephoneNumber' => '0963532789',
             'dni' => '1002952145',
             'address' => 'Av de las americas',

@@ -121,13 +121,13 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="inputState">Fecha</label>
-                                    <input type="date" name="date" id="date" class="form-control mb-2">
+                                    <input type="date" name="date" id="date" class="form-control mb-2" required>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="inputState">Cursos</label>
-                                    <select id="inputState" class="form-control" name="course_id">
+                                    <select id="inputState" class="form-control" name="course_id" required>
                                     @if (count($courses) === 0)
                                         <option value="">No hay cursos</option>
                                     @endif

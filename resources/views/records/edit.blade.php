@@ -23,7 +23,7 @@
                                             <option value="">No hay estudiantes</option>
                                         @endif
                                         @foreach ($students as $student)
-                                          <option value="{{$student->id}}" {{ $student->id == $record->student_id ? 'selected' : '' }}>{{$student->fullname}}</option>
+                                          <option value="{{$student->id}}+{{$student->course_id}}" {{ $student->id == $record->student_id ? 'selected' : '' }}>{{$student->fullname}}</option>
                                         @endforeach
                                         </select>
                                     </div>

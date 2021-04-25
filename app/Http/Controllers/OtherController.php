@@ -520,9 +520,10 @@ class OtherController extends Controller
      */
     public function storeRecord(Request $request)
     {
+        $course_id = substr($request->student_id, 2);
+        $student_id = substr($request->student_id, 0, -2);
         $data = new Record();
         $rules = [
-            'course_id' => 'required',
             'student_id' => 'required',
             'cardiovascular' => 'required',
             'lice' => 'required',
@@ -530,7 +531,6 @@ class OtherController extends Controller
             'glasses' => 'required'
         ];
         $niceNames = [
-            'course_id' => 'curso',
             'student_id' => 'estudiante',
             'cardiovascular' => 'campo enfermedades cardiovasculares',
             'lice' => 'campo piojos',
@@ -539,8 +539,8 @@ class OtherController extends Controller
         ]; 
         $this->validate($request, $rules, [], $niceNames);
         $data->user_id = auth()->user()->id;
-        $data->course_id = $request->course_id;
-        $data->student_id = $request->student_id;
+        $data->course_id = $course_id;
+        $data->student_id = $student_id;
         $data->allergies = $request->allergies;
         $data->treatment = $request->treatment;
         $data->cardiovascular = $request->cardiovascular;
@@ -891,11 +891,12 @@ class OtherController extends Controller
      */
     public function updateRecord(Request $request, $id)
     {
+        $course_id = substr($request->student_id, 2);
+        $student_id = substr($request->student_id, 0, -2);
         if(auth()->user()->role === 'coor'){
         $data = Record::where('id', $id)->first();
         if($data->user_id === auth()->user()->id){
         $rules = [
-            'course_id' => 'required',
             'student_id' => 'required',
             'cardiovascular' => 'required',
             'lice' => 'required',
@@ -903,7 +904,6 @@ class OtherController extends Controller
             'glasses' => 'required'
         ];
         $niceNames = [
-            'course_id' => 'curso',
             'student_id' => 'estudiante',
             'cardiovascular' => 'campo enfermedades cardiovasculares',
             'lice' => 'campo piojos',
@@ -913,8 +913,8 @@ class OtherController extends Controller
         $this->validate($request, $rules, [], $niceNames);
         if($id == $data->id){
             $data->user_id = auth()->user()->id;
-            $data->course_id = $request->course_id;
-            $data->student_id = $request->student_id;
+            $data->course_id = $course_id;
+            $data->student_id = $student_id;
             $data->allergies = $request->allergies;
             $data->treatment = $request->treatment;
             $data->cardiovascular = $request->cardiovascular;
@@ -934,7 +934,6 @@ class OtherController extends Controller
 }else{
     $data = Record::where('id', $id)->first();
     $rules = [
-        'course_id' => 'required',
         'student_id' => 'required',
         'cardiovascular' => 'required',
         'lice' => 'required',
@@ -942,7 +941,6 @@ class OtherController extends Controller
         'glasses' => 'required'
     ];
     $niceNames = [
-        'course_id' => 'curso',
         'student_id' => 'estudiante',
         'cardiovascular' => 'campo enfermedades cardiovasculares',
         'lice' => 'campo piojos',
@@ -952,8 +950,8 @@ class OtherController extends Controller
     $this->validate($request, $rules, [], $niceNames);
     if($id == $data->id){
         $data->user_id = auth()->user()->id;
-        $data->course_id = $request->course_id;
-        $data->student_id = $request->student_id;
+        $data->course_id = $course_id;
+        $data->student_id = $student_id;
         $data->allergies = $request->allergies;
         $data->treatment = $request->treatment;
         $data->cardiovascular = $request->cardiovascular;
