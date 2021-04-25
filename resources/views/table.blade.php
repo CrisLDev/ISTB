@@ -1,33 +1,33 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mb-5">
+    <div class="container-fluid mb-5">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 @if (count($students) !== 0)
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table table-striped table-bordered table-sm">
                         <thead>
                           <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Asistencia</th>
-                            <th scope="col">Act - Gen - 1</th>
-                            <th scope="col">Act - Dia - 1</th>
-                            <th scope="col">Act - Nota - 1</th>
-                            <th scope="col">Act - Gen - 2</th>
-                            <th scope="col">Act - Dia - 2</th>
-                            <th scope="col">Act - Nota - 2</th>
-                            <th scope="col">Act - Gen - 3</th>
-                            <th scope="col">Act - Dia - 3</th>
-                            <th scope="col">Act - Nota - 3</th>
-                            <th scope="col">Act - Gen - 4</th>
-                            <th scope="col">Act - Dia - 4</th>
-                            <th scope="col">Act - Nota - 4</th>
-                            <th scope="col">Act - Gen - 5</th>
-                            <th scope="col">Act - Dia - 5</th>
-                            <th scope="col">Act - Nota - 5</th>
-                            <th scope="col">Accion</th>
+                            <th class="text-nowrap pt-3 pb-3" scope="col">#</th>
+                            <th class="text-nowrap pt-3 pb-3" scope="col">Nombre</th>
+                            <th class="text-nowrap pt-3 pb-3" scope="col">Asistencia</th>
+                            <th class="text-nowrap pt-3 pb-3" scope="col">Act - Gen - 1</th>
+                            <th class="text-nowrap pt-3 pb-3" scope="col">Act - Dia - 1</th>
+                            <th class="text-nowrap pt-3 pb-3" scope="col">Act - Nota - 1</th>
+                            <th class="text-nowrap pt-3 pb-3" scope="col">Act - Gen - 2</th>
+                            <th class="text-nowrap pt-3 pb-3" scope="col">Act - Dia - 2</th>
+                            <th class="text-nowrap pt-3 pb-3" scope="col">Act - Nota - 2</th>
+                            <th class="text-nowrap pt-3 pb-3" scope="col">Act - Gen - 3</th>
+                            <th class="text-nowrap pt-3 pb-3" scope="col">Act - Dia - 3</th>
+                            <th class="text-nowrap pt-3 pb-3" scope="col">Act - Nota - 3</th>
+                            <th class="text-nowrap pt-3 pb-3" scope="col">Act - Gen - 4</th>
+                            <th class="text-nowrap pt-3 pb-3" scope="col">Act - Dia - 4</th>
+                            <th class="text-nowrap pt-3 pb-3" scope="col">Act - Nota - 4</th>
+                            <th class="text-nowrap pt-3 pb-3" scope="col">Act - Gen - 5</th>
+                            <th class="text-nowrap pt-3 pb-3" scope="col">Act - Dia - 5</th>
+                            <th class="text-nowrap pt-3 pb-3" scope="col">Act - Nota - 5</th>
+                            <th class="text-nowrap pt-3 pb-3" scope="col">Accion</th>
                           </tr>
                         </thead>
                         <tbody>
