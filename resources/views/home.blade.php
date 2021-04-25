@@ -111,7 +111,7 @@
         </div>
         <div class="col-md-12 mt-5">
            <div class="card">
-               <div class="card-header">
+               <div class="card-header mb-3 text-center bg-white pt-4">
                     <h3>Consultar por cursos</h3>
                </div>
                <div class="card-body">

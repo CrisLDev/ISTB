@@ -14,10 +14,10 @@ class AssistanceController extends Controller
      */
     public function index($id)
     {
-        $data = Assistance::where('student_id', $id)->get();
+        $data = Assistance::where('student_id', $id)->where('justification', '!=', null)->get();
 
         if(count($data) <= 0){
-            return back()->with('userErrors', 'El estudiante no tiene faltas registradas.');
+            return redirect(route('home'))->with('userErrors', 'El estudiante no tiene faltas registradas o se han eliminado todas las faltas.');
         }
 
         return view('students.assitance', compact('data'));
@@ -125,7 +125,9 @@ class AssistanceController extends Controller
      */
     public function destroy($id)
     {
-        $data = Assistance::findOrFail( $id )->delete();
+        $data = Assistance::findOrFail( $id );
+        $data->justification = null;
+        $data->save();
         return back()->with( 'message', 'Falta diaria Eliminada' );
     }
 }
