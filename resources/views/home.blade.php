@@ -102,52 +102,51 @@
                                           </table>
                                     </div>
                                 </div>
+                                <div class="col-md-12 mt-5">
+                                    <div class="card">
+                                        <div class="card-header mb-3 text-center bg-white pt-4">
+                                             <h3>Consultar por cursos</h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <form onsubmit="disable()" method="POST" action="{{ route('module.redir') }}">
+                                             @csrf
+                                                 <div class="row">
+                                                     <div class="col-md-12">
+                                                         <div class="form-group">
+                                                             <label for="inputState">Fecha</label>
+                                                             <input type="date" name="date" id="date" class="form-control mb-2" required>
+                                                         </div>
+                                                     </div>
+                                                     <div class="col-md-12">
+                                                         <div class="form-group">
+                                                             <label for="inputState">Cursos</label>
+                                                             <select id="inputState" class="form-control" name="course_id" required>
+                                                             @if (count($courses) === 0)
+                                                                 <option value="">No hay cursos</option>
+                                                             @endif
+                                                             @foreach ($courses as $course)
+                                                               <option value="{{$course->id}}">{{$course->courseName}}</option>
+                                                             @endforeach
+                                                             </select>
+                                                         </div>
+                                                     </div>
+                                                     <div class="col-md-12">
+                                                         <div class="form-group">
+                                                             <button class="btn btn-warning btn-block" id="button-prevent-multiple-submits" type="submit">
+                                                                 <span class="spinner-border spinner-border-sm" id="spinner" role="status" aria-hidden="true"></span>    
+                                                                 <span id="btex">Enviar</span></button>
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                 </div>
                             </div>
                         </div>
                     @endif
-
                 </div>
             </div>
-        </div>
-        <div class="col-md-12 mt-5">
-           <div class="card">
-               <div class="card-header mb-3 text-center bg-white pt-4">
-                    <h3>Consultar por cursos</h3>
-               </div>
-               <div class="card-body">
-                   <form onsubmit="disable()" method="POST" action="{{ route('module.redir') }}">
-                    @csrf
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="inputState">Fecha</label>
-                                    <input type="date" name="date" id="date" class="form-control mb-2" required>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="inputState">Cursos</label>
-                                    <select id="inputState" class="form-control" name="course_id" required>
-                                    @if (count($courses) === 0)
-                                        <option value="">No hay cursos</option>
-                                    @endif
-                                    @foreach ($courses as $course)
-                                      <option value="{{$course->id}}">{{$course->courseName}}</option>
-                                    @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <button class="btn btn-warning btn-block" id="button-prevent-multiple-submits" type="submit">
-                                        <span class="spinner-border spinner-border-sm" id="spinner" role="status" aria-hidden="true"></span>    
-                                        <span id="btex">Enviar</span></button>
-                                </div>
-                            </div>
-                        </div>
-                   </form>
-               </div>
-           </div>
         </div>
     </div>
 </div>
