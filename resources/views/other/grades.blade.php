@@ -14,17 +14,17 @@
                         @csrf
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="inputState">Estudiante</label>
-                                        <select id="inputState" class="form-control" name="student_id">
-                                        @if (count($students) === 0)
-                                            <option value="">No hay estudiantes</option>
-                                        @endif
-                                        @foreach ($students as $student)
-                                          <option value="{{$student->id}}">{{$student->fullname}}</option>
-                                        @endforeach
-                                        </select>
-                                    </div>
+                                  <div class="form-group">
+                                    <label for="inputState">Estudiante</label>
+                                    <select id="inputState" class="form-control" name="student_id">
+                                    @if (count($students) === 0)
+                                        <option value="">No hay estudiantes</option>
+                                    @endif
+                                    @foreach ($students as $student)
+                                      <option value="{{$student->id}}+{{$student->course_id}}">{{$student->fullname}}</option>
+                                    @endforeach
+                                    </select>
+                                </div>
                                     <div>
                                       <form onsubmit="disable()" method="POST" action="{{ route('assitance.create', $student->id) }}">
                                           @csrf

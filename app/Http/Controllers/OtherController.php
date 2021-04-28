@@ -385,16 +385,16 @@ class OtherController extends Controller
     public function storeGrades(Request $request)
     {
         //$data = new Grades();
+        $course_id = substr($request->student_id, 2);
+        $student_id = substr($request->student_id, 0, -2);
         $rules = [
-            'course_id' => 'required',
             'student_id' => 'required',
         ];
         $niceNames = [
-            'course_id' => 'curso',
             'student_id' => 'estudiante'
         ];
         $currentDate = date("Y-m-d");
-        $da = DailyActivity::whereDate('created_at', $currentDate)->where('student_id', $request->student_id)->get();
+        $da = DailyActivity::whereDate('created_at', $currentDate)->where('student_id', $student_id)->get();
         if(count($da) > 0){
             return back()->with('userErrors', 'Ya registraste las actividades de hoy.');
         }
@@ -406,7 +406,7 @@ class OtherController extends Controller
         //$idd = $data->id;
         $data2 =  new Assistance();
         $data2->justification = $request->justification;
-        $data2->student_id = $request->student_id;
+        $data2->student_id = $student_id;
         $data2->day = date("Y-m-d");
         $data2->save();
         //if($request->activity1_id !== '' || $request->activity1 !== '' || $request->answer1 !== ''){
@@ -420,7 +420,7 @@ class OtherController extends Controller
             //if($request->activity1_id && $request->activity1 && $request->answer1){
                 $dataA1 = new DailyActivity();
                 //$dataA1->grade_id = $idd;
-                $dataA1->student_id = $request->student_id;
+                $dataA1->student_id = $student_id;
                 $dataA1->activity_id = $request->activity1_id;
                 $dataA1->dailyActivityText = $request->activity1;
                 $dataA1->dailyActivityCheck = $request->answer1;
@@ -440,7 +440,7 @@ class OtherController extends Controller
             //if($request->activity2_id && $request->activity2 && $request->answer2){
                 $dataA2 = new DailyActivity();
                 //$dataA2->grade_id = $idd;
-                $dataA2->student_id = $request->student_id;
+                $dataA2->student_id = $student_id;
                 $dataA2->activity_id = $request->activity2_id;
                 $dataA2->dailyActivityText = $request->activity2;
                 $dataA2->dailyActivityCheck = $request->answer2;
@@ -460,7 +460,7 @@ class OtherController extends Controller
             //if($request->activity3_id && $request->activity3 && $request->answer3){
                 $dataA3 = new DailyActivity();
                 //$dataA3->grade_id = $idd;
-                $dataA3->student_id = $request->student_id;
+                $dataA3->student_id = $student_id;
                 $dataA3->activity_id = $request->activity3_id;
                 $dataA3->dailyActivityText = $request->activity3;
                 $dataA3->dailyActivityCheck = $request->answer3;
@@ -480,7 +480,7 @@ class OtherController extends Controller
             //if($request->activity4_id && $request->activity4 && $request->answer4){
                 $dataA4 = new DailyActivity();
                 //$dataA4->grade_id = $idd;
-                $dataA4->student_id = $request->student_id;
+                $dataA4->student_id = $student_id;
                 $dataA4->activity_id = $request->activity4_id;
                 $dataA4->dailyActivityText = $request->activity4;
                 $dataA4->dailyActivityCheck = $request->answer4;
@@ -500,7 +500,7 @@ class OtherController extends Controller
             //if($request->activity5_id && $request->activity5 && $request->answer5){
                 $dataA5 = new DailyActivity();
                 //$dataA5->grade_id = $idd;
-                $dataA5->student_id = $request->student_id;
+                $dataA5->student_id = $student_id;
                 $dataA5->activity_id = $request->activity5_id;
                 $dataA5->dailyActivityText = $request->activity5;
                 $dataA5->dailyActivityCheck = $request->answer5;
