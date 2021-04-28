@@ -546,7 +546,6 @@ class OtherController extends Controller
         $data->cardiovascular = $request->cardiovascular;
         $data->lice = $request->lice;
         $data->asthma = $request->asthma;
-        $data->malformation = $request->malformation;
         $data->glasses = $request->glasses;
         $data->observations = $request->observations;
         $data->save();
@@ -920,7 +919,6 @@ class OtherController extends Controller
             $data->cardiovascular = $request->cardiovascular;
             $data->lice = $request->lice;
             $data->asthma = $request->asthma;
-            $data->malformation = $request->malformation;
             $data->glasses = $request->glasses;
             $data->observations = $request->observations;
             $data->save();
@@ -957,7 +955,6 @@ class OtherController extends Controller
         $data->cardiovascular = $request->cardiovascular;
         $data->lice = $request->lice;
         $data->asthma = $request->asthma;
-        $data->malformation = $request->malformation;
         $data->glasses = $request->glasses;
         $data->observations = $request->observations;
         $data->save();
