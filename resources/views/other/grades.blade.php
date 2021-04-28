@@ -32,7 +32,7 @@
                                         <label for="inputState">En caso de inasistencia llenar este campo</label>
                                         <input type="text" class="form-control" name="justification" placeholder="Escriba la justificación" value="{{old('justification')}}" minlength="6">
                                       </div>
-                                    <div class="form-group">
+                                    <!--<div class="form-group">
                                         <label for="inputState">Curso</label>
                                         <select id="inputState" class="form-control" name="course_id">
                                         @if (count($courses) === 0)
@@ -42,7 +42,7 @@
                                           <option value="{{$course->id}}">{{$course->courseName}}</option>
                                         @endforeach
                                         </select>
-                                    </div>
+                                    </div>-->
                                     <div class="form-group">
                                       <h4>Actividades</h4>
                                         <div class="table-responsive">
