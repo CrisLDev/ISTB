@@ -26,9 +26,9 @@
                         <div class="form-group">
                             <input type="text" placeholder="Asma" name="asthma" class="form-control">
                         </div>
-                        <div class="form-group">
+                        <!--<div class="form-group">
                             <input type="text" placeholder="Malformaciones" name="malformation" class="form-control">
-                        </div>
+                        </div>-->
                         <div class="form-group">
                             <input type="text" placeholder="Lentes" name="glasses" class="form-control">
                         </div>
@@ -87,14 +87,14 @@
                                             <h4>Asma</h4>
                                             <p>{{$record->asthma}}</p>
                                         </div>
-                                        <div>
+                                        <!--<div>
                                             <h4>Malformaciones</h4>
                                             @if ($record->malformation != null)
                                                 <p>{{$record->malformation}}</p>
                                             @else
                                             <p>N/A</p>
                                             @endif
-                                        </div>
+                                        </div>-->
                                         <div>
                                             <h4>Lentes</h4>
                                             <p>{{$record->glasses}}</p>

@@ -105,12 +105,12 @@
                                                     <p>{{$item->lice}}</p>
                                                     <p class="font-weight-bold">Asma:</p>
                                                     <p>{{$item->asthma}}</p>
-                                                    <p class="font-weight-bold">Malformaciones:</p>
+                                                    <!--<p class="font-weight-bold">Malformaciones:</p>
                                                     @if($item->malformation !== null)
                                                     <p>{{$item->malformation}}</p>
                                                     @else
                                                     <p>N/A</p>
-                                                    @endif
+                                                    @endif-->
                                                     <p class="font-weight-bold">Lentes:</p>
                                                     <p>{{$item->glasses}}</p>
                                                     <p class="font-weight-bold">Observaciones:</p>

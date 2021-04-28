@@ -53,7 +53,7 @@
                                             <label>Actividad cumplida:</label>
                                             <select class="custom-select" name="dailyActivityCheck" required>
                                                 <option value="Totalmente logrado" {{ $dailyactivity->dailyActivityCheck == 'Totalmente logrado' ? 'selected' : '' }}>Totalmente logrado</option>
-                                                <option value="Mediante logrado" {{ $dailyactivity->dailyActivityCheck == 'Mediante logrado' ? 'selected' : '' }}>Mediante logrado</option>
+                                                <option value="Medianamente logrado" {{ $dailyactivity->dailyActivityCheck == 'Medianamente logrado' ? 'selected' : '' }}>Medianamente logrado</option>
                                                 <option value="Parcialmente logrado" {{ $dailyactivity->dailyActivityCheck == 'Parcialmente logrado' ? 'selected' : '' }}>Parcialmente logrado</option>
                                                 <option value="No logrado" {{ $dailyactivity->dailyActivityCheck == 'No logrado' ? 'selected' : '' }}>No logrado</option>
                                             </select>

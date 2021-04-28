@@ -57,10 +57,10 @@
                                           <option value="no">No</option>
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    <!--<div class="form-group">
                                         <label for="Assistance">Malformacion</label>
                                         <textarea type="text" class="form-control" id="malformation" name="malformation" placeholder="Ingrese alguna malformacion">{{old('malformation')}}</textarea>
-                                    </div>
+                                    </div>-->
                                     <div class="form-group">
                                         <label for="inputState">Lentes</label>
                                         <select id="inputState" class="form-control" id="glasses" name="glasses">

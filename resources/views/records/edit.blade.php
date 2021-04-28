@@ -59,11 +59,11 @@
                                           <option value="no" {{ $record->asthma == 'no' ? 'selected' : '' }}>No</option>
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    <!--<div class="form-group">
                                         <label for="Assistance">Malformacion</label>
                                         <textarea type="text" class="form-control" id="malformation" name="malformation" placeholder="Ingrese alguna malformacion">{{$record->malformation}}</textarea>
                                         <h6 class="form-text text-muted mb-3">Favor utiizar (- o ,) para separar los diferentes items.</h6>
-                                    </div>
+                                    </div>-->
                                     <div class="form-group">
                                         <label for="inputState">Lentes</label>
                                         <select id="inputState" class="form-control" id="glasses" name="glasses">
