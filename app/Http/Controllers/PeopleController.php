@@ -11,6 +11,7 @@ use App\Models\Administration;
 use Illuminate\Validation\Rule;
 use DateTime;
 use App\Models\Assistance;
+use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 
 class PeopleController extends Controller
@@ -36,6 +37,59 @@ class PeopleController extends Controller
         $teachers = Teacher::get();
         $students = Student::get();
         return view('people.all', compact('administrations', 'teachers', 'students'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createPersonForm()
+    {
+        return view('people.createPerson');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createUser(Request $request)
+    {
+        $data = new User();
+        $rules = [
+            'name' => 'required|max:50|min:5',
+            'username' => 'required|max:50|min:5|unique:users',
+            'email' => 'required|min:10|max:50|unique:users',
+            'password' => 'max:20',
+        ];
+        $niceNames = [
+            'name' => 'nombre',
+            'username' => 'nombre de usuario',
+            'email' => 'email',
+            'password' => 'campo contraseña',
+        ]; 
+        $this->validate($request, $rules, [], $niceNames);
+        $data->name = $request->name;
+        $data->username = $request->username;
+        $data->email = $request->email;
+        if($request->password != $request->password_confirmation){
+            return redirect('/user/me')->with('userErrors', '¡Las contraseñas no son iguales!');
+        }
+        $data->password = $password = bcrypt($request->password);
+        $data->save();
+        return back()->with('message', 'Usario agregado con éxito.');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getAllStudentsByCourseId(Request $request)
+    {
+        $students = Student::where('course_id', $request->id)->get();
+        return response()->json( $students );
     }
 
     /**

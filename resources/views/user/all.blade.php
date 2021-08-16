@@ -23,6 +23,9 @@
                     </form>
                 </div>
                 <div class="card-body">
+                    <div class="d-flex justify-content-end">
+                        <a class="btn btn-primary mb-5 btn-block" href="{{ route('people.createPersonForm')}}" style="text-decoration: none">Crear usuario</a>
+                    </div>
                             @foreach ($users as $user)
                             <div class="container mb-4 border-bottom">
                                 <div class="row justify-content-center">

@@ -22,6 +22,7 @@ class CreateDailyActivitiesTable extends Migration
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
             $table->string('dailyActivityCheck')->nullable(true);
             $table->text('dailyActivityText')->nullable(true);
+            $table->text('dailyActivityJustification')->nullable(true);
             $table->timestamps();
             $table->engine = 'InnoDB';
             $table->charset = 'utf8';

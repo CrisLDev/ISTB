@@ -61,6 +61,30 @@ class OtherController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function gradesByStudents($id)
+    {
+        $activities = DailyActivity::where('student_id', $id)->get();
+        $activitiesTotal = DailyActivity::where('student_id', $id)->paginate(5);
+        $ids = array();
+        foreach($activities as $activity)
+        {
+            $ids[] = $activity->dailyActivityCheck;
+        };
+        function suma($carry, $item)
+        {
+            $carry += $item;
+            return $carry;
+        }
+        $allSumNote = array_sum($ids);
+        $finalNote = $allSumNote / count($ids);
+        return view('grades.gradesByStudent', compact('activitiesTotal', 'allSumNote', 'finalNote'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function formReports()
     {
         $teachers = Teacher::get();
@@ -89,10 +113,9 @@ class OtherController extends Controller
      */
     public function formGrades()
     {
-        $students = Student::get();
         $courses = Course::get();
         $activities = Activity::get();
-        return view('other.grades', compact('students', 'courses', 'activities'));
+        return view('other.grades', compact('courses', 'activities'));
     }
 
     /**
@@ -384,131 +407,65 @@ class OtherController extends Controller
      */
     public function storeGrades(Request $request)
     {
-        //$data = new Grades();
-        $course_id = substr($request->student_id, 2);
-        $student_id = substr($request->student_id, 0, -2);
         $rules = [
-            'student_id' => 'required',
+            'student_id' => 'required'
         ];
         $niceNames = [
             'student_id' => 'estudiante'
         ];
         $currentDate = date("Y-m-d");
-        $da = DailyActivity::whereDate('created_at', $currentDate)->where('student_id', $student_id)->get();
+        $da = DailyActivity::whereDate('created_at', $currentDate)->where('student_id', $request->student_id)->get();
         if(count($da) > 0){
             return back()->with('userErrors', 'Ya registraste las actividades de hoy.');
         }
         $this->validate($request, $rules, [], $niceNames);
-        //$data->user_id = auth()->user()->id;
-        //$data->course_id = $request->course_id;
-        //$data->student_id = $request->student_id;
-        //$data->save();
-        //$idd = $data->id;
-        $data2 =  new Assistance();
-        $data2->justification = $request->justification;
-        $data2->student_id = $student_id;
-        $data2->day = date("Y-m-d");
-        $data2->save();
-        //if($request->activity1_id !== '' || $request->activity1 !== '' || $request->answer1 !== ''){
-            //$rules1 = [
-                //'answer1' => 'required',
-            //];
-            //$niceNames1 = [
-                //'answer1' => 'campo actividad cumplida 1'
-            //]; 
-            //$this->validate($request, $rules1, [], $niceNames1);
-            //if($request->activity1_id && $request->activity1 && $request->answer1){
+
+                $data2 =  new Assistance();
+                $data2->justification = $request->justification;
+                $data2->student_id = $request->student_id;
+                $data2->day = date("Y-m-d");
+                $data2->save();
+
                 $dataA1 = new DailyActivity();
-                //$dataA1->grade_id = $idd;
-                $dataA1->student_id = $student_id;
+                $dataA1->student_id = $request->student_id;
                 $dataA1->activity_id = $request->activity1_id;
                 $dataA1->dailyActivityText = $request->activity1;
                 $dataA1->dailyActivityCheck = $request->answer1;
+                $dataA1->dailyActivityJustification = $request->justification1;
                 $dataA1->save();
-            //}else{
-                //back()->with('message', 'Completa toda la actividad.');
-            //}
-        //}
-        //if($request->activity2_id !== '' || $request->activity2 !== '' || $request->answer2 !== ''){
-            //$rules2 = [
-                //'answer2' => 'required',
-            //];
-            //$niceNames2 = [
-                //'answer2' => 'campo actividad cumplida 2'
-            //]; 
-            //$this->validate($request, $rules2, [], $niceNames2);
-            //if($request->activity2_id && $request->activity2 && $request->answer2){
+        
                 $dataA2 = new DailyActivity();
-                //$dataA2->grade_id = $idd;
-                $dataA2->student_id = $student_id;
+                $dataA2->student_id = $request->student_id;
                 $dataA2->activity_id = $request->activity2_id;
                 $dataA2->dailyActivityText = $request->activity2;
                 $dataA2->dailyActivityCheck = $request->answer2;
+                $dataA1->dailyActivityJustification = $request->justification2;
                 $dataA2->save();
-            //}else{
-                //back()->with('message', 'Completa toda la actividad.');
-            //}
-        //}
-        //if($request->activity3_id !== '' || $request->activity3 !== '' || $request->answer3 !== ''){
-            //$rules3 = [
-                //'answer3' => 'required',
-            //];
-            ////$niceNames3 = [
-                //'answer3' => 'campo actividad cumplida 3'
-            //]; 
-            //$this->validate($request, $rules3, [], $niceNames3);
-            //if($request->activity3_id && $request->activity3 && $request->answer3){
+
                 $dataA3 = new DailyActivity();
-                //$dataA3->grade_id = $idd;
-                $dataA3->student_id = $student_id;
+                $dataA3->student_id = $request->student_id;
                 $dataA3->activity_id = $request->activity3_id;
                 $dataA3->dailyActivityText = $request->activity3;
                 $dataA3->dailyActivityCheck = $request->answer3;
+                $dataA1->dailyActivityJustification = $request->justification3;
                 $dataA3->save();
-            //}else{
-                //back()->with('message', 'Completa toda la actividad.');
-            //}
-        //}
-        //if($request->activity4_id !== '' || $request->activity4 !== '' || $request->answer4 !== ''){
-            //$rules4 = [
-                //'answer4' => 'required',
-            ////];
-            //$niceNames4 = [
-                //'answer4' => 'campo actividad cumplida 4'
-            //]; 
-            //$this->validate($request, $rules4, [], $niceNames4);
-            //if($request->activity4_id && $request->activity4 && $request->answer4){
+
                 $dataA4 = new DailyActivity();
-                //$dataA4->grade_id = $idd;
-                $dataA4->student_id = $student_id;
+                $dataA4->student_id = $request->student_id;
                 $dataA4->activity_id = $request->activity4_id;
                 $dataA4->dailyActivityText = $request->activity4;
                 $dataA4->dailyActivityCheck = $request->answer4;
+                $dataA1->dailyActivityJustification = $request->justification4;
                 $dataA4->save();
-            //}else{
-                //back()->with('message', 'Completa toda la actividad.');
-            //}
-        //}
-        //if($request->activity5_id !== '' || $request->activity5 !== '' || $request->answer5 !== ''){
-            //$rules5 = [
-                //'answer5' => 'required',
-            //];
-            //$niceNames5 = [
-                //'answer5' => 'campo actividad cumplida 5'
-            //]; 
-            //$this->validate($request, $rules5, [], $niceNames5);
-            //if($request->activity5_id && $request->activity5 && $request->answer5){
+
                 $dataA5 = new DailyActivity();
-                //$dataA5->grade_id = $idd;
-                $dataA5->student_id = $student_id;
+                $dataA5->student_id = $request->student_id;
                 $dataA5->activity_id = $request->activity5_id;
                 $dataA5->dailyActivityText = $request->activity5;
                 $dataA5->dailyActivityCheck = $request->answer5;
+                $dataA1->dailyActivityJustification = $request->justification5;
                 $dataA5->save();
-            //}else{
-                //back()->with('message', 'Completa toda la actividad.');
-            //}
-        //}
+
         return back()->with('message', 'Calificación agregada correctamente agregado con éxito.');
     }
 

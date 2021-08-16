@@ -15,18 +15,22 @@
                             <div class="row">
                                 <div class="col-md-12">
                                   <div class="form-group">
-                                    <label for="inputState">Estudiante</label>
-                                    <select id="inputState" class="form-control" name="student_id">
-                                    @if (count($students) === 0)
-                                        <option value="">No hay estudiantes</option>
-                                    @endif
-                                    @foreach ($students as $student)
-                                      <option value="{{$student->id}}+{{$student->course_id}}">{{$student->fullname}}</option>
+                                    <label for="course">Curso</label>
+                                    <select id="course" class="form-control" name="course_id">
+                                        <option value="">Elegir curso</option>
+                                    @foreach ($courses as $course)
+                                      <option value="{{$course->id}}">{{$course->courseName}}</option>
                                     @endforeach
                                     </select>
                                 </div>
+                                <div class="form-group">
+                                  <label for="students">Estudiante</label>
+                                  <select id="students" class="form-control" name="student_id">
+                                      <option value="">No hay estudiantes</option>
+                                  </select>
+                              </div>
                                     <div>
-                                      <form onsubmit="disable()" method="POST" action="{{ route('assitance.create', $student->id) }}">
+                                      <form onsubmit="disable()" method="POST" action="{{ route('assitance.create', $course->id) }}">
                                           @csrf
                                       <div class="form-group">
                                         <label for="inputState">En caso de inasistencia llenar este campo</label>
@@ -52,6 +56,7 @@
                                                     <th scope="col">Número</th>
                                                     <th scope="col">Actividad General</th>
                                                     <th scope="col">Actividad Diaria</th>
+                                                    <th scope="col">Justificación</th>
                                                     <th scope="col">Cumplido</th>
                                                   </tr>
                                                 </thead>
@@ -73,13 +78,18 @@
                                                       </div>
                                                     </td>
                                                     <td>
+                                                      <div class="form-group">
+                                                        <textarea class="form-control" rows="1" name="justification1" placeholder="Justificacion"></textarea>
+                                                      </div>
+                                                    </td>
+                                                    <td>
                                                       <div class="form-group" style="min-width: 10em">
                                                         <select class="custom-select" name="answer1" >
                                                         <option selected value="">Escoge uno...</option>
-                                                          <option value="Totalmente logrado">Totalmente logrado</option>
-                                                          <option value="Medianamente logrado">Medianamente logrado</option>
-                                                          <option value="Parcialmente logrado">Parcialmente logrado</option>
-                                                          <option value="No logrado">No logrado</option>
+                                                          <option value="10">Totalmente logrado</option>
+                                                          <option value="8">Medianamente logrado</option>
+                                                          <option value="6">Parcialmente logrado</option>
+                                                          <option value="0">No logrado</option>
                                                         </select>
                                                         <div class="invalid-feedback">
                                                           Please select a valid state.
@@ -105,12 +115,17 @@
                                                     </td>
                                                     <td>
                                                       <div class="form-group">
+                                                        <textarea class="form-control" rows="1" name="justification2" placeholder="Justificacion"></textarea>
+                                                      </div>
+                                                    </td>
+                                                    <td>
+                                                      <div class="form-group">
                                                         <select class="custom-select" name="answer2" >
                                                         <option selected value="">Escoge uno...</option>
-                                                          <option value="Totalmente logrado">Totalmente logrado</option>
-                                                          <option value="Medianamente logrado">Medianamente logrado</option>
-                                                          <option value="Parcialmente logrado">Parcialmente logrado</option>
-                                                          <option value="No logrado">No logrado</option>
+                                                          <option value="10">Totalmente logrado</option>
+                                                          <option value="8">Medianamente logrado</option>
+                                                          <option value="6">Parcialmente logrado</option>
+                                                          <option value="0">No logrado</option>
                                                         </select>
                                                         <div class="invalid-feedback">
                                                           Please select a valid state.
@@ -136,12 +151,17 @@
                                                     </td>
                                                     <td>
                                                       <div class="form-group">
+                                                        <textarea class="form-control" rows="1" name="justification3" placeholder="Justificacion"></textarea>
+                                                      </div>
+                                                    </td>
+                                                    <td>
+                                                      <div class="form-group">
                                                         <select class="custom-select" name="answer3" >
                                                         <option selected value="">Escoge uno...</option>
-                                                          <option value="Totalmente logrado">Totalmente logrado</option>
-                                                          <option value="Medianamente logrado">Medianamente logrado</option>
-                                                          <option value="Parcialmente logrado">Parcialmente logrado</option>
-                                                          <option value="No logrado">No logrado</option>
+                                                          <option value="10">Totalmente logrado</option>
+                                                          <option value="8">Medianamente logrado</option>
+                                                          <option value="6">Parcialmente logrado</option>
+                                                          <option value="0">No logrado</option>
                                                         </select>
                                                         <div class="invalid-feedback">
                                                           Please select a valid state.
@@ -167,12 +187,17 @@
                                                     </td>
                                                     <td>
                                                       <div class="form-group">
+                                                        <textarea class="form-control" rows="1" name="justification4" placeholder="Justificacion"></textarea>
+                                                      </div>
+                                                    </td>
+                                                    <td>
+                                                      <div class="form-group">
                                                         <select class="custom-select" name="answer4" >
                                                           <option selected value="">Escoge uno...</option>
-                                                          <option value="Totalmente logrado">Totalmente logrado</option>
-                                                          <option value="Medianamente logrado">Medianamente logrado</option>
-                                                          <option value="Parcialmente logrado">Parcialmente logrado</option>
-                                                          <option value="No logrado">No logrado</option>
+                                                          <option value="10">Totalmente logrado</option>
+                                                          <option value="8">Medianamente logrado</option>
+                                                          <option value="6">Parcialmente logrado</option>
+                                                          <option value="0">No logrado</option>
                                                         </select>
                                                         <div class="invalid-feedback">
                                                           Please select a valid state.
@@ -198,12 +223,17 @@
                                                     </td>
                                                     <td>
                                                       <div class="form-group">
+                                                        <textarea class="form-control" rows="1" name="justification5" placeholder="Justificacion"></textarea>
+                                                      </div>
+                                                    </td>
+                                                    <td>
+                                                      <div class="form-group">
                                                         <select class="custom-select" name="answer5" >
                                                         <option selected value="">Escoge uno...</option>
-                                                          <option value="Totalmente logrado">Totalmente logrado</option>
-                                                          <option value="Medianamente logrado">Medianamente logrado</option>
-                                                          <option value="Parcialmente logrado">Parcialmente logrado</option>
-                                                          <option value="No logrado">No logrado</option>
+                                                          <option value="10">Totalmente logrado</option>
+                                                          <option value="8">Medianamente logrado</option>
+                                                          <option value="6">Parcialmente logrado</option>
+                                                          <option value="0">No logrado</option>
                                                         </select>
                                                         <div class="invalid-feedback">
                                                           Please select a valid state.
@@ -229,4 +259,7 @@
     </div>
 </div>
 
+@endsection
+@section('scriptsByPage')
+<script src="{{ asset('js/students.js') }}"></script>
 @endsection

@@ -80,9 +80,15 @@ Route::post( '/people/form/teacher', [App\Http\Controllers\PeopleController::cla
 
 Route::get( '/people/form/teacher/edit/{id}', [App\Http\Controllers\PeopleController::class, 'editTeacher'])->name( 'people.editTeacher' )->middleware('isAdmin');
 
+Route::get( '/users/create', [App\Http\Controllers\PeopleController::class, 'createPersonForm'])->name( 'people.createPersonForm' )->middleware('isAdmin');
+
+Route::post( '/users/create', [App\Http\Controllers\PeopleController::class, 'createUser'])->name( 'people.createUser' )->middleware('isAdmin');
+
 Route::put( '/people/form/teacher/edit/{id}', [App\Http\Controllers\PeopleController::class, 'updateTeacher'])->name( 'people.updateTeacher' )->middleware('isAdmin');
 
 Route::delete( '/people/form/teacher/delete/{id}', [App\Http\Controllers\PeopleController::class, 'destroyTeacher'])->name( 'people.deleteTeacher' )->middleware('isAdmin');
+
+Route::post( '/students/studentid', [App\Http\Controllers\PeopleController::class, 'getAllStudentsByCourseId'])->name( 'people.getStudents' );
 
 // Another Routes
 Route::get( '/other/form', [App\Http\Controllers\OtherController::class, 'form'])->name( 'other.form' )->middleware('isCoor');
@@ -128,6 +134,8 @@ Route::post( '/other/report/form', [App\Http\Controllers\OtherController::class,
 Route::get( '/other/reports', [App\Http\Controllers\OtherController::class, 'indexReports'])->name( 'reports.indexReports' )->middleware('isCoor');
 
 Route::get( '/other/reports/edit/{id}', [App\Http\Controllers\OtherController::class, 'editReport'])->name( 'reports.editReport' )->middleware('isCoor');
+
+Route::get( '/other/student/{id}/grades', [App\Http\Controllers\OtherController::class, 'gradesByStudents'])->name( 'grades.gradesByStudent' )->middleware('isCoor');
 
 Route::put( '/other/reports/update/{id}', [App\Http\Controllers\OtherController::class, 'updateReport'])->name( 'reports.updateReport' )->middleware('isCoor');
 
