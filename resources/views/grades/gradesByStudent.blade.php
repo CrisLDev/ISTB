@@ -58,7 +58,11 @@
         <p>{{$activitiesTotal->links()}}</p>
     </div>
 @else
-    <div>noHay nada</div>
+    <div class="card">
+        <div class="card-body text-center">
+            No hay actividades registradas.
+        </div>
+    </div>
 @endif
 
 @endsection

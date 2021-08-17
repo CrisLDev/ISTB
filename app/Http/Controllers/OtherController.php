@@ -76,7 +76,11 @@ class OtherController extends Controller
             return $carry;
         }
         $allSumNote = array_sum($ids);
-        $finalNote = $allSumNote / count($ids);
+        if(count($ids) > 0){
+            $finalNote = $allSumNote / count($ids);
+        }else{
+            $finalNote = 0;
+        }
         return view('grades.gradesByStudent', compact('activitiesTotal', 'allSumNote', 'finalNote'));
     }
 
