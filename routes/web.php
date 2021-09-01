@@ -135,7 +135,7 @@ Route::get( '/other/reports', [App\Http\Controllers\OtherController::class, 'ind
 
 Route::get( '/other/reports/edit/{id}', [App\Http\Controllers\OtherController::class, 'editReport'])->name( 'reports.editReport' )->middleware('isCoor');
 
-Route::get( '/other/student/{id}/grades', [App\Http\Controllers\OtherController::class, 'gradesByStudents'])->name( 'grades.gradesByStudent' )->middleware('isCoor');
+Route::get( '/other/student/{id}/grades', [App\Http\Controllers\OtherController::class, 'gradesByStudents'])->name( 'grades.gradesByStudent' );
 
 Route::put( '/other/reports/update/{id}', [App\Http\Controllers\OtherController::class, 'updateReport'])->name( 'reports.updateReport' )->middleware('isCoor');
 
@@ -177,7 +177,7 @@ Route::delete( '/other/dailyactivity/delete/{id}', [App\Http\Controllers\OtherCo
 
 Route::post('/other/assitance/{id}', [App\Http\Controllers\AssistanceController::class, 'store'])->name( 'assitance.create' )->middleware('isCoor');
 
-Route::get('/other/assitance/{id}', [App\Http\Controllers\AssistanceController::class, 'index'])->name( 'assitance.index' )->middleware('isCoor');
+Route::get('/other/assitance/{id}', [App\Http\Controllers\AssistanceController::class, 'index'])->name( 'assitance.index' );
 
 Route::get('/other/assitance/edit/{id}', [App\Http\Controllers\AssistanceController::class, 'show'])->name( 'assitance.show' )->middleware('isCoor');
 

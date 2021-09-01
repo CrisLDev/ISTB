@@ -31,7 +31,7 @@
                 <span class="ml-2">{{$item->dailyActivityCheck ? $item->dailyActivityCheck : 'N/A'}}</span>
             </div>
             <div class="d-flex align-items-baseline">
-                <h5 class="font-weight-bold">Justificación: </h5>
+                <h5 class="font-weight-bold">Observación: </h5>
                 <span class="ml-2">{{$item->dailyActivityJustification ? $item->dailyActivityJustification : 'N/A'}}</span>
             </div>
         </div>

@@ -80,10 +80,9 @@ class UserController extends Controller
 
         $reports = Reports::where('student_id', '=', $student->id)
                         ->join('users', 'reports.user_id', '=', 'users.id')
-                        ->join('activities', 'reports.Activity_id', '=', 'activities.id')
                         ->join('courses', 'reports.course_id', '=', 'courses.id')
                         ->join('teachers', 'reports.teacher_id', '=', 'teachers.id')
-                        ->select('reports.*', 'users.name as userName', 'users.email as userEmail', 'activities.activityName as activityName', 'teachers.fullname as teacherFullname', 'courses.courseName', 'reports.course_id', 'teachers.fullname as teacherFullname')
+                        ->select('reports.*', 'users.name as userName', 'users.email as userEmail', 'teachers.fullname as teacherFullname', 'courses.courseName', 'reports.course_id', 'teachers.fullname as teacherFullname')
                         ->paginate(1, ['*'], 'reports');
 
                         $assistances = Assistance::where('student_id', $student->id)->where('justification', '!=', null)->count();

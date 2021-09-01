@@ -21,7 +21,12 @@
                         @endif
                     </div>
                     <div>
-                        <p class="font-weight-bold">Faltas: <span class="badge badge-primary">{{$assistances}}</span></p>
+                        <a href="{{ route('assitance.index', $student->id) }}" style="text-decoration: none">
+                            <p class="font-weight-bold">Faltas: <span class="badge badge-primary">{{$assistances}}</span> <span class="text-muted">(Click aquí para ver todo.)</span></p>
+                        </a>
+                        <div class="d-flex justify-content-end">
+                            <a class="btn btn-primary" href="{{ route('grades.gradesByStudent', $student->id) }}" style="text-decoration: none">Notas</a>
+                        </div>
                         <p class="font-weight-bold">Nombre completo:</p>
                         <p>{{$student->fullname}}</p>
                         <p class="font-weight-bold">Número de teléfono:</p>

@@ -18,6 +18,7 @@
                                 <div class="card card-body">
                                     <p>{{$item->justification}}</p>
                                     <p class="font-weight-bold">{{$item->day}}</p>
+                                    @if (Auth::user()->role === "admin" || Auth::user()->role === "coor")
                                     <div>
                                         <a href="{{route('assitance.show', $item->student_id)}}" class="btn btn-dark">Editar</a>
                                         <form action="{{route('assitance.delete', $item->id)}}" method="POST" class="d-inline">
@@ -28,6 +29,7 @@
                                             </button>
                                         </form>
                                     </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
