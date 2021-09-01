@@ -75,6 +75,9 @@
                         <li>
                             <a href="{{ route('grades.index') }}">Calificaciones</a>
                         </li>
+                        <li>
+                            <a href="{{ route('reports.index') }}">Reportes</a>
+                        </li>
                     </ul>
                     <a href="#allSubmenu" data-toggle="collapse" aria-expanded="false">Ver</a>
                     <ul class="collapse list-unstyled" id="allSubmenu">
@@ -97,6 +100,9 @@
                         </li>
                         <li>
                             <a href="{{ route('records.indexRecords') }}">Fichas</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('reports.indexReports') }}">Reportes</a>
                         </li>
                     </ul>
                 </li>

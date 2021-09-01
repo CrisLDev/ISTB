@@ -47,13 +47,11 @@
                                             </div>
                                             <div class="mb-3">
                                                 <h4>Cotenido</h4>
-                                                <p>{{$report->resume}}</p>
                                                 <span>{{$report->content}}</span>
                                             </div>
                                             <div class="mb-3">
-                                                <h4>Curso y actividad</h4>
+                                                <h4>Curso</h4>
                                                 <span>{{$report->courseName}}</span>
-                                                <span>{{$report->activityName}}</span>
                                             </div>
                                         </div>
         

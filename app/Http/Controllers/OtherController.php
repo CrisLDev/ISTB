@@ -225,11 +225,10 @@ class OtherController extends Controller
         $content = $request->get('content');
         $resume = $request->get('resume');
         $reports = Reports::join('users', 'reports.user_id', '=', 'users.id')
-                            ->join('activities', 'reports.Activity_id', '=', 'activities.id')
                             ->join('courses', 'reports.course_id', '=', 'courses.id')
                             ->join('teachers', 'reports.teacher_id', '=', 'teachers.id')
                             ->join('students', 'reports.student_id', '=', 'students.id')
-                            ->select('reports.*', 'reports.resume', 'reports.content', 'teachers.fullname as tFullname', 'students.fullname as sFullname', 'courses.courseName', 'activities.activityName')
+                            ->select('reports.*', 'reports.resume', 'reports.content', 'teachers.fullname as tFullname', 'students.fullname as sFullname', 'courses.courseName')
                             ->content($content)
                             ->resume($resume)
                             ->where('reports.user_id', auth()->user()->id)
@@ -239,11 +238,10 @@ class OtherController extends Controller
             $content = $request->get('content');
         $resume = $request->get('resume');
         $reports = Reports::join('users', 'reports.user_id', '=', 'users.id')
-                            ->join('activities', 'reports.Activity_id', '=', 'activities.id')
                             ->join('courses', 'reports.course_id', '=', 'courses.id')
                             ->join('teachers', 'reports.teacher_id', '=', 'teachers.id')
                             ->join('students', 'reports.student_id', '=', 'students.id')
-                            ->select('reports.*', 'reports.resume', 'reports.content', 'teachers.fullname as tFullname', 'students.fullname as sFullname', 'courses.courseName', 'activities.activityName')
+                            ->select('reports.*', 'reports.resume', 'reports.content', 'teachers.fullname as tFullname', 'students.fullname as sFullname', 'courses.courseName')
                             ->content($content)
                             ->resume($resume)
                             ->paginate(5);
@@ -380,7 +378,6 @@ class OtherController extends Controller
             'course_id' => 'required',
             'student_id' => 'required',
             'teacher_id' => 'required',
-            'Activity_id' => 'required',
             'content' => 'required',
         ];
         $niceNames = [
@@ -388,7 +385,6 @@ class OtherController extends Controller
             'course_id' => 'curso',
             'student_id' => 'estudiante',
             'teacher_id' => 'docente',
-            'Activity_id' => 'id de la actividad',
             'content' => 'contenido',
         ]; 
         $this->validate($request, $rules, [], $niceNames);
@@ -397,7 +393,6 @@ class OtherController extends Controller
         $data->course_id = $request->course_id;
         $data->student_id = $request->student_id;
         $data->teacher_id = $request->teacher_id;
-        $data->Activity_id = $request->Activity_id;
         $data->content = $request->content;
         $data->save();
         return back()->with('message', 'Reporte agregado con éxito.');
@@ -539,10 +534,9 @@ class OtherController extends Controller
 
         $reports = Reports::where('student_id', '=', $id)
                         ->join('users', 'reports.user_id', '=', 'users.id')
-                        ->join('activities', 'reports.Activity_id', '=', 'activities.id')
                         ->join('courses', 'reports.course_id', '=', 'courses.id')
                         ->join('teachers', 'reports.teacher_id', '=', 'teachers.id')
-                        ->select('reports.*', 'users.name as userName', 'users.email as userEmail', 'activities.activityName as activityName', 'teachers.fullname as teacherFullname', 'courses.courseName', 'reports.course_id', 'teachers.fullname as teacherFullname')
+                        ->select('reports.*', 'users.name as userName', 'users.email as userEmail', 'teachers.fullname as teacherFullname', 'courses.courseName', 'reports.course_id', 'teachers.fullname as teacherFullname')
                         ->paginate(1, ['*'], 'reports');
 
         $dailyActivities = DailyActivity::where('student_id', $id)->paginate(5, ['*'], 'dactivities');
@@ -755,7 +749,6 @@ class OtherController extends Controller
             'course_id' => 'required',
             'student_id' => 'required',
             'teacher_id' => 'required',
-            'activity_id' => 'required',
             'content' => 'required',
         ];
         $niceNames = [
@@ -763,7 +756,6 @@ class OtherController extends Controller
             'course_id' => 'curso',
             'student_id' => 'estudiante',
             'teacher_id' => 'docente',
-            'activity_id' => 'id de la actividad',
             'content' => 'contenido',
         ]; 
         $this->validate($request, $rules, [], $niceNames);
@@ -772,7 +764,6 @@ class OtherController extends Controller
             $data->course_id = $request->course_id;
             $data->student_id = $request->student_id;
             $data->teacher_id = $request->teacher_id;
-            $data->activity_id = $request->activity_id;
             $data->content = $request->content;
             $data->save();
             return back()->with('message', 'Reporte editado con éxito.');
@@ -789,7 +780,6 @@ class OtherController extends Controller
         'course_id' => 'required',
         'student_id' => 'required',
         'teacher_id' => 'required',
-        'activity_id' => 'required',
         'content' => 'required',
     ];
     $niceNames = [
@@ -797,7 +787,6 @@ class OtherController extends Controller
         'course_id' => 'curso',
         'student_id' => 'estudiante',
         'teacher_id' => 'docente',
-        'activity_id' => 'id de la actividad',
         'content' => 'contenido',
     ]; 
     $this->validate($request, $rules, [], $niceNames);
@@ -806,7 +795,6 @@ class OtherController extends Controller
         $data->course_id = $request->course_id;
         $data->student_id = $request->student_id;
         $data->teacher_id = $request->teacher_id;
-        $data->activity_id = $request->activity_id;
         $data->content = $request->content;
         $data->save();
         return back()->with('message', 'Reporte editado con éxito.');

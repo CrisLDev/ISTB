@@ -7,7 +7,7 @@
         <div class="col-xl-12 mb-3">
             <div class="card">
                 <div class="card-header bg-white text-center mb-3 pt-4">
-                     <h3>Crear reporte de actividad</h3>
+                     <h3>Crear reporte de coducta</h3>
                 </div>
                 <div class="card-body">
                     <form onsubmit="disable()" method="POST" enctype="multipart/form-data" action="{{ route('other.storeReport') }}">
@@ -41,39 +41,21 @@
                                         @endforeach
                                         </select>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="inputState">Estudiante</label>
-                                        <select id="inputState" class="form-control" name="student_id">
-                                        @if (count($students) === 0)
+                                        <div class="form-group">
+                                          <label for="course">Curso</label>
+                                          <select id="course" class="form-control" name="course_id">
+                                              <option value="">Elegir curso</option>
+                                          @foreach ($courses as $course)
+                                            <option value="{{$course->id}}">{{$course->courseName}}</option>
+                                          @endforeach
+                                          </select>
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="students">Estudiante</label>
+                                        <select id="students" class="form-control" name="student_id">
                                             <option value="">No hay estudiantes</option>
-                                        @endif
-                                        @foreach ($students as $student)
-                                          <option value="{{$student->id}}">{{$student->fullname}}</option>
-                                        @endforeach
                                         </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputState">Cursos</label>
-                                        <select id="inputState" class="form-control" name="course_id">
-                                        @if (count($courses) === 0)
-                                            <option value="">No hay cursos</option>
-                                        @endif
-                                        @foreach ($courses as $course)
-                                          <option value="{{$course->id}}">{{$course->courseName}}</option>
-                                        @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputState">Actividades</label>
-                                        <select id="inputState" class="form-control" name="activity_id">
-                                        @if (count($activities) === 0)
-                                            <option>No hay actividades</option>
-                                        @endif
-                                        @foreach ($activities as $activity)
-                                          <option value="{{$activity->id}}">{{$activity->activityName}}</option>
-                                        @endforeach
-                                        </select>
-                                    </div>
+                                      </div>
                                     <div class="form-group">
                                         <label for="reportTextarea">Cotenido</label>
                                         <textarea class="form-control" id="reportTextarea" rows="3" name="content" placeholder="Ingresa el contenido" required>{{old('content')}}</textarea>
@@ -92,4 +74,7 @@
     </div>
 </div>
 
+@endsection
+@section('scriptsByPage')
+<script src="{{ asset('js/students.js') }}"></script>
 @endsection

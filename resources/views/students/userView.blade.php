@@ -144,7 +144,6 @@
                         @endif
                         
                     </div>
-                    <!--
                     <div class="mt-5">
                         @if (count($reports) !== 0)
                             @foreach ($reports as $item)
@@ -160,8 +159,6 @@
                                     <div id="collapseR{{$item->course_id}}" class="collapse show" aria-labelledby="headingR{{$item->course_id}}" data-parent="#accordionGrades">
                                         <div class="card-body">
                                                 <div class="container-fluid border shadow pt-3 pb-3">
-                                                    <p class="font-weight-bold">Nombre de la materia:</p>
-                                                    <p>{{$item->activityName}}</p>
                                                     <p class="font-weight-bold">Contenido:</p>
                                                     <p>{{$item->content}}</p>
                                                     <p class="font-weight-bold">Nombre del docente:</p>
@@ -194,7 +191,6 @@
                         <div class="container pt-3 d-flex justify-content-center">
                             {{$reports->links()}}
                     </div>
-                    -->
                     <div class="mt-5">
                         @if (count($dailyActivities) !== 0)
                             @foreach ($dailyActivities as $item)
