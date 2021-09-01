@@ -13,6 +13,11 @@
                     <form onsubmit="disable()" method="POST" enctype="multipart/form-data" action="{{ route('grades.storeGrades') }}">
                         @csrf
                             <div class="row">
+                              <div class="col-md-12">
+                                <div class="form-group">
+                                  <label for="date">Fecha</label>
+                                  <input type="datetime-local" id="date" class="form-control" name="date" required>
+                              </div>
                                 <div class="col-md-12">
                                   <div class="form-group">
                                     <label for="course">Curso</label>
@@ -56,7 +61,7 @@
                                                     <th scope="col">Número</th>
                                                     <th scope="col">Actividad General</th>
                                                     <th scope="col">Actividad Diaria</th>
-                                                    <th scope="col">Justificación</th>
+                                                    <th scope="col">Observación</th>
                                                     <th scope="col">Cumplido</th>
                                                   </tr>
                                                 </thead>
@@ -79,7 +84,7 @@
                                                     </td>
                                                     <td>
                                                       <div class="form-group">
-                                                        <textarea class="form-control" rows="1" name="justification1" placeholder="Justificacion"></textarea>
+                                                        <textarea class="form-control" rows="1" name="justification1" placeholder="Observación"></textarea>
                                                       </div>
                                                     </td>
                                                     <td>
@@ -115,7 +120,7 @@
                                                     </td>
                                                     <td>
                                                       <div class="form-group">
-                                                        <textarea class="form-control" rows="1" name="justification2" placeholder="Justificacion"></textarea>
+                                                        <textarea class="form-control" rows="1" name="justification2" placeholder="Observación"></textarea>
                                                       </div>
                                                     </td>
                                                     <td>
@@ -151,7 +156,7 @@
                                                     </td>
                                                     <td>
                                                       <div class="form-group">
-                                                        <textarea class="form-control" rows="1" name="justification3" placeholder="Justificacion"></textarea>
+                                                        <textarea class="form-control" rows="1" name="justification3" placeholder="Observación"></textarea>
                                                       </div>
                                                     </td>
                                                     <td>
@@ -187,7 +192,7 @@
                                                     </td>
                                                     <td>
                                                       <div class="form-group">
-                                                        <textarea class="form-control" rows="1" name="justification4" placeholder="Justificacion"></textarea>
+                                                        <textarea class="form-control" rows="1" name="justification4" placeholder="Observación"></textarea>
                                                       </div>
                                                     </td>
                                                     <td>
@@ -223,7 +228,7 @@
                                                     </td>
                                                     <td>
                                                       <div class="form-group">
-                                                        <textarea class="form-control" rows="1" name="justification5" placeholder="Justificacion"></textarea>
+                                                        <textarea class="form-control" rows="1" name="justification5" placeholder="Observación"></textarea>
                                                       </div>
                                                     </td>
                                                     <td>
