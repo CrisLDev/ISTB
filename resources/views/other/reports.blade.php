@@ -15,6 +15,11 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
+                                      <label for="date">Fecha</label>
+                                      <input type="datetime-local" id="date" class="form-control" name="date" required>
+                                  </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
                                         <label>Resumen del reporte:</label>
                                         <input
                                         type="text"

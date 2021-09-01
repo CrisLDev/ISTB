@@ -379,6 +379,7 @@ class OtherController extends Controller
             'student_id' => 'required',
             'teacher_id' => 'required',
             'content' => 'required',
+            'date' => 'required',
         ];
         $niceNames = [
             'resume' => 'resumen',
@@ -386,6 +387,7 @@ class OtherController extends Controller
             'student_id' => 'estudiante',
             'teacher_id' => 'docente',
             'content' => 'contenido',
+            'date' => 'fecha',
         ]; 
         $this->validate($request, $rules, [], $niceNames);
         $data->resume = $request->resume;
@@ -394,6 +396,7 @@ class OtherController extends Controller
         $data->student_id = $request->student_id;
         $data->teacher_id = $request->teacher_id;
         $data->content = $request->content;
+        $data->created_at = $request->date;
         $data->save();
         return back()->with('message', 'Reporte agregado con éxito.');
     }
