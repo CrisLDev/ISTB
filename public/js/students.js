@@ -14,7 +14,6 @@ $(function () {
             var select = document.getElementById('students');
             document.getElementById('students').innerHTML = "";
             a.forEach(element => {
-                console.log(element)
                 $(select).append('<option value=' + element.id + '>' + element.fullname + '</option>');
             });
             }

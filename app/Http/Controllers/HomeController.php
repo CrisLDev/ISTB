@@ -156,12 +156,113 @@ class HomeController extends Controller
         return view('table', compact('students', 'assistancesSearch', 'activitiesSearch','reFinalActivitiesSearch', 'reFinalAssistancesSearch', 'date'));
     }
 
+    public function moduleTableControllerStudent($student_id, $date)
+    {
+        $students = Student::where('id', $student_id)->get();
+        $ids = array();
+        $dasid = array();
+        $asid = array();
+        $idsNoContainActivities = array();
+        $idsNoContainAssistances = array();
+        $assistancesSearch = array();
+        $activitiesSearch = array();
+        $finalActivitiesSearch = array();
+        $finalAssistancesSearch = array();
+        foreach($students as $student)
+        {
+            $ids[] = $student->id;
+        };
+        foreach($ids as $id){
+            $assistances = Assistance::where('student_id', $id)->whereDate('day', $date)->get();
+            foreach($assistances as $assistance){
+                array_push($assistancesSearch, $assistance);
+                $asid[] = $assistance->student_id;
+            }
+            $activities = DailyActivity::where('student_id', $id)->whereDate('created_at', $date)->get();
+            foreach($activities as $activity){
+                array_push($activitiesSearch, $activity);
+                $dasid[] = $activity->student_id;
+            }
+        }
+
+        if(count($activitiesSearch) <= 0){
+            return redirect(route('home'))->withInput()->with('userErrors', 'No hay contenido para mostrar');
+        }
+
+        $idsNoContainActivities = array_diff($ids, $dasid);
+
+        $idsNoContainAssistances = array_diff($ids, $asid);
+
+        foreach($activitiesSearch as $activi){
+            $toPush = array(
+                "id" => $activi->id,
+                "activity_id" => $activi->activity_id,
+                "grade_id" => $activi->grade_id,
+                "student_id" => $activi->student_id,
+                "dailyActivityCheck" => $activi->dailyActivityCheck,
+                "dailyActivityText" => $activi->dailyActivityText,
+                "created_at" => $activi->created_at,
+                "updated_at" => $activi->updated_at,
+            );
+            array_push($finalActivitiesSearch, $toPush);
+        }
+
+        foreach($assistancesSearch as $assistan){
+            $toPusha = array(
+                "id" => $assistan->id,
+                "student_id" => $assistan->student_id,
+                "day" => $assistan->day,
+                "justification" => $assistan->justification,
+                "created_at" => $assistan->created_at,
+                "updated_at" => $assistan->updated_at,
+            );
+            array_push($finalAssistancesSearch, $toPusha);
+        }
+
+        foreach($idsNoContainActivities as $noIds){
+            $toArray = array(
+                "id" => 1,
+                "activity_id" => "N/A",
+                "grade_id" => 5,
+                "student_id" => $noIds,
+                "dailyActivityCheck" => "N/A",
+                "dailyActivityText" => "N/A",
+                "created_at" => "N/A",
+                "updated_at" => "N/A");
+            array_push($finalActivitiesSearch, $toArray);
+            array_push($finalActivitiesSearch, $toArray);
+            array_push($finalActivitiesSearch, $toArray);
+            array_push($finalActivitiesSearch, $toArray);
+            array_push($finalActivitiesSearch, $toArray);
+        }
+
+        foreach($idsNoContainAssistances as $noAids){
+            $toArraya = array(
+                "id" => 1,
+                "student_id" => $noAids,
+                "day" => '2021/04/21',
+                "justification" => '',
+                "created_at" => "N/A",
+                "updated_at" => "N/A");
+            array_push($finalAssistancesSearch, $toArraya);
+        }
+
+        $reFinalActivitiesSearch = json_decode(json_encode($finalActivitiesSearch));
+
+        $reFinalAssistancesSearch = json_decode(json_encode($finalAssistancesSearch));
+
+        return view('tableStudent', compact('students', 'assistancesSearch', 'activitiesSearch','reFinalActivitiesSearch', 'reFinalAssistancesSearch', 'date'));
+    }
+
     public function selectDateView(Request $request)
     {
         $course_id = $request->course_id;
         $activities = DailyActivity::where('course_id', $request->course_id)->whereDate('created_at', '>', $request->dateStart)->whereDate('created_at', '<', $request->dateEnd)->get();
         $activitForCheck;
         $activitiesArray = array();
+        if(count($activities) <= 0){
+            return redirect(route('home'))->withInput()->with('userErrors', 'No hay contenido para mostrar');
+        }
         foreach($activities as $activity)
         $activitForCheck = $activity->id;
         {
@@ -170,5 +271,24 @@ class HomeController extends Controller
             }
         };
         return view('datesView', compact('activitiesArray', 'course_id'));
+    }
+
+    public function selectDateViewStudents(Request $request)
+    {
+        $student_id = $request->student_id;
+        $activities = DailyActivity::where('student_id', $request->student_id)->whereDate('created_at', '>', $request->dateStart)->whereDate('created_at', '<', $request->dateEnd)->get();
+        $activitForCheck;
+        $activitiesArray = array();
+        if(count($activities) <= 0){
+            return redirect(route('home'))->withInput()->with('userErrors', 'No hay contenido para mostrar');
+        }
+        foreach($activities as $activity)
+        $activitForCheck = $activity->id;
+        {
+            if($activitForCheck === $activity->id){
+                $activitiesArray[] = $activity;
+            }
+        };
+        return view('datesViewStudents', compact('activitiesArray', 'student_id'));
     }
 }

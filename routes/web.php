@@ -187,10 +187,13 @@ Route::put('/other/assitance/{id}', [App\Http\Controllers\AssistanceController::
 
 // Module for see the table with all students in course
 Route::get( '/table/{course_id}/{date}', [App\Http\Controllers\HomeController::class, 'moduleTableController'])->name( 'module.index' );
+Route::get( '/table/student/{student_id}/{date}', [App\Http\Controllers\HomeController::class, 'moduleTableControllerStudent'])->name( 'module.indexStudent' );
 
 Route::post('/table', [App\Http\Controllers\HomeController::class, 'moduleController'])->name( 'module.redir' );
 
 Route::post('/dates', [App\Http\Controllers\HomeController::class, 'selectDateView'])->name( 'module.dates' );
+
+Route::post('/datesstudents', [App\Http\Controllers\HomeController::class, 'selectDateViewStudents'])->name( 'module.datesstudents' );
 
 // PDFS
 Route::get('/pdfstudents', [App\Http\Controllers\PDFController::class, 'students'])->name( 'pdfs.students' );
