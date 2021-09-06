@@ -150,11 +150,11 @@
                                                             <p class="font-weight-bold">Asma:</p>
                                                             <p>{{ $item->asthma }}</p>
                                                             <!--<p class="font-weight-bold">Malformaciones:</p>
-                                                                    @if ($item->malformation !== null)
-                                                                    <p>{{ $item->malformation }}</p>
+                                                                        @if ($item->malformation !== null)
+                                                                        <p>{{ $item->malformation }}</p>
                                                     @else
-                                                                    <p>N/A</p>
-                                                                    @endif-->
+                                                                        <p>N/A</p>
+                                                                        @endif-->
                                                             <p class="font-weight-bold">Lentes:</p>
                                                             <p>{{ $item->glasses }}</p>
                                                             <p class="font-weight-bold">Observaciones:</p>
@@ -192,34 +192,32 @@
 
                         </div>
                         <div class="mt-5">
-                            <div class="accordion" id="accordionGrades">
-                                <div class="card mb-4">
-                                    <div class="card-header bg-white" id="headingR">
-                                        <h2 class="mb-0">
-                                            <button class="btn btn-block text-left" type="button" data-toggle="collapse"
-                                                data-target="#collapseR" aria-expanded="true"
-                                                aria-controls="collapseR">
-                                                <h3 class="mb-0">Reportes
-                                            </button>
-                                        </h2>
-                                    </div>
-                                    <div id="collapseR" class="collapse show"
-                                        aria-labelledby="headingR" data-parent="#accordionGrades">
-                                        <div class="card-body">
-                                            <div class="container-fluid border shadow p-3">
-                                                <div class="table-responsive">
-                                                    <table class="table table-striped">
-                                                        <thead>
-                                                            <tr>
-                                                                <th scope="col">Contenido</th>
-                                                                <th scope="col">Nombre del docente</th>
-                                                                <th scope="col">Fecha de creación</th>
-                                                                <th scope="col">Acciones</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-
-                                                            @if (count($reports) !== 0)
+                            @if (count($reports) !== 0)
+                                <div class="accordion" id="accordionGrades">
+                                    <div class="card mb-4">
+                                        <div class="card-header bg-white" id="headingR">
+                                            <h2 class="mb-0">
+                                                <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                    data-target="#collapseR" aria-expanded="true" aria-controls="collapseR">
+                                                    <h3 class="mb-0">Reportes
+                                                </button>
+                                            </h2>
+                                        </div>
+                                        <div id="collapseR" class="collapse show" aria-labelledby="headingR"
+                                            data-parent="#accordionGrades">
+                                            <div class="card-body">
+                                                <div class="container-fluid border shadow p-3">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-striped">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th scope="col">Contenido</th>
+                                                                    <th scope="col">Nombre del docente</th>
+                                                                    <th scope="col">Fecha de creación</th>
+                                                                    <th scope="col">Acciones</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
                                                                 @foreach ($reports as $item)
                                                                     <tr>
                                                                         <td>{{ $item->content }}</td>
@@ -245,20 +243,22 @@
                                                                         </td>
                                                                     </tr>
                                                                 @endforeach
-                                                        </tbody>
-                                                    </table>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        @else
-                            <div class="container">
-                                <div class="font-weight-bold">No hay reportes</div>
-                            </div>
+                            @else
+                                <div class="container">
+                                    <div class="font-weight-bold">No hay reportes</div>
+                                </div>
                             @endif
-                            <div class="mt-5">
+                        </div>
+                        <div class="mt-5">
+                            @if (count($dailyActivities) !== 0)
                                 <div class="accordion" id="accordionGrades">
                                     <div class="card mb-4">
                                         <div class="card-header bg-white">
@@ -266,8 +266,8 @@
                                                 Actividad
                                             </h2>
                                         </div>
-                                        <div id="collapseA" class="collapse show"
-                                            aria-labelledby="headingA" data-parent="#accordionGrades">
+                                        <div id="collapseA" class="collapse show" aria-labelledby="headingA"
+                                            data-parent="#accordionGrades">
                                             <div class="card-body">
                                                 <div class="container-fluid border shadow pt-3 pb-3">
                                                     <div class="table-responsive">
@@ -282,61 +282,57 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
+                                                                @foreach ($dailyActivities as $item)
+                                                                    <tr>
+                                                                        <td>
+                                                                            @if ($item->activity_id)
+                                                                                {{ $item->activity_id }}
+                                                                            @else
+                                                                                N/A
+                                                                            @endif
+                                                                        </td>
+                                                                        <td>
+                                                                            @if ($item->dailyActivityText)
+                                                                                {{ $item->dailyActivityText }}
+                                                                            @else
+                                                                                N/A
+                                                                            @endif
+                                                                        </td>
+                                                                        <td>
+                                                                            @if ($item->dailyActivityCheck)
+                                                                                {{ $item->dailyActivityCheck }}
+                                                                            @else
+                                                                                N/A
+                                                                            @endif
+                                                                        </td>
+                                                                        <td>
+                                                                            @if ($item->created_at)
+                                                                                {{ $item->created_at->format('d-m-Y') }}
+                                                                            @else
+                                                                                N/A
+                                                                            @endif
+                                                                        </td>
+                                                                        <td>
 
+                                                                            <div class="text-center">
+                                                                                <a class="btn btn-dark"
+                                                                                    href="{{ route('dactivities.editDaily', $item->id) }}">editar</a>
 
-                                                                @if (count($dailyActivities) !== 0)
-                                                                    @foreach ($dailyActivities as $item)
-                                                                        <tr>
-                                                                            <td>
-                                                                                @if ($item->activity_id)
-                                                                                    {{ $item->activity_id }}
-                                                                                @else
-                                                                                    N/A
-                                                                                @endif
-                                                                            </td>
-                                                                            <td>
-                                                                                @if ($item->dailyActivityText)
-                                                                                    {{ $item->dailyActivityText }}
-                                                                                @else
-                                                                                    N/A
-                                                                                @endif
-                                                                            </td>
-                                                                            <td>
-                                                                                @if ($item->dailyActivityCheck)
-                                                                                    {{ $item->dailyActivityCheck }}
-                                                                                @else
-                                                                                    N/A
-                                                                                @endif
-                                                                            </td>
-                                                                            <td>
-                                                                                @if ($item->created_at)
-                                                                                    {{ $item->created_at->format('d-m-Y') }}
-                                                                                @else
-                                                                                    N/A
-                                                                                @endif
-                                                                            </td>
-                                                                            <td>
+                                                                                <form
+                                                                                    action="{{ route('dactivities.destroyDaily', $item->id) }}"
+                                                                                    method="POST" class="d-inline">
+                                                                                    @method('DELETE')
+                                                                                    @csrf
+                                                                                    <button class="btn btn-danger"
+                                                                                        type="submit">
+                                                                                        Eliminar
+                                                                                    </button>
+                                                                                </form>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
 
-                                                                                <div class="text-center">
-                                                                                    <a class="btn btn-dark"
-                                                                                        href="{{ route('dactivities.editDaily', $item->id) }}">editar</a>
-
-                                                                                    <form
-                                                                                        action="{{ route('dactivities.destroyDaily', $item->id) }}"
-                                                                                        method="POST"
-                                                                                        class="d-inline">
-                                                                                        @method('DELETE')
-                                                                                        @csrf
-                                                                                        <button class="btn btn-danger"
-                                                                                            type="submit">
-                                                                                            Eliminar
-                                                                                        </button>
-                                                                                    </form>
-                                                                                </div>
-                                                                            </td>
-                                                                        </tr>
-
-                                                                    @endforeach
+                                                                @endforeach
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -349,11 +345,11 @@
                                 <div class="container">
                                     <div class="font-weight-bold">No hay actividades diarias</div>
                                 </div>
-                                @endif
-                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-        @endsection
+    @endsection
