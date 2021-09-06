@@ -42,7 +42,7 @@ class OtherController extends Controller
         ->paginate(5);
         $courses = Course::orderBy('id', 'desc')
         ->courseName($courseName)
-        ->paginate(5);
+        ->get();
         return view('other.index', compact('activities', 'courses'));
     }
 
@@ -540,7 +540,7 @@ class OtherController extends Controller
                         ->join('courses', 'reports.course_id', '=', 'courses.id')
                         ->join('teachers', 'reports.teacher_id', '=', 'teachers.id')
                         ->select('reports.*', 'users.name as userName', 'users.email as userEmail', 'teachers.fullname as teacherFullname', 'courses.courseName', 'reports.course_id', 'teachers.fullname as teacherFullname')
-                        ->paginate(1, ['*'], 'reports');
+                        ->get();
 
         $dailyActivities = DailyActivity::where('student_id', $id)->paginate(5, ['*'], 'dactivities');
 

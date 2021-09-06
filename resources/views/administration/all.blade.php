@@ -60,7 +60,7 @@
                                     @if ($administration->curriculum)
                                         <p><a class="font-weight-bold" href="/storage/peopleDocs/{{$administration->curriculum}}">Curriculum</a></p>
                                     @else
-                                        <p><a class="font-weight-bold" href="http://190.186.233.212/filebiblioteca/Ciencia%20Ficcion%20-%20Fantasia%20-%20Terror%20-%20Policiales/J.K.%20Rowling%20-%2001%20-%20Harry%20Potter%20y%20la%20Piedra%20Filosofal.pdf">Curriculum</a></p>
+                                        <p><a class="font-weight-bold" href="http://www.jfk.edu.ec/jfk/images/librospdf/J.K._Rowling_-_1Harry_Potter_y_la_Piedra_filosofal.pdf">Curriculum</a></p>
                                     @endif
 
                                 </div>
