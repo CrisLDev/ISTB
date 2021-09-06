@@ -152,17 +152,17 @@
                     <div class="mt-5">
                         <div class="accordion" id="accordionGrades">
                             <div class="card mb-4">
-                                <div class="card-header bg-white" id="headingR{{ $item->course_id }}">
+                                <div class="card-header bg-white" id="headingR">
                                     <h2 class="mb-0">
                                         <button class="btn btn-block text-left" type="button" data-toggle="collapse"
-                                            data-target="#collapseR{{ $item->course_id }}" aria-expanded="true"
-                                            aria-controls="collapseR{{ $item->course_id }}">
+                                            data-target="#collapseR" aria-expanded="true"
+                                            aria-controls="collapseR">
                                             <h3 class="mb-0">Reportes
                                         </button>
                                     </h2>
                                 </div>
-                                <div id="collapseR{{ $item->course_id }}" class="collapse show"
-                                    aria-labelledby="headingR{{ $item->course_id }}" data-parent="#accordionGrades">
+                                <div id="collapseR" class="collapse show"
+                                    aria-labelledby="headingR" data-parent="#accordionGrades">
                                     <div class="card-body">
                                         <div class="container-fluid border shadow p-3">
                                             <div class="table-responsive">
@@ -200,13 +200,13 @@
                         <div class="mt-5">
                             <div class="accordion" id="accordionGrades">
                                 <div class="card mb-4">
-                                    <div class="card-header bg-white" id="headingA{{ $item->id }}">
+                                    <div class="card-header bg-white" id="headingA">
                                         <h2 class="mb-0">
                                             Actividad
                                         </h2>
                                     </div>
-                                    <div id="collapseA{{ $item->id }}" class="collapse show"
-                                        aria-labelledby="headingA{{ $item->id }}" data-parent="#accordionGrades">
+                                    <div id="collapseA" class="collapse show"
+                                        aria-labelledby="headingA" data-parent="#accordionGrades">
                                         <div class="card-body">
                                             <div class="container-fluid border shadow pt-3 pb-3">
                                                 <div class="table-responsive">
