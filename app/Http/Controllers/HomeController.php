@@ -155,4 +155,20 @@ class HomeController extends Controller
 
         return view('table', compact('students', 'assistancesSearch', 'activitiesSearch','reFinalActivitiesSearch', 'reFinalAssistancesSearch', 'date'));
     }
+
+    public function selectDateView(Request $request)
+    {
+        $course_id = $request->course_id;
+        $activities = DailyActivity::where('course_id', $request->course_id)->whereDate('created_at', '>', $request->dateStart)->whereDate('created_at', '<', $request->dateEnd)->get();
+        $activitForCheck;
+        $activitiesArray = array();
+        foreach($activities as $activity)
+        $activitForCheck = $activity->id;
+        {
+            if($activitForCheck === $activity->id){
+                $activitiesArray[] = $activity;
+            }
+        };
+        return view('datesView', compact('activitiesArray', 'course_id'));
+    }
 }

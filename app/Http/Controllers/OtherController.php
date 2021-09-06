@@ -42,7 +42,7 @@ class OtherController extends Controller
         ->paginate(5);
         $courses = Course::orderBy('id', 'desc')
         ->courseName($courseName)
-        ->get();
+        ->paginate(5);
         return view('other.index', compact('activities', 'courses'));
     }
 
@@ -438,6 +438,7 @@ class OtherController extends Controller
                 $dataA1->dailyActivityCheck = $request->answer1;
                 $dataA1->dailyActivityJustification = $request->justification1;
                 $dataA1->created_at = $request->date;
+                $dataA1->course_id = $request->course_id;
                 $dataA1->save();
         
                 $dataA2 = new DailyActivity();
@@ -447,6 +448,7 @@ class OtherController extends Controller
                 $dataA2->dailyActivityCheck = $request->answer2;
                 $dataA2->dailyActivityJustification = $request->justification2;
                 $dataA2->created_at = $request->date;
+                $dataA2->course_id = $request->course_id;
                 $dataA2->save();
 
                 $dataA3 = new DailyActivity();
@@ -456,6 +458,7 @@ class OtherController extends Controller
                 $dataA3->dailyActivityCheck = $request->answer3;
                 $dataA3->dailyActivityJustification = $request->justification3;
                 $dataA3->created_at = $request->date;
+                $dataA3->course_id = $request->course_id;
                 $dataA3->save();
 
                 $dataA4 = new DailyActivity();
@@ -465,6 +468,7 @@ class OtherController extends Controller
                 $dataA4->dailyActivityCheck = $request->answer4;
                 $dataA4->dailyActivityJustification = $request->justification4;
                 $dataA4->created_at = $request->date;
+                $dataA4->course_id = $request->course_id;
                 $dataA4->save();
 
                 $dataA5 = new DailyActivity();
@@ -474,6 +478,7 @@ class OtherController extends Controller
                 $dataA5->dailyActivityCheck = $request->answer5;
                 $dataA5->dailyActivityJustification = $request->justification5;
                 $dataA5->created_at = $request->date;
+                $dataA5->course_id = $request->course_id;
                 $dataA5->save();
 
         return back()->with('message', 'Calificación agregada correctamente agregado con éxito.');

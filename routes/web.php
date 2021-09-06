@@ -189,3 +189,10 @@ Route::put('/other/assitance/{id}', [App\Http\Controllers\AssistanceController::
 Route::get( '/table/{course_id}/{date}', [App\Http\Controllers\HomeController::class, 'moduleTableController'])->name( 'module.index' );
 
 Route::post('/table', [App\Http\Controllers\HomeController::class, 'moduleController'])->name( 'module.redir' );
+
+Route::post('/dates', [App\Http\Controllers\HomeController::class, 'selectDateView'])->name( 'module.dates' );
+
+// PDFS
+Route::get('/pdfstudents', [App\Http\Controllers\PDFController::class, 'students'])->name( 'pdfs.students' );
+Route::get('/pdfteachers', [App\Http\Controllers\PDFController::class, 'teachers'])->name( 'pdfs.teachers' );
+Route::get('/pdfadministrations', [App\Http\Controllers\PDFController::class, 'administrations'])->name( 'pdfs.administrations' );

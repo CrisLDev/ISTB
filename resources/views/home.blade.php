@@ -108,15 +108,21 @@
                                              <h3>Consultar por cursos</h3>
                                         </div>
                                         <div class="card-body">
-                                            <form onsubmit="disable()" method="POST" action="{{ route('module.redir') }}">
+                                            <form onsubmit="disable()" method="POST" action="{{ route('module.dates') }}">
                                              @csrf
                                                  <div class="row">
                                                      <div class="col-md-12">
                                                          <div class="form-group">
-                                                             <label for="inputState">Fecha</label>
-                                                             <input type="date" name="date" id="date" class="form-control mb-2" required>
+                                                             <label for="inputState">Fecha de inicio</label>
+                                                             <input type="date" name="dateStart" id="date" class="form-control mb-2" required>
                                                          </div>
                                                      </div>
+                                                     <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="inputState">Fecha de fin</label>
+                                                            <input type="date" name="dateEnd" id="date" class="form-control mb-2" required>
+                                                        </div>
+                                                    </div>
                                                      <div class="col-md-12">
                                                          <div class="form-group">
                                                              <label for="inputState">Cursos</label>

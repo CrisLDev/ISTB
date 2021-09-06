@@ -25,6 +25,9 @@
                         </div>
                     </form>
                 </div>
+                <div class="container">
+                    <a class="btn btn-block btn-primary" href="{{route('pdfs.administrations')}}">Generar PDF</a>
+                </div>
                 <div class="card-body">
                             @if (count($administrations) !== 0)
 
