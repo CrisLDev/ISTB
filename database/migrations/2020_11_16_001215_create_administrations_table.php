@@ -18,8 +18,8 @@ class CreateAdministrationsTable extends Migration
             $table->string('fullname');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('telephoneNumber');
-            $table->integer('dni');
+            $table->string('telephoneNumber');
+            $table->string('dni');
             $table->string('address');
             $table->string('age');
             $table->string('email');
